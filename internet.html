@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo Internet e Redes Sociais</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://i.ibb.co/nLPy4WY/Imagem2.png">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --fundo: #0f172a;
+      --card: #1e293b;
+      --borda: #334155;
+      --texto: #f1f5f9;
+      --net-azul: #0ea5e9;
+      --net-gradiente: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+    }
+
+    body {
+      background-color: var(--fundo);
+      color: var(--texto);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .navbar {
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .hero {
+      background: var(--net-gradiente);
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 0 0 40px 40px;
+      box-shadow: 0 10px 30px rgba(14, 165, 233, 0.2);
+    }
+
+    .hero h1 span { color: #fde047; font-weight: 700; }
+
+    .mission-box {
+      background: rgba(14, 165, 233, 0.1);
+      border: 1px solid #0ea5e9;
+      padding: 20px;
+      border-radius: 16px;
+      margin-top: -30px;
+      position: relative;
+      z-index: 10;
+      backdrop-filter: blur(5px);
+    }
+
+    .card-aula {
+      background: var(--card);
+      border: 1px solid var(--borda);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      height: 100%;
+      transition: all 0.3s;
+    }
+
+    .card-aula:hover {
+      transform: translateY(-8px);
+      border-color: var(--net-azul);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+
+    .icon-box { font-size: 40px; margin-bottom: 15px; display: block; }
+
+    .btn-modulo {
+      background: var(--borda);
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: 0.3s;
+      width: 100%;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .card-aula:hover .btn-modulo { background: var(--net-azul); }
+
+    kbd {
+      background-color: #334155;
+      border-radius: 5px;
+      border: 1px solid #475569;
+      color: #38bdf8;
+      padding: 2px 6px;
+      font-weight: bold;
+      box-shadow: 0 2px 0 #000;
+    }
+
+    .accordion-item { border: none; margin-bottom: 10px; }
+    .accordion-button { 
+      border-radius: 12px !important; 
+      background-color: var(--card); 
+      color: white; 
+      border: 1px solid var(--borda);
+    }
+
+    .accordion-button:not(.collapsed) {
+      background-color: rgba(14, 165, 233, 0.1);
+      color: #38bdf8;
+    }
+
+    footer { color: #64748b; font-size: 13px; }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="dashboard.html">
+      <span class="me-2">⬅️</span> Painel
+    </a>
+    <div class="ms-auto">
+      <span class="badge" style="background-color: var(--net-azul);">Internet e Redes</span>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <h1 class="display-5">Bem-vindo, <span id="nomeAlunoDisplay">Estudante</span> 🌐</h1>
+    <p class="lead opacity-75">
+      “Tudo me é lícito, mas nem tudo convém.” <br> 
+      <small>1 Coríntios 6:12</small>
+    </p>
+  </div>
+</section>
+
+<div class="container mb-5 mt-5">
+  
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="mission-box text-center">
+        🎯 <strong>Missão:</strong> Navegar com segurança, usar redes sociais com sabedoria e dominar a internet no dia a dia!
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 mt-4">
+
+    <div class="col-md-3">
+      <div class="card-aula">
+        <span class="icon-box">🌍</span>
+        <h5>Conteúdo</h5>
+        <p class="text-muted small">Aula completa sobre internet.</p>
+        <a href="#" target="_blank" class="btn-modulo">Abrir Aula</a>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-aula">
+        <span class="icon-box">📘</span>
+        <h5>Apostila</h5>
+        <p class="text-muted small">Guia de navegação segura.</p>
+        <a href="#" target="_blank" class="btn-modulo">Ler Agora</a>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-aula">
+        <span class="icon-box">✍️</span>
+        <h5>Exercícios</h5>
+        <p class="text-muted small">Prática online.</p>
+        <a href="#" target="_blank" class="btn-modulo">Responder</a>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-aula" style="border-color: #ef4444;">
+        <span class="icon-box">📝</span>
+        <h5>Prova Final</h5>
+        <p class="text-muted small">Teste de conhecimento.</p>
+        <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 py-2 fw-bold">Iniciar Prova</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ATALHOS INTERNET -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="card p-4" style="background: var(--card); border-radius: 20px;">
+        <h2 class="mb-4">⌨️ Atalhos de Navegador</h2>
+
+        <div class="accordion accordion-flush">
+
+          <div class="accordion-item">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#nav">
+              🌐 Navegação
+            </button>
+            <div id="nav" class="accordion-collapse collapse">
+              <table class="table table-dark mb-0">
+                <tr><td><kbd>CTRL</kbd> + <kbd>T</kbd></td><td>Nova Aba</td></tr>
+                <tr><td><kbd>CTRL</kbd> + <kbd>W</kbd></td><td>Fechar Aba</td></tr>
+                <tr><td><kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>T</kbd></td><td>Reabrir Aba</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>←</kbd></td><td>Voltar Página</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#seguranca">
+              🔒 Segurança
+            </button>
+            <div id="seguranca" class="accordion-collapse collapse">
+              <table class="table table-dark mb-0">
+                <tr><td><kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>N</kbd></td><td>Aba Anônima</td></tr>
+                <tr><td><kbd>CTRL</kbd> + <kbd>H</kbd></td><td>Histórico</td></tr>
+                <tr><td><kbd>CTRL</kbd> + <kbd>D</kbd></td><td>Favoritar Página</td></tr>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="text-center py-5">
+  <small>© Elinaldo Junior — Educação com Propósito</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const nomeSalvo = localStorage.getItem("nomeAluno");
+    if (nomeSalvo) {
+      document.getElementById("nomeAlunoDisplay").innerText = nomeSalvo;
+    }
+  });
+
+  function acessarProva() {
+    const senha = prompt("🔒 Digite a senha da PROVA DE INTERNET:");
+    if (senha === "internet2025") {
+      window.open("#", "_blank");
+    } else if (senha !== null) {
+      alert("❌ Senha incorreta!");
+    }
+  }
+</script>
+
+</body>
+</html>
