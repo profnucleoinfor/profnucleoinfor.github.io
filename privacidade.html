@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidade | NIC Formação Profissional</title>
+  <meta name="description" content="Política de privacidade do portal NIC Formação Profissional." />
+  <meta name="theme-color" content="#043B7B" />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nicGreen: '#A5E44E',
+            nicGreenMid: '#7CAC3C',
+            nicBlueDark: '#043B7B',
+            nicBlue: '#04244C',
+            nicGray: '#F4F7FB',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="manifest" href="./manifest.json" />
+  <meta property="og:image" content="./assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" /></head>
+<body class="bg-nicGray text-nicBlue font-sans">
+  <main class="max-w-4xl mx-auto px-6 py-12">
+    <a href="./index.html" class="inline-flex items-center gap-3 mb-10">
+      <img src="./assets/icon-192.png" alt="NIC" class="w-14 h-14 rounded-xl">
+      <div>
+        <p class="font-bold text-lg text-nicBlueDark">NIC Formação Profissional</p>
+        <p class="text-sm text-slate-500">Política de Privacidade</p>
+      </div>
+    </a>
+
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-xl p-8 sm:p-10">
+      <p class="text-nicGreenMid font-bold uppercase tracking-widest mb-4">Privacidade</p>
+      <h1 class="text-4xl font-extrabold text-nicBlueDark mb-6">Como seus dados são usados</h1>
+      <p class="text-slate-600 leading-relaxed mb-8">
+        Este portal foi criado para apoiar alunos da NIC Formação Profissional. As informações preenchidas no acesso do aluno ficam salvas no próprio navegador do dispositivo, usando armazenamento local.
+      </p>
+
+      <div class="space-y-7 text-slate-700 leading-relaxed">
+        <section>
+          <h2 class="text-xl font-bold text-nicBlueDark mb-2">Dados salvos no navegador</h2>
+          <p>O portal pode guardar nome do aluno, dia da aula e horário da aula para facilitar o acesso ao painel. Esses dados não são enviados para um banco de dados por este site estático.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-nicBlueDark mb-2">Uso de links externos</h2>
+          <p>Alguns botões podem abrir serviços externos, como WhatsApp, LinkedIn, fontes e bibliotecas visuais. Esses serviços possuem suas próprias políticas de privacidade.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-nicBlueDark mb-2">Aplicativo e cache</h2>
+          <p>Para funcionar melhor como aplicativo, o site pode salvar arquivos no cache do navegador. Isso ajuda a carregar páginas com mais rapidez e melhora a experiência em celulares.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-nicBlueDark mb-2">Como apagar os dados</h2>
+          <p>Na área do aluno, o botão de sair limpa os dados salvos pelo portal. Também é possível apagar os dados diretamente nas configurações do navegador.</p>
+        </section>
+      </div>
+
+      <a href="./index.html" class="inline-flex mt-10 bg-nicGreenMid hover:bg-nicGreen text-white font-bold px-7 py-4 rounded-xl transition">
+        Voltar ao início
+      </a>
+    </section>
+  </main>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>

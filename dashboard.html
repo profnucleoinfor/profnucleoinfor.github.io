@@ -3,11 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Área do Aluno | Portal de Aprendizado</title>
+<title>Área do Aluno | NIC Formação Profissional</title>
+
+<!-- ✅ CONFIGURAÇÕES PARA FUNCIONAR COMO APP (PWA) -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NIC Aluno">
+<meta name="theme-color" content="#043B7B">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="icon" href="https://i.ibb.co/nLPy4WY/Imagem2.png">
 
 <style>
 :root{
@@ -16,11 +21,12 @@
   --borda:#334155;
   --texto:#f1f5f9;
   --texto-sec:#94a3b8;
-  --azul:#3b82f6;
-  --azul-hover:#2563eb;
-  --verde:#10b981;
-  --ouro:#fbbf24; /* Cor para XP/Pontos */
-  --gradiente:linear-gradient(135deg,#3b82f6,#2563eb);
+  --azul:#043B7B;         /* Cor NIC - Azul Escuro */
+  --azul-hover:#09448C;  /* Cor NIC - Azul Médio */
+  --verde:#7CAC3C;       /* Cor NIC - Verde */
+  --verde-claro:#A5E44E; /* Cor NIC - Verde Claro */
+  --ouro:#fbbf24;        /* Cor para XP/Pontos */
+  --gradiente:linear-gradient(135deg,#043B7B,#7CAC3C); /* Gradiente NIC */
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -41,6 +47,14 @@ header{
   align-items:center;
   border-bottom:1px solid var(--borda);
   position:sticky; top:0; z-index: 100;
+}
+
+header h1 {
+  background: var(--gradiente);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
 }
 
 .btn-sair{
@@ -75,6 +89,11 @@ header{
   padding:22px;
 }
 
+.info-box strong {
+  color: var(--verde-claro);
+  font-size: 1.1rem;
+}
+
 .avatar-wrapper{
   display:flex;
   align-items:center;
@@ -83,7 +102,8 @@ header{
 
 .avatar-wrapper img{
   width:64px;height:64px;border-radius:50%;
-  border: 2px solid var(--azul);
+  border: 2px solid var(--verde);
+  box-shadow: 0 0 12px rgba(124, 172, 60, 0.4);
 }
 
 .fala{
@@ -92,6 +112,7 @@ header{
   border-radius:12px;
   font-size:14px;
   transition: opacity 0.4s ease;
+  border-left: 3px solid var(--verde);
 }
 
 .btn-pontos{
@@ -107,9 +128,9 @@ header{
   font-weight:700;
   margin-bottom:40px;
   transition:.3s;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 15px rgba(4, 59, 123, 0.3);
 }
-.btn-pontos:hover{transform:translateY(-3px); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);}
+.btn-pontos:hover{transform:translateY(-3px); box-shadow: 0 6px 20px rgba(4, 59, 123, 0.4);}
 
 .modulos-grid{
   display:grid;
@@ -135,17 +156,18 @@ header{
     position: absolute;
     top: 10px;
     right: -20px;
-    background: var(--borda);
+    background: var(--verde);
     font-size: 10px;
     padding: 2px 25px;
     transform: rotate(45deg);
-    color: var(--texto-sec);
+    color: #fff;
+    font-weight: 600;
 }
 
 .modulo-card:hover{
   transform:translateY(-6px);
-  border-color:var(--azul);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border-color:var(--verde);
+  box-shadow: 0 10px 30px rgba(124, 172, 60, 0.2);
 }
 
 .xp-badge {
@@ -160,7 +182,7 @@ header{
     border: 1px solid rgba(251, 191, 36, 0.3);
 }
 
-.modulo-card h2{margin-bottom:8px; font-size: 1.3rem;}
+.modulo-card h2{margin-bottom:8px; font-size: 1.3rem; color: #fff;}
 .modulo-card p{color:var(--texto-sec);font-size:14px; margin-bottom: 15px;}
 
 .btn-acessar{
@@ -173,7 +195,7 @@ header{
   cursor:pointer;
   transition: .3s;
 }
-.modulo-card:hover .btn-acessar{background:var(--azul); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);}
+.modulo-card:hover .btn-acessar{background:var(--verde); box-shadow: 0 4px 12px rgba(124, 172, 60, 0.3);}
 
 .professor-section{
   margin-top:40px;
@@ -184,44 +206,61 @@ header{
   text-align:center;
 }
 
+.professor-section h3 {
+  color: var(--verde-claro);
+}
+
+.foto-prof {
+  border-radius: 50%;
+  border: 3px solid var(--azul);
+  margin-bottom: 15px;
+  box-shadow: 0 0 15px rgba(4, 59, 123, 0.3);
+}
+
 @media(max-width:768px){
   .dashboard-top{grid-template-columns:1fr}
 }
 </style>
-</head>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <meta property="og:image" content="./assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" /></head>
 
 <body>
 
 <header>
-  <h1>🎓 Área do Aluno</h1>
-  <a href="index.html" class="btn-sair">SAIR</a>
+  <h1>🎓 Área do Aluno - NIC</h1>
+  <a href="./index.html" class="btn-sair" id="btnSair">SAIR</a>
 </header>
 
 <div class="container">
 
 <div class="dashboard-top">
   <div class="info-box">
-    👤 <strong id="nomeAluno"></strong><br>
+    👤 <strong id="nomeAluno"></strong><br><br>
     📅 <span id="diaAula"></span><br>
     ⏰ <span id="horarioAula"></span>
   </div>
 
   <div class="avatar-wrapper">
-    <img src="https://i.ibb.co/NdNrybj2/drive.webp" alt="Avatar">
-    <div class="fala" id="frase">Prepare-se para evoluir!</div>
+    <img src="./assets/icon-192.png" alt="Logo NIC">
+    <div class="fala" id="frase">Preparado para evoluir com a gente!</div>
   </div>
 </div>
 
-<a href="pontos.html" class="btn-pontos">🏅 Sistema de Pontos</a>
+<a href="./sistema-pontos.html" class="btn-pontos">🏅 Sistema de Pontos</a>
 
 <div class="modulos-grid" id="gridModulos"></div>
 
 <div class="professor-section">
-    <img src="https://i.ibb.co/NdNrybj2/drive.webp" width="100 alt="Elinaldo Junior" class="foto-prof">
+    <img src="./assets/icon-192.png" width="100" alt="Elinaldo Junior" class="foto-prof">
     <div class="professor-text">
       <h3>👨‍🏫 Seu Instrutor</h3>
       <p>Olá! Sou <strong>Elinaldo Junior</strong>. Meu objetivo é garantir que você aprenda tecnologia de forma humanizada.</p>
-      <a class="linkedin-icon" href="https://www.linkedin.com/in/elinaldo-junior-389bb911b" target="_blank">
+      <a class="linkedin-icon" href="https://www.linkedin.com/in/elinaldo-junior-389bb911b" target="_blank" rel="noopener noreferrer">
        <center> <img src="https://i.ibb.co/rRv0hwK7/meu-linkedin-156-1.webp" alt="LinkedIn" width="150"></center>
       </a>
     </div>
@@ -230,23 +269,37 @@ header{
 </div>
 
 <footer style="text-align:center;padding:40px;color:#94a3b8; font-size: 14px;">
-© 2026 Elinaldo Junior - Sistema de Gestão Pedagógica
+© 2026 Núcleo Infor - Formação Profissional | Todos os direitos reservados
 </footer>
 
 <script>
-/* DADOS DO LOCALSTORAGE */
-document.getElementById("nomeAluno").innerText = "Aluno: " + (localStorage.getItem("nomeAluno") || "Estudante");
-document.getElementById("diaAula").innerText = "Aula: " + (localStorage.getItem("diaAula") || "A definir");
+/* ✅ REGISTRO DO SERVICE WORKER PARA O APP */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js');
+  });
+}
+
+/* DADOS DO LOCALSTORAGE - Vem da página de login */
+document.getElementById("nomeAluno").innerText = localStorage.getItem("nomeAluno") || "Estudante";
+document.getElementById("diaAula").innerText = "Dia da aula: " + (localStorage.getItem("diaAula") || "A definir");
 document.getElementById("horarioAula").innerText = "Horário: " + (localStorage.getItem("horarioAula") || "A definir");
 
-/* FRASES MOTIVACIONAIS */
+/* FUNÇÃO PARA LIMPAR DADOS AO SAIR */
+document.getElementById("btnSair").addEventListener("click", function(e){
+  e.preventDefault(); // Impede o comportamento padrão do link
+  localStorage.clear(); // Apaga TODOS os dados salvos do aluno
+  window.location.href = "index.html"; // Volta para página inicial
+});
+
+/* FRASES MOTIVACIONAIS DA NIC */
 const frases=[
-"Aprenda no seu tempo.",
-"Cada passo importa na sua jornada.",
-"Você está indo muito bem!",
-"Tecnologia abre portas para o futuro.",
-"Nunca pare de evoluir!",
-"O erro é o primeiro passo do acerto."
+"Conhecimento que transforma o seu futuro.",
+"A educação é o melhor investimento.",
+"Você está no caminho certo para o sucesso!",
+"A tecnologia abre todas as portas.",
+"Aprenda, pratique, evolua.",
+"Núcleo Infor: sua melhor escolha em ensino."
 ];
 
 let currentFrase=0;
@@ -261,15 +314,15 @@ setInterval(()=>{
   },400);
 },6000);
 
-/* LISTA DE MÓDULOS COM XP */
+/* LISTA DE MÓDULOS - APENAS OS DE INFORMÁTICA (Removido Inglês e Gestão) */
 const MODULOS = [
-  {titulo:"🖥️ Windows + Linux", senha:"windowslinux", pagina:"windows.html", desc:"Sistemas operacionais e arquivos", xp: "1000 XP"},
-  {titulo:"📝 Word + Digitação", senha:"worddigitacao", pagina:"word.html", desc:"Documentos e digitação profissional", xp: "1120 XP"},
-  {titulo:"📊 Excel", senha:"excel", pagina:"excel.html", desc:"Planilhas, fórmulas e automação", xp: "1200 XP"},
-  {titulo:"📽️ PowerPoint", senha:"powerpoint", pagina:"powerpoint.html", desc:"Apresentações que impressionam", xp: "600 XP"},
-  {titulo:"🌐 Internet e Redes", senha:"internet", pagina:"internet.html", desc:"Navegação segura e redes sociais", xp: "320 XP"},
-  {titulo:"🎨 Canva Design", senha:"canva", pagina:"canva.html", desc:"Design visual e criação de conteúdo", xp: "360 XP"},
-  {titulo:"🤖 Inteligência Artificial", senha:"ia", pagina:"ia.html", desc:"O futuro aplicado ao seu dia a dia", xp: "800 XP"}
+  {titulo:"🖥️ Windows + Linux", senha:"windows", pagina:"windows.html", desc:"Aprenda a usar os principais sistemas operacionais do mercado.", xp: "1000 XP"},
+  {titulo:"📝 Word + Digitação", senha:"word", pagina:"word.html", desc:"Documentos profissionais e digitação rápida e correta.", xp: "1120 XP"},
+  {titulo:"📊 Excel", senha:"excel", pagina:"excel.html", desc:"Planilhas, cálculos, fórmulas e automação de tarefas.", xp: "1200 XP"},
+  {titulo:"📽️ PowerPoint", senha:"powerpoint", pagina:"powerpoint.html", desc:"Apresentações incríveis que impressionam qualquer público.", xp: "600 XP"},
+  {titulo:"🌐 Internet e Redes Sociais", senha:"internet", pagina:"internet.html", desc:"Navegação segura, pesquisa e uso profissional das redes.", xp: "320 XP"},
+  {titulo:"🎨 Canva e Design", senha:"canva", pagina:"canva.html", desc:"Criação de artes, posts e materiais visuais profissionais.", xp: "360 XP"},
+  {titulo:"🤖 Inteligência Artificial", senha:"ia", pagina:"ia.html", desc:"Como usar a IA para aumentar sua produtividade e aprendizado.", xp: "800 XP"}
 ];
 
 const grid = document.getElementById("gridModulos");
@@ -289,17 +342,16 @@ MODULOS.forEach(mod=>{
   `;
 });
 
-/* ACESSO COM SENHA (TRIM ADICIONADO) */
+/* SISTEMA DE SENHA PARA CADA MÓDULO */
 function acessarModulo(senhaCorreta,pagina){
-  const entrada = prompt("🔒 Digite a senha do módulo:");
+  const entrada = prompt("🔒 Digite a senha da aula:");
   
   if(!entrada) return;
 
-  // O .trim() remove espaços vazios acidentais antes ou depois da senha
   if(entrada.trim().toLowerCase() === senhaCorreta.toLowerCase()){
     window.location.href = pagina;
   }else{
-    alert("❌ Senha incorreta! Peça ao professor se esqueceu.");
+    alert("❌ Senha incorreta! Procure o instrutor para ajuda.");
   }
 }
 </script>

@@ -5,11 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Módulo Excel</title>
 
+  <!-- ✅ CONFIGURAÇÕES PARA FUNCIONAR COMO APP (PWA) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="NIC Aluno">
+    <meta name="theme-color" content="#043B7B">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="https://i.ibb.co/nLPy4WY/Imagem2.png">
-  
+    
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
@@ -18,8 +23,8 @@
       --card: #1e293b;
       --borda: #334155;
       --texto: #f1f5f9;
-      --excel-verde: #16a34a;
-      --excel-gradiente: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+      --mod-cor: #16a34a;
+      --mod-gradiente: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
     }
 
     body {
@@ -35,11 +40,11 @@
     }
 
     .hero {
-      background: var(--excel-gradiente);
+      background: var(--mod-gradiente);
       padding: 60px 20px;
       text-align: center;
       border-radius: 0 0 40px 40px;
-      box-shadow: 0 10px 30px rgba(22, 163, 74, 0.2);
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
     }
     .hero h1 span { color: #fde047; font-weight: 700; }
 
@@ -65,7 +70,7 @@
     }
     .card-aula:hover {
       transform: translateY(-8px);
-      border-color: var(--excel-verde);
+      border-color: var(--mod-cor);
       box-shadow: 0 15px 30px rgba(0,0,0,0.4);
     }
 
@@ -83,14 +88,13 @@
       text-decoration: none;
       display: inline-block;
     }
-    .card-aula:hover .btn-modulo { background: var(--excel-verde); }
+    .card-aula:hover .btn-modulo { background: var(--mod-cor); }
 
-    /* TECLAS */
     kbd {
       background-color: #334155;
       border-radius: 5px;
       border: 1px solid #475569;
-      color: #4ade80;
+      color: #86efac;
       padding: 2px 6px;
       font-weight: bold;
       box-shadow: 0 2px 0 #000;
@@ -105,24 +109,30 @@
     }
     .accordion-button::after { filter: invert(1); }
     .accordion-button:not(.collapsed) {
-      background-color: rgba(22, 163, 74, 0.1);
-      color: #4ade80;
+      background-color: rgba(34, 197, 94, 0.1);
+      color: #86efac;
       box-shadow: none;
     }
 
     footer { color: #64748b; font-size: 13px; }
   </style>
-</head>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <meta property="og:image" content="./assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" /></head>
 
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="dashboard.html">
+    <a class="navbar-brand d-flex align-items-center" href="./dashboard.html">
       <span class="me-2">⬅️</span> Painel
     </a>
     <div class="ms-auto">
-      <span class="badge" style="background-color: var(--excel-verde);">Módulo Excel</span>
+      <span class="badge" style="background-color: var(--mod-cor);">Módulo Excel</span>
     </div>
   </div>
 </nav>
@@ -131,8 +141,8 @@
   <div class="container">
     <h1 class="display-5">Bem-vindo, <span id="nomeAlunoDisplay">Estudante</span> 📊</h1>
     <p class="lead opacity-75">
-      “Antes de edificar, calcule os custos.” <br> 
-      <small>Lucas 14:28</small>
+      “Organização é o primeiro passo para o sucesso.” <br> 
+      <small>1 Coríntios 14:40</small>
     </p>
   </div>
 </section>
@@ -142,7 +152,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="mission-box text-center">
-        🎯 <strong>Missão:</strong> Domine a análise de dados e automatize cálculos com precisão!
+        🎯 <strong>Missão:</strong> Dominar planilhas, fórmulas, funções, gráficos, tabelas dinâmicas e automação para resolver qualquer cálculo!
       </div>
     </div>
   </div>
@@ -150,10 +160,10 @@
   <div class="row g-4 mt-4">
     <div class="col-md-3">
       <div class="card-aula">
-        <span class="icon-box">📊</span>
-        <h5>Slides</h5>
-        <p class="text-muted small">Explicação visual das fórmulas.</p>
-        <a href="https://docs.google.com/presentation/d/16xlaEGZ-ESgbTo6z1Pfpp2S76Vq4Dtuf" target="_blank" class="btn-modulo">Abrir Slides</a>
+        <span class="icon-box">📈</span>
+        <h5>Slides da Aula</h5>
+        <p class="text-muted small">Introdução a fórmulas e lógica.</p>
+        <a href="https://docs.google.com/presentation/d/16xlaEGZ-ESgbTo6z1Pfpp2S76Vq4Dtuf/edit?usp=drive_link&ouid=117693596403024623615&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="btn-modulo">Abrir Conteúdo</a>
       </div>
     </div>
 
@@ -161,8 +171,8 @@
       <div class="card-aula">
         <span class="icon-box">📘</span>
         <h5>Apostila</h5>
-        <p class="text-muted small">Referência técnica completa.</p>
-        <a href="https://drive.google.com/file/d/1xGnUywNR8OTPJZLiZNLqxliPp6g51mV4/view?usp=sharing" target="_blank" class="btn-modulo">Ler Agora</a>
+        <p class="text-muted small">Guia completo de funções e referências.</p>
+        <a href="https://drive.google.com/file/d/10LysaWBrohy8xBN5BmJMFVhyEYeoNxGI/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-modulo">Ler Agora</a>
       </div>
     </div>
 
@@ -170,8 +180,8 @@
       <div class="card-aula">
         <span class="icon-box">✍️</span>
         <h5>Exercícios</h5>
-        <p class="text-muted small">Já finalizou e salvou?</p>
-        <a href="https://forms.gle/BV6gxxEkJJXq1z3A9" target="_blank" class="btn-modulo">Enviar Planilha</a>
+        <p class="text-muted small">Prática de cálculos e relatórios.</p>
+        <a href="https://forms.gle/BV6gxxEkJJXq1z3A9" target="_blank" rel="noopener noreferrer" class="btn-modulo">Enviar Atividade</a>
       </div>
     </div>
 
@@ -179,8 +189,8 @@
       <div class="card-aula" style="border-color: #ef4444;">
         <span class="icon-box">📝</span>
         <h5>Prova Final</h5>
-        <p class="text-muted small">Avaliação de desempenho.</p>
-        <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 py-2 fw-bold">Iniciar Teste</button>
+        <p class="text-muted small">Desafio de planilha gerencial.</p>
+        <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 py-2 fw-bold">Iniciar Prova</button>
       </div>
     </div>
   </div>
@@ -189,46 +199,24 @@
     <div class="col-12">
       <div class="card p-4" style="background: var(--card); border: 1px solid var(--borda); border-radius: 20px;">
         <h2 class="mb-4 d-flex align-items-center">
-          <span class="me-3">⌨️</span> Atalhos Ninja do Excel
+          <span class="me-3">⌨️</span> Atalhos e Funções
         </h2>
         
-        
-
-        <div class="accordion accordion-flush" id="accordionExcel">
+        <div class="accordion accordion-flush" id="accordionModulo">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#funcoes">
-                🚀 Funções e Navegação
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#atalhos">
+                ⚡ Atalhos Rápidos
               </button>
             </h2>
-            <div id="funcoes" class="accordion-collapse collapse" data-bs-parent="#accordionExcel">
+            <div id="atalhos" class="accordion-collapse collapse" data-bs-parent="#accordionModulo">
               <div class="accordion-body p-0">
                 <table class="table table-dark table-hover mb-0">
                   <tbody>
-                    <tr><td><kbd>ALT</kbd> + <kbd>=</kbd></td><td>Inserir AutoSoma (Soma rápida)</td></tr>
-                    <tr><td><kbd>CTRL</kbd> + <kbd>;</kbd></td><td>Inserir data atual</td></tr>
-                    <tr><td><kbd>CTRL</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd></td><td>Ativar/Desativar Filtros</td></tr>
-                    <tr><td><kbd>F2</kbd></td><td>Editar conteúdo da célula</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#formatacao">
-                💎 Formatação Rápida
-              </button>
-            </h2>
-            <div id="formatacao" class="accordion-collapse collapse" data-bs-parent="#accordionExcel">
-              <div class="accordion-body p-0">
-                <table class="table table-dark table-hover mb-0">
-                  <tbody>
-                    <tr><td><kbd>CTRL</kbd> + <kbd>Shift</kbd> + <kbd>$</kbd></td><td>Formato de Moeda (R$)</td></tr>
-                    <tr><td><kbd>CTRL</kbd> + <kbd>Shift</kbd> + <kbd>%</kbd></td><td>Formato de Porcentagem</td></tr>
-                    <tr><td><kbd>CTRL</kbd> + <kbd>1</kbd></td><td>Menu Formatar Células</td></tr>
-                    <tr><td><kbd>CTRL</kbd> + <kbd>T</kbd></td><td>Selecionar Intervalo Atual</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>;</kbd></td><td>Inserir data atual</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>$</kbd></td><td>Formatar como moeda</td></tr>
+                    <tr><td><kbd>Alt</kbd> + <kbd>=</kbd></td><td>Soma automática</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>PageUp/Down</kbd></td><td>Navegar entre abas</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -241,10 +229,10 @@
 
   <div class="row mt-5">
     <div class="col-12 text-center">
-      <div class="p-4 rounded-4" style="background: rgba(251, 188, 5, 0.05); border: 1px dashed #fbbc05;">
+      <div class="p-4 rounded-4" style="background: rgba(34, 197, 94, 0.05); border: 1px dashed #22c55e;">
         <h5>🔒 Revisão do Módulo</h5>
-        <p class="text-muted small">Conteúdo avançado liberado pelo professor Elinaldo.</p>
-        <button onclick="acessarRevisao()" class="btn btn-warning px-5 rounded-pill fw-bold py-2">Liberar Revisão</button>
+        <p class="text-muted small">Macros e tabelas dinâmicas avançadas.</p>
+        <button onclick="acessarRevisao()" class="btn btn-warning px-5 rounded-pill fw-bold py-2">Liberar Conteúdo</button>
       </div>
     </div>
   </div>
@@ -252,12 +240,19 @@
 </div>
 
 <footer class="text-center py-5">
-  <small>© Elinaldo Junior — Educação com Propósito</small>
+  <small>© NIC Formação Profissional — Educação com Propósito</small>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+  // ✅ REGISTRO DO SERVICE WORKER PARA O APP
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./service-worker.js');
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     const nomeSalvo = localStorage.getItem("nomeAluno");
     if (nomeSalvo) {
@@ -266,20 +261,20 @@
   });
 
   function acessarProva() {
-    const senha = prompt("🔒 Digite a senha da PROVA DE EXCEL:");
-    if (senha === "excel2025") {
-      window.open("https://forms.gle/SEU_LINK_DA_PROVA_EXCEL", "_blank");
+    const senha = prompt("🔒 Digite a senha da PROVA:");
+    if (senha && senha.trim().toLowerCase() === "provaexcel") {
+      alert("✅ Acesso liberado!");
     } else if (senha !== null) {
-      alert("❌ Senha incorreta! Solicite ao seu instrutor.");
+      alert("❌ Senha incorreta! Fale com o instrutor.");
     }
   }
 
   function acessarRevisao() {
     const senha = prompt("🔑 Digite a senha de REVISÃO:");
     if (senha === "revisaoExcel") {
-      window.location.href = "https://gemini.google.com/share/00b61dea1bea";
+      alert("✅ Conteúdo liberado!");
     } else if (senha !== null) {
-      alert("❌ Senha de revisão inválida.");
+      alert("❌ Acesso negado. Senha incorreta.");
     }
   }
 </script>

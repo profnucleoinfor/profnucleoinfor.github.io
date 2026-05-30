@@ -3,13 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Módulo Windows</title>
+  <title>Módulo Windows + Linux</title>
+
+  <!-- ✅ CONFIGURAÇÕES PARA FUNCIONAR COMO APP (PWA) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="NIC Aluno">
+    <meta name="theme-color" content="#043B7B">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="https://i.ibb.co/nLPy4WY/Imagem2.png">
-  
+    
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
@@ -18,8 +23,8 @@
       --card: #1e293b;
       --borda: #334155;
       --texto: #f1f5f9;
-      --azul: #3b82f6;
-      --gradiente-win: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+      --mod-cor: #0891b2;
+      --mod-gradiente: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
     }
 
     body {
@@ -28,27 +33,24 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* NAVBAR */
     .navbar {
       background: rgba(30, 41, 59, 0.8);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--borda);
     }
 
-    /* HERO SECTION */
     .hero {
-      background: var(--gradiente-win);
+      background: var(--mod-gradiente);
       padding: 60px 20px;
       text-align: center;
       border-radius: 0 0 40px 40px;
-      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 10px 30px rgba(14, 165, 233, 0.2);
     }
     .hero h1 span { color: #fde047; font-weight: 700; }
 
-    /* MISSION BOX */
     .mission-box {
-      background: rgba(34, 197, 94, 0.1);
-      border: 1px solid #22c55e;
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid #06b6d4;
       padding: 20px;
       border-radius: 16px;
       margin-top: -30px;
@@ -57,7 +59,6 @@
       backdrop-filter: blur(5px);
     }
 
-    /* CARDS DE AULA */
     .card-aula {
       background: var(--card);
       border: 1px solid var(--borda);
@@ -65,11 +66,11 @@
       padding: 30px;
       text-align: center;
       height: 100%;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .card-aula:hover {
       transform: translateY(-8px);
-      border-color: var(--azul);
+      border-color: var(--mod-cor);
       box-shadow: 0 15px 30px rgba(0,0,0,0.4);
     }
 
@@ -87,86 +88,71 @@
       text-decoration: none;
       display: inline-block;
     }
-    .card-aula:hover .btn-modulo { background: var(--azul); }
+    .card-aula:hover .btn-modulo { background: var(--mod-cor); }
 
-    .btn-prova {
-      background: #ef4444;
-      border: none;
-      color: white;
-      width: 100%;
-      padding: 10px;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-    .btn-prova:hover { background: #dc2626; }
- 
- .btn-revisao {
-      background-color: #f59e0b;
-      color: #000;
-      font-weight: 700;
-      transition: 0.3s;
-    }
-    .btn-revisao:hover { background-color: #d97706; transform: scale(1.05); }
- 
-    /* TECLAS DE ATALHO */
     kbd {
       background-color: #334155;
       border-radius: 5px;
       border: 1px solid #475569;
-      box-shadow: 0 2px 0 #1e293b;
-      color: #3b82f6;
-      font-weight: 700;
+      color: #7dd3fc;
       padding: 2px 6px;
+      font-weight: bold;
+      box-shadow: 0 2px 0 #000;
     }
 
     .accordion-item { border: none; margin-bottom: 10px; background: transparent; }
     .accordion-button { 
       border-radius: 12px !important; 
       background-color: var(--card); 
-      color: white;
+      color: white; 
       border: 1px solid var(--borda);
     }
+    .accordion-button::after { filter: invert(1); }
     .accordion-button:not(.collapsed) {
-      background-color: rgba(59, 130, 246, 0.1);
-      color: var(--azul);
+      background-color: rgba(14, 165, 233, 0.1);
+      color: #7dd3fc;
       box-shadow: none;
     }
-    .accordion-button::after { filter: invert(1); }
 
     footer { color: #64748b; font-size: 13px; }
   </style>
-</head>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <meta property="og:image" content="./assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" /></head>
 
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="dashboard.html">
-      <span class="me-2">⬅️</span> Voltar ao Painel
+    <a class="navbar-brand d-flex align-items-center" href="./dashboard.html">
+      <span class="me-2">⬅️</span> Painel
     </a>
     <div class="ms-auto">
-      <span class="badge bg-primary">Módulo Iniciado</span>
+      <span class="badge" style="background-color: var(--mod-cor);">Módulo Windows + Linux</span>
     </div>
   </div>
 </nav>
 
 <section class="hero">
   <div class="container">
-    <h1 class="display-5">Olá, <span id="nomeAlunoDisplay">Estudante</span> 👋</h1>
+    <h1 class="display-5">Bem-vindo, <span id="nomeAlunoDisplay">Estudante</span> 🖥️</h1>
     <p class="lead opacity-75">
-      "Apegue-se à instrução, não a abandone; guarde-a, pois dela depende a sua vida." <br> 
-      <small>Provérbios 4:13</small>
+      “O conhecimento é a chave para a liberdade.” <br> 
+      <small>Provérbios 24:4</small>
     </p>
   </div>
 </section>
-<br><br>
-<div class="container mb-5">
+
+<div class="container mb-5 mt-5">
   
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="mission-box text-center">
-        🎯 <strong>Missão:</strong> Domine a interface do Windows e agilize o seu trabalho com atalhos inteligentes!
+        🎯 <strong>Missão:</strong> Dominar os sistemas operacionais, gerenciar arquivos, pastas e comandos avançados para controlar o computador com maestria!
       </div>
     </div>
   </div>
@@ -174,19 +160,19 @@
   <div class="row g-4 mt-4">
     <div class="col-md-3">
       <div class="card-aula">
-        <span class="icon-box">📊</span>
-        <h5>Slides</h5>
-        <p class="text-muted small">Acompanhe a explicação visual completa.</p>
-        <a href="https://docs.google.com/presentation/d/1PQNNv1PGfZFrSBw6ioM_a0hAFdPhXhWY/edit" target="_blank" class="btn-modulo">Abrir Slides</a>
+        <span class="icon-box">📂</span>
+        <h5>Material da Aula</h5>
+        <p class="text-muted small">Conceitos e práticas de sistema.</p>
+        <a href="https://docs.google.com/presentation/d/1PQNNv1PGfZFrSBw6ioM_a0hAFdPhXhWY/edit?usp=drive_link&ouid=117693596403024623615&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="btn-modulo">Abrir Conteúdo</a>
       </div>
     </div>
 
     <div class="col-md-3">
       <div class="card-aula">
         <span class="icon-box">📘</span>
-        <h5>Apostila</h5>
-        <p class="text-muted small">Conteúdo teórico para consulta profunda.</p>
-        <a href="https://drive.google.com/file/d/1gqNYTYBZHHvUvnsSwSWOiixcQin5suX_/view" target="_blank" class="btn-modulo">Ler Agora</a>
+        <h5>Apostila Completa</h5>
+        <p class="text-muted small">Guia de instalação e configuração.</p>
+        <a href="https://drive.google.com/file/d/1gqNYTYBZHHvUvnsSwSWOiixcQin5suX_/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-modulo">Ler Agora</a>
       </div>
     </div>
 
@@ -194,17 +180,17 @@
       <div class="card-aula">
         <span class="icon-box">✍️</span>
         <h5>Exercícios</h5>
-        <p class="text-muted small">Já finalizou e salvou?</p>
-        <a href="https://forms.gle/BV6gxxEkJJXq1z3A9" target="_blank" class="btn-modulo">Enviar Atividade</a>
+        <p class="text-muted small">Prática de comandos e atalhos.</p>
+        <a href="https://forms.gle/BV6gxxEkJJXq1z3A9" target="_blank" rel="noopener noreferrer" class="btn-modulo">Enviar Atividade</a>
       </div>
     </div>
 
     <div class="col-md-3">
-      <div class="card-aula" style="border-color: rgba(239, 68, 68, 0.4);">
+      <div class="card-aula" style="border-color: #ef4444;">
         <span class="icon-box">📝</span>
-        <h5>Prova Final</h5>
-        <p class="text-muted small">Desbloqueie com a senha do professor.</p>
-        <button onclick="acessarProva()" class="btn-prova">Iniciar Desafio</button>
+        <h5>Avaliação Final</h5>
+        <p class="text-muted small">Desafio de gerenciamento de SO.</p>
+        <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 py-2 fw-bold">Iniciar Prova</button>
       </div>
     </div>
   </div>
@@ -213,143 +199,80 @@
     <div class="col-12">
       <div class="card p-4" style="background: var(--card); border: 1px solid var(--borda); border-radius: 20px;">
         <h2 class="mb-4 d-flex align-items-center">
-          <span class="me-3">⌨️</span> Guia de Atalhos: Torne-se um Ninja
+          <span class="me-3">⌨️</span> Atalhos Essenciais
         </h2>
+        
+        <div class="accordion accordion-flush" id="accordionModulo">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#win">
+                🪟 No Windows
+              </button>
+            </h2>
+            <div id="win" class="accordion-collapse collapse" data-bs-parent="#accordionModulo">
+              <div class="accordion-body p-0">
+                <table class="table table-dark table-hover mb-0">
+                  <tbody>
+                    <tr><td><kbd>Win</kbd> + <kbd>E</kbd></td><td>Abrir Explorador de Arquivos</td></tr>
+                    <tr><td><kbd>Win</kbd> + <kbd>D</kbd></td><td>Mostrar Área de Trabalho</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Esc</kbd></td><td>Abrir Gerenciador de Tarefas</td></tr>
+                    <tr><td><kbd>Alt</kbd> + <kbd>Tab</kbd></td><td>Alternar entre janelas abertas</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
 
-      <div class="accordion accordion-flush" id="accordionAtalhos">
-
-  <!-- ATALHOS ESSENCIAIS -->
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button"
-        data-bs-toggle="collapse" data-bs-target="#atalhosEssenciais">
-        🚀 Atalhos Essenciais
-      </button>
-    </h2>
-
-    <div id="atalhosEssenciais" class="accordion-collapse collapse"
-      data-bs-parent="#accordionAtalhos">
-      <div class="accordion-body p-0">
-        <table class="table table-dark table-hover mb-0">
-          <tbody>
-            <tr><td><kbd>CTRL</kbd> + <kbd>A</kbd></td><td>Selecionar tudo</td></tr>
-            <tr><td><kbd>CTRL</kbd> + <kbd>C</kbd></td><td>Copiar itens para a área de transferência</td></tr>
-            <tr><td><kbd>CTRL</kbd> + <kbd>X</kbd></td><td>Recortar itens para a área de transferência</td></tr>
-            <tr><td><kbd>CTRL</kbd> + <kbd>V</kbd></td><td>Colar itens da área de transferência</td></tr>
-            <tr><td><kbd>CTRL</kbd> + <kbd>Z</kbd></td><td>Desfazer ação</td></tr>
-            <tr><td><kbd>CTRL</kbd> + <kbd>Y</kbd></td><td>Refazer ação</td></tr>
-            <tr><td><kbd>ALT</kbd> + <kbd>F4</kbd></td><td>Fechar janela atual</td></tr>
-            <tr><td><kbd>CTRL</kbd> + <kbd>D</kbd> ou <kbd>Delete</kbd></td><td>Deletar itens selecionados</td></tr>
-            <tr><td><kbd>Shift</kbd> + <kbd>Delete</kbd></td><td>Excluir itens permanentemente</td></tr>
-            <tr><td><kbd>F2</kbd></td><td>Renomear item selecionado</td></tr>
-            <tr><td><kbd>Esc</kbd></td><td>Cancelar ação</td></tr>
-            <tr><td><kbd>ALT</kbd> + <kbd>Tab</kbd></td><td>Alternar entre janelas</td></tr>
-            <tr><td><kbd>PrtScn</kbd></td><td>Captura de tela para a área de transferência</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>I</kbd></td><td>Abrir as configurações</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>E</kbd></td><td>Abrir o Explorador de Arquivos</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>A</kbd></td><td>Abrir a Central de Ações</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>V</kbd></td><td>Histórico da área de transferência</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd></td><td>Capturar parte da tela</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>PrtScn</kbd></td><td>Capturar e salvar a tela</td></tr>
-          </tbody>
-        </table>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#linux">
+                🐧 No Linux (Terminal)
+              </button>
+            </h2>
+            <div id="linux" class="accordion-collapse collapse" data-bs-parent="#accordionModulo">
+              <div class="accordion-body p-0">
+                <table class="table table-dark table-hover mb-0">
+                  <tbody>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd></td><td>Abrir Terminal</td></tr>
+                    <tr><td><kbd>ls</kbd></td><td>Listar arquivos da pasta</td></tr>
+                    <tr><td><kbd>cd</kbd></td><td>Navegar entre pastas</td></tr>
+                    <tr><td><kbd>sudo</kbd></td><td>Executar como administrador</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- EXPLORADOR DE ARQUIVOS -->
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button"
-        data-bs-toggle="collapse" data-bs-target="#exploradorArquivos">
-        📂 Explorador de Arquivos
-      </button>
-    </h2>
-
-    <div id="exploradorArquivos" class="accordion-collapse collapse"
-      data-bs-parent="#accordionAtalhos">
-      <div class="accordion-body p-0">
-        <table class="table table-dark table-hover mb-0">
-          <tbody>
-            <tr><td><kbd>CTRL</kbd> + <kbd>N</kbd></td><td>Abrir nova janela</td></tr>
-            <tr><td><kbd>CTRL</kbd> + <kbd>W</kbd></td><td>Fechar janela atual</td></tr>
-            <tr><td><kbd>CTRL</kbd> + <kbd>F</kbd></td><td>Abrir busca</td></tr>
-            <tr><td><kbd>CTRL</kbd> + <kbd>Scroll</kbd></td><td>Alterar modo de exibição</td></tr>
-            <tr><td><kbd>CTRL</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd></td><td>Criar nova pasta</td></tr>
-            <tr><td><kbd>ALT</kbd> + <kbd>Enter</kbd></td><td>Propriedades do arquivo</td></tr>
-            <tr><td><kbd>F11</kbd></td><td>Tela cheia</td></tr>
-            <tr><td><kbd>F5</kbd></td><td>Atualizar</td></tr>
-            <tr><td><kbd>Home</kbd></td><td>Início da tela</td></tr>
-            <tr><td><kbd>End</kbd></td><td>Final da tela</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- TECLA WINDOWS -->
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button"
-        data-bs-toggle="collapse" data-bs-target="#atalhosWindows">
-        🪟 Atalhos com a Tecla Windows
-      </button>
-    </h2>
-
-    <div id="atalhosWindows" class="accordion-collapse collapse"
-      data-bs-parent="#accordionAtalhos">
-      <div class="accordion-body p-0">
-        <table class="table table-dark table-hover mb-0">
-          <tbody>
-            <tr><td><kbd>Win</kbd> + <kbd>S</kbd></td><td>Busca do sistema</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>D</kbd></td><td>Mostrar/Ocultar área de trabalho</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>L</kbd></td><td>Bloquear o computador</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>M</kbd></td><td>Minimizar todas as janelas</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>G</kbd></td><td>Xbox Game Bar</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>ALT</kbd> + <kbd>R</kbd></td><td>Gravação de tela</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>R</kbd></td><td>Executar</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>X</kbd></td><td>Menu avançado</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>P</kbd></td><td>Projetar tela</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>↑</kbd></td><td>Maximizar janela</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>↓</kbd></td><td>Minimizar janela</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>←</kbd></td><td>Encaixar à esquerda</td></tr>
-            <tr><td><kbd>Win</kbd> + <kbd>→</kbd></td><td>Encaixar à direita</td></tr>
-          </tbody>
-        </table>
+  <div class="row mt-5">
+    <div class="col-12 text-center">
+      <div class="p-4 rounded-4" style="background: rgba(14, 165, 233, 0.05); border: 1px dashed #0ea5e9;">
+        <h5>🔒 Revisão do Módulo</h5>
+        <p class="text-muted small">Dicas avançadas de instalação e manutenção.</p>
+        <button onclick="acessarRevisao()" class="btn btn-warning px-5 rounded-pill fw-bold py-2">Liberar Conteúdo</button>
       </div>
     </div>
   </div>
 
 </div>
 
-<div class="row mt-5">
-    <div class="col-12 text-center">
-      <div class="p-4 rounded-4" style="background: rgba(245, 158, 11, 0.05); border: 1px dashed #f59e0b;">
-        <h5>🔒 Revisão Orientada</h5>
-        <p class="text-muted">Desbloqueie conteúdo extra de revisão com o instrutor.</p>
-        <button onclick="acessarRevisao()" class="btn btn-revisao px-5 rounded-pill py-2">Desbloquear Revisão</button>
-      </div>
-    </div>
-  </div>
-  <div class="row mt-5">
-    <div class="col-12">
-      <div class="p-4 rounded-4" style="background: rgba(59, 130, 246, 0.05); border: 1px solid var(--borda);">
-        <h5>💡 Dica do Instrutor</h5>
-        <p class="mb-0 text-muted">A prática leva à perfeição. Tente usar o rato o menos possível hoje e foque-se em memorizar os atalhos acima!</p>
-      </div>
-    </div>
-  </div>
-
-</div> 
-
 <footer class="text-center py-5">
-  <small>© Elinaldo Junior — Educação com Propósito</small>
+  <small>© NIC Formação Profissional — Educação com Propósito</small>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  // Sincronização do Nome do Aluno
+  // ✅ REGISTRO DO SERVICE WORKER PARA O APP
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./service-worker.js');
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     const nomeSalvo = localStorage.getItem("nomeAluno");
     if (nomeSalvo) {
@@ -357,23 +280,23 @@
     }
   });
 
-  // Função para Aceder à Prova (Senha Diferente do Módulo)
   function acessarProva() {
-    const senha = prompt("🔒 Digite a SENHA DA PROVA (fornecida pelo professor):");
-    
-    // Conforme sua observação, a senha da prova deve ser diferente (ex: win2025)
-    if (senha === "win2025") {
-      window.open("https://forms.gle/Dom7GPzatLpkzs8m6", "_blank");
+    const senha = prompt("🔒 Digite a senha da PROVA:");
+    if (senha && senha.trim().toLowerCase() === "provawin") {
+      alert("✅ Acesso liberado!");
+      // window.open("LINK_DA_PROVA", "_blank");
     } else if (senha !== null) {
-      alert("❌ Senha da prova incorreta! Solicite ao professor Elinaldo.");
+      alert("❌ Senha incorreta! Fale com o instrutor.");
     }
   }
-   function acessarRevisao() {
+
+  function acessarRevisao() {
     const senha = prompt("🔑 Digite a senha de REVISÃO:");
-    if (senha === "revisaoWin") {
-      window.location.href = "https://gemini.google.com/share/0b0fe4874059";
+    if (senha === "revisaoSO") {
+      alert("✅ Conteúdo liberado!");
+      // window.location.href = "LINK_DA_REVISAO";
     } else if (senha !== null) {
-      alert("❌ Acesso negado. A senha é liberada durante a aula.");
+      alert("❌ Acesso negado. Senha incorreta.");
     }
   }
 </script>
