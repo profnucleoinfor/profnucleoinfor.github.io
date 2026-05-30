@@ -6,16 +6,13 @@
 <title>Área do Aluno | NIC Formação Profissional</title>
 
 <!-- ✅ CONFIGURAÇÕES PARA FUNCIONAR COMO APP (PWA) -->
-<link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="NIC Aluno">
-<link rel="apple-touch-icon" href="https://i.ibb.co/NdNrybj2/drive.webp">
 <meta name="theme-color" content="#043B7B">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="icon" href="https://i.ibb.co/nLPy4WY/Imagem2.png">
 
 <style>
 :root{
@@ -224,13 +221,19 @@ header h1 {
   .dashboard-top{grid-template-columns:1fr}
 }
 </style>
-</head>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <meta property="og:image" content="./assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" /></head>
 
 <body>
 
 <header>
   <h1>🎓 Área do Aluno - NIC</h1>
-  <a href="index.html" class="btn-sair" id="btnSair">SAIR</a>
+  <a href="./index.html" class="btn-sair" id="btnSair">SAIR</a>
 </header>
 
 <div class="container">
@@ -243,21 +246,21 @@ header h1 {
   </div>
 
   <div class="avatar-wrapper">
-    <img src="https://i.ibb.co/NdNrybj2/drive.webp" alt="Logo NIC">
+    <img src="./assets/icon-192.png" alt="Logo NIC">
     <div class="fala" id="frase">Preparado para evoluir com a gente!</div>
   </div>
 </div>
 
-<a href="sistema-pontos.html" class="btn-pontos">🏅 Sistema de Pontos</a>
+<a href="./sistema-pontos.html" class="btn-pontos">🏅 Sistema de Pontos</a>
 
 <div class="modulos-grid" id="gridModulos"></div>
 
 <div class="professor-section">
-    <img src="https://i.ibb.co/NdNrybj2/drive.webp" width="100" alt="Elinaldo Junior" class="foto-prof">
+    <img src="./assets/icon-192.png" width="100" alt="Elinaldo Junior" class="foto-prof">
     <div class="professor-text">
       <h3>👨‍🏫 Seu Instrutor</h3>
       <p>Olá! Sou <strong>Elinaldo Junior</strong>. Meu objetivo é garantir que você aprenda tecnologia de forma humanizada.</p>
-      <a class="linkedin-icon" href="https://www.linkedin.com/in/elinaldo-junior-389bb911b" target="_blank">
+      <a class="linkedin-icon" href="https://www.linkedin.com/in/elinaldo-junior-389bb911b" target="_blank" rel="noopener noreferrer">
        <center> <img src="https://i.ibb.co/rRv0hwK7/meu-linkedin-156-1.webp" alt="LinkedIn" width="150"></center>
       </a>
     </div>
@@ -273,7 +276,7 @@ header h1 {
 /* ✅ REGISTRO DO SERVICE WORKER PARA O APP */
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js');
+    navigator.serviceWorker.register('./service-worker.js');
   });
 }
 
@@ -313,8 +316,8 @@ setInterval(()=>{
 
 /* LISTA DE MÓDULOS - APENAS OS DE INFORMÁTICA (Removido Inglês e Gestão) */
 const MODULOS = [
-  {titulo:"🖥️ Windows + Linux", senha:"windowslinux", pagina:"windows.html", desc:"Aprenda a usar os principais sistemas operacionais do mercado.", xp: "1000 XP"},
-  {titulo:"📝 Word + Digitação", senha:"worddigitacao", pagina:"word.html", desc:"Documentos profissionais e digitação rápida e correta.", xp: "1120 XP"},
+  {titulo:"🖥️ Windows + Linux", senha:"windows", pagina:"windows.html", desc:"Aprenda a usar os principais sistemas operacionais do mercado.", xp: "1000 XP"},
+  {titulo:"📝 Word + Digitação", senha:"word", pagina:"word.html", desc:"Documentos profissionais e digitação rápida e correta.", xp: "1120 XP"},
   {titulo:"📊 Excel", senha:"excel", pagina:"excel.html", desc:"Planilhas, cálculos, fórmulas e automação de tarefas.", xp: "1200 XP"},
   {titulo:"📽️ PowerPoint", senha:"powerpoint", pagina:"powerpoint.html", desc:"Apresentações incríveis que impressionam qualquer público.", xp: "600 XP"},
   {titulo:"🌐 Internet e Redes Sociais", senha:"internet", pagina:"internet.html", desc:"Navegação segura, pesquisa e uso profissional das redes.", xp: "320 XP"},
