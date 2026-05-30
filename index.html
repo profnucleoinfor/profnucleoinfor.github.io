@@ -15,10 +15,10 @@
   <meta property="og:title" content="NIC Formação Profissional" />
   <meta property="og:description" content="Transforme seu futuro com cursos profissionalizantes modernos." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://profnucleoinfor.github.io/" />
 
   <!-- PWA -->
-  
+  <link rel="manifest" href="./manifest.json" />
+
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="NIC Aluno" />
@@ -92,13 +92,7 @@
       }
     }
   </style>
-  <link rel="manifest" href="./manifest.json" />
-  <link rel="icon" type="image/png" href="./assets/favicon.png" />
-  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
-  <meta property="og:image" content="./assets/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" /></head>
+</head>
 
 <body class="bg-white text-nicBlue font-sans overflow-x-hidden">
 
@@ -110,7 +104,7 @@
     <div class="flex items-center justify-between h-20">
 
       <!-- LOGO -->
-      <a href="#inicio" class="flex items-center gap-3">
+      <a href="#" class="flex items-center gap-3">
 
         <div class="text-4xl font-extrabold">
           <span class="text-nicBlueDark">N</span><span class="text-nicGreenMid">I</span><span class="text-nicBlueDark">C</span>
@@ -147,7 +141,7 @@
           Contato
         </a>
 
-        <a href="./login.html"
+        <a href="login.html"
            class="bg-gradient-to-r from-nicGreenMid to-nicBlueDark text-white px-5 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
           Área do Aluno
         </a>
@@ -178,7 +172,7 @@
       <a href="#diferenciais">Diferenciais</a>
       <a href="#contato">Contato</a>
 
-      <a href="./login.html"
+      <a href="login.html"
          class="bg-nicGreenMid text-white text-center py-3 rounded-xl mt-2">
         Área do Aluno
       </a>
@@ -233,7 +227,7 @@
 
           </a>
 
-          <a href="./login.html"
+          <a href="login.html"
              class="glass border border-white/10 px-8 py-4 rounded-2xl font-semibold hover:bg-white/20 transition text-center">
 
             Entrar no Portal
@@ -290,7 +284,7 @@
               <i class="fa-solid fa-laptop-code text-4xl text-nicGreen mb-4"></i>
               <h3 class="font-bold text-xl text-white mb-2">Informática Presencial</h3>
               <p class="text-slate-300 text-sm">
-                Ambiente Climatizado, 1 Computador por aluno, Material didático digital.
+                Ambiente Climatizado, 1 Computador por aluno, Material didadico Digital.
               </p>
             </div>
 
@@ -563,7 +557,7 @@
 
     <div class="flex flex-col sm:flex-row justify-center gap-4">
 
-      <a href="./login.html"
+      <a href="login.html"
          class="bg-nicGreenMid hover:bg-nicGreen text-white font-bold px-8 py-4 rounded-2xl transition hover:scale-105">
 
         Entrar no Portal
@@ -571,7 +565,7 @@
       </a>
 
       <a href="https://wa.me/558321782447"
-         target="_blank" rel="noopener noreferrer"
+         target="_blank"
          class="bg-white text-nicBlueDark font-bold px-8 py-4 rounded-2xl hover:scale-105 transition">
 
         Falar no WhatsApp
@@ -623,7 +617,7 @@
       </p>
 
       <a href="https://wa.me/558321782447"
-         target="_blank" rel="noopener noreferrer"
+         target="_blank"
          class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-2xl font-bold transition">
 
         <i class="fa-brands fa-whatsapp text-2xl"></i>
@@ -660,27 +654,14 @@
       Todos os direitos reservados
 
     </p>
-    <p class="mt-4">
-      <a href="./privacidade.html" class="text-slate-400 hover:text-nicGreen transition text-sm">
-        Política de Privacidade
-      </a>
-    </p>
 
   </div>
 
 </footer>
-<button id="installAppBtn"
-        type="button"
-        class="hidden fixed bottom-24 right-6 bg-nicBlueDark hover:bg-nicBlue text-white rounded-full shadow-2xl z-50 transition hover:scale-105 px-5 py-4 font-bold items-center gap-3">
-
-  <i class="fa-solid fa-download"></i>
-  <span>Instalar app</span>
-
-</button>
 
 <!-- BOTÃO FLUTUANTE -->
 <a href="https://wa.me/558321782447"
-   target="_blank" rel="noopener noreferrer"
+   target="_blank"
    class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl z-50 transition hover:scale-110">
 
   <i class="fa-brands fa-whatsapp"></i>
@@ -698,33 +679,6 @@
     mobileMenu.classList.toggle('hidden');
   });
 
-
-  // INSTALAÇÃO DO APP
-  let deferredInstallPrompt = null;
-  const installAppBtn = document.getElementById('installAppBtn');
-
-  window.addEventListener('beforeinstallprompt', (event) => {
-    event.preventDefault();
-    deferredInstallPrompt = event;
-    installAppBtn.classList.remove('hidden');
-    installAppBtn.classList.add('inline-flex');
-  });
-
-  installAppBtn.addEventListener('click', async () => {
-    if (!deferredInstallPrompt) return;
-
-    deferredInstallPrompt.prompt();
-    await deferredInstallPrompt.userChoice;
-    deferredInstallPrompt = null;
-    installAppBtn.classList.add('hidden');
-    installAppBtn.classList.remove('inline-flex');
-  });
-
-  window.addEventListener('appinstalled', () => {
-    deferredInstallPrompt = null;
-    installAppBtn.classList.add('hidden');
-    installAppBtn.classList.remove('inline-flex');
-  });
   // SERVICE WORKER
   if ('serviceWorker' in navigator) {
 

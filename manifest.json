@@ -1,22 +1,21 @@
 {
   "name": "Área do Aluno - NIC Formação",
   "short_name": "NIC Aluno",
-  "start_url": "./index.html",
-  "scope": "./",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#043B7B",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "./assets/icon-192.png",
-      "type": "image/png",
+      "src": "https://i.ibb.co/NdNrybj2/drive.webp",
+      "type": "image/webp",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "./assets/icon-512.png",
-      "type": "image/png",
+      "src": "https://i.ibb.co/NdNrybj2/drive.webp",
+      "type": "image/webp",
       "sizes": "512x512",
       "purpose": "any maskable"
     }

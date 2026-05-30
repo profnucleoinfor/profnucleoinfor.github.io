@@ -1,71 +1,45 @@
-const CACHE_NAME = 'nic-formacao-v3';
+const CACHE_NAME = 'nic-formacao-v1';
 const ASSETS_TO_CACHE = [
-  './',
-  './index.html',
-  './404.html',
-  './privacidade.html',
-  './login.html',
-  './dashboard.html',
-  './sistema-pontos.html',
-  './windows.html',
-  './word.html',
-  './excel.html',
-  './powerpoint.html',
-  './internet.html',
-  './canva.html',
-  './ia.html',
-  './manifest.json',
-  './robots.txt',
-  './sitemap.xml',
-  './assets/favicon.png',
-  './assets/icon-192.png',
-  './assets/icon-512.png',
-  './assets/og-image.png'
+  '/',
+  '/index.html',
+  '/dashboard.html',
+  '/sistema-pontos.html',
+  '/windows.html',
+  '/word.html',
+  '/excel.html',
+  '/powerpoint.html',
+  '/internet.html',
+  '/canva.html',
+  '/ia.html',
+  'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap',
+  'https://i.ibb.co/NdNrybj2/drive.webp'
 ];
 
-// Instalação: guarda os arquivos locais no cache.
+// Instalação: guarda os arquivos no cache
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(ASSETS_TO_CACHE))
-      .then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(ASSETS_TO_CACHE);
+    })
   );
 });
 
-// Ativação: limpa caches antigos e assume as páginas abertas.
+// Ativação: limpa caches antigos
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys()
-      .then((keys) => Promise.all(
+    caches.keys().then((keys) => {
+      return Promise.all(
         keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
-      ))
-      .then(() => self.clients.claim())
+      );
+    })
   );
 });
 
-// Busca: usa cache para arquivos locais e rede para recursos externos.
+// Busca: usa o cache primeiro, depois atualiza
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
-
-  const requestUrl = new URL(event.request.url);
-  if (requestUrl.origin !== self.location.origin) return;
-
   event.respondWith(
-    caches.match(event.request).then(async (cachedResponse) => {
-      if (cachedResponse) return cachedResponse;
-
-      try {
-        const networkResponse = await fetch(event.request);
-        const cache = await caches.open(CACHE_NAME);
-        cache.put(event.request, networkResponse.clone());
-        return networkResponse;
-      } catch (error) {
-        if (event.request.mode === 'navigate') {
-          return caches.match('./404.html');
-        }
-
-        throw error;
-      }
+    caches.match(event.request).then((cachedResponse) => {
+      return cachedResponse || fetch(event.request);
     })
   );
 });

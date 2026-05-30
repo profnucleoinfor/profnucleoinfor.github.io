@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Módulo Inteligência Artificial</title>
+  <title>Módulo Excel</title>
 
   <!-- ✅ CONFIGURAÇÕES PARA FUNCIONAR COMO APP (PWA) -->
   <link rel="manifest" href="manifest.json">
@@ -26,8 +26,8 @@
       --card: #1e293b;
       --borda: #334155;
       --texto: #f1f5f9;
-      --mod-cor: #8b5cf6;
-      --mod-gradiente: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+      --mod-cor: #16a34a;
+      --mod-gradiente: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
     }
 
     body {
@@ -47,13 +47,13 @@
       padding: 60px 20px;
       text-align: center;
       border-radius: 0 0 40px 40px;
-      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
     }
     .hero h1 span { color: #fde047; font-weight: 700; }
 
     .mission-box {
-      background: rgba(139, 92, 246, 0.1);
-      border: 1px solid #8b5cf6;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid #22c55e;
       padding: 20px;
       border-radius: 16px;
       margin-top: -30px;
@@ -97,7 +97,7 @@
       background-color: #334155;
       border-radius: 5px;
       border: 1px solid #475569;
-      color: #d8b4fe;
+      color: #86efac;
       padding: 2px 6px;
       font-weight: bold;
       box-shadow: 0 2px 0 #000;
@@ -112,8 +112,8 @@
     }
     .accordion-button::after { filter: invert(1); }
     .accordion-button:not(.collapsed) {
-      background-color: rgba(139, 92, 246, 0.1);
-      color: #d8b4fe;
+      background-color: rgba(34, 197, 94, 0.1);
+      color: #86efac;
       box-shadow: none;
     }
 
@@ -129,17 +129,17 @@
       <span class="me-2">⬅️</span> Painel
     </a>
     <div class="ms-auto">
-      <span class="badge" style="background-color: var(--mod-cor);">Módulo Inteligência Artificial</span>
+      <span class="badge" style="background-color: var(--mod-cor);">Módulo Excel</span>
     </div>
   </div>
 </nav>
 
 <section class="hero">
   <div class="container">
-    <h1 class="display-5">Bem-vindo, <span id="nomeAlunoDisplay">Estudante</span> 🤖</h1>
+    <h1 class="display-5">Bem-vindo, <span id="nomeAlunoDisplay">Estudante</span> 📊</h1>
     <p class="lead opacity-75">
-      “Use a tecnologia para multiplicar o seu talento.” <br> 
-      <small>Mateus 25:14-30</small>
+      “Organização é o primeiro passo para o sucesso.” <br> 
+      <small>1 Coríntios 14:40</small>
     </p>
   </div>
 </section>
@@ -149,7 +149,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="mission-box text-center">
-        🎯 <strong>Missão:</strong> Entender o que é IA, aprender a usar ferramentas de forma ética e produtiva, automatizar tarefas e criar conteúdos incríveis com ajuda da tecnologia!
+        🎯 <strong>Missão:</strong> Dominar planilhas, fórmulas, funções, gráficos, tabelas dinâmicas e automação para resolver qualquer cálculo!
       </div>
     </div>
   </div>
@@ -157,9 +157,9 @@
   <div class="row g-4 mt-4">
     <div class="col-md-3">
       <div class="card-aula">
-        <span class="icon-box">🧠</span>
+        <span class="icon-box">📈</span>
         <h5>Slides da Aula</h5>
-        <p class="text-muted small">Conceitos e aplicações da IA.</p>
+        <p class="text-muted small">Introdução a fórmulas e lógica.</p>
         <a href="#" target="_blank" class="btn-modulo">Abrir Conteúdo</a>
       </div>
     </div>
@@ -168,7 +168,7 @@
       <div class="card-aula">
         <span class="icon-box">📘</span>
         <h5>Apostila</h5>
-        <p class="text-muted small">Guia de ferramentas e engenharia de prompt.</p>
+        <p class="text-muted small">Guia completo de funções e referências.</p>
         <a href="#" target="_blank" class="btn-modulo">Ler Agora</a>
       </div>
     </div>
@@ -177,7 +177,7 @@
       <div class="card-aula">
         <span class="icon-box">✍️</span>
         <h5>Exercícios</h5>
-        <p class="text-muted small">Criação de textos, imagens e códigos.</p>
+        <p class="text-muted small">Prática de cálculos e relatórios.</p>
         <a href="#" target="_blank" class="btn-modulo">Enviar Atividade</a>
       </div>
     </div>
@@ -186,7 +186,7 @@
       <div class="card-aula" style="border-color: #ef4444;">
         <span class="icon-box">📝</span>
         <h5>Prova Final</h5>
-        <p class="text-muted small">Desafio de solução com IA.</p>
+        <p class="text-muted small">Desafio de planilha gerencial.</p>
         <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 py-2 fw-bold">Iniciar Prova</button>
       </div>
     </div>
@@ -196,44 +196,24 @@
     <div class="col-12">
       <div class="card p-4" style="background: var(--card); border: 1px solid var(--borda); border-radius: 20px;">
         <h2 class="mb-4 d-flex align-items-center">
-          <span class="me-3">💡</span> Segredos do Prompt Perfeito
+          <span class="me-3">⌨️</span> Atalhos e Funções
         </h2>
         
         <div class="accordion accordion-flush" id="accordionModulo">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#regras">
-                ✍️ Como Pedir Certo
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#atalhos">
+                ⚡ Atalhos Rápidos
               </button>
             </h2>
-            <div id="regras" class="accordion-collapse collapse" data-bs-parent="#accordionModulo">
+            <div id="atalhos" class="accordion-collapse collapse" data-bs-parent="#accordionModulo">
               <div class="accordion-body p-0">
                 <table class="table table-dark table-hover mb-0">
                   <tbody>
-                    <tr><td>🎯</td><td>Seja claro e específico no que quer</td></tr>
-                    <tr><td>📝</td><td>Dê contexto e explique o objetivo</td></tr>
-                    <tr><td>🎨</td><td>Defina o tom, estilo e formato</td></tr>
-                    <tr><td>✅</td><td>Peça para revisar ou melhorar</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usos">
-                🚀 Onde usar no dia a dia
-              </button>
-            </h2>
-            <div id="usos" class="accordion-collapse collapse" data-bs-parent="#accordionModulo">
-              <div class="accordion-body p-0">
-                <table class="table table-dark table-hover mb-0">
-                  <tbody>
-                    <tr><td>📧</td><td>Escrever e-mails e mensagens</td></tr>
-                    <tr><td>📚</td><td>Resumir textos e estudos</td></tr>
-                    <tr><td>💡</td><td>Criar ideias e planejamentos</td></tr>
-                    <tr><td>🖼️</td><td>Gerar imagens e arte</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>;</kbd></td><td>Inserir data atual</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>$</kbd></td><td>Formatar como moeda</td></tr>
+                    <tr><td><kbd>Alt</kbd> + <kbd>=</kbd></td><td>Soma automática</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>PageUp/Down</kbd></td><td>Navegar entre abas</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -246,9 +226,9 @@
 
   <div class="row mt-5">
     <div class="col-12 text-center">
-      <div class="p-4 rounded-4" style="background: rgba(139, 92, 246, 0.05); border: 1px dashed #8b5cf6;">
+      <div class="p-4 rounded-4" style="background: rgba(34, 197, 94, 0.05); border: 1px dashed #22c55e;">
         <h5>🔒 Revisão do Módulo</h5>
-        <p class="text-muted small">Ética, privacidade e futuro da inteligência artificial.</p>
+        <p class="text-muted small">Macros e tabelas dinâmicas avançadas.</p>
         <button onclick="acessarRevisao()" class="btn btn-warning px-5 rounded-pill fw-bold py-2">Liberar Conteúdo</button>
       </div>
     </div>
@@ -279,7 +259,7 @@
 
   function acessarProva() {
     const senha = prompt("🔒 Digite a senha da PROVA:");
-    if (senha === "ia") {
+    if (senha === "excel") {
       alert("✅ Acesso liberado!");
     } else if (senha !== null) {
       alert("❌ Senha incorreta! Fale com o instrutor.");
@@ -288,7 +268,7 @@
 
   function acessarRevisao() {
     const senha = prompt("🔑 Digite a senha de REVISÃO:");
-    if (senha === "revisaoIA") {
+    if (senha === "revisaoExcel") {
       alert("✅ Conteúdo liberado!");
     } else if (senha !== null) {
       alert("❌ Acesso negado. Senha incorreta.");
