@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prova Internet e Redes Sociais | NIC Formação Profissional</title>
+  <meta name="description" content="Avaliação do módulo Internet e Redes Sociais da NIC Formação Profissional." />
+  <meta name="theme-color" content="#043B7B" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <meta property="og:image" content="./assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    :root {
+      --fundo: #0f172a;
+      --card: #1e293b;
+      --borda: #334155;
+      --texto: #f8fafc;
+      --texto-sec: #94a3b8;
+      --azul: #043B7B;
+      --verde: #7CAC3C;
+      --verde-claro: #A5E44E;
+      --erro: #ef4444;
+      --ok: #22c55e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(4, 59, 123, 0.95), rgba(15, 23, 42, 0.98)),
+        #0f172a;
+      color: var(--texto);
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 22px;
+      background: rgba(15, 23, 42, 0.82);
+      border-bottom: 1px solid var(--borda);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 1.05rem;
+    }
+
+    .brand span {
+      color: var(--texto-sec);
+      font-size: 0.86rem;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    a, button {
+      border: 1px solid var(--borda);
+      background: #253247;
+      color: var(--texto);
+      padding: 11px 15px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    a:hover, button:hover {
+      border-color: var(--verde-claro);
+      color: #d9f99d;
+    }
+
+    main {
+      width: min(100%, 980px);
+      margin: 0 auto;
+      padding: 28px 18px 44px;
+    }
+
+    .panel {
+      background: rgba(30, 41, 59, 0.92);
+      border: 1px solid var(--borda);
+      border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      padding: clamp(20px, 4vw, 34px);
+    }
+
+    .eyebrow {
+      color: var(--verde-claro);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      margin: 0 0 10px;
+    }
+
+    h1, h2 {
+      margin: 0;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      max-width: 760px;
+    }
+
+    h2 {
+      font-size: clamp(1.35rem, 3vw, 2rem);
+    }
+
+    .lead {
+      color: var(--texto-sec);
+      margin: 18px 0 0;
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .info {
+      border: 1px solid var(--borda);
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(15, 23, 42, 0.55);
+    }
+
+    .info span {
+      color: var(--texto-sec);
+      display: block;
+      font-size: 0.82rem;
+    }
+
+    .info strong {
+      font-size: 1.1rem;
+    }
+
+    label {
+      display: block;
+      color: var(--texto-sec);
+      font-weight: 700;
+      margin: 22px 0 8px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--borda);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--texto);
+      padding: 14px;
+      border-radius: 12px;
+      font: inherit;
+    }
+
+    .primary {
+      background: linear-gradient(135deg, var(--verde), var(--azul));
+      border: 0;
+      margin-top: 18px;
+      width: 100%;
+      color: white;
+    }
+
+    .hidden { display: none; }
+
+    .progress-wrap {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--texto-sec);
+      font-size: 0.9rem;
+    }
+
+    .progress {
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.25);
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--verde), var(--verde-claro));
+      border-radius: inherit;
+      transition: width 0.25s ease;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .option {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 15px;
+      border: 1px solid var(--borda);
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.55);
+      cursor: pointer;
+      color: var(--texto);
+      margin: 0;
+    }
+
+    .option:hover {
+      border-color: var(--verde);
+    }
+
+    .option input {
+      margin-top: 4px;
+      accent-color: var(--verde);
+    }
+
+    .result-card {
+      text-align: center;
+    }
+
+    .nota {
+      font-size: clamp(3rem, 12vw, 6.5rem);
+      font-weight: 900;
+      color: var(--verde-claro);
+      line-height: 1;
+      margin: 20px 0;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      margin-top: 12px;
+      background: rgba(34, 197, 94, 0.14);
+      color: #bbf7d0;
+      border: 1px solid rgba(34, 197, 94, 0.4);
+    }
+
+    .status.review {
+      background: rgba(239, 68, 68, 0.14);
+      color: #fecaca;
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .feedback {
+      color: var(--texto-sec);
+      margin: 0 auto;
+      max-width: 720px;
+    }
+
+    .actions-bottom {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 720px) {
+      header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .top-actions a {
+        flex: 1;
+        text-align: center;
+      }
+
+      .grid, .summary {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img src="./assets/icon-192.png" alt="NIC" />
+      <div>
+        <strong>NIC Formação Profissional</strong>
+        <span>Prova Internet e Redes Sociais</span>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <a href="./internet.html">Voltar ao módulo</a>
+      <a href="./dashboard.html">Painel</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="start" class="panel">
+      <p class="eyebrow">Avaliação final</p>
+      <h1>Internet e Redes Sociais</h1>
+      <p class="lead">
+        Responda com atenção. A prova funciona offline depois que a página for carregada pelo PWA.
+      </p>
+
+      <div class="grid">
+        <div class="info"><span>Questões</span><strong>20</strong></div>
+        <div class="info"><span>Valor</span><strong>10 pontos</strong></div>
+        <div class="info"><span>Registro</span><strong>Local</strong></div>
+      </div>
+
+      <label for="nome">Nome do aluno</label>
+      <input id="nome" type="text" placeholder="Digite seu nome completo" autocomplete="name" />
+      <button class="primary" type="button" onclick="iniciar()">Iniciar Prova</button>
+    </section>
+
+    <section id="quiz" class="panel hidden" aria-live="polite">
+      <div class="progress-wrap">
+        <div class="progress-meta">
+          <span id="contador">Questão 1 de 20</span>
+          <span id="porcentagem">0%</span>
+        </div>
+        <div class="progress"><div class="bar" id="bar"></div></div>
+      </div>
+
+      <h2 id="pergunta"></h2>
+      <div class="options" id="opcoes"></div>
+      <button class="primary" type="button" onclick="proxima()">Próxima</button>
+    </section>
+
+    <section id="fim" class="panel hidden result-card">
+      <p class="eyebrow">Avaliação finalizada</p>
+      <h1 id="aluno">Aluno</h1>
+      <div class="nota" id="nota">0.0</div>
+      <div id="status" class="status">Módulo concluído</div>
+
+      <div class="summary">
+        <div class="info"><span>Acertos</span><strong id="acertos">0 de 20</strong></div>
+        <div class="info"><span>Percentual</span><strong id="percentual">0%</strong></div>
+        <div class="info"><span>Data</span><strong id="dataResultado">--</strong></div>
+      </div>
+
+      <p class="feedback" id="feedback"></p>
+
+      <div class="actions-bottom">
+        <button type="button" onclick="window.print()">Imprimir resultado</button>
+        <button type="button" onclick="reiniciar()">Refazer prova</button>
+        <a href="./dashboard.html">Voltar ao painel</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const perguntas = [
+      ["O que é a Internet?", ["Um aplicativo", "Uma rede mundial de computadores", "Um antivírus", "Um jogo"], 1],
+      ["Wi-Fi é...", ["A internet inteira", "Uma forma de acesso sem fio", "Um site", "Um navegador"], 1],
+      ["O que é IP?", ["Uma senha", "Uma identificação na rede", "Um vírus", "Um cabo"], 1],
+      ["Qual rede originou a internet?", ["Google", "ARPANET", "YouTube", "Windows"], 1],
+      ["Quem criou a WWW?", ["Bill Gates", "Tim Berners-Lee", "Steve Jobs", "Mark Zuckerberg"], 1],
+      ["DNS serve para...", ["Criar senhas", "Traduzir nomes de sites para IPs", "Bloquear vírus", "Acelerar o computador"], 1],
+      ["Qual é um navegador?", ["Instagram", "Chrome", "WhatsApp", "TikTok"], 1],
+      ["HTTPS indica...", ["Mais segurança na conexão", "Mais velocidade", "Site gratuito", "Site brasileiro"], 0],
+      ["Qual é um exemplo de senha forte?", ["123456", "senha123", "J@o#94Xp!", "joao2026"], 2],
+      ["Antes de clicar em links devemos...", ["Abrir direto", "Verificar a origem", "Compartilhar", "Ignorar"], 1],
+      ["Fake news são...", ["Notícias falsas", "Jogos", "Sites", "Anúncios"], 0],
+      ["Como verificar uma notícia?", ["Compartilhar rápido", "Checar fontes confiáveis", "Ignorar a data", "Confiar só no título"], 1],
+      ["Cyberbullying é...", ["Compra online", "Ofensa ou perseguição pela internet", "Pesquisa escolar", "Download de arquivo"], 1],
+      ["Pegada digital é...", ["Um vírus", "O histórico das ações online", "Um aplicativo", "Um roteador"], 1],
+      ["Qual dado não deve ser compartilhado?", ["Senha", "Primeiro nome", "Cor favorita", "Cidade"], 0],
+      ["Cabos submarinos são usados para...", ["Energia elétrica doméstica", "Transmissão de dados entre países", "TV aberta", "GPS"], 1],
+      ["E-mail principal deve ser usado para...", ["Bancos e trabalho", "Spam", "Testes sem importância", "Jogos desconhecidos"], 0],
+      ["Algoritmos das redes sociais...", ["Mostram conteúdo com base no comportamento", "Criam vírus", "Apagam contas", "Fabricam celulares"], 0],
+      ["Uso excessivo de telas pode causar...", ["Mais descanso", "Ansiedade e distração", "Internet mais rápida", "Nada"], 1],
+      ["Qual atitude é mais segura?", ["Usar a mesma senha para tudo", "Compartilhar código de verificação", "Proteger dados pessoais", "Aceitar desconhecidos"], 2]
+    ];
+
+    let atual = 0;
+    let acertos = 0;
+    let nomeAluno = '';
+
+    function iniciar() {
+      nomeAluno = document.getElementById('nome').value.trim();
+      if (!nomeAluno) {
+        alert('Digite o nome do aluno.');
+        return;
+      }
+
+      atual = 0;
+      acertos = 0;
+      document.getElementById('start').classList.add('hidden');
+      document.getElementById('fim').classList.add('hidden');
+      document.getElementById('quiz').classList.remove('hidden');
+      mostrar();
+    }
+
+    function mostrar() {
+      const q = perguntas[atual];
+      const progresso = Math.round((atual / perguntas.length) * 100);
+      document.getElementById('contador').innerText = `Questão ${atual + 1} de ${perguntas.length}`;
+      document.getElementById('porcentagem').innerText = `${progresso}%`;
+      document.getElementById('bar').style.width = `${progresso}%`;
+      document.getElementById('pergunta').innerText = q[0];
+
+      document.getElementById('opcoes').innerHTML = q[1].map((opcao, index) => `
+        <label class="option">
+          <input type="radio" name="resposta" value="${index}">
+          <span>${opcao}</span>
+        </label>
+      `).join('');
+    }
+
+    function proxima() {
+      const marcada = document.querySelector('input[name="resposta"]:checked');
+      if (!marcada) {
+        alert('Selecione uma resposta.');
+        return;
+      }
+
+      if (Number(marcada.value) === perguntas[atual][2]) acertos++;
+      atual++;
+
+      if (atual < perguntas.length) {
+        mostrar();
+      } else {
+        finalizar();
+      }
+    }
+
+    function finalizar() {
+      const nota = Number((acertos * 10 / perguntas.length).toFixed(1));
+      const percentual = Math.round((acertos / perguntas.length) * 100);
+      const data = new Date().toLocaleDateString('pt-BR');
+      const aprovado = nota >= 7;
+
+      document.getElementById('quiz').classList.add('hidden');
+      document.getElementById('fim').classList.remove('hidden');
+      document.getElementById('bar').style.width = '100%';
+      document.getElementById('aluno').innerText = nomeAluno;
+      document.getElementById('nota').innerText = nota.toFixed(1);
+      document.getElementById('acertos').innerText = `${acertos} de ${perguntas.length}`;
+      document.getElementById('percentual').innerText = `${percentual}%`;
+      document.getElementById('dataResultado').innerText = data;
+
+      const status = document.getElementById('status');
+      status.innerText = aprovado ? 'Módulo concluído' : 'Revisar conteúdo';
+      status.classList.toggle('review', !aprovado);
+
+      let feedback = '';
+      if (nota >= 9) feedback = 'Parabéns! Excelente compreensão do conteúdo. Você demonstrou domínio do módulo.';
+      else if (nota >= 7) feedback = 'Muito bom! Continue praticando e aprofundando seus conhecimentos.';
+      else if (nota >= 5) feedback = 'Bom trabalho. Revise segurança digital, fake news e funcionamento da internet para fortalecer sua aprendizagem.';
+      else feedback = 'Obrigado por participar. Recomendamos revisar os conteúdos estudados com calma antes de avançar.';
+      document.getElementById('feedback').innerText = feedback;
+
+      localStorage.setItem('resultadoProvaInternet', JSON.stringify({
+        aluno: nomeAluno,
+        nota,
+        acertos,
+        total: perguntas.length,
+        percentual,
+        data
+      }));
+    }
+
+    function reiniciar() {
+      document.getElementById('nome').value = nomeAluno;
+      document.getElementById('fim').classList.add('hidden');
+      document.getElementById('start').classList.remove('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const nomeSalvo = localStorage.getItem('nomeAluno');
+      if (nomeSalvo) document.getElementById('nome').value = nomeSalvo;
+    });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>
