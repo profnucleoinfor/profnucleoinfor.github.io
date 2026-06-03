@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sem conexão | NIC Formação Profissional</title>
+  <meta name="description" content="Você está sem conexão com a internet no portal da NIC Formação Profissional." />
+  <meta name="theme-color" content="#043B7B" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nicGreen: '#A5E44E',
+            nicGreenMid: '#7CAC3C',
+            nicBlueDark: '#043B7B',
+            nicBlue: '#04244C',
+            nicGray: '#F4F7FB',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <meta property="og:image" content="./assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+</head>
+<body class="min-h-screen bg-nicGray text-nicBlue font-sans">
+  <main class="min-h-screen flex items-center px-6 py-12">
+    <section class="max-w-5xl mx-auto w-full grid lg:grid-cols-[1fr_1.1fr] gap-10 items-center">
+      <div>
+        <a href="./index.html" class="inline-flex items-center gap-3 mb-10">
+          <div class="text-4xl font-extrabold">
+            <span class="text-nicBlueDark">N</span><span class="text-nicGreenMid">I</span><span class="text-nicBlueDark">C</span>
+          </div>
+          <div>
+            <p class="font-bold text-lg text-nicBlue">Núcleo Infor</p>
+            <p class="text-sm text-slate-500">Formação Profissional</p>
+          </div>
+        </a>
+
+        <p class="text-nicGreenMid font-bold uppercase tracking-widest mb-4">Sem conexão</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-nicBlueDark leading-tight mb-6">
+          Você está offline.
+        </h1>
+        <p class="text-lg text-slate-600 leading-relaxed mb-8 max-w-xl">
+          Verifique sua conexão com a internet. Você ainda pode acessar as páginas que já visitou e estão salvas no dispositivo.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="./index.html" class="bg-nicGreenMid hover:bg-nicGreen text-white font-bold px-7 py-4 rounded-xl text-center transition">
+            Voltar ao início
+          </a>
+          <button onclick="window.location.reload()" class="bg-nicBlueDark hover:bg-nicBlue text-white font-bold px-7 py-4 rounded-xl text-center transition">
+            Tentar novamente
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-8 shadow-xl border border-slate-200">
+        <div class="text-8xl font-extrabold text-nicBlueDark mb-6">⚠️</div>
+        <h2 class="text-2xl font-bold text-nicBlueDark mb-4">Sem conexão com a internet</h2>
+        <p class="text-slate-600 mb-6">
+          Algumas funcionalidades podem estar indisponíveis até que você volte a ficar online.
+        </p>
+        <nav class="grid sm:grid-cols-2 gap-3">
+          <a href="./dashboard.html" class="rounded-lg bg-nicGray px-4 py-3 font-semibold hover:text-nicGreenMid transition">Área do aluno</a>
+          <a href="./sistema-pontos.html" class="rounded-lg bg-nicGray px-4 py-3 font-semibold hover:text-nicGreenMid transition">Sistema de pontos</a>
+          <a href="./windows.html" class="rounded-lg bg-nicGray px-4 py-3 font-semibold hover:text-nicGreenMid transition">Windows + Linux</a>
+          <a href="./excel.html" class="rounded-lg bg-nicGray px-4 py-3 font-semibold hover:text-nicGreenMid transition">Excel</a>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>
