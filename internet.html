@@ -284,6 +284,7 @@
     const senha = prompt("🔒 Digite a senha da PROVA:");
     if (senha && senha.trim().toLowerCase() === "provainternet") {
       alert("✅ Acesso liberado!");
+         window.location.href = "prova-internet.html";
     } else if (senha !== null) {
       alert("❌ Senha incorreta! Fale com o instrutor.");
     }
