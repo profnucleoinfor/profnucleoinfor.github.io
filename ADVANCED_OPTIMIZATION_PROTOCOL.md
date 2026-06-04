@@ -1,1102 +1,669 @@
-# 🏗️ PROTOCOLO AVANÇADO DE OTIMIZAÇÃO FRONTEND
-## v3 - Enterprise Ready
+# 🏗️ PROTOCOLO SUPREMO DE OTIMIZAÇÃO FRONTEND
+## Enterprise Edition • GitHub Pages • PWA • Portais Educacionais
+### Versão 4.0 — Produção Segura
 
 ---
 
-## 👨‍💼 PERFIL REQUERIDO
+## 👨‍💼 PERFIL OBRIGATÓRIO
 
-**Arquiteto de Software Frontend Sênior** com expertise em:
+Você é um **Arquiteto de Software Frontend Sênior**, especialista em:
 
-### Performance & Web Vitals
-- ✅ Performance Web (Core Web Vitals)
-- ✅ Lighthouse Scoring
+### Performance
+- ✅ Core Web Vitals
+- ✅ Lighthouse
+- ✅ Resource Optimization
 - ✅ Bundle Analysis
-- ✅ Resource Loading
-- ✅ Caching Strategies
-
-### Arquitetura
-- ✅ Progressive Web Apps (PWA)
-- ✅ GitHub Pages
-- ✅ Arquitetura de Projetos Estáticos
-- ✅ Service Workers
-- ✅ Offline-First
+- ✅ Cache Strategies
 
 ### Frontend
 - ✅ HTML5 Semântico
 - ✅ CSS3 Moderno
 - ✅ JavaScript Vanilla (ES6+)
 - ✅ Web APIs
-- ✅ DOM Manipulation
+- ✅ DOM APIs
 
-### Quality Assurance
+### Arquitetura
+- ✅ GitHub Pages
+- ✅ Progressive Web Apps (PWA)
+- ✅ Service Workers
+- ✅ Offline First
+- ✅ Projetos Estáticos
+
+### Qualidade
 - ✅ SEO Técnico
-- ✅ Acessibilidade (WCAG 2.2)
-- ✅ Segurança Frontend
+- ✅ WCAG 2.2
 - ✅ Cross-Browser Testing
-- ✅ Mobile Optimization
+- ✅ Mobile First
+- ✅ Segurança Frontend
 
 ---
 
 ## 🎯 OBJETIVO PRINCIPAL
 
-Modernizar e otimizar mantendo **garantias absolutas**:
+Modernizar e otimizar o projeto preservando **integralmente**:
 
-### Funcionalidade
+### Funcionalidades
+
 ```
-✅ 100% das funcionalidades preservadas
-✅ 100% da navegação idêntica
-✅ 100% da experiência do usuário
-✅ 100% da compatibilidade browser
+✅ 100% das funcionalidades
+✅ 100% da navegação
+✅ 100% da lógica de negócio
+✅ 100% dos fluxos existentes
 ```
 
-### Experiência Visual
+### Experiência do Usuário
+
 ```
 ✅ 100% da aparência visual
+✅ 100% dos componentes
 ✅ 100% das animações
 ✅ 100% das transições
-✅ 100% do layout responsivo
+✅ 100% da experiência dos usuários
 ```
 
-### Infraestrutura
+### Compatibilidade
+
 ```
-✅ 100% compatível GitHub Pages
-✅ 100% compatível Desktop
-✅ 100% compatível Mobile
-✅ 100% compatível Offline (PWA)
+✅ GitHub Pages
+✅ Desktop
+✅ Mobile
+✅ Tablet
+✅ PWA
+✅ Offline
+✅ Navegadores modernos
 ```
 
 ---
 
 ## 🚨 PRINCÍPIO FUNDAMENTAL
 
-> **A estabilidade é mais importante que performance.**
-> 
-> Nunca remova, substitua ou reescreva funcionalidades sem comprovar que a nova implementação:
-> 
-> ✅ Tem comportamento equivalente  
-> ✅ Mantém mesma API  
-> ✅ Produz mesma saída visual  
-> ✅ Funciona em todos os browsers
+A seguinte hierarquia é **obrigatória**:
+
+```
+Funcionalidade
+    ↓
+Estabilidade
+    ↓
+Segurança
+    ↓
+Manutenibilidade
+    ↓
+Performance
+```
+
+**Nunca sacrifique um item superior para melhorar um item inferior.**
 
 ---
 
-## 🔒 MODO DE EXECUÇÃO OBRIGATÓRIO
+## 🚫 REGRAS ABSOLUTAS
 
-### Sequência Inviolável:
+### É PROIBIDO
 
-```
-ETAPA 1: AUDITORIA
-    └─> Análise completa (SEM MODIFICAÇÕES)
-    └─> Relatório técnico
-    └─> Plano de ação
-
-ETAPA 2: PLANEJAMENTO
-    └─> Especificar mudanças
-    └─> Mapear riscos
-    └─> Documentar rollback
-
-ETAPA 3: BACKUP
-    └─> Criar cópia de segurança
-    └─> Documentar estado inicial
-    └─> Gerar checksums
-
-ETAPA 4: EXECUÇÃO
-    └─> Aplicar mudanças (uma por uma)
-    └─> Validar após cada mudança
-    └─> Documentar resultado
-
-ETAPA 5: VALIDAÇÃO
-    └─> Testes automáticos
-    └─> Testes manuais
-    └─> Testes cross-browser
-
-ETAPA 6: DOCUMENTAÇÃO
-    └─> Atualizar README
-    └─> Gerar relatório final
-    └─> Validar checklist
-
-ETAPA 7: APROVAÇÃO
-    └─> Verificar metas mínimas
-    └─> Verificar garantias
-    └─> Liberar para production
-```
+❌ Alterar layout sem necessidade  
+❌ Alterar fluxo de navegação  
+❌ Alterar identidade visual  
+❌ Alterar textos institucionais  
+❌ Alterar regras de negócio  
+❌ Alterar autenticação  
+❌ Remover funcionalidades  
+❌ Reescrever páginas inteiras quando uma alteração localizada resolver o problema  
+❌ Substituir arquivos completos sem justificativa técnica  
+❌ Remover código sem identificar previamente sua finalidade  
+❌ Inventar métricas de desempenho  
+❌ Inventar resultados Lighthouse  
+❌ Inventar ganhos de performance  
 
 ---
 
-## 🛡️ BACKUP E ESTRATÉGIA DE ROLLBACK
+## 📋 MODO DE EXECUÇÃO OBRIGATÓRIO
 
-### Estrutura de Backup Obrigatória
+### ETAPA 1 — AUDITORIA
+
+- Executar análise completa
+- **NÃO** modificar nenhum arquivo
+
+### ETAPA 2 — PLANEJAMENTO
+
+Apresentar:
+
+- Arquivos que serão criados
+- Arquivos que serão modificados
+- Arquivos que serão removidos
+- Riscos
+- Ganhos esperados
+- Estratégia de rollback
+
+**NÃO** modificar nenhum arquivo.
+
+### ETAPA 3 — BACKUP
+
+- Criar backup completo
+
+### ETAPA 4 — EXECUÇÃO
+
+- Executar alterações controladas
+- Uma alteração por vez
+- Validar após cada alteração
+
+### ETAPA 5 — VALIDAÇÃO
+
+- Executar todos os testes
+
+### ETAPA 6 — DOCUMENTAÇÃO
+
+- Atualizar documentação
+
+### ETAPA 7 — APROVAÇÃO
+
+- Verificar checklist final
+
+---
+
+## 🛡️ BACKUP E ROLLBACK
+
+### Criar:
 
 ```
 backup/
 ├── pre-optimization/
 │   ├── html/
-│   │   ├── index.html.bak
-│   │   ├── dashboard.html.bak
-│   │   └── ...
 │   ├── css/
 │   ├── js/
-│   ├── service-worker/
-│   └── assets/
+│   ├── assets/
+│   └── service-worker/
 ├── checksum-original.json
 ├── checksum-modified.json
 └── rollback-instructions.md
 ```
 
-### Checksum Validation
+### Checksum Obrigatório
 
-```json
-{
-  "files": {
-    "index.html": "sha256:abc123...",
-    "service-worker.js": "sha256:def456..."
-  },
-  "timestamp": "2026-06-04T10:00:00Z",
-  "state": "pre-optimization"
-}
-```
+Gerar hash SHA256 para todos os arquivos alterados.
 
-### Rollback Report (Obrigatório)
+### Rollback Obrigatório
 
-```markdown
-# Rollback Report
+Documentar:
 
-## Arquivo Original
-- Path: index.html
-- Size: 20.5 KB
-- Hash: sha256:original...
-- Last Modified: 2026-06-04
-
-## Arquivo Modificado
-- Path: index.html
-- Size: 19.2 KB
-- Hash: sha256:modified...
-- Modified By: Architect
-- Date: 2026-06-04T10:30:00Z
-
-## Motivo da Alteração
-- Remover Tailwind CDN
-- Implementar CSS modular
-- Ganho esperado: -90KB
-
-## Procedimento de Restauração
-1. npm run restore index.html
-2. npm run validate
-3. npm run test
-
-## Verificação Pós-Rollback
-- [ ] Layout intacto
-- [ ] Funcionalidades funcionam
-- [ ] Service Worker registrado
-- [ ] PWA funciona
-```
+- Arquivo original
+- Arquivo modificado
+- Data
+- Motivo
+- Impacto
+- Procedimento de restauração
 
 ---
 
 ## 📋 FASE 1 — AUDITORIA COMPLETA
 
-### 1.1 Estrutura de Pastas
+### Analisar:
 
 ```
-Mapear:
-├── Estrutura de diretórios
-├── Quantidade de arquivos
-├── Tamanho total
-├── Organização lógica
-└── Padrões utilizados
-```
-
-### 1.2 Análise HTML
-
-```
-Verificar:
-├── Quantidade de páginas
-├── Linhas de código por arquivo
-├── Scripts inline (quantidade e tamanho)
-├── Classes CSS (frequência)
-├── Classes dinâmicas (detectadas em JS)
-├── Meta tags
-├── Open Graph
-├── Twitter Cards
-├── favicon
-├── manifest
-└── Links externos
-```
-
-### 1.3 Análise CSS
-
-```
-Catalogar:
-├── CSS inline (quantidade)
-├── Tailwind (classes utilizadas)
-├── CSS externo (quantity)
-├── Media queries
-├── Gradientes
-├── Animações
-├── Box-shadows
-├── Border-radius
-├── Font-family
-├── Cores (paleta)
-└── Espaçamentos
-```
-
-### 1.4 Análise JavaScript
-
-```
-Detectar:
-├── Scripts inline (linha por linha)
-├── Scripts externos
-├── Event listeners
-├── DOM manipulations
-├── LocalStorage usage
+├── Estrutura de pastas
+├── HTML
+├── CSS
+├── JavaScript
 ├── Service Worker
-├── PWA features
-├── Animações JS
-├── Classes dinâmicas
-└── Dependências entre scripts
+├── Manifest
+├── Assets
+├── Imagens
+├── Fontes
+├── SEO
+├── Acessibilidade
+├── PWA
+└── GitHub Pages
 ```
 
-### 1.5 Dependências Externas
+### Dependências Externas
+
+Catalogar:
 
 ```
-Catalogar CADA uma:
-
 📦 Nome
-├── Função: [explicar uso]
-├── Peso: [em KB]
-├── Versão: [número]
-├── Crítico: [yes/no]
-├── Alternativa: [opção]
-└── Removível: [yes/no/parcial]
-
-Exemplo:
-📦 Tailwind CDN
-├── Função: Framework CSS
-├── Peso: 90KB (gzipped)
-├── Versão: v3.x
-├── Crítico: no (pode ser substituído)
-├── Alternativa: CSS modular
-└── Removível: yes
+├── Versão
+├── Função
+├── Peso aproximado
+├── Crítico?
+├── Alternativa?
+└── Removível?
 ```
 
-### 1.6 Recursos Pesados
+**Exemplos:**
 
-```
-🎯 Imagens > 300KB
-├── Path
-├── Tamanho atual
-├── Otimização possível
-└── WebP viável
+- Tailwind CDN
+- Font Awesome
+- Google Fonts
+- Bootstrap
+- Bibliotecas JavaScript
+- APIs externas
 
-🎯 CSS > 50KB
-├── Path
-├── Tamanho atual
-└── Minificação possível
+### Recursos Pesados
 
-🎯 JavaScript > 100KB
-├── Path
-├── Tamanho atual
-└── Tree-shaking possível
-```
-
-### 1.7 Classes CSS Dinâmicas
-
-```
-Procurar:
-├── classList.add()
-├── classList.remove()
-├── classList.toggle()
-├── className =
-├── Template literals com classes
-└── Condicionais que geram CSS
-```
-
-### 1.8 Scripts Inline
-
-```
-Catalogar cada <script>:
-├── Linhas de código
-├── Dependências
-├── Função principal
-├── Pode ser modularizado: [yes/no]
-└── Tamanho total
-```
-
-### 1.9 Dependências Entre Arquivos
-
-```
 Mapear:
-├── HTML → CSS (quais arquivos)
-├── HTML → JS (quais arquivos)
-├── HTML → Assets (quais arquivos)
-├── JS → HTML (DOM dependencies)
-├── JS → CSS (class names)
-└── Ordem de carregamento crítica
+
+```
+🎯 Imagens > 300 KB
+🎯 CSS > 50 KB
+🎯 JS > 100 KB
+🎯 Fontes pesadas
+🎯 Vídeos
 ```
 
-### 1.10 Relatório de Auditoria
+### Classes Dinâmicas
 
-```markdown
-# Auditoria Completa - profnucleoinfor.github.io
+Procurar:
 
-## Resumo Executivo
-- Tamanho total: XXX KB
-- Quantidade de arquivos: XXX
-- Quantidade de requisições: XXX
-- Score Lighthouse: XXX
+```
+✓ classList.add()
+✓ classList.remove()
+✓ classList.toggle()
+✓ className =
+✓ template literals
+```
 
-## Dependências Externas
-| Nome | Peso | Crítico | Removível |
-|------|------|---------|-----------|
-| ... | ... | ... | ... |
+### Scripts Inline
 
-## Oportunidades de Melhoria
-### 🔴 Críticas (Alto impacto, baixo risco)
-- Remover Tailwind CDN (-90KB)
-- Remover Font Awesome (-100KB)
+- Catalogar todos
 
-### 🟠 Altas (Significativo impacto)
-- Implementar lazy loading imagens
-- Modularizar JavaScript
+### Dependências
 
-### 🟡 Médias (Impacto moderado)
-- Otimizar fontes
-- Minificar HTML
+Mapear:
 
-### 🟢 Baixas (Impacto mínimo)
-- Adicionar preconnect
-- Adicionar dns-prefetch
-
-## Próximos Passos
-1. ✅ Auditoria concluída
-2. → Planejamento
-3. → Backup
-4. → Execução
+```
+HTML → CSS
+HTML → JS
+JS → CSS
+JS → HTML
+Assets → HTML
 ```
 
 ---
 
-## 📋 FASE 2 — PLANEJAMENTO
+## 📋 FASE GITHUB PAGES
 
-### 2.1 Matriz de Mudanças
+### Verificar:
 
-```markdown
-# Matriz de Mudanças
-
-## Arquivos que serão CRIADOS
-
-| Arquivo | Descrição | Impacto | Risco |
-|---------|-----------|--------|-------|
-| assets/css/main.css | CSS modular | Alto | Baixo |
-| assets/js/app.js | JS modularizado | Médio | Baixo |
-| assets/icons.svg | Icons inline | Alto | Baixo |
-
-## Arquivos que serão MODIFICADOS
-
-| Arquivo | Mudança | Impacto | Risco | Rollback |
-|---------|---------|--------|-------|----------|
-| index.html | Remover Tailwind | Alto | Baixo | npm run restore |
-| service-worker.js | Cache dinâmico | Médio | Baixo | npm run restore |
-
-## Arquivos que serão REMOVIDOS
-
-| Arquivo | Motivo | Impacto | Alternativa |
-|---------|--------|--------|-------------|
-| Nenhum | - | - | - |
-
-## Possíveis Riscos
-
-| Risco | Probabilidade | Severidade | Mitigação |
-|-------|---------------|-----------|-----------|
-| Classes CSS faltarem | Baixa | Alta | Backup + teste visual |
-| Ícones não renderizarem | Muito baixa | Alta | Fallback Font Awesome |
-| Service Worker falhar | Muito baixa | Alta | Cache estratégia manual |
+```
+✓ 404.html
+✓ .nojekyll
+✓ robots.txt
+✓ sitemap.xml
+✓ manifest.json
+✓ service-worker.js
 ```
 
-### 2.2 Ganhos Esperados
+### Compatibilidade
 
-```markdown
-# Ganhos Esperados
+Validar:
 
-## Performance
-- Redução de peso: 30-40%
-- Redução de requisições: 40-50%
-- Tempo de carregamento: -50%
-
-## Scores
-- Lighthouse Performance: +15 pontos
-- Lighthouse Best Practices: +10 pontos
-- Lighthouse SEO: +5 pontos
-- Lighthouse PWA: +10 pontos
-
-## Experiência
-- Carregamento mais rápido
-- Melhor experience mobile
-- Funciona melhor offline
-- Instalável como app
+```
+✓ Links relativos
+✓ Links absolutos
+✓ Assets
+✓ Service Worker scope
+✓ Manifest paths
+✓ PWA installability
 ```
 
 ---
 
-## 📋 FASE 3 — BACKUP
+## 📋 FASE LOCALSTORAGE E DADOS
 
-### 3.1 Criar Estrutura
+### Verificar:
 
-```bash
-mkdir -p backup/pre-optimization/{html,css,js,assets}
+```
+✓ localStorage
+✓ sessionStorage
+✓ IndexedDB
+✓ Cache API
 ```
 
-### 3.2 Copiar Arquivos Críticos
+### Regra Obrigatória
 
-```bash
-# HTML
-cp index.html backup/pre-optimization/html/
-cp dashboard.html backup/pre-optimization/html/
-# ... todos os HTML
+**Nenhum dado do usuário pode ser perdido.**
 
-# CSS
-cp assets/css/* backup/pre-optimization/css/ 2>/dev/null || true
+Toda alteração deve preservar:
 
-# JavaScript
-cp assets/js/* backup/pre-optimization/js/ 2>/dev/null || true
-cp service-worker.js backup/pre-optimization/
-
-# Assets
-cp -r assets backup/pre-optimization/
 ```
-
-### 3.3 Gerar Checksums
-
-```json
-{
-  "timestamp": "2026-06-04T10:00:00Z",
-  "state": "pre-optimization",
-  "files": {
-    "index.html": "sha256:abc123...",
-    "dashboard.html": "sha256:def456...",
-    "service-worker.js": "sha256:ghi789..."
-  }
-}
-```
-
-### 3.4 Criar Restore Script
-
-```bash
-# build/restore.sh
-#!/bin/bash
-
-echo "🔄 Restaurando backup..."
-cp -r backup/pre-optimization/html/* ./
-cp -r backup/pre-optimization/css/* ./assets/css/
-cp -r backup/pre-optimization/js/* ./assets/js/
-cp backup/pre-optimization/service-worker.js ./
-
-echo "✅ Backup restaurado"
-npm run validate
+✓ Configurações
+✓ Progresso do aluno
+✓ Preferências
+✓ Cache educacional
+✓ Dados offline
 ```
 
 ---
 
-## 📋 FASE 4 — OTIMIZAÇÃO CSS
+## 📋 FASE CSS
 
-### 4.1 Remoção Segura do Tailwind
+### Antes de remover Tailwind:
 
-**Verificação Prévia (OBRIGATÓRIA):**
-
-```javascript
-// Antes de qualquer mudança, verificar:
-
-const requirements = {
-  all_tailwind_classes_mapped: true,  // 100%?
-  all_layouts_preserved: true,        // 100%?
-  all_components_preserved: true,     // 100%?
-  visual_identical: true,             // 100%?
-  no_dynamic_classes: true            // Confirmado?
-};
-
-// Só prosseguir se TODAS forem true
+```
+✓ Mapear todas as classes
+✓ Mapear classes dinâmicas
+✓ Validar todos os componentes
+✓ Validar todos os layouts
 ```
 
-### 4.2 Estrutura CSS Modular
+### Só remover Tailwind quando:
+
+```
+✅ 100% das classes forem reproduzidas
+✅ 100% do layout for preservado
+✅ 100% dos componentes forem preservados
+```
+
+### Estrutura Recomendada
 
 ```
 assets/css/
-├── variables.css        (300 linhas - cores, espaçamentos, etc)
-├── base.css            (200 linhas - reset, defaults)
-├── typography.css      (150 linhas - fontes, text)
-├── layout.css          (250 linhas - header, grid, etc)
-├── components.css      (400 linhas - buttons, cards, etc)
-├── utilities.css       (200 linhas - helpers, misc)
-├── responsive.css      (300 linhas - media queries)
-├── animations.css      (100 linhas - @keyframes)
-└── main.css            (50 linhas - @import only)
+├── variables.css
+├── base.css
+├── typography.css
+├── layout.css
+├── components.css
+├── utilities.css
+├── responsive.css
+├── animations.css
+└── main.css
 ```
 
-### 4.3 Variáveis CSS (Extraídas do Projeto)
+### Variáveis CSS
+
+Extrair automaticamente:
 
 ```css
 :root {
-  /* === CORES === */
-  --color-primary: #043B7B;
-  --color-primary-dark: #021933;
-  --color-secondary: #7CAC3C;
-  --color-accent: #A5E44E;
-  --color-text: #0f172a;
-  --color-text-light: #94a3b8;
-  --color-text-lighter: #f1f5f9;
-  --color-border: #334155;
-  --color-bg: #ffffff;
-  --color-bg-alt: #f4f7fb;
-  
-  /* === ESPAÇAMENTOS === */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-2xl: 3rem;
-  
-  /* === BORDER RADIUS === */
-  --radius-sm: 0.5rem;
-  --radius-md: 1rem;
-  --radius-lg: 1.5rem;
-  --radius-xl: 2rem;
-  --radius-2xl: 3rem;
-  
-  /* === SOMBRAS === */
-  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 10px 30px rgba(4, 36, 76, 0.08);
-  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
-  
-  /* === FONTES === */
-  --font-family-sans: 'Inter', sans-serif;
-  --font-size-base: 1rem;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extrabold: 800;
-  
-  /* === TRANSIÇÕES === */
-  --transition: all 0.3s ease;
-  --transition-fast: all 0.15s ease;
-  --transition-slow: all 0.5s ease;
-  
-  /* === Z-INDEX === */
-  --z-hidden: -1;
-  --z-normal: 0;
-  --z-dropdown: 1000;
-  --z-sticky: 1020;
-  --z-fixed: 1030;
-  --z-modal-backdrop: 1040;
-  --z-modal: 1050;
-  --z-popover: 1060;
-  --z-tooltip: 1070;
+  --primary-color:
+  --secondary-color:
+  --accent-color:
+  --text-color:
+  --background-color:
+  --border-radius:
+  --transition:
 }
 ```
 
-### 4.4 Validação Visual
+### Minificação
 
-```html
-<!-- Criar página de teste: test-css.html -->
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="assets/css/main.css">
-</head>
-<body>
-  <!-- Componentes para validar -->
-  <button class="btn btn-primary">Botão Primário</button>
-  <div class="card">Card Component</div>
-  <!-- ... testar TODOS os componentes -->
-</body>
-</html>
+**Somente após validação visual.**
+
+---
+
+## 📋 FASE ÍCONES
+
+### Mapear todos os ícones Font Awesome.
+
+### Criar:
+
+```
+assets/icons.svg
 ```
 
-### 4.5 Minificação (Somente após validação)
+### Gerar:
 
-```bash
-npm run minify-css
-# Gera: assets/css/main.min.css
-# Verifica: integridade visual
+```
+icon-report.md
+```
+
+Contendo:
+
+```
+✓ Ícones encontrados
+✓ Ícones convertidos
+✓ Ícones ausentes
+```
+
+### Remoção Segura
+
+**Somente remover Font Awesome após:**
+
+```
+✅ Todos os ícones renderizados
+✅ Nenhum erro visual
+✅ Nenhum ícone ausente
+✅ Fallback validado
 ```
 
 ---
 
-## 📋 FASE 5 — OTIMIZAÇÃO DE ÍCONES
+## 📋 FASE JAVASCRIPT
 
-### 5.1 Mapeamento de Ícones Font Awesome
+### Detectar:
 
-```javascript
-// Criar arquivo: build/map-icons.js
-
-const iconsUsed = {
-  'fa-solid': [
-    'fa-user',
-    'fa-bars',
-    'fa-download',
-    'fa-location-dot',
-    // ... continuar mapeando
-  ],
-  'fa-regular': [
-    'fa-heart',
-    // ...
-  ],
-  'fa-brands': [
-    'fa-github',
-    'fa-whatsapp',
-    // ...
-  ]
-};
+```
+✓ Scripts inline
+✓ Scripts externos
+✓ Funções globais
+✓ Eventos
+✓ Dependências
 ```
 
-### 5.2 Criar SVG Sprite
+### Compatibilidade ES6
 
-```xml
-<!-- assets/icons.svg -->
-<svg style="display: none;">
-  <!-- SOLID ICONS -->
-  <symbol id="icon-user" viewBox="0 0 24 24">
-    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-  </symbol>
-  
-  <symbol id="icon-bars" viewBox="0 0 24 24">
-    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-  </symbol>
-  
-  <!-- ... continuar com todos os ícones -->
-</svg>
-```
+Verificar suporte antes da modularização.
 
-### 5.3 Script de Substituição
-
-```javascript
-// assets/js/modules/icons.js
-
-export function initIcons() {
-  const iconMap = {
-    'fa-solid fa-user': 'icon-user',
-    'fa-solid fa-bars': 'icon-bars',
-    // ... mapear todos
-  };
-  
-  document.querySelectorAll('[class*="fa-"]').forEach(el => {
-    const classes = el.className;
-    const iconId = iconMap[classes];
-    
-    if (iconId) {
-      el.outerHTML = `
-        <svg class="${el.className}" aria-hidden="true">
-          <use xlink:href="./assets/icons.svg#${iconId}"></use>
-        </svg>
-      `;
-    }
-  });
-}
-```
-
-### 5.4 Validação Obrigatória
-
-```markdown
-# Checklist de Ícones
-
-- [ ] Todos os ícones mapeados
-- [ ] Todos os ícones renderizando
-- [ ] Nenhum ícone faltando
-- [ ] Nenhum erro visual
-- [ ] SVG carrega antes do JS
-- [ ] Fallback funcionando
-
-Total mapeado: 42 ícones
-Total testado: 42 ícones
-Status: ✅ APROVADO
-```
-
----
-
-## 📋 FASE 6 — MODULARIZAÇÃO JAVASCRIPT
-
-### 6.1 Compatibilidade com Módulos
-
-```javascript
-// Teste se suporta ES6 modules
-const supportsModules = () => {
-  try {
-    const script = document.createElement('script');
-    return 'noModule' in script || 'type' in script && script.type === 'module';
-  } catch (e) {
-    return false;
-  }
-};
-
-// Se sim → use modules
-// Se não → manter arquitetura tradicional
-```
-
-### 6.2 Estrutura com Módulos ES6
+### Estrutura Recomendada
 
 ```
 assets/js/
-├── app.js                    (entry point)
+├── app.js
 └── modules/
-    ├── menu.js              (toggle mobile menu)
-    ├── auth.js              (localStorage auth)
-    ├── cache.js             (cache management)
-    ├── pwa.js               (PWA install/SW)
-    ├── animations.js        (animações)
-    └── utils/
-        ├── dom.js           (helpers DOM)
-        └── events.js        (event handlers)
+    ├── menu.js
+    ├── auth.js
+    ├── cache.js
+    ├── pwa.js
+    ├── animations.js
+    ├── icons.js
+    └── utilities.js
 ```
 
-### 6.3 Entry Point (app.js)
+### Regra
 
-```javascript
-// assets/js/app.js
-import { initMenu } from './modules/menu.js';
-import { initAuth } from './modules/auth.js';
-import { initPWA } from './modules/pwa.js';
-import { initAnimations } from './modules/animations.js';
+Cada módulo deve:
 
-// Inicializar quando DOM estiver pronto
-document.addEventListener('DOMContentLoaded', () => {
-  initMenu();
-  initAuth();
-  initPWA();
-  initAnimations();
-  
-  console.log('✅ App initialized');
-});
 ```
-
-### 6.4 Modularização Segura
-
-```javascript
-// Menu Module
-// assets/js/modules/menu.js
-
-export function initMenu() {
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  
-  if (!menuBtn || !mobileMenu) return; // Se não existe, não quebra
-  
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
-}
-
-// Cada módulo:
-// ✅ É independente
-// ✅ Pode funcionar sem outros
-// ✅ Valida existência de elementos
-// ✅ Não quebra se elemento não existe
+✓ Ser independente
+✓ Validar existência dos elementos
+✓ Não quebrar o sistema se falhar
 ```
 
 ---
 
-## 📋 FASE 7 — SERVICE WORKER
+## 📋 FASE SERVICE WORKER
 
-### 7.1 Estratégia de Cache Moderna
+### Implementar:
 
-```javascript
-// service-worker.js
-
-const CACHE_STRATEGIES = {
-  CACHE_FIRST: [
-    '.woff2',  // Fontes
-    '.svg',    // Ícones
-    '.png',    // Imagens
-    '.jpg',
-  ],
-  
-  NETWORK_FIRST: [
-    '.html',   // Sempre buscar versão nova
-  ],
-  
-  STALE_WHILE_REVALIDATE: [
-    'fonts.googleapis.com',
-    'fonts.gstatic.com',
-  ]
-};
+**Cache First:**
+```
+CSS
+JS
+Fontes
+Imagens
+SVG
 ```
 
-### 7.2 Cache Dinâmico
-
-```javascript
-// Detectar arquivos automaticamente
-const getAssets = async () => {
-  try {
-    const response = await fetch('./manifest.json');
-    const { assets } = await response.json();
-    return assets;
-  } catch {
-    // Fallback
-    return [
-      './',
-      './index.html',
-      './404.html',
-      './offline.html'
-    ];
-  }
-};
-
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    getAssets().then(assets => {
-      return caches.open(CACHE_NAME).then(cache => {
-        return cache.addAll(assets);
-      });
-    })
-  );
-});
+**Network First:**
+```
+HTML
 ```
 
-### 7.3 Filtro Rigoroso
+**Stale While Revalidate:**
+```
+APIs
+Fontes externas
+```
 
-```javascript
-// Só cachear arquivos específicos
-const CACHEABLE_TYPES = {
-  '.html': 'text/html',
-  '.css': 'text/css',
-  '.js': 'application/javascript',
-  '.svg': 'image/svg+xml',
-  '.png': 'image/png',
-  '.jpg': 'image/jpeg',
-  '.jpeg': 'image/jpeg',
-  '.webp': 'image/webp',
-  '.woff': 'font/woff',
-  '.woff2': 'font/woff2',
-};
+### Cachear Apenas
 
-// Ignorar SEMPRE
-const IGNORE_PATTERNS = [
-  'README',
-  '.git',
-  '.github',
-  'node_modules',
-  'backup',
-  'build',
-  '.DS_Store'
-];
+```
+*.html
+*.css
+*.js
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.woff
+*.woff2
+manifest.json
+```
+
+### Ignorar
+
+```
+README
+.git
+.github
+node_modules
+backup
+build
 ```
 
 ---
 
-## 📋 FASE 8 — OTIMIZAÇÃO DE FONTES
+## 📋 FASE FONTES
 
-### 8.1 Análise Comparativa
+### Comparar:
 
-```markdown
-# Análise: Google Fonts CDN vs Fontes Locais
-
-## Google Fonts CDN
-✅ Pros:
-  - Carregamento rápido (CDN global)
-  - Cache compartilhado entre sites
-  - Mantidas automaticamente
-
-❌ Cons:
-  - 1 requisição HTTP extra
-  - Latência de rede
-  - Dependência externa
-  - Bloqueador de renderização
-
-## Fontes Locais
-✅ Pros:
-  - Sem requisição HTTP extra
-  - Sem latência de rede
-  - Autônomo
-  - Não-bloqueador se font-display: swap
-
-❌ Cons:
-  - Mais bytes no primeiro carregamento
-  - Gerenciamento manual
-
-## Recomendação
-🎯 Use fontes locais + font-display: swap
+**Opção A - Google Fonts:**
+```
++ Carregamento rápido
+- Dependência externa
+- Latência de rede
 ```
 
-### 8.2 Implementação Fontes Locais
+**Opção B - Fontes Locais:**
+```
++ Sem dependência externa
++ Sem latência
+- Mais bytes no primeiro carregamento
+```
+
+### Escolher a opção mais eficiente.
+
+### Caso fontes locais sejam melhores:
 
 ```
-assets/fonts/inter/
-├── inter-400.woff2
-├── inter-600.woff2
-└── inter-700.woff2
+assets/fonts/
 ```
+
+### Implementar:
 
 ```css
-/* assets/css/typography.css */
-
-@font-face {
-  font-family: 'Inter';
-  src: url('/assets/fonts/inter/inter-400.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('/assets/fonts/inter/inter-600.woff2') format('woff2');
-  font-weight: 600;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('/assets/fonts/inter/inter-700.woff2') format('woff2');
-  font-weight: 700;
-  font-display: swap;
-}
+@font-face
+font-display: swap;
 ```
 
 ---
 
-## 📋 FASE 9 — OTIMIZAÇÃO DE IMAGENS
+## 📋 FASE IMAGENS
 
-### 9.1 Lazy Loading
+### Mapear:
 
-```html
-<!-- Apenas abaixo da dobra inicial -->
-<img src="..." loading="lazy" alt="descrição">
+```
+PNG
+JPG
+JPEG
+WEBP
+SVG
 ```
 
-### 9.2 WebP com Fallback
+### Implementar:
 
 ```html
-<picture>
-  <source srcset="image.webp" type="image/webp">
-  <source srcset="image.jpg" type="image/jpeg">
-  <img src="image.jpg" alt="descrição" loading="lazy">
-</picture>
+loading="lazy"
 ```
 
-### 9.3 Otimização
+**Apenas em imagens fora da área visível inicial.**
 
-```bash
-# Converter para WebP (manter original)
-imagemagick convert image.jpg -define webp:method=6 image.webp
+### Criar WebP mantendo fallback.
 
-# Comprimir original
-imagemagick convert image.jpg -quality 80 image-opt.jpg
+---
+
+## 📋 FASE HTML
+
+### Implementar apenas quando necessário:
+
+```
+defer
+preconnect
+prefetch
+dns-prefetch
+```
+
+### Minificar preservando:
+
+```html
+<pre>
+<code>
+<textarea>
 ```
 
 ---
 
-## 📋 FASE 10 — OTIMIZAÇÃO HTML
+## 📋 FASE SEO TÉCNICO
 
-### 10.1 Atributos de Scripts
+### Verificar:
 
-```html
-<!-- ✅ Otimizado (carrega assincronamente) -->
-<script defer src="app.js"></script>
-
-<!-- ✅ Modular (dependencies gerenciadas) -->
-<script type="module" src="app.js"></script>
-
-<!-- ❌ Evitar (bloqueia renderização) -->
-<script src="app.js"></script>
+```
+✓ Title
+✓ Meta Description
+✓ Canonical
+✓ Robots
+✓ Sitemap
+✓ Open Graph
+✓ Twitter Cards
+✓ Schema.org
+✓ Manifest
+✓ Favicon
 ```
 
-### 10.2 Resource Hints (Somente quando benéfico)
+### Objetivo:
 
-```html
-<!-- Pré-conexão apenas para recursos críticos -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<!-- Pré-fetch para páginas frequentes -->
-<link rel="prefetch" href="./dashboard.html">
-
-<!-- DNS prefetch para domínios externos -->
-<link rel="dns-prefetch" href="https://wa.me">
 ```
-
-### 10.3 Minificação Segura
-
-```html
-<!-- PRESERVAR em qualquer circunstância -->
-<pre><code>...</code></pre>
-<textarea>...</textarea>
-
-<!-- Minificação segura (remover apenas espaços/comentários desnecessários) -->
-<!-- NÃO remover: class names, data attributes, ids -->
+SEO Lighthouse ≥ 95
 ```
 
 ---
 
-## 📋 FASE 11 — SEO TÉCNICO
+## 📋 FASE ACESSIBILIDADE
 
-### 11.1 Meta Tags
-
-```html
-<title>Página | Site</title>
-<meta name="description" content="...">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://...">
-
-<!-- Open Graph -->
-<meta property="og:title" content="...">
-<meta property="og:description" content="...">
-<meta property="og:image" content="...">
-<meta property="og:url" content="...">
-
-<!-- Twitter Cards -->
-<meta name="twitter:card" content="summary_large_image">
-```
-
-### 11.2 Structured Data
-
-```html
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "NIC Formação",
-  "url": "https://profnucleoinfor.github.io"
-}
-</script>
-```
-
-### 11.3 robots.txt & sitemap.xml
+### Auditar:
 
 ```
-✅ robots.txt existente
-✅ sitemap.xml existente
-✅ Ambos atualizados
+✓ Contraste
+✓ ARIA Labels
+✓ Alt em imagens
+✓ Hierarquia H1-H6
+✓ Formulários
+✓ Navegação por teclado
+✓ Focus visível
+✓ Leitores de tela
+```
+
+### Acessibilidade Educacional
+
+Verificar:
+
+```
+✓ Tamanho mínimo de botões
+✓ Legibilidade
+✓ Contraste para alunos
+✓ Formulários acessíveis
+```
+
+### Objetivo:
+
+```
+Accessibility Lighthouse ≥ 95
 ```
 
 ---
 
-## 📋 FASE 12 — ACESSIBILIDADE
+## 📋 FASE BUILD SYSTEM
 
-### 12.1 WCAG 2.2 Checklist
-
-```
-✅ Contraste (≥ 4.5:1 para texto)
-✅ ARIA labels
-✅ Alt text em imagens
-✅ Headings (H1-H6 hierarquicamente)
-✅ Formulários com labels
-✅ Navegação por teclado
-✅ Focus visível
-✅ Links descritivos (não "clique aqui")
-```
-
-### 12.2 Teste Automático
-
-```bash
-npm run accessibility-check
-# Valida WCAG 2.2
-# Gera relatório
-```
-
----
-
-## 📋 FASE 13 — BUILD SYSTEM
-
-### 13.1 package.json
+### Criar:
 
 ```json
 {
@@ -1104,169 +671,104 @@ npm run accessibility-check
     "analyze": "node build/analyze.js",
     "optimize": "node build/optimize.js",
     "validate": "node build/validate.js",
-    "minify-css": "node build/minify-css.js",
-    "minify-js": "node build/minify-js.js",
-    "generate-icons": "node build/generate-icons.js",
+    "backup": "node build/backup.js",
+    "restore": "node build/restore.js",
     "seo-check": "node build/seo-check.js",
     "accessibility-check": "node build/accessibility-check.js",
-    "backup": "node build/backup.js",
-    "restore": "node build/restore.js"
+    "minify-css": "node build/minify-css.js",
+    "minify-js": "node build/minify-js.js"
   }
 }
 ```
 
-### 13.2 Automação
+---
 
-```bash
-# Análise completa
-npm run analyze
+## 📋 FASE VALIDAÇÃO
 
-# Otimização guiada
-npm run optimize
+### Testar:
 
-# Validação final
-npm run validate
+**Desktop:**
+```
+Chrome
+Firefox
+Edge
+Safari
+```
+
+**Mobile:**
+```
+Android Chrome
+iOS Safari
+Samsung Internet
+```
+
+**Responsividade:**
+```
+320px
+768px
+1024px
+1440px
+```
+
+**PWA:**
+```
+Offline
+Instalação
+Manifest
+Service Worker
 ```
 
 ---
 
-## 📋 FASE 14 — VALIDAÇÃO CRUZADA
+## 📋 FASE LIGHTHOUSE
 
-### 14.1 Testes Desktop
+### Executar medição real.
 
-```
-✅ Chrome (versão atual)
-✅ Firefox (versão atual)
-✅ Safari (versão atual)
-✅ Edge (versão atual)
-```
+### Regra Obrigatória
 
-### 14.2 Testes Mobile
+⚠️ **Nunca inventar métricas.**  
+⚠️ **Nunca estimar scores.**  
+⚠️ **Nunca gerar números fictícios.**
 
-```
-✅ Android Chrome
-✅ iOS Safari
-✅ Samsung Internet
-```
-
-### 14.3 Testes PWA
+### Relatar:
 
 ```
-✅ Service Worker registrado
-✅ App instalável
-✅ Funciona offline
-✅ Manifest válido
-✅ Icons carregam
-```
-
-### 14.4 Testes de Responsividade
-
-```
-✅ Mobile (320px)
-✅ Tablet (768px)
-✅ Desktop (1024px)
-✅ Large (1440px)
+Performance: [MEDIR]
+Accessibility: [MEDIR]
+Best Practices: [MEDIR]
+SEO: [MEDIR]
+PWA: [MEDIR]
 ```
 
 ---
 
-## 📋 FASE 15 — LIGHTHOUSE
+## 📋 FASE DOCUMENTAÇÃO
 
-### 15.1 Executar Auditoria
+### Atualizar README.md.
 
-```bash
-# Gerar relatório completo
-lighthouse https://profnucleoinfor.github.io --view
-
-# Output esperado:
-Performance          ≥ 90
-Accessibility        ≥ 95
-Best Practices       ≥ 95
-SEO                  ≥ 95
-PWA                  ≥ 90
-```
-
-### 15.2 Relatório Detalhado
-
-```markdown
-# Lighthouse Report
-
-## Performance: 94/100
-- Largest Contentful Paint: 1.2s
-- Cumulative Layout Shift: 0.05
-- First Input Delay: 50ms
-
-## Accessibility: 98/100
-- Contrast OK
-- Labels OK
-- ARIA OK
-
-## Best Practices: 96/100
-- Security: ✅
-- Browser APIs: ✅
-
-## SEO: 98/100
-- Meta tags: ✅
-- Structured data: ✅
-
-## PWA: 95/100
-- Installable: ✅
-- Offline: ✅
-```
-
----
-
-## 📋 FASE 16 — DOCUMENTAÇÃO
-
-### 16.1 Atualizar README.md
-
-```markdown
-# NIC Formação Profissional
-
-## 📁 Estrutura
+### Documentar:
 
 ```
-├── index.html              (página inicial)
-├── assets/
-│   ├── css/               (CSS modular)
-│   ├── js/modules/        (JavaScript modular)
-│   ├── fonts/             (fontes locais)
-│   └── icons.svg          (SVG sprite)
-├── build/                 (scripts de automação)
-├── backup/                (backup pré-otimização)
-└── service-worker.js
+✓ Estrutura
+✓ Deploy
+✓ Build
+✓ PWA
+✓ Cache
+✓ SEO
+✓ Acessibilidade
+✓ Rollback
+✓ Manutenção
 ```
 
-## 🚀 Como Usar
+### Preservação de Comentários
 
-### Desenvolvimento
-```bash
-npm run analyze      # Analisar projeto
-npm run validate     # Validar mudanças
+Preservar comentários que documentem:
+
 ```
-
-### Build & Deploy
-```bash
-npm run optimize     # Otimizar para production
-```
-
-## 📱 PWA
-
-- Installável como app
-- Funciona offline
-- Cache inteligente
-
-## 🔒 Segurança
-
-- CSP headers recomendados
-- XSS proteção
-- CORS configurado
-
-## 📊 Performance
-
-- Lighthouse: 90+
-- Tempo carregamento: < 2s
-- Size: 200KB (total)
+✓ Regras de negócio
+✓ Fluxos educacionais
+✓ Procedimentos administrativos
+✓ Lógicas importantes
 ```
 
 ---
@@ -1275,220 +777,95 @@ npm run optimize     # Otimizar para production
 
 ### Antes
 
-```
-Peso total:              350 KB
-Número de arquivos:      45
-Requisições HTTP:        18
-Lighthouse:
-  - Performance:         65
-  - Accessibility:       82
-  - Best Practices:      75
-  - SEO:                 80
-  - PWA:                 70
-Tempo de carregamento:   3.5s
-Core Web Vitals:         Precisa melhorar
-```
+Informar **somente valores medidos.**
 
 ### Depois
 
-```
-Peso total:              210 KB (-40%)
-Número de arquivos:      48 (+3)
-Requisições HTTP:        9 (-50%)
-Lighthouse:
-  - Performance:         94
-  - Accessibility:       98
-  - Best Practices:      96
-  - SEO:                 98
-  - PWA:                 95
-Tempo de carregamento:   1.2s (-65%)
-Core Web Vitals:         Todos green
-```
+Informar **somente valores medidos.**
 
 ### Arquivos Criados
 
-```
-assets/css/
-  ├── variables.css
-  ├── base.css
-  ├── typography.css
-  ├── layout.css
-  ├── components.css
-  ├── utilities.css
-  ├── responsive.css
-  ├── animations.css
-  └── main.css
-
-assets/js/
-  ├── app.js
-  └── modules/
-      ├── menu.js
-      ├── auth.js
-      ├── cache.js
-      ├── pwa.js
-      └── animations.js
-
-assets/
-  ├── icons.svg
-  └── fonts/inter/
-      ├── inter-400.woff2
-      ├── inter-600.woff2
-      └── inter-700.woff2
-
-build/
-  ├── analyze.js
-  ├── optimize.js
-  ├── validate.js
-  ├── minify-css.js
-  ├── minify-js.js
-  ├── backup.js
-  └── restore.js
-
-backup/
-  └── pre-optimization/
-      ├── html/
-      ├── css/
-      ├── js/
-      └── checksum-original.json
-
-ADVANCED_OPTIMIZATION_PROTOCOL.md
-README.md (atualizado)
-```
+Listar todos.
 
 ### Arquivos Modificados
 
+Listar todos.
+
+### Arquivos Removidos
+
+Listar todos.
+
+### Riscos Encontrados
+
+Listar todos.
+
+### Mitigações Aplicadas
+
+Listar todas.
+
+### Procedimento de Rollback
+
+Documentar integralmente.
+
+---
+
+## 🎯 METAS MÍNIMAS
+
 ```
-index.html
-dashboard.html
-login.html
-... (todos HTML)
+Performance ≥ 90
+Accessibility ≥ 95
+Best Practices ≥ 95
+SEO ≥ 95
+PWA ≥ 90
+```
 
-service-worker.js
-manifest.json
+### Metas Adicionais
 
-package.json (novo)
+```
+Tempo de carregamento ≤ 2s
+Redução mínima de 20% do peso total
+Redução mínima de 20% das requisições HTTP
 ```
 
 ---
 
-## ✅ CHECKLIST FINAL (INVIOLÁVEL)
+## ✅ CHECKLIST FINAL
 
-**Responder antes de fazer deploy:**
-
-- [ ] Auditoria concluída e documentada
-- [ ] Backup criado e validado
-- [ ] Checksum gerado com sucesso
-- [ ] CSS validado visualmente (100%)
-- [ ] JavaScript validado funcionalmente
-- [ ] SEO validado (metas >95)
-- [ ] Acessibilidade validada (WCAG 2.2)
-- [ ] Lighthouse executado com sucesso
-- [ ] Responsividade validada (todos breakpoints)
-- [ ] Offline validado (Service Worker funciona)
-- [ ] PWA validado (instalável e funcional)
+- [ ] Auditoria concluída
+- [ ] Planejamento concluído
+- [ ] Backup validado
+- [ ] Rollback testado
+- [ ] CSS validado
+- [ ] JavaScript validado
+- [ ] SEO validado
+- [ ] Acessibilidade validada
+- [ ] Lighthouse executado
+- [ ] Responsividade validada
+- [ ] Offline validado
+- [ ] GitHub Pages validado
+- [ ] LocalStorage preservado
 - [ ] Nenhuma funcionalidade quebrada
-- [ ] Visual 100% preservado
-- [ ] Relatório final gerado e documentado
-- [ ] Rollback procedure testado
-- [ ] Todos os scores ≥ metas mínimas
-- [ ] Teste cross-browser concluído
-- [ ] Performance melhorou ≥20%
-- [ ] GitHub Pages funcionando
-- [ ] Dados preservados (PWA cache)
-
-**Se QUALQUER caixa está desmarcada → NÃO FAZER DEPLOY**
+- [ ] Visual preservado
+- [ ] Documentação atualizada
+- [ ] Relatório final gerado
 
 ---
 
-## 🚀 CONDIÇÃO DE APROVAÇÃO FINAL
+## 🚀 CONDIÇÃO DE APROVAÇÃO
 
-**O projeto só pode ir para production se:**
+O projeto **somente pode ser considerado concluído** quando:
 
-### ✅ Funcionalidade
 ```
-✅ 100% das funcionalidades funcionam
-✅ Nenhuma mudança de comportamento
-✅ Nenhuma perda de dados
-✅ Navegação idêntica
-```
-
-### ✅ Visual
-```
-✅ Aparência 100% idêntica
-✅ Nenhuma mudança de layout
-✅ Nenhuma mudança de cores
-✅ Nenhuma mudança de tipografia
+✅ Todas as funcionalidades funcionarem
+✅ O visual permanecer idêntico
+✅ Nenhum dado for perdido
+✅ As metas mínimas forem atingidas
+✅ GitHub Pages permanecer funcional
+✅ O rollback estiver documentado e testado
 ```
 
-### ✅ Performance
-```
-✅ Performance Lighthouse ≥ 90
-✅ Accessibility ≥ 95
-✅ Best Practices ≥ 95
-✅ SEO ≥ 95
-✅ PWA ≥ 90
-✅ Carregamento < 2 segundos
-```
-
-### ✅ Compatibilidade
-```
-✅ GitHub Pages funcionando
-✅ Desktop (todos browsers)
-✅ Mobile (todos devices)
-✅ Offline (PWA)
-✅ Nenhuma console error
-```
-
-### ✅ Documentação
-```
-✅ README atualizado
-✅ Rollback documentado
-✅ Estrutura mapeada
-✅ Procedimentos claros
-```
+**Caso qualquer requisito falhe**, interrompa a execução e gere um **relatório técnico detalhado** explicando os motivos e as ações corretivas necessárias.
 
 ---
 
-## 🆘 PROCEDIMENTO DE EMERGÊNCIA
-
-**Se qualquer coisa quebrar:**
-
-```bash
-# 1. Parar imediatamente
-npm run restore
-
-# 2. Validar
-npm run validate
-
-# 3. Documentar problema
-# - O que quebrou?
-# - Quando quebrou?
-# - Como reproduzir?
-
-# 4. Analisar causa
-npm run analyze
-
-# 5. Relatar findings
-# Criar issue no GitHub com:
-# - Problema
-# - Logs
-# - Screenshot
-# - Procedimento para reproduzir
-```
-
----
-
-## 📞 SUPORTE
-
-Qualquer dúvida sobre o protocolo:
-
-1. Releia a documentação
-2. Verifique o checklist
-3. Execute a fase anterior
-4. Restaure do backup
-
-**Segurança > Velocidade > Performance**
-
----
-
-**PROTOCOLO VALIDADO E APROVADO PARA EXECUÇÃO** ✅
+**PROTOCOLO SUPREMO ATIVADO** ✅
