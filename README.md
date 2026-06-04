@@ -1,23 +1,94 @@
-# NIC Formação Profissional
+# 📚 Portal Educacional NIC
 
-Site estático pronto para publicar no GitHub Pages.
+## 🧠 Visão Geral
 
-## Como publicar
+Portal educacional estático desenvolvido para funcionar como:
 
-1. Crie um repositorio no GitHub.
-2. Envie todos os arquivos desta pasta para o repositorio.
-3. No GitHub, abra `Settings` > `Pages`.
-4. Em `Build and deployment`, selecione `Deploy from a branch`.
-5. Escolha a branch principal e a pasta `/root`.
-6. Salve e aguarde o GitHub gerar o link do site.
+- 📚 Catálogo de cursos
+- 📄 Biblioteca de materiais (HTML, PDF, PPT)
+- 📱 Aplicativo PWA leve (instalação opcional + offline parcial)
 
-O arquivo inicial do site é `index.html`. A página `404.html` será usada automaticamente pelo GitHub Pages quando alguém acessar um endereço inexistente.
+---
 
-## Arquivos importantes
+## ❌ Fora de Escopo
 
-- `robots.txt` e `sitemap.xml`: ajudam mecanismos de busca a encontrar o site.
-- `manifest.json` e `service-worker.js`: deixam o site preparado para funcionar como app instalável.
-- `assets/`: ícones locais e imagem de compartilhamento.
-- `privacidade.html`: política de privacidade do portal.
+Este projeto NÃO é:
 
-Endereço configurado para publicação: `https://profnucleoinfor.github.io/`.
+- LMS (Moodle, Google Classroom)
+- ERP ou sistema acadêmico
+- Backend ou API
+- Sistema de login com autenticação real
+- Banco de dados
+
+---
+
+## 📂 Estrutura do Projeto
+
+/assets   → CSS, JS, imagens e ícones  
+/cursos   → páginas HTML dos cursos (SEM subpastas)  
+/pdf      → materiais didáticos organizados por curso  
+/forms    → links externos (Google Forms etc.)
+
+---
+
+## 📱 PWA (Progressive Web App)
+
+- Suporte a instalação como aplicativo
+- Funciona parcialmente offline
+- Service Worker com versionamento obrigatório
+- Nunca bloquear o acesso ao site por falha de cache
+
+---
+
+## ⚠️ Regras de Caminho
+
+- Usar apenas caminhos relativos: `./` e `../`
+- Proibido uso de caminhos absolutos `/assets/...`
+
+---
+
+## 🧠 JavaScript
+
+- Apenas Vanilla JS
+- O site deve funcionar mesmo sem JS
+- JS não pode ser dependência para navegação
+
+---
+
+## 📱 Responsividade
+
+- Mobile-first (base 360px)
+- Breakpoints: 360 / 390 / 412 / 768 / 1366 / 1920
+- Sem dimensões fixas absolutas
+
+---
+
+## ♿ Acessibilidade
+
+- alt obrigatório em imagens
+- contraste mínimo AA (4.5:1)
+- fonte mínima 16px mobile
+- HTML semântico obrigatório
+
+---
+
+## 🧩 Componentes
+
+- Navbar e Footer são replicados manualmente
+- Alterações devem ser copiadas para todas as páginas
+- Template oficial: `template-curso.html`
+
+---
+
+## 🚀 Evolução do Sistema
+
+1. Conteúdo HTML nativo
+2. Redução de dependência de PDFs
+3. Quiz offline
+4. Biblioteca offline completa
+
+---
+
+## 🧭 Princípio Central
+
+> Estabilidade sempre acima de estética ou inovação.
