@@ -157,24 +157,32 @@
     </div>
   </div>
 
-  <div class="row g-4 mt-4">
-    <div class="col-md-3">
-      <div class="card-aula">
-        <span class="icon-box">📊</span>
-        <h5>Slides</h5>
-        <p class="text-muted small">Material visual da aula de hoje.</p>
-        <a href="./visualizador.html?titulo=Slides%20PowerPoint&url=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1sML9keDawByawJSHErq8jGz2CDRinWufyOtvTwtMvhA%2Fedit%3Fusp%3Ddrive_link" class="btn-modulo">Abrir Slides</a>
-      </div>
-    </div>
+  <button
+  class="btn-modulo"
+  onclick="abrirMaterial(
+  'https://docs.google.com/presentation/d/1sML9keDawByawJSHErq8jGz2CDRinWufyOtvTwtMvhA/edit?usp=drive_link',
+  'Slides PowerPoint'
+  )">
+  Abrir Slides
+</button>
 
     <div class="col-md-3">
-      <div class="card-aula">
-        <span class="icon-box">📘</span>
-        <h5>Apostila</h5>
-        <p class="text-muted small">Guia completo sobre design.</p>
-        <a href="https://drive.google.com/file/d/10LysaWBrohy8xBN5BmJMFVhyEYeoNxGI/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-modulo">Ler Agora</a>
-      </div>
-    </div>
+  <div class="card-aula">
+    <span class="icon-box">📘</span>
+    <h5>Apostila</h5>
+    <p class="text-muted small">Guia completo sobre design.</p>
+
+    <button
+      class="btn-modulo"
+      onclick="abrirMaterial(
+      'https://drive.google.com/file/d/10LysaWBrohy8xBN5BmJMFVhyEYeoNxGI/view?usp=drive_link',
+      'Apostila PowerPoint'
+      )">
+      Ler Agora
+    </button>
+
+  </div>
+</div>
 
     <div class="col-md-3">
       <div class="card-aula">
@@ -298,6 +306,10 @@
       alert("❌ Acesso negado. Senha incorreta.");
     }
   }
+  function abrirMaterial(url, titulo) {
+  window.location.href =
+    `./visualizador.html?titulo=${encodeURIComponent(titulo)}&url=${encodeURIComponent(url)}`;
+}
 </script>
 
 </body>
