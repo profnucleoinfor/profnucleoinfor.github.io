@@ -292,8 +292,9 @@
 
   function acessarRevisao() {
     const senha = prompt("🔑 Digite a senha de REVISÃO:");
-    if (senha === "revisaoInternet") {
+    if (senha === "rvnet") {
       alert("✅ Conteúdo liberado!");
+     window.location.href = "rvnet.html";
     } else if (senha !== null) {
       alert("❌ Acesso negado. Senha incorreta.");
     }
