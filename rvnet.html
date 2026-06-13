@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Educacional NIC - Quiz Internet</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #38bdf8;
+            --primary-hover: #0ea5e9;
+            --success: #4ade80;
+            --danger: #f87171;
+            --border: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg,#0f172a,#1e293b,#0d6efd);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background: rgba(30,41,59,.92);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            padding: 24px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header h1 {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #e0f2fe;
+            opacity: 0.9;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background-color: var(--border);
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .quiz-body {
+            padding: 24px;
+            flex-grow: 1;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .question-text {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .option-item {
+            background-color: #1e293b;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            cursor: pointer;
+            font-size: 15px;
+            line-height: 1.4;
+            transition: all 0.2s ease;
+            text-align: left;
+            color: var(--text-main);
+            width: 100%;
+        }
+
+        .option-item:hover:not(:disabled) {
+            border-color: var(--primary);
+            background-color: #273549;
+        }
+
+        .option-item:disabled {
+            cursor: not-allowed;
+        }
+
+        .option-item.correct {
+            border-color: var(--success) !important;
+            background-color: rgba(74, 222, 128, 0.1) !important;
+            color: #4ade80;
+            font-weight: 600;
+        }
+
+        .option-item.incorrect {
+            border-color: var(--danger) !important;
+            background-color: rgba(248, 113, 113, 0.1) !important;
+            color: #f87171;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        btn, button {
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-hint {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-hint:hover:not(:disabled) {
+            background-color: rgba(56, 189, 248, 0.1);
+        }
+
+        .btn-next {
+            background-color: var(--primary);
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-next:hover:not(:disabled) {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-next:disabled, .btn-hint:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .hint-box {
+            background-color: #172554;
+            border-left: 4px solid var(--primary);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 16px;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #93c5fd;
+            display: none;
+        }
+
+        .feedback-box {
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+            display: none;
+            border: 1px solid transparent;
+        }
+
+        .feedback-box.correct-style {
+            background-color: rgba(74, 222, 128, 0.05);
+            border-color: rgba(74, 222, 128, 0.2);
+        }
+
+        .feedback-box.incorrect-style {
+            background-color: rgba(248, 113, 113, 0.05);
+            border-color: rgba(248, 113, 113, 0.2);
+        }
+
+        .feedback-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+
+        .feedback-title.correct-text { color: var(--success); }
+        .feedback-title.incorrect-text { color: var(--danger); }
+
+        /* Dashboard Results styling */
+        .results-panel {
+            display: none;
+            padding: 30px 24px;
+            text-align: center;
+        }
+
+        .score-circle-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px auto;
+        }
+
+        .svg-circle {
+            transform: rotate(-90deg);
+        }
+
+        .circle-bg {
+            fill: none;
+            stroke: var(--border);
+            stroke-width: 10;
+        }
+
+        .circle-progress {
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 10;
+            stroke-dasharray: 408;
+            stroke-dashoffset: 408;
+            transition: stroke-dashoffset 1s ease-out;
+            stroke-linecap: rounded;
+        }
+
+        .score-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .results-panel h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .results-summary {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .review-section {
+            text-align: left;
+            margin-top: 30px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+
+        .review-section h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .review-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 350px;
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+
+        .review-item {
+            background-color: #141b2e;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .review-status {
+            font-size: 16px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .review-status.correct { color: var(--success); }
+        .review-status.incorrect { color: var(--danger); }
+
+        .review-info h4 {
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+        
+        .review-info p {
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .btn-restart {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .btn-restart:hover {
+            background-color: var(--border);
+        }
+
+        /* Custom Scrollbar for review box */
+        .review-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .review-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .review-list::-webkit-scrollbar-thumb {
+            background-color: var(--border);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1><i class="bi bi-mortarboard-fill"></i> Portal Educacional NIC</h1>
+            <p>Como Funciona a Internet • Quiz Interativo • 30 Questões</p>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <!-- QUIZ INTERACTIVE INTERFACE -->
+        <div class="quiz-body" id="quiz-panel">
+            <div class="meta-info">
+                <span id="question-counter">Questão 1 de 30</span>
+                <span id="score-counter">Acertos: 0</span>
+            </div>
+
+            <div class="question-text" id="question-text">
+                Carregando questão...
+            </div>
+
+            <div class="hint-box" id="hint-box"></div>
+
+            <div class="options-list" id="options-list">
+                <!-- Javascript will render options here -->
+            </div>
+
+            <div class="feedback-box" id="feedback-box">
+                <div class="feedback-title" id="feedback-title"></div>
+                <div id="feedback-rationale"></div>
+            </div>
+
+            <div class="actions">
+                <button class="btn-hint" id="btn-hint" onclick="toggleHint()">?? Ver Dica</button>
+                <button class="btn-next" id="btn-next" onclick="nextQuestion()" disabled>Avançar &rarr;</button>
+            </div>
+        </div>
+
+        <!-- DASHBOARD RESULTS INTERFACE -->
+        <div class="results-panel" id="results-panel">
+            <h2>Quiz Concluído!</h2>
+            <div class="score-circle-container">
+                <svg width="140" height="140" class="svg-circle">
+                    <circle class="circle-bg" cx="70" cy="70" r="65"></circle>
+                    <circle class="circle-progress" id="circle-progress" cx="70" cy="70" r="65"></circle>
+                </svg>
+                <div class="score-text" id="score-percent">0%</div>
+            </div>
+
+            <div class="results-summary" id="results-summary">
+                Você acertou X de 30 questões.
+            </div>
+
+            <div class="review-section">
+                <h3>Revisão de Desempenho</h3>
+                <div class="review-list" id="review-list">
+                    <!-- Javascript review content rows -->
+                </div>
+            </div>
+
+            <button class="btn-restart" onclick="restartQuiz()">Refazer Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [{"num": 1, "question": "De acordo com o material, o que é fundamentalmente a internet?", "hint": "Pense nela como uma infraestrutura global capaz de interligar diversos aparelhos eletrônicos ao redor do planeta.", "options": ["Uma grande rede mundial que conecta celulares, computadores, tablets e outros dispositivos em todo o planeta.", "Um sinônimo para a rede de transmissão sem fio Wi-Fi instalada nas residências.", "Um aplicativo de mensagens focado na comunicação instantânea entre usuários corporativos.", "Uma biblioteca física centralizada localizada nos Estados Unidos."], "correct": 0, "rationale": "A internet é a infraestrutura global de rede que viabiliza a troca instantânea de informações entre quaisquer aparelhos conectados em todo o planeta."}, {"num": 2, "question": "Qual é a principal diferença técnica entre os termos 'Internet' e 'Wi-Fi' explicada no texto?", "hint": "Um representa a infraestrutura global inteira e o outro é apenas o meio físico sem fio para se conectar a ela localmente.", "options": ["O Wi-Fi é mais rápido que a internet e funciona de forma totalmente independente de cabos em todo o seu trajeto global.", "A internet é a infraestrutura da rede mundial, enquanto o Wi-Fi é apenas uma tecnologia sem fio usada para acessá-la.", "A internet conecta apenas computadores via cabos e o Wi-Fi conecta exclusivamente telefones celulares.", "Não há diferença, sendo dois nomes comerciais para o mesmo serviço de dados móveis das operadoras."], "correct": 1, "rationale": "O Wi-Fi atua conectando o dispositivo local ao roteador sem usar cabos (por ondas de rádio), servindo como o 'trecho final' para acessar a grande rede (Internet)."}, {"num": 3, "question": "No contexto de e-mails, qual é a recomendação do material para a escolha correta do nome de usuário em uma conta principal?", "hint": "Para contatos sérios, escolares ou profissionais, o formato deve transmitir credibilidade e identificação clara.", "options": ["Utilizar apelidos criativos ou nicks de jogos para manter o anonimato nas comunicações oficiais.", "Preencher o endereço contendo o número completo do seu CPF ou data de nascimento inteira.", "Optar pelo uso do nome real de forma limpa, como maria.silva@gmail.com.", "Criar um nome aleatório misturando palavras sem sentido para evitar receber propagandas."], "correct": 2, "rationale": "O uso do nome e sobrenome de forma limpa confere um caráter oficial e profissional, facilitando a identificação clara do remetente."}, {"num": 4, "question": "Para qual finalidade específica o material recomenda a criação de um 'E-mail Secundário'?", "hint": "Pense no acúmulo de propagandas e na proteção dos seus dados mais valiosos de cobranças ou cadastros rotineiros.", "options": ["Para tratar exclusivamente de assuntos oficiais como escola, banco e serviços do governo.", "Para enviar mensagens contendo senhas e cópias de cartões de crédito para familiares.", "Para cadastro em lojas, redes sociais, promoções e aplicativos que não são usados com frequência.", "Para substituir totalmente o uso de senhas fortes em sites de compras coletivas."], "correct": 2, "rationale": "O e-mail secundário serve para isolar propagandas, newsletters e spams, evitando o congestionamento e protegendo a sua caixa de entrada principal."}, {"num": 5, "question": "Qual é a principal característica de um 'E-mail Temporário' e quando ele deve ser utilizado?", "hint": "Trata-se de uma conta descartável de curtíssima duração.", "options": ["É uma conta que some após um tempo, ideal apenas para testar sites rapidamente ou baixar um arquivo sem se identificar.", "É a conta mais segura para vincular ao seu aplicativo de banco devido ao apagamento automático dos extratos.", "Funciona como um backup vitalício de fotos pessoais armazenadas em servidores de nuvem.", "É um serviço pago exclusivo do governo para envio de documentos de identificação civil."], "correct": 0, "rationale": "Os e-mails temporários expiram automaticamente após alguns minutos ou horas. São ótimos para acessos rápidos de uma única vez, blindando suas contas reais contra spam."}, {"num": 6, "question": "O que preconiza a 'Regra do Mouse' mencionada nas diretrizes de segurança de e-mail?", "hint": "É um hábito visual simples realizado antes de efetuar o clique em qualquer link recebido.", "options": ["Pressionar o botão direito do mouse para forçar a abertura segura de anexos desconhecidos.", "Passe o cursor por cima do link (sem clicar!) para verificar o endereço real de destino que aparece.", "Clicar três vezes seguidas para verificar se a página possui certificado de criptografia militar.", "Desconectar o mouse fisicamente caso receba um e-mail de um remetente desconhecido."], "correct": 1, "rationale": "Passar o mouse sobre o link revela o endereço real (URL) para onde ele aponta no rodapé do navegador, permitindo flagrar links falsos ou maliciosos de golpes de phishing."}, {"num": 7, "question": "Em qual contexto histórico global a internet começou a ser gestada na metade do século XX?", "hint": "Nasceu da rivalidade estratégica e militar entre duas superpotências da época.", "options": ["Durante a Primeira Guerra Mundial, motivada pela necessidade de coordenar as trincheiras na Europa.", "Logo após a revolução industrial, visando interligar as primeiras máquinas a vapor fabris.", "Durante o período da Guerra Fria, em meio ao conflito político e militar entre os Estados Unidos e a União Soviética.", "Na crise econômica de 1929, com o objetivo exclusivo de salvar a bolsa de valores de Nova York."], "correct": 2, "rationale": "A internet nasceu de pesquisas militares e acadêmicas americanas durante a Guerra Fria, com o objetivo de descentralizar o comando e proteger comunicações estratégicas."}, {"num": 8, "question": "Qual evento específico de 1957 gerou forte preocupação nos Estados Unidos e impulsionou a busca por redes de comunicação mais resistentes?", "hint": "Foi um marco histórico na corrida espacial protagonizado pela União Soviética.", "options": ["A queda do muro de Berlim por forças revolucionárias aliadas.", "O lançamento do satélite Sputnik pelos soviéticos.", "A destruição completa de cabos telefônicos submarinos no Oceano Pacífico por submarinos nucleares.", "A criação comercial da World Wide Web (WWW) em Moscou."], "correct": 1, "rationale": "O lançamento do satélite soviético Sputnik em 1957 mostrou a força tecnológica da URSS, levando os EUA a criarem a ARPA e buscarem redes que sobrevivessem a ataques catastróficos."}, {"num": 9, "question": "Como opera a 'Teoria da Comutação de Pacotes', que serve de pilar para o envio de dados na internet?", "hint": "Pense no fracionamento da informação e no uso de rotas flexíveis que se reagrupam no computador receptor.", "options": ["A informação é mantida em um bloco único e indivisível que precisa pegar um caminho físico exclusivo.", "Os dados são gravados em fitas magnéticas que viajam fisicamente de um servidor a outro.", "A informação é dividida em pacotes, enviada por caminhos diferentes e totalmente reorganizada ao chegar no destino.", "Os pacotes viajam obrigatoriamente em linha reta através do espaço sideral utilizando o reflexo da Lua."], "correct": 2, "rationale": "Na comutação de pacotes, os dados (mensagens, fotos, vídeos) são quebrados em pequenos pedaços independentes que trafegam de forma dinâmica por caminhos variados e se unem no destino final."}, {"num": 10, "question": "Surgida em 1969 nos Estados Unidos, qual rede é oficialmente reconhecida como a precursora histórica da internet moderna?", "hint": "Seu nome deriva da agência de projetos de pesquisa avançada do governo americano.", "options": ["SputnikNet", "ARPANET", "OutlookWeb", "G1Verifica"], "correct": 1, "rationale": "A ARPANET foi a primeira rede operacional de comutação de pacotes do mundo, interligando nós militares e universitários nos EUA, servindo de base para a internet de hoje."}, {"num": 11, "question": "O que mudou na internet com a criação da World Wide Web (WWW) por Tim Berners-Lee em 1989?", "hint": "Essa inovação permitiu a existência de links interligando páginas visuais amigáveis.", "options": ["Permitiu a substituição completa de todos os cabos físicos do planeta por satélites geoestacionários.", "Introduziu a tecnologia de conexão discada por telefone, que tornou a internet instantaneamente ultrarrápida.", "Criou a possibilidade de páginas interligadas por links, facilitando a navegação e popularizando a internet para pessoas comuns.", "Banhou de forma definitiva o uso de provedores comerciais, tornando a rede privada para uso militar exclusivo."], "correct": 2, "rationale": "A WWW (World Wide Web) organizou e disponibilizou as informações na forma de páginas multimídia acessíveis e conectadas por hiperlinks, abrindo as portas da rede para o público civil geral."}, {"num": 12, "question": "Qual é o papel operacional de um navegador web (como Google Chrome ou Microsoft Edge) ao digitarmos um endereço?", "hint": "Ele é o intermediário que traduz códigos brutos vindos dos servidores em uma interface gráfica amigável.", "options": ["Ele armazena fisicamente o banco de dados de vídeos do mundo inteiro dentro do disco rígido local.", "Ele solicita o IP ao DNS, encontra o servidor, recebe e interpreta os arquivos do site para exibi-los visualmente.", "Ele envia ondas de rádio diretamente para os satélites de órbita baixa para captar o sinal de internet de rua.", "Ele serve unicamente para criar senhas criptografadas baseadas na data de nascimento do usuário."], "correct": 1, "rationale": "O navegador é o software cliente responsável por pedir a conversão do nome ao DNS, conectar ao servidor do site, baixar os códigos (HTML/CSS/JS) e renderizá-los graficamente na tela."}, {"num": 13, "question": "Ao carregar um site, o navegador web interpreta arquivos em HTML, CSS e JavaScript. O que cada uma dessas três tecnologias define, respectivamente?", "hint": "Pense na analogia de uma casa: a fundação/paredes de tijolo, a pintura/decoração visual, e os sistemas automatizados/portões elétricos.", "options": ["HTML define a estrutura; CSS cuida da aparência e design; JavaScript adiciona a interatividade.", "HTML é o provedor de internet; CSS é a antena Wi-Fi; JavaScript é o computador cliente.", "HTML programa os jogos pesados de computador; CSS envia e-mails; JavaScript bloqueia vírus de roteador.", "HTML cria nomes de usuários seguros; CSS gera senhas fortes; JavaScript ativa a verificação em duas etapas."], "correct": 0, "rationale": "O HTML fornece o esqueleto e conteúdo (textos, imagens); o CSS estiliza as cores, fontes e layouts; o JavaScript dá vida, lógica e dinamismo aos elementos da página."}, {"num": 14, "question": "Por que o DNS (Domain Name System) é considerado fundamental para o funcionamento prático da internet?", "hint": "Imagine como seria impraticável decorar uma sequência imensa de números para abrir cada site favorito.", "options": ["Porque ele converte os sinais de fios de cobre tradicionais em pulsos de luz de altíssima velocidade.", "Porque ele é o único responsável por apagar os vírus que tentam invadir redes locais sem fio.", "Porque ele atua como uma agenda telefônica da internet, traduzindo nomes de domínios amigáveis em endereços IP numéricos.", "Porque ele limita o tempo que o usuário passa jogando online para evitar o vício digital."], "correct": 2, "rationale": "Computadores comunicam-se via números de IP (ex: 142.250.191.46). O DNS funciona como uma grande lista telefônica, traduzindo nomes fáceis como 'google.com' no IP correspondente do servidor."}, {"num": 15, "question": "Apesar da existência de satélites modernos, como trafega mais de 90% da comunicação internacional da internet entre os continentes?", "hint": "Trata-se de uma gigantesca infraestrutura física invisível oculta sob milhões de litros de água salgada.", "options": ["Através de balões atmosféricos de hélio de alta altitude mantidos pelas operadoras.", "Através de cabos submarinos de fibra óptica instalados no fundo do oceano que transmitem dados por luz.", "Através de antenas de transmissão de dados móveis 5G fixadas em plataformas de petróleo desativadas.", "Por meio do espelhamento de laser de alta potência feito a partir do topo das montanhas mais altas."], "correct": 1, "rationale": "Mais de 95% do tráfego transcontinental de dados ocorre através de uma gigantesca e espessa rede de cabos submarinos de fibra óptica de alta capacidade assentados nos oceanos."}, {"num": 16, "question": "De acordo com a apresentação, por que a cidade brasileira de Fortaleza ocupa uma posição altamente estratégica na internet mundial?", "hint": "Sua localização geográfica a transforma em uma porta de entrada física para conexões que vêm de outros hemisférios.", "options": ["Por abrigar a única fábrica mundial que constrói satélites Sputnik modernos.", "Por ter banido por lei o uso de contas públicas em todas as suas redes sociais locais.", "Por ser um ponto de conexão chave no litoral que recebe cabos submarinos vindos da América do Norte, Europa e África.", "Por possuir o maior data center do mundo dedicado a abrigar e-mails temporários descartáveis."], "correct": 2, "rationale": "Fortaleza é geograficamente privilegiada (ponto mais próximo da Europa e África no Brasil), tornando-se um dos maiores hubs mundiais de cabos submarinos de fibra óptica de alta velocidade."}, {"num": 17, "question": "Qual é a função básica exercida pelo aparelho conhecido como 'Modem' em um ambiente doméstico?", "hint": "Pense na conversão e 'tradução' do sinal bruto enviado pela operadora da rua para a sua residência.", "options": ["Criar links lógicos dentro do navegador web para agilizar a leitura dos arquivos de estilo CSS.", "Emitir ondas de dopamina diretamente aos usuários para acelerar os jogos de computador.", "Estabelecer a comunicação física e lógica de modulação entre a sua residência e o provedor de internet.", "Impedir que os dados sejam fracionados em pacotes durante o processo de envio pela rede WAN."], "correct": 2, "rationale": "O termo vem de MOdulador/DEmodulador. Ele traduz os sinais analógicos/digitais que vêm da infraestrutura da operadora na rua para o sinal digital que seus aparelhos entendem."}, {"num": 18, "question": "Qual a principal diferença entre os equipamentos de rede 'Roteador' e 'Switch'?", "hint": "Um direciona a internet global e distribui o sinal (inclusive sem fio), enquanto o outro multiplica as conexões cabeadas em uma rede local.", "options": ["O roteador distribui a internet para vários dispositivos (via cabo ou Wi-Fi), enquanto o switch conecta vários computadores em uma rede local cabeada.", "O switch opera exclusivamente no fundo do oceano e o roteador funciona apenas dentro de foguetes espaciais.", "O roteador serve apenas para apagar e-mails e o switch serve para criar perfis falsos nas redes sociais.", "Não há diferença técnica, pois ambos realizam a conversão de domínios textuais para endereços IP."], "correct": 0, "rationale": "O switch apenas interliga múltiplos dispositivos locais em rede por cabos. O roteador vai além: escolhe as melhores rotas, cria a rede Wi-Fi interna e distribui o acesso à internet externa de forma inteligente."}, {"num": 19, "question": "Considerando o tamanho e o alcance geográfico das redes, como são classificadas a sigla de uma rede local (casa/escola) e a da própria internet mundial?", "hint": "Lembre-se das terminologias baseadas em escopo geográfico: 'Local' contra 'Wide' (Ampla).", "options": ["A rede local é uma WAN e a internet mundial é uma LAN de alta frequência.", "A rede local é uma MAN e a internet é uma WLAN gerida por cabos submarinos.", "Ambas são classificadas estritamente como redes centralizadas do tipo ARPANET.", "A rede local é classificada como LAN, e a internet mundial é o maior exemplo de uma rede WAN."], "correct": 3, "rationale": "LAN (Local Area Network) é uma rede restrita a pequenos espaços (casa, escola). WAN (Wide Area Network) cobre vastas distâncias geográficas, sendo a internet a maior WAN existente."}, {"num": 20, "question": "Como as grandes redes sociais e aplicativos conseguem lucrar bilhões de dólares se o uso delas parece totalmente gratuito para as pessoas?", "hint": "O modelo de negócios se sustenta na coleta de perfis de comportamento para a venda de espaços publicitários precisos.", "options": ["Cobrando uma taxa oculta diretamente na conta de luz ou água de quem acessa o computador.", "Fabricando e comercializando os roteadores e modems físicos que interligam os oceanos.", "As empresas lucram principalmente vendendo anúncios publicitários direcionados, baseados nos dados, curtidas e interesses revelados pelos usuários.", "Recebendo doações anônimas em dinheiro de todas as pessoas que utilizam contas privadas."], "correct": 2, "rationale": "O modelo comercial dessas plataformas é a venda de publicidade hiper-segmentada. Anunciantes pagam para exibir marcas para públicos específicos mapeados pelos algoritmos."}, {"num": 21, "question": "Apresentada no material, o que significa na prática a frase marcante do mercado digital: 'Se você não está pagando pelo produto, VOCÊ é o produto'?", "hint": "Reflita sobre o real valor econômico comercializado por trás das curtidas, tempo assistindo a telas e preferências pessoais.", "options": ["Que o seu dispositivo físico celular será tomado pela empresa caso você passe muitas horas online.", "Que o usuário se transforma automaticamente em um robô programador trabalhando para a ARPANET.", "Que a sua atenção, engajamento e dados de comportamento são o verdadeiro ativo valioso que as plataformas vendem para os anunciantes.", "Que todas as suas mensagens enviadas pelo e-mail principal serão lidas em voz alta na televisão."], "correct": 2, "rationale": "Significa que o serviço gratuito existe para coletar seus hábitos de navegação, interesses e atenção, transformando esses dados em pacotes comerciais vendidos a empresas publicitárias."}, {"num": 22, "question": "O que define o conceito de 'Pegada Digital' abordado nas lições de cidadania digital?", "hint": "Pense no rastro histórico permanente que deixamos gravado nos servidores da internet a cada curtida ou postagem.", "options": ["A marca física de poeira deixada sobre a tela do monitor ou do teclado do computador.", "O registro histórico de tudo o que postamos, curtimos, comentamos ou compartilhamos, que fica gravado na internet por muito tempo, mesmo que apaguemos depois.", "O tamanho em centímetros do pé do usuário medido por sensores instalados no mouse óptico.", "A quantidade exata de cabos ópticos submarinos que o usuário consegue visualizar acessando mapas digitais."], "correct": 1, "rationale": "A pegada digital é o rastro indestrutível deixado por nós na web. Dados deletados ou posts antigos podem ser copiados, printados ou mantidos em backups, moldando nossa reputação online permanentemente."}, {"num": 23, "question": "Considerando o gerenciamento seguro do celular e computador, qual ação é recomendada quanto às permissões solicitadas por aplicativos?", "hint": "Desconfie sempre que uma ferramenta básica (como uma lanterna ou calculadora) exigir acesso a dados desconexos de sua função principal.", "options": ["Aprovar incondicionalmente todas as permissões de câmera, microfone e contatos para garantir a velocidade do sistema.", "Permitir acessos somente se o aplicativo for aberto no modo anônimo do navegador web profissional.", "Desativar permissões que não fazem sentido para o funcionamento técnico do app, como um jogo de corrida exigir acesso à sua localização ou contatos.", "Excluir o e-mail secundário sempre que um aplicativo solicitar acesso à galeria de fotos pessoais."], "correct": 2, "rationale": "Para proteger sua privacidade, deve-se aplicar o princípio do menor privilégio. Se um aplicativo simples pede acessos excessivos (como contatos ou localização), há risco de espionagem ou coleta indevida."}, {"num": 24, "question": "De que forma prática opera o 'Algoritmo' das redes sociais para reter a atenção do usuário por mais tempo?", "hint": "Ele mapeia milimetricamente o tempo que você gasta olhando cada tipo de postagem para retroalimentar seu feed com temas parecidos.", "options": ["Ele desliga o roteador local de forma aleatória quando percebe que a pessoa está lendo notícias sérias.", "Ele analisa constantemente o comportamento (vídeos assistidos, curtidas, comentários, tempo de tela) e molda o feed para exibir conteúdos parecidos que prendam a atenção.", "Ele altera as senhas fortes dos usuários para forçá-los a usar a autenticação em duas etapas.", "Ele obriga o navegador a traduzir todos os sites do mundo para o idioma original falhado na Guerra Fria."], "correct": 1, "rationale": "Os algoritmos monitoram o tempo que você para em cada imagem ou vídeo para entender seus gostos profundos, entregando um fluxo personalizado infinito com o intuito de maximizar seu tempo de tela."}, {"num": 25, "question": "Diante de uma suspeita de Fake News ou desinformação recebida no celular, qual é o comportamento seguro orientado pelo texto?", "hint": "Não aja por impulso emocional; investigue a veracidade utilizando os canais adequados que validam fatos.", "options": ["Compartilhar imediatamente com todos os contatos para que eles debatam se a informação é real ou inventada.", "Digitar o nome do remetente na agenda telefônica do DNS para travar o computador dele.", "Desconfiar de títulos exagerados, checar datas, fontes, pesquisar em outros sites e recorrer a ferramentas de checagem como o G1 Verifica.", "Apagar permanentemente o seu e-mail principal e passar a navegar unicamente com e-mails temporários."], "correct": 2, "rationale": "Combate-se a desinformação freando o impulso de repassar e validando o conteúdo em portais de notícias confiáveis ou agências especializadas de fact-checking antes de qualquer ação."}, {"num": 26, "question": "Qual é a relação explicada no texto entre o composto químico 'Dopamina' no cérebro e os truques de design usados em aplicativos (como notificações e rolagem infinita)?", "hint": "Trata-se de um ciclo biológico de bem-estar instantâneo que nos estimula a buscar continuamente por mais estímulos visuais rápidos.", "options": ["A dopamina blinda o computador contra a invasão de vírus trazidos por cabos submarinos.", "A dopamina força os sites HTML a carregar as aparências CSS sem precisar passar pelo roteador de rede.", "As curtidas e bolinhas vermelhas geram descargas rápidas de prazer (dopamina), habituando o cérebro a buscar mais e mais aquela sensação, o que alimenta o vício digital.", "É um aplicativo espião russo criado no contexto de 1957 para capturar dados pessoais confidenciais."], "correct": 2, "rationale": "O design de 'recompensa intermitente' das mídias sociais (como puxar a tela para atualizar ou receber curtidas) aciona a dopamina no sistema de recompensa cerebral, gerando hábitos compulsivos de checagem do celular."}, {"num": 27, "question": "O que caracteriza o comportamento prejudicial denominado 'Sumiço Social' provocado pelo uso desmedido de tecnologia?", "hint": "Reflete aquele momento em que corpos dividem o mesmo espaço físico, mas as mentes estão completamente imersas no ambiente virtual.", "options": ["O apagamento definitivo de perfis de celebridades que violaram as regras da LGPD.", "Estar presente fisicamente em um grupo, reunião familiar ou com amigos, mas manter a mente e a atenção totalmente absorvidas pelas telas.", "A perda física de computadores antigos em enchentes provocadas por rompimentos de tubulações residenciais.", "Quando o sinal Wi-Fi desaparece repentinamente das empresas e escolas por falha técnica no switch."], "correct": 1, "rationale": "O sumiço social (ou 'phubbing') acontece quando as interações presenciais saudáveis são ignoradas ou sabotadas porque os indivíduos preferem ficar imersos no universo paralelo de seus smartphones."}, {"num": 28, "question": "Se um estudante sofrer ou testemunhar a prática de Cyberbullying, quais medidas devem ser tomadas conforme as diretrizes do material?", "hint": "Evite retaliações emocionais imediatas na internet e procure registrar as evidências para buscar o amparo devido.", "options": ["Responder com xingamentos ainda mais fortes para demonstrar autoridade nas redes sociais públicas.", "Mudar o endereço do e-mail principal para maria.silva@gmail.com e aceitar todas as permissões de localização.", "Não revidar, salvar as provas (prints de tela), bloquear o agressor e avisar imediatamente um adulto responsável ou denunciar na plataforma.", "Ignorar completamente e formatar o roteador físico com o intuito de apagar as mensagens do celular dos colegas."], "correct": 2, "rationale": "A conduta segura e legal é juntar evidências inalteradas (prints, links), interromper o canal de contato bloqueando o agressor e reportar o crime a responsáveis, à escola ou a autoridades judiciais."}, {"num": 29, "question": "Qual é a regra áurea de segurança pessoal para interações presenciais com pessoas conhecidas unicamente no ambiente virtual?", "hint": "No mundo digital, perfis podem ser facilmente criados com identidades e intenções completamente dissimuladas.", "options": ["Encontrar-se às escondidas em locais isolados para testar o nível de sigilo da pegada digital.", "Nunca encontrar pessoalmente alguém conhecido apenas na internet sem a expressa autorização e o acompanhamento direto dos pais ou responsáveis.", "Exigir que a pessoa envie uma cópia do código do WhatsApp da mãe dela para validar o cadastro de amizade.", "Realizar o encontro em uma lan house pública utilizando um e-mail temporário gravado no switch de rede."], "correct": 1, "rationale": "Perfis falsos (catfishing) ou predadores online são riscos reais. Jamais marque encontros físicos com estranhos virtuais sem ciência, aprovação e presença física de seus pais ou responsáveis em local público."}, {"num": 30, "question": "Por que o recurso de 'Autenticação / Verificação em Duas Etapas' é simbolizado como uma 'fechadura com duas trancas' nas diretrizes de proteção?", "hint": "Mesmo que um invasor de sistemas consiga decifrar ou roubar sua senha escrita tradicional, ele esbarrará em uma segunda barreira instantânea.", "options": ["Porque obriga o usuário a digitar a mesma senha duas vezes seguidas usando letras maiúsculas.", "Porque ela impede o funcionamento simultâneo de conexões cabeadas LAN e conexões sem fio WLAN no modem.", "Porque ela duplica automaticamente o tamanho dos anexos enviados através da comutação de pacotes de dados.", "Porque exige, além da senha comum, um código secundário dinâmico enviado ao seu celular para validar e liberar o acesso."], "correct": 3, "rationale": "A verificação em duas etapas (2FA) adiciona uma barreira extra crítica: além de algo que você sabe (senha), requer algo que você possui (um token temporário enviado ao seu celular), barrando invasões remotas."}];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let hintUsed = false;
+        let answered = false;
+        let userHistory = []; // Tracks true/false per question
+
+        const progressBar = document.getElementById('progress-bar');
+        const questionCounter = document.getElementById('question-counter');
+        const scoreCounter = document.getElementById('score-counter');
+        const questionText = document.getElementById('question-text');
+        const optionsList = document.getElementById('options-list');
+        const hintBox = document.getElementById('hint-box');
+        const feedbackBox = document.getElementById('feedback-box');
+        const feedbackTitle = document.getElementById('feedback-title');
+        const feedbackRationale = document.getElementById('feedback-rationale');
+        const btnHint = document.getElementById('btn-hint');
+        const btnNext = document.getElementById('btn-next');
+        const quizPanel = document.getElementById('quiz-panel');
+        const resultsPanel = document.getElementById('results-panel');
+
+        function loadQuestion() {
+            answered = false;
+            hintUsed = false;
+            btnNext.disabled = true;
+            btnHint.disabled = false;
+            hintBox.style.display = 'none';
+            feedbackBox.style.display = 'none';
+            
+            const currentQuestion = quizData[currentQuestionIndex];
+            
+            // Progress and counters
+            const progressPercent = ((currentQuestionIndex) / quizData.length) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+            questionCounter.innerText = `Questão ${currentQuestionIndex + 1} de ${quizData.length}`;
+            scoreCounter.innerText = `Acertos: ${score}`;
+            
+            // Content setup
+            questionText.innerText = currentQuestion.question;
+            hintBox.innerText = currentQuestion.hint;
+            
+            // Generate option buttons
+            optionsList.innerHTML = '';
+            currentQuestion.options.forEach((option, idx) => {
+                const button = document.createElement('button');
+                button.className = 'option-item';
+                button.innerText = option;
+                button.onclick = () => selectOption(idx);
+                optionsList.appendChild(button);
+            });
+        }
+
+        function toggleHint() {
+            if (hintBox.style.display === 'block') {
+                hintBox.style.display = 'none';
+            } else {
+                hintBox.style.display = 'block';
+                hintUsed = true;
+            }
+        }
+
+        function selectOption(selectedIdx) {
+            if (answered) return;
+            answered = true;
+            
+            const currentQuestion = quizData[currentQuestionIndex];
+            const isCorrect = selectedIdx === currentQuestion.correct;
+            
+            userHistory.push({
+                question: currentQuestion.question,
+                isCorrect: isCorrect,
+                correctText: currentQuestion.options[currentQuestion.correct]
+            });
+
+            if (isCorrect) {
+                score++;
+                scoreCounter.innerText = `Acertos: ${score}`;
+            }
+
+            // Highlight answers
+            const buttons = optionsList.getElementsByClassName('option-item');
+            Array.from(buttons).forEach((button, idx) => {
+                button.disabled = true;
+                if (idx === currentQuestion.correct) {
+                    button.classList.add('correct');
+                } else if (idx === selectedIdx) {
+                    button.classList.add('incorrect');
+                }
+            });
+
+            // Show feedback rationale card
+            feedbackBox.style.display = 'block';
+            if (isCorrect) {
+                feedbackBox.className = 'feedback-box correct-style';
+                feedbackTitle.className = 'feedback-title correct-text';
+                feedbackTitle.innerText = '? Resposta Correta!';
+            } else {
+                feedbackBox.className = 'feedback-box incorrect-style';
+                feedbackTitle.className = 'feedback-title incorrect-text';
+                feedbackTitle.innerText = '? Resposta Incorreta';
+            }
+            feedbackRationale.innerText = currentQuestion.rationale;
+            
+            btnHint.disabled = true;
+            btnNext.disabled = false;
+            
+            // Update bar dynamically
+            if (currentQuestionIndex === quizData.length - 1) {
+                btnNext.innerText = 'Ver Resultado Final';
+            } else {
+                btnNext.innerText = 'Avançar ?';
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            progressBar.style.width = '100%';
+            quizPanel.style.display = 'none';
+            resultsPanel.style.display = 'block';
+            
+            const percent = Math.round((score / quizData.length) * 100);
+            document.getElementById('score-percent').innerText = `${percent}%`;
+            
+            // SVG circular progress math
+            const circle = document.getElementById('circle-progress');
+            const circumference = 2 * Math.PI * 65; // radius = 65 -> 408.4
+            const offset = circumference - (percent / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+
+            // Narrative summary message based on performance
+            let performanceMsg = '';
+            if (percent === 100) performanceMsg = 'Excelente! Você domina completamente o funcionamento e segurança da internet! ??';
+            else if (percent >= 80) performanceMsg = 'Muito bem! Seus conhecimentos digitais estão afiados e seguros. ??';
+            else if (percent >= 50) performanceMsg = 'Bom trabalho! Mas vale revisar alguns pontos teóricos e práticos de segurança. ??';
+            else performanceMsg = 'Continue estudando! Revise os slides da apresentação para navegar de forma mais consciente e protegida. ???';
+
+            document.getElementById('results-summary').innerHTML = `
+                <p style="font-weight:600; color:var(--text-main); margin-bottom:10px;">${performanceMsg}</p>
+                Você acertou <strong>${score}</strong> de <strong>${quizData.length}</strong> questões.
+            `;
+
+            // Populate the detailed historical review list
+            const reviewList = document.getElementById('review-list');
+            reviewList.innerHTML = '';
+            userHistory.forEach((item, idx) => {
+                const reviewItem = document.createElement('div');
+                reviewItem.className = 'review-item';
+                
+                const statusIcon = document.createElement('span');
+                statusIcon.className = `review-status ${item.isCorrect ? 'correct' : 'incorrect'}`;
+                statusIcon.innerText = item.isCorrect ? '?' : '?';
+                
+                const reviewInfo = document.createElement('div');
+                reviewInfo.className = 'review-info';
+                reviewInfo.innerHTML = `
+                    <h4>Questão ${idx + 1}</h4>
+                    <p style="color:var(--text-main); margin-bottom:4px;">${item.question}</p>
+                    <p><span style="color:var(--primary)">Resposta Correta:</span> ${item.correctText}</p>
+                `;
+                
+                reviewItem.appendChild(statusIcon);
+                reviewItem.appendChild(reviewInfo);
+                reviewList.appendChild(reviewItem);
+            });
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            userHistory = [];
+            btnNext.innerText = 'Avançar ?';
+            resultsPanel.style.display = 'none';
+            quizPanel.style.display = 'block';
+            loadQuestion();
+        }
+
+        // Initial launch
+        loadQuestion();
+    </script>
+</body>
+</html>
