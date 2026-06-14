@@ -1,9 +1,8 @@
 {
+  "id": "/",
   "name": "NIC Formação Profissional",
   "short_name": "NIC Formação",
-  "description": "Cursos profissionalizantes em informática, inglês e gestão empresarial em Santa Rita - PB. Ensino prático e preparação para o mercado de trabalho.",
-  "version": "1.1.0",
-  "manifest_version": 11,
+  "description": "Cursos profissionalizantes em informática, inglês e gestão empresarial em Santa Rita - PB. Ensino prático, certificado e preparação para o mercado de trabalho.",
   "start_url": "./?utm_source=pwa",
   "scope": "./",
   "display": "standalone",
@@ -15,12 +14,6 @@
   "dir": "ltr",
   "prefer_related_applications": false,
   "icons": [
-    {
-      "src": "./assets/favicon.png",
-      "sizes": "32x32",
-      "type": "image/png",
-      "purpose": "any"
-    },
     {
       "src": "./assets/icon-192.png",
       "sizes": "192x192",
@@ -34,27 +27,12 @@
       "purpose": "any maskable"
     }
   ],
-  "screenshots": [
-    {
-      "src": "./assets/screenshot1.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Tela inicial do Portal NIC Formação"
-    },
-    {
-      "src": "./assets/screenshot2.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Página de cursos no celular"
-    }
-  ],
   "shortcuts": [
     {
-      "name": "Ver Cursos",
-      "short_name": "Cursos",
-      "url": "./#cursos",
+      "name": "Área do Aluno",
+      "short_name": "Aluno",
+      "url": "./login.html",
+      "description": "Acessar portal do aluno e conteúdos",
       "icons": [
         {
           "src": "./assets/icon-192.png",
@@ -63,9 +41,10 @@
       ]
     },
     {
-      "name": "Área do Aluno",
-      "short_name": "Aluno",
-      "url": "./login.html",
+      "name": "Cursos",
+      "short_name": "Cursos",
+      "url": "./#cursos",
+      "description": "Conheça nossos cursos profissionalizantes",
       "icons": [
         {
           "src": "./assets/icon-192.png",
@@ -77,6 +56,7 @@
       "name": "Contato",
       "short_name": "Fale Conosco",
       "url": "./#contato",
+      "description": "Endereço e telefone da escola",
       "icons": [
         {
           "src": "./assets/icon-192.png",
