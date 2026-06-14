@@ -1,21 +1,26 @@
 {
-  "id": "/",
-  "name": "Área do Aluno - NIC Formação",
-  "short_name": "NIC Aluno",
-  "description": "Portal educacional da NIC Formação com cursos, apostilas, quizzes, avaliações e acompanhamento do aluno.",
-  "start_url": "./index.html",
+  "name": "NIC Formação Profissional",
+  "short_name": "NIC Formação",
+  "description": "Cursos profissionalizantes em informática, inglês e gestão empresarial em Santa Rita - PB. Ensino prático e preparação para o mercado de trabalho.",
+  "version": "1.1.0",
+  "manifest_version": 11,
+  "start_url": "./?utm_source=pwa",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#043B7B",
+  "display_override": ["standalone", "fullscreen"],
   "orientation": "portrait-primary",
+  "background_color": "#043B7B",
+  "theme_color": "#043B7B",
   "lang": "pt-BR",
   "dir": "ltr",
-  "categories": [
-    "education",
-    "productivity"
-  ],
+  "prefer_related_applications": false,
   "icons": [
+    {
+      "src": "./assets/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "./assets/icon-192.png",
       "sizes": "192x192",
@@ -31,9 +36,57 @@
   ],
   "screenshots": [
     {
-      "src": "./assets/og-image.png",
-      "sizes": "1200x630",
-      "type": "image/png"
+      "src": "./assets/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Tela inicial do Portal NIC Formação"
+    },
+    {
+      "src": "./assets/screenshot2.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Página de cursos no celular"
     }
-  ]
+  ],
+  "shortcuts": [
+    {
+      "name": "Ver Cursos",
+      "short_name": "Cursos",
+      "url": "./#cursos",
+      "icons": [
+        {
+          "src": "./assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Área do Aluno",
+      "short_name": "Aluno",
+      "url": "./login.html",
+      "icons": [
+        {
+          "src": "./assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Contato",
+      "short_name": "Fale Conosco",
+      "url": "./#contato",
+      "icons": [
+        {
+          "src": "./assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "categories": ["education", "productivity", "business"],
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
 }
