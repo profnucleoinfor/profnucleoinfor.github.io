@@ -2,53 +2,52 @@
 <html lang="pt-BR">
 <head>
   <!-- Meta -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>NIC Formação Profissional | Portal Educacional</title>
 
-  <meta name="description" content="Cursos profissionalizantes em informática, inglês e gestão empresarial em Santa Rita - PB. Portal educacional moderno com acesso do aluno, módulos interativos e ensino profissionalizante.">
+  <meta name="description" content="Cursos profissionalizantes em informática, inglês e gestão empresarial em Santa Rita - PB. Portal educacional moderno com acesso do aluno, módulos interativos e ensino profissionalizante." />
 
-  <meta name="theme-color" content="#043B7B">
-  <meta name="application-name" content="NIC Formação">
-  <meta name="mobile-web-app-capable" content="yes">
-
-  <!-- Apple PWA -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="NIC Formação">
+  <meta name="theme-color" content="#043B7B" />
+  <meta name="application-name" content="NIC Formação" />
+  <meta name="mobile-web-app-capable" content="yes" />
 
   <!-- SEO -->
-  <meta name="robots" content="index,follow">
-  <meta name="author" content="NIC Formação">
-  <meta name="language" content="pt-BR">
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="NIC Formação" />
+  <meta name="language" content="pt-BR" />
+
+  <!-- Apple PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="NIC Aluno" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="NIC Formação Profissional">
-  <meta property="og:description" content="Transforme seu futuro com cursos profissionalizantes modernos.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://profnucleoinfor.github.io/">
-  <meta property="og:image" content="https://profnucleoinfor.github.io/assets/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="NIC Formação Profissional" />
+  <meta property="og:description" content="Transforme seu futuro com cursos profissionalizantes modernos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://profnucleoinfor.github.io/" />
+  <meta property="og:site_name" content="NIC Formação Profissional" />
+  <meta property="og:image" content="https://profnucleoinfor.github.io/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="pt_BR" />
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="NIC Formação Profissional">
-  <meta name="twitter:description" content="Transforme seu futuro com cursos profissionalizantes modernos.">
-  <meta name="twitter:image" content="https://profnucleoinfor.github.io/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NIC Formação Profissional" />
+  <meta name="twitter:description" content="Transforme seu futuro com cursos profissionalizantes modernos." />
+  <meta name="twitter:image" content="https://profnucleoinfor.github.io/assets/og-image.png" />
 
   <!-- PWA -->
-  <link rel="manifest" href="./manifest.json?v=10">
-  <link rel="icon" type="image/png" href="./assets/favicon.png">
-  <link rel="apple-touch-icon" href="./assets/icon-192.png">
-
-  <!-- Preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
 
   <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Tailwind -->
@@ -117,6 +116,95 @@
   </style>
 </head>
 
+<body class="bg-white text-nicBlue font-sans overflow-x-hidden">
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="flex items-center justify-between h-20">
+
+      <!-- LOGO -->
+      <a href="#inicio" class="flex items-center gap-3">
+
+        <div class="text-4xl font-extrabold">
+          <span class="text-nicBlueDark">N</span><span class="text-nicGreenMid">I</span><span class="text-nicBlueDark">C</span>
+        </div>
+
+        <div>
+          <h1 class="font-bold text-lg text-nicBlue">
+            Núcleo Infor
+          </h1>
+
+          <p class="text-sm text-slate-500">
+            Formação Profissional
+          </p>
+        </div>
+
+      </a>
+
+      <!-- MENU DESKTOP -->
+      <nav class="hidden md:flex items-center gap-8 font-medium">
+
+        <a href="#inicio" class="hover:text-nicGreenMid transition">
+          Início
+        </a>
+
+        <a href="#cursos" class="hover:text-nicGreenMid transition">
+          Cursos
+        </a>
+
+        <a href="#diferenciais" class="hover:text-nicGreenMid transition">
+          Diferenciais
+        </a>
+
+        <a href="#contato" class="hover:text-nicGreenMid transition">
+          Contato
+        </a>
+
+        <a href="./login.html"
+           class="bg-gradient-to-r from-nicGreenMid to-nicBlueDark text-white px-5 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
+          Área do Aluno
+        </a>
+
+      </nav>
+
+      <!-- MENU MOBILE -->
+      <button id="menuBtn"
+              class="md:hidden text-2xl text-nicBlueDark"
+              aria-label="Abrir Menu">
+
+        <i class="fa-solid fa-bars"></i>
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+       class="hidden md:hidden bg-white border-t border-slate-200">
+
+    <div class="flex flex-col p-6 gap-4 font-medium">
+
+      <a href="#inicio">Início</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#contato">Contato</a>
+
+      <a href="./login.html"
+         class="bg-nicGreenMid text-white text-center py-3 rounded-xl mt-2">
+        Área do Aluno
+      </a>
+
+    </div>
+
+  </div>
+
+</header>
+
 <!-- HERO -->
 <section id="inicio"
          class="hero-bg min-h-screen flex items-center pt-28 px-6">
@@ -133,7 +221,7 @@
           <span class="w-2 h-2 rounded-full bg-nicGreen animate-pulse"></span>
 
           <span class="text-sm font-medium">
-            Leia a Biblía: Romanos 12:2
+            Leia a Bíblia: Romanos 12:2
           </span>
 
         </div>
@@ -362,7 +450,7 @@
 
         <p class="text-slate-600 leading-relaxed mb-6">
 
-          Domine as tecnologias e softwares essencias para ingressar no mercado de trabalho.
+          Domine as tecnologias e softwares essenciais para ingressar no mercado de trabalho.
 
         </p>
 
@@ -371,8 +459,8 @@
           <li>✅ Windows + Linux</li>
           <li>✅ Word + Digitação</li>
           <li>✅ Excel</li>
-	  <li>✅ PowerPoint</li>
-	  <li>✅ Internet</li>
+          <li>✅ PowerPoint</li>
+          <li>✅ Internet</li>
           <li>✅ Canva e IA</li>
           
         </ul>
@@ -597,6 +685,8 @@
   </div>
 
 </footer>
+
+<!-- BOTÃO INSTALAR APP -->
 <button id="installAppBtn"
         type="button"
         class="hidden fixed bottom-24 right-6 bg-nicBlueDark hover:bg-nicBlue text-white rounded-full shadow-2xl z-50 transition hover:scale-105 px-5 py-4 font-bold items-center gap-3">
@@ -606,7 +696,7 @@
 
 </button>
 
-<!-- BOTÃO FLUTUANTE -->
+<!-- BOTÃO FLUTUANTE WHATSAPP -->
 <a href="https://wa.me/558321782447"
    target="_blank" rel="noopener noreferrer"
    class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl z-50 transition hover:scale-110">
@@ -615,9 +705,8 @@
 
 </a>
 
-<!-- SCRIPT -->
+<!-- SCRIPTS -->
 <script>
-
   // MENU MOBILE
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -626,8 +715,7 @@
     mobileMenu.classList.toggle('hidden');
   });
 
-
-  // INSTALAÇÃO DO APP
+  // INSTALAÇÃO DO APP PWA
   let deferredInstallPrompt = null;
   const installAppBtn = document.getElementById('installAppBtn');
 
@@ -640,7 +728,6 @@
 
   installAppBtn.addEventListener('click', async () => {
     if (!deferredInstallPrompt) return;
-
     deferredInstallPrompt.prompt();
     await deferredInstallPrompt.userChoice;
     deferredInstallPrompt = null;
@@ -653,25 +740,15 @@
     installAppBtn.classList.add('hidden');
     installAppBtn.classList.remove('inline-flex');
   });
+
   // SERVICE WORKER
   if ('serviceWorker' in navigator) {
-
     window.addEventListener('load', () => {
-
       navigator.serviceWorker.register('./service-worker.js')
-
-      .then(() => {
-        console.log('PWA carregado com sucesso');
-      })
-
-      .catch((err) => {
-        console.log('Erro no service worker:', err);
-      });
-
+        .then(() => console.log('PWA carregado com sucesso'))
+        .catch((err) => console.log('Erro no service worker:', err));
     });
-
   }
-
 </script>
 
 </body>
