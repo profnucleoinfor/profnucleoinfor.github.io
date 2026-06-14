@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Meta -->
+  <!-- Meta Básico -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>NIC Formação Profissional | Portal Educacional</title>
 
   <meta name="description" content="Cursos profissionalizantes em informática, inglês e gestão empresarial em Santa Rita - PB. Portal educacional moderno com acesso do aluno, módulos interativos e ensino profissionalizante." />
-
   <meta name="theme-color" content="#043B7B" />
   <meta name="application-name" content="NIC Formação" />
   <meta name="mobile-web-app-capable" content="yes" />
@@ -23,7 +22,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="NIC Aluno" />
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Redes Sociais -->
   <meta property="og:title" content="NIC Formação Profissional" />
   <meta property="og:description" content="Transforme seu futuro com cursos profissionalizantes modernos." />
   <meta property="og:type" content="website" />
@@ -40,8 +39,8 @@
   <meta name="twitter:description" content="Transforme seu futuro com cursos profissionalizantes modernos." />
   <meta name="twitter:image" content="https://profnucleoinfor.github.io/assets/og-image.png" />
 
-  <!-- PWA -->
-  <link rel="manifest" href="./manifest.json" />
+  <!-- PWA - Versão Sincronizada v11 -->
+  <link rel="manifest" href="./manifest.json?v=11" />
   <link rel="icon" type="image/png" href="./assets/favicon.png" />
   <link rel="apple-touch-icon" href="./assets/icon-192.png" />
 
@@ -50,13 +49,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Tailwind -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
-  <!-- Config Tailwind -->
+  <!-- Configuração de Cores Tailwind -->
   <script>
     tailwind.config = {
       theme: {
@@ -77,9 +76,9 @@
     }
   </script>
 
+  <!-- Estilos Personalizados -->
   <style type="text/tailwindcss">
     @layer utilities {
-
       .glass {
         background: rgba(255,255,255,0.08);
         backdrop-filter: blur(10px);
@@ -120,594 +119,290 @@
 
 <!-- HEADER -->
 <header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur border-b border-slate-200">
-
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-
     <div class="flex items-center justify-between h-20">
 
       <!-- LOGO -->
       <a href="#inicio" class="flex items-center gap-3">
-
         <div class="text-4xl font-extrabold">
           <span class="text-nicBlueDark">N</span><span class="text-nicGreenMid">I</span><span class="text-nicBlueDark">C</span>
         </div>
-
         <div>
-          <h1 class="font-bold text-lg text-nicBlue">
-            Núcleo Infor
-          </h1>
-
-          <p class="text-sm text-slate-500">
-            Formação Profissional
-          </p>
+          <h1 class="font-bold text-lg text-nicBlue">Núcleo Infor</h1>
+          <p class="text-sm text-slate-500">Formação Profissional</p>
         </div>
-
       </a>
 
       <!-- MENU DESKTOP -->
       <nav class="hidden md:flex items-center gap-8 font-medium">
-
-        <a href="#inicio" class="hover:text-nicGreenMid transition">
-          Início
-        </a>
-
-        <a href="#cursos" class="hover:text-nicGreenMid transition">
-          Cursos
-        </a>
-
-        <a href="#diferenciais" class="hover:text-nicGreenMid transition">
-          Diferenciais
-        </a>
-
-        <a href="#contato" class="hover:text-nicGreenMid transition">
-          Contato
-        </a>
-
-        <a href="./login.html"
-           class="bg-gradient-to-r from-nicGreenMid to-nicBlueDark text-white px-5 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
-          Área do Aluno
-        </a>
-
+        <a href="#inicio" class="hover:text-nicGreenMid transition">Início</a>
+        <a href="#cursos" class="hover:text-nicGreenMid transition">Cursos</a>
+        <a href="#diferenciais" class="hover:text-nicGreenMid transition">Diferenciais</a>
+        <a href="#contato" class="hover:text-nicGreenMid transition">Contato</a>
+        <a href="./login.html" class="bg-gradient-to-r from-nicGreenMid to-nicBlueDark text-white px-5 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">Área do Aluno</a>
       </nav>
 
-      <!-- MENU MOBILE -->
-      <button id="menuBtn"
-              class="md:hidden text-2xl text-nicBlueDark"
-              aria-label="Abrir Menu">
-
+      <!-- BOTÃO MENU MOBILE -->
+      <button id="menuBtn" class="md:hidden text-2xl text-nicBlueDark" aria-label="Abrir Menu">
         <i class="fa-solid fa-bars"></i>
-
       </button>
 
     </div>
-
   </div>
 
-  <!-- MOBILE MENU -->
-  <div id="mobileMenu"
-       class="hidden md:hidden bg-white border-t border-slate-200">
-
+  <!-- MENU MOBILE ABERTO -->
+  <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-200">
     <div class="flex flex-col p-6 gap-4 font-medium">
-
       <a href="#inicio">Início</a>
       <a href="#cursos">Cursos</a>
       <a href="#diferenciais">Diferenciais</a>
       <a href="#contato">Contato</a>
-
-      <a href="./login.html"
-         class="bg-nicGreenMid text-white text-center py-3 rounded-xl mt-2">
-        Área do Aluno
-      </a>
-
+      <a href="./login.html" class="bg-nicGreenMid text-white text-center py-3 rounded-xl mt-2">Área do Aluno</a>
     </div>
-
   </div>
-
 </header>
 
-<!-- HERO -->
-<section id="inicio"
-         class="hero-bg min-h-screen flex items-center pt-28 px-6">
-
+<!-- SEÇÃO HERO / INÍCIO -->
+<section id="inicio" class="hero-bg min-h-screen flex items-center pt-28 px-6">
   <div class="max-w-7xl mx-auto w-full">
-
     <div class="grid lg:grid-cols-2 gap-16 items-center">
 
-      <!-- TEXTO -->
+      <!-- TEXTO PRINCIPAL -->
       <div class="text-white">
-
         <div class="inline-flex items-center gap-2 bg-white/10 border border-white/10 px-4 py-2 rounded-full mb-6">
-
           <span class="w-2 h-2 rounded-full bg-nicGreen animate-pulse"></span>
-
-          <span class="text-sm font-medium">
-            Leia a Bíblia: Romanos 12:2
-          </span>
-
+          <span class="text-sm font-medium">Leia a Bíblia: Romanos 12:2</span>
         </div>
 
         <h2 class="text-5xl lg:text-7xl font-extrabold leading-tight text-shadow mb-6">
-
           Transforme seu futuro com tecnologia e educação.
-
         </h2>
 
         <p class="text-lg lg:text-xl text-slate-200 leading-relaxed max-w-2xl mb-10">
-
-          Cursos profissionalizantes modernos em informática,
-          inglês e gestão empresarial com metodologia prática,
-          ensino humanizado e foco no mercado de trabalho.
-
+          Cursos profissionalizantes modernos em informática, inglês e gestão empresarial com metodologia prática, ensino humanizado e foco no mercado de trabalho.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4">
-
-          <a href="#cursos"
-             class="bg-nicGreenMid hover:bg-nicGreen text-white font-bold px-8 py-4 rounded-2xl shadow-xl transition hover:scale-105 text-center">
-
+          <a href="#cursos" class="bg-nicGreenMid hover:bg-nicGreen text-white font-bold px-8 py-4 rounded-2xl shadow-xl transition hover:scale-105 text-center">
             Conheça os Cursos
-
           </a>
-
-          <a href="./login.html"
-             class="glass border border-white/10 px-8 py-4 rounded-2xl font-semibold hover:bg-white/20 transition text-center">
-
+          <a href="./login.html" class="glass border border-white/10 px-8 py-4 rounded-2xl font-semibold hover:bg-white/20 transition text-center">
             Entrar no Portal
-
           </a>
-
         </div>
 
-        <!-- STATS -->
+        <!-- ESTATÍSTICAS -->
         <div class="grid grid-cols-3 gap-6 mt-14">
-
           <div>
-            <h3 class="text-3xl font-extrabold text-nicGreen">
-              +500
-            </h3>
-
-            <p class="text-slate-300 text-sm">
-              alunos formados
-            </p>
+            <h3 class="text-3xl font-extrabold text-nicGreen">+500</h3>
+            <p class="text-slate-300 text-sm">alunos formados</p>
           </div>
-
           <div>
-            <h3 class="text-3xl font-extrabold text-nicGreen">
-              +10
-            </h3>
-
-            <p class="text-slate-300 text-sm">
-              anos ensinando
-            </p>
+            <h3 class="text-3xl font-extrabold text-nicGreen">+10</h3>
+            <p class="text-slate-300 text-sm">anos ensinando</p>
           </div>
-
           <div>
-            <h3 class="text-3xl font-extrabold text-nicGreen">
-              100%
-            </h3>
-
-            <p class="text-slate-300 text-sm">
-              foco profissional
-            </p>
+            <h3 class="text-3xl font-extrabold text-nicGreen">100%</h3>
+            <p class="text-slate-300 text-sm">foco profissional</p>
           </div>
-
         </div>
-
       </div>
 
-      <!-- CARD -->
+      <!-- CARDS LATERAIS -->
       <div class="hidden lg:block">
-
         <div class="glass rounded-3xl p-8 border border-white/10 shadow-2xl">
-
           <div class="grid grid-cols-2 gap-5">
-
+            
             <div class="bg-white/10 rounded-2xl p-6 hover-lift">
               <i class="fa-solid fa-laptop-code text-4xl text-nicGreen mb-4"></i>
-              <h3 class="font-bold text-xl text-white mb-2">Informática Presencial</h3>
-              <p class="text-slate-300 text-sm">
-                Ambiente Climatizado, 1 Computador por aluno, Material didático digital.
-              </p>
+              <h3 class="font-bold text-xl text-white mb-2">Informática</h3>
+              <p class="text-slate-300 text-sm">Ambiente climatizado, 1 computador por aluno, material digital.</p>
             </div>
 
             <div class="bg-white/10 rounded-2xl p-6 hover-lift">
               <i class="fa-solid fa-language text-4xl text-nicGreen mb-4"></i>
               <h3 class="font-bold text-xl text-white mb-2">Inglês</h3>
-              <p class="text-slate-300 text-sm">
-                Do básico ao avançado com prática real.
-              </p>
+              <p class="text-slate-300 text-sm">Do básico ao avançado com prática real de conversação.</p>
             </div>
 
             <div class="bg-white/10 rounded-2xl p-6 hover-lift">
               <i class="fa-solid fa-briefcase text-4xl text-nicGreen mb-4"></i>
               <h3 class="font-bold text-xl text-white mb-2">Gestão</h3>
-              <p class="text-slate-300 text-sm">
-                Administração, liderança e mercado.
-              </p>
+              <p class="text-slate-300 text-sm">Administração, liderança e preparação para o mercado.</p>
             </div>
 
             <div class="bg-white/10 rounded-2xl p-6 hover-lift">
               <i class="fa-solid fa-mobile-screen text-4xl text-nicGreen mb-4"></i>
               <h3 class="font-bold text-xl text-white mb-2">Portal App</h3>
-              <p class="text-slate-300 text-sm">
-                Acesse aulas e conteúdos pelo celular.
-              </p>
+              <p class="text-slate-300 text-sm">Acesse aulas e conteúdos de qualquer lugar pelo celular.</p>
             </div>
 
           </div>
-
         </div>
-
       </div>
 
     </div>
-
   </div>
-
 </section>
 
-<!-- CURSOS -->
-<section id="cursos"
-         class="py-24 bg-nicGray px-6">
-
+<!-- SEÇÃO CURSOS -->
+<section id="cursos" class="py-24 bg-nicGray px-6">
   <div class="max-w-7xl mx-auto">
-
     <div class="text-center mb-16">
-
-      <span class="text-nicGreenMid font-bold uppercase tracking-widest">
-        Cursos Profissionalizantes
-      </span>
-
-      <h2 class="text-4xl lg:text-5xl font-extrabold text-nicBlueDark mt-4 mb-6">
-
-        Formação prática para o mercado de trabalho
-
-      </h2>
-
-      <p class="max-w-3xl mx-auto text-slate-600 text-lg">
-
-        Aprenda habilidades modernas com metodologia prática,
-        acompanhamento profissional e conteúdos atualizados.
-
-      </p>
-
+      <span class="text-nicGreenMid font-bold uppercase tracking-widest">Cursos Profissionalizantes</span>
+      <h2 class="text-4xl lg:text-5xl font-extrabold text-nicBlueDark mt-4 mb-6">Formação prática para o mercado de trabalho</h2>
+      <p class="max-w-3xl mx-auto text-slate-600 text-lg">Aprenda habilidades modernas com metodologia prática, acompanhamento profissional e conteúdos atualizados.</p>
     </div>
 
     <div class="grid lg:grid-cols-3 gap-8">
-
-      <!-- CARD -->
+      
+      <!-- CURSO INGLÊS -->
       <div class="bg-white rounded-3xl p-8 card-shadow hover-lift">
-
         <div class="w-20 h-20 rounded-2xl bg-nicBlueDark flex items-center justify-center text-white text-3xl mb-6">
-
           <i class="fa-solid fa-language"></i>
-
         </div>
-
-        <h3 class="text-2xl font-bold text-nicBlueDark mb-4">
-          Inglês
-        </h3>
-
-        <p class="text-slate-600 leading-relaxed mb-6">
-
-          Conversação, leitura, escrita e compreensão com foco em viagens,
-          mercado de trabalho e crescimento profissional.
-
-        </p>
-
+        <h3 class="text-2xl font-bold text-nicBlueDark mb-4">Inglês</h3>
+        <p class="text-slate-600 leading-relaxed mb-6">Conversação, leitura, escrita e compreensão com foco em viagens, mercado de trabalho e crescimento profissional.</p>
         <ul class="space-y-3 text-slate-700">
-
           <li>✅ Conversação prática</li>
           <li>✅ Material atualizado</li>
           <li>✅ Exercícios reais</li>
-
         </ul>
-
       </div>
 
-      <!-- CARD -->
+      <!-- CURSO GESTÃO -->
       <div class="bg-white rounded-3xl p-8 card-shadow hover-lift">
-
         <div class="w-20 h-20 rounded-2xl bg-nicGreenMid flex items-center justify-center text-white text-3xl mb-6">
-
           <i class="fa-solid fa-briefcase"></i>
-
         </div>
-
-        <h3 class="text-2xl font-bold text-nicBlueDark mb-4">
-          Gestão Empresarial
-        </h3>
-
-        <p class="text-slate-600 leading-relaxed mb-6">
-
-          Administração, liderança, finanças e organização empresarial
-          para quem deseja crescer profissionalmente.
-
-        </p>
-
+        <h3 class="text-2xl font-bold text-nicBlueDark mb-4">Gestão Empresarial</h3>
+        <p class="text-slate-600 leading-relaxed mb-6">Administração, liderança, finanças e organização empresarial para quem deseja crescer profissionalmente.</p>
         <ul class="space-y-3 text-slate-700">
-
           <li>✅ Liderança</li>
           <li>✅ Planejamento</li>
           <li>✅ Administração moderna</li>
-
         </ul>
-
       </div>
 
-      <!-- CARD -->
+      <!-- CURSO INFORMÁTICA -->
       <div class="bg-white rounded-3xl p-8 card-shadow hover-lift">
-
         <div class="w-20 h-20 rounded-2xl bg-nicBlue flex items-center justify-center text-white text-3xl mb-6">
-
           <i class="fa-solid fa-laptop-code"></i>
-
         </div>
-
-        <h3 class="text-2xl font-bold text-nicBlueDark mb-4">
-          Informática
-        </h3>
-
-        <p class="text-slate-600 leading-relaxed mb-6">
-
-          Domine as tecnologias e softwares essenciais para ingressar no mercado de trabalho.
-
-        </p>
-
+        <h3 class="text-2xl font-bold text-nicBlueDark mb-4">Informática</h3>
+        <p class="text-slate-600 leading-relaxed mb-6">Domine as tecnologias e softwares essenciais para ingressar e se destacar no mercado de trabalho.</p>
         <ul class="space-y-3 text-slate-700">
-
           <li>✅ Windows + Linux</li>
           <li>✅ Word + Digitação</li>
           <li>✅ Excel</li>
           <li>✅ PowerPoint</li>
           <li>✅ Internet</li>
-          <li>✅ Canva e IA</li>
-          
+          <li>✅ Canva e Inteligência Artificial</li>
         </ul>
-
       </div>
 
     </div>
-
   </div>
-
 </section>
 
-<!-- DIFERENCIAIS -->
-<section id="diferenciais"
-         class="py-24 px-6 bg-white">
-
+<!-- SEÇÃO DIFERENCIAIS -->
+<section id="diferenciais" class="py-24 px-6 bg-white">
   <div class="max-w-7xl mx-auto">
-
     <div class="text-center mb-16">
-
-      <h2 class="text-4xl font-extrabold text-nicBlueDark mb-5">
-
-        Por que escolher a NIC?
-
-      </h2>
-
-      <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-
-        Ensino moderno, acompanhamento humanizado e metodologia
-        focada no desenvolvimento real do aluno.
-
-      </p>
-
+      <h2 class="text-4xl font-extrabold text-nicBlueDark mb-5">Por que escolher a NIC?</h2>
+      <p class="text-lg text-slate-600 max-w-3xl mx-auto">Ensino moderno, acompanhamento humanizado e metodologia focada no desenvolvimento real do aluno.</p>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
+      
       <div class="text-center p-8 rounded-3xl bg-nicGray hover-lift">
-
         <i class="fa-solid fa-graduation-cap text-5xl text-nicGreenMid mb-6"></i>
-
-        <h3 class="font-bold text-xl mb-3">
-          Ensino Prático
-        </h3>
-
-        <p class="text-slate-600">
-          Aprendizado direto ao ponto com exercícios reais.
-        </p>
-
+        <h3 class="font-bold text-xl mb-3">Ensino Prático</h3>
+        <p class="text-slate-600">Aprendizado direto ao ponto com exercícios reais do dia a dia profissional.</p>
       </div>
 
       <div class="text-center p-8 rounded-3xl bg-nicGray hover-lift">
-
         <i class="fa-solid fa-mobile-screen-button text-5xl text-nicGreenMid mb-6"></i>
-
-        <h3 class="font-bold text-xl mb-3">
-          Portal do Aluno
-        </h3>
-
-        <p class="text-slate-600">
-          Acesso moderno via celular ou computador.
-        </p>
-
+        <h3 class="font-bold text-xl mb-3">Portal do Aluno</h3>
+        <p class="text-slate-600">Acesso moderno via celular ou computador, com materiais e atividades online.</p>
       </div>
 
       <div class="text-center p-8 rounded-3xl bg-nicGray hover-lift">
-
         <i class="fa-solid fa-certificate text-5xl text-nicGreenMid mb-6"></i>
-
-        <h3 class="font-bold text-xl mb-3">
-          Certificação
-        </h3>
-
-        <p class="text-slate-600">
-          Certificados válidos para currículo profissional.
-        </p>
-
+        <h3 class="font-bold text-xl mb-3">Certificação</h3>
+        <p class="text-slate-600">Certificados válidos e reconhecidos para o seu currículo profissional.</p>
       </div>
 
       <div class="text-center p-8 rounded-3xl bg-nicGray hover-lift">
-
         <i class="fa-solid fa-rocket text-5xl text-nicGreenMid mb-6"></i>
-
-        <h3 class="font-bold text-xl mb-3">
-          Tecnologia Atual
-        </h3>
-
-        <p class="text-slate-600">
-          Conteúdo atualizado com IA e ferramentas modernas.
-        </p>
-
+        <h3 class="font-bold text-xl mb-3">Tecnologia Atual</h3>
+        <p class="text-slate-600">Conteúdo atualizado com Inteligência Artificial e ferramentas mais usadas no mercado.</p>
       </div>
 
     </div>
-
   </div>
-
 </section>
 
-<!-- CTA -->
+<!-- CHAMADA PARA AÇÃO -->
 <section class="py-24 px-6 bg-gradient-to-r from-nicBlueDark to-nicBlue">
-
   <div class="max-w-5xl mx-auto text-center text-white">
-
-    <h2 class="text-4xl lg:text-5xl font-extrabold mb-6">
-
-      Comece hoje a transformar seu futuro.
-
-    </h2>
-
-    <p class="text-xl text-slate-200 mb-10">
-
-      Faça parte da nova geração de profissionais preparados para o mercado.
-
-    </p>
-
+    <h2 class="text-4xl lg:text-5xl font-extrabold mb-6">Comece hoje a transformar seu futuro.</h2>
+    <p class="text-xl text-slate-200 mb-10">Faça parte da nova geração de profissionais preparados para o mercado de trabalho.</p>
     <div class="flex flex-col sm:flex-row justify-center gap-4">
-
-      <a href="./login.html"
-         class="bg-nicGreenMid hover:bg-nicGreen text-white font-bold px-8 py-4 rounded-2xl transition hover:scale-105">
-
-        Entrar no Portal
-
-      </a>
-
-      <a href="https://wa.me/558321782447"
-         target="_blank" rel="noopener noreferrer"
-         class="bg-white text-nicBlueDark font-bold px-8 py-4 rounded-2xl hover:scale-105 transition">
-
-        Falar no WhatsApp
-
-      </a>
-
+      <a href="./login.html" class="bg-nicGreenMid hover:bg-nicGreen text-white font-bold px-8 py-4 rounded-2xl transition hover:scale-105">Entrar no Portal</a>
+      <a href="https://wa.me/558321782447" target="_blank" rel="noopener noreferrer" class="bg-white text-nicBlueDark font-bold px-8 py-4 rounded-2xl hover:scale-105 transition">Falar no WhatsApp</a>
     </div>
-
   </div>
-
 </section>
 
-<!-- CONTATO -->
-<section id="contato"
-         class="py-24 px-6 bg-white">
-
+<!-- SEÇÃO CONTATO -->
+<section id="contato" class="py-24 px-6 bg-white">
   <div class="max-w-5xl mx-auto text-center">
-
-    <h2 class="text-4xl font-extrabold text-nicBlueDark mb-10">
-
-      Localização e Contato
-
-    </h2>
-
+    <h2 class="text-4xl font-extrabold text-nicBlueDark mb-10">Localização e Contato</h2>
     <div class="bg-nicGray rounded-3xl p-10 card-shadow">
-
       <div class="w-24 h-24 rounded-full bg-nicGreenMid text-white flex items-center justify-center text-4xl mx-auto mb-6">
-
         <i class="fa-solid fa-location-dot"></i>
-
       </div>
-
-      <h3 class="text-2xl font-bold text-nicBlueDark mb-4">
-
-        NIC Formação Profissional
-
-      </h3>
-
-      <p class="text-lg text-slate-600 mb-2">
-        Rua São João, 86
-      </p>
-
-      <p class="text-lg text-slate-600 mb-2">
-        Centro - Santa Rita - PB
-      </p>
-
-      <p class="text-lg text-slate-600 mb-8">
-        Paraíba - Brasil
-      </p>
-
-      <a href="https://wa.me/558321782447"
-         target="_blank" rel="noopener noreferrer"
-         class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-2xl font-bold transition">
-
+      <h3 class="text-2xl font-bold text-nicBlueDark mb-4">NIC Formação Profissional</h3>
+      <p class="text-lg text-slate-600 mb-2">Rua São João, 86</p>
+      <p class="text-lg text-slate-600 mb-2">Centro - Santa Rita - PB</p>
+      <p class="text-lg text-slate-600 mb-8">Paraíba - Brasil</p>
+      <a href="https://wa.me/558321782447" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-2xl font-bold transition">
         <i class="fa-brands fa-whatsapp text-2xl"></i>
-
         Atendimento via WhatsApp
-
       </a>
-
     </div>
-
   </div>
-
 </section>
 
-<!-- FOOTER -->
+<!-- RODAPÉ -->
 <footer class="bg-[#021933] text-white py-10 px-6">
-
   <div class="max-w-7xl mx-auto text-center">
-
     <div class="text-4xl font-extrabold mb-4">
-
       <span>N</span><span class="text-nicGreen">I</span><span>C</span>
-
     </div>
-
-    <p class="text-slate-400 mb-4">
-
-      Núcleo Infor Formação Profissional © 2026
-
-    </p>
-
-    <p class="text-slate-500 text-sm">
-
-      Todos os direitos reservados
-
-    </p>
+    <p class="text-slate-400 mb-4">Núcleo Infor Formação Profissional © 2026</p>
+    <p class="text-slate-500 text-sm">Todos os direitos reservados</p>
     <p class="mt-4">
-      <a href="./privacidade.html" class="text-slate-400 hover:text-nicGreen transition text-sm">
-        Política de Privacidade
-      </a>
+      <a href="./privacidade.html" class="text-slate-400 hover:text-nicGreen transition text-sm">Política de Privacidade</a>
     </p>
-
   </div>
-
 </footer>
 
 <!-- BOTÃO INSTALAR APP -->
-<button id="installAppBtn"
-        type="button"
-        class="hidden fixed bottom-24 right-6 bg-nicBlueDark hover:bg-nicBlue text-white rounded-full shadow-2xl z-50 transition hover:scale-105 px-5 py-4 font-bold items-center gap-3">
-
+<button id="installAppBtn" type="button" class="hidden fixed bottom-24 right-6 bg-nicBlueDark hover:bg-nicBlue text-white rounded-full shadow-2xl z-50 transition hover:scale-105 px-5 py-4 font-bold items-center gap-3">
   <i class="fa-solid fa-download"></i>
   <span>Instalar app</span>
-
 </button>
 
 <!-- BOTÃO FLUTUANTE WHATSAPP -->
-<a href="https://wa.me/558321782447"
-   target="_blank" rel="noopener noreferrer"
-   class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl z-50 transition hover:scale-110">
-
+<a href="https://wa.me/558321782447" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl z-50 transition hover:scale-110">
   <i class="fa-brands fa-whatsapp"></i>
-
 </a>
 
 <!-- SCRIPTS -->
 <script>
-  // MENU MOBILE
+  // CONTROLE DO MENU MOBILE
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
 
@@ -715,7 +410,25 @@
     mobileMenu.classList.toggle('hidden');
   });
 
-  // INSTALAÇÃO DO APP PWA
+  // REGISTRO DO SERVICE WORKER - VERSÃO v11 SINCRONIZADA
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', async () => {
+      try {
+        const registration = await navigator.serviceWorker.register(
+          './service-worker.js?v=11'
+        );
+        console.log('PWA NIC Formação carregado com sucesso');
+        
+        // Força verificação imediata de atualizações
+        registration.update();
+
+      } catch (error) {
+        console.error('Erro no Service Worker:', error);
+      }
+    });
+  }
+
+  // LÓGICA DE INSTALAÇÃO DO PWA
   let deferredInstallPrompt = null;
   const installAppBtn = document.getElementById('installAppBtn');
 
@@ -740,15 +453,6 @@
     installAppBtn.classList.add('hidden');
     installAppBtn.classList.remove('inline-flex');
   });
-
-  // SERVICE WORKER
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./service-worker.js')
-        .then(() => console.log('PWA carregado com sucesso'))
-        .catch((err) => console.log('Erro no service worker:', err));
-    });
-  }
 </script>
 
 </body>
