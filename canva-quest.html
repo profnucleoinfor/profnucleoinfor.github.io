@@ -1,317 +1,753 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Módulo Canva Design</title>
-
-  <!-- ✅ CONFIGURAÇÕES PARA FUNCIONAR COMO APP (PWA) -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="NIC Aluno">
-    <meta name="theme-color" content="#043B7B">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <style>
-    :root {
-      --fundo: #0f172a;
-      --card: #1e293b;
-      --borda: #334155;
-      --texto: #f1f5f9;
-      --mod-cor: #00C4CC;
-      --mod-cor-2: #7D2AE7;
-      --mod-gradiente: linear-gradient(135deg, #00C4CC 0%, #7D2AE7 100%);
-    }
-
-    body {
-      background-color: var(--fundo);
-      color: var(--texto);
-      font-family: 'Inter', sans-serif;
-    }
-
-    .navbar {
-      background: rgba(30, 41, 59, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--borda);
-    }
-
-    .hero {
-      background: var(--mod-gradiente);
-      padding: 60px 20px;
-      text-align: center;
-      border-radius: 0 0 40px 40px;
-      box-shadow: 0 10px 30px rgba(125, 42, 231, 0.25);
-    }
-    .hero h1 span { color: #fde047; font-weight: 700; }
-
-    .mission-box {
-      background: rgba(125, 42, 231, 0.1);
-      border: 1px solid var(--mod-cor-2);
-      padding: 20px;
-      border-radius: 16px;
-      margin-top: -30px;
-      position: relative;
-      z-index: 10;
-      backdrop-filter: blur(5px);
-    }
-
-    .card-aula {
-      background: var(--card);
-      border: 1px solid var(--borda);
-      border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-      height: 100%;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .card-aula:hover {
-      transform: translateY(-8px);
-      border-color: var(--mod-cor);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-    }
-
-    .icon-box { font-size: 40px; margin-bottom: 15px; display: block; }
-
-    .btn-modulo {
-      background: var(--borda);
-      color: white;
-      border: none;
-      padding: 10px 25px;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: 0.3s;
-      width: 100%;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .card-aula:hover .btn-modulo { background: var(--mod-cor); }
-
-    kbd {
-      background-color: #334155;
-      border-radius: 5px;
-      border: 1px solid #475569;
-      color: #5eead4;
-      padding: 2px 6px;
-      font-weight: bold;
-      box-shadow: 0 2px 0 #000;
-    }
-
-    .accordion-item { border: none; margin-bottom: 10px; background: transparent; }
-    .accordion-button { 
-      border-radius: 12px !important; 
-      background-color: var(--card); 
-      color: white; 
-      border: 1px solid var(--borda);
-    }
-    .accordion-button::after { filter: invert(1); }
-    .accordion-button:not(.collapsed) {
-      background-color: rgba(0, 196, 204, 0.1);
-      color: #5eead4;
-      box-shadow: none;
-    }
-
-    footer { color: #64748b; font-size: 13px; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canva Quest | NIC Formação Profissional</title>
+  <meta name="description"
+content="Avaliação do módulo Canva: Design, Criatividade e Renda Extra da NIC Formação Profissional."/>
+  <meta name="theme-color" content="#043B7B" />
   <link rel="manifest" href="./manifest.json" />
   <link rel="icon" type="image/png" href="./assets/favicon.png" />
   <link rel="apple-touch-icon" href="./assets/icon-192.png" />
   <meta property="og:image" content="./assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" /></head>
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    :root {
+      --fundo: #0f172a;
+      --card: #1e293b;
+      --borda: #334155;
+      --texto: #f8fafc;
+      --texto-sec: #94a3b8;
+      --azul: #043B7B;
+      --verde: #7CAC3C;
+      --verde-claro: #A5E44E;
+      --erro: #ef4444;
+      --ok: #22c55e;
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(4, 59, 123, 0.95), rgba(15, 23, 42, 0.98)),
+        #0f172a;
+      color: var(--texto);
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 22px;
+      background: rgba(15, 23, 42, 0.82);
+      border-bottom: 1px solid var(--borda);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 1.05rem;
+    }
+
+    .brand span {
+      color: var(--texto-sec);
+      font-size: 0.86rem;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    a, button {
+      border: 1px solid var(--borda);
+      background: #253247;
+      color: var(--texto);
+      padding: 11px 15px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    a:hover, button:hover {
+      border-color: var(--verde-claro);
+      color: #d9f99d;
+    }
+
+    main {
+      width: min(100%, 980px);
+      margin: 0 auto;
+      padding: 28px 18px 44px;
+    }
+
+    .panel {
+      background: rgba(30, 41, 59, 0.92);
+      border: 1px solid var(--borda);
+      border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      padding: clamp(20px, 4vw, 34px);
+    }
+
+    .eyebrow {
+      color: var(--verde-claro);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      margin: 0 0 10px;
+    }
+
+    h1, h2 {
+      margin: 0;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      max-width: 760px;
+    }
+
+    h2 {
+      font-size: clamp(1.35rem, 3vw, 2rem);
+    }
+
+    .lead {
+      color: var(--texto-sec);
+      margin: 18px 0 0;
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .info {
+      border: 1px solid var(--borda);
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(15, 23, 42, 0.55);
+    }
+
+    .info span {
+      color: var(--texto-sec);
+      display: block;
+      font-size: 0.82rem;
+    }
+
+    .info strong {
+      font-size: 1.1rem;
+    }
+
+    label {
+      display: block;
+      color: var(--texto-sec);
+      font-weight: 700;
+      margin: 22px 0 8px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--borda);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--texto);
+      padding: 14px;
+      border-radius: 12px;
+      font: inherit;
+    }
+
+    .primary {
+      background: linear-gradient(135deg, var(--verde), var(--azul));
+      border: 0;
+      margin-top: 18px;
+      width: 100%;
+      color: white;
+    }
+
+    .hidden { display: none; }
+
+    .progress-wrap {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--texto-sec);
+      font-size: 0.9rem;
+    }
+
+    .progress {
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.25);
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--verde), var(--verde-claro));
+      border-radius: inherit;
+      transition: width 0.25s ease;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .option {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 15px;
+      border: 1px solid var(--borda);
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.55);
+      cursor: pointer;
+      color: var(--texto);
+      margin: 0;
+    }
+
+    .option:hover {
+      border-color: var(--verde);
+    }
+
+    .option input {
+      margin-top: 4px;
+      accent-color: var(--verde);
+    }
+
+    .result-card {
+      text-align: center;
+    }
+
+    .nota {
+      font-size: clamp(3rem, 12vw, 6.5rem);
+      font-weight: 900;
+      color: var(--verde-claro);
+      line-height: 1;
+      margin: 20px 0;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      margin-top: 12px;
+      background: rgba(34, 197, 94, 0.14);
+      color: #bbf7d0;
+      border: 1px solid rgba(34, 197, 94, 0.4);
+    }
+
+    .status.review {
+      background: rgba(239, 68, 68, 0.14);
+      color: #fecaca;
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .feedback {
+      color: var(--texto-sec);
+      margin: 0 auto;
+      max-width: 720px;
+    }
+
+    .actions-bottom {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 720px) {
+      header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .top-actions a {
+        flex: 1;
+        text-align: center;
+      }
+
+      .grid, .summary {
+        grid-template-columns: 1fr;
+      }
+    }
+@media print {
+  header,
+  .actions-bottom {
+    display:none;
+  }
+
+  body{
+    background:white;
+    color:black;
+  }
+
+  .panel{
+    border:none;
+    box-shadow:none;
+  }
+}
+.comentario{
+    margin:12px 0;
+    padding:12px;
+    border-radius:12px;
+    background:rgba(125,42,232,.08);
+    color:#444;
+    font-size:1rem;
+    line-height:1.5;
+}
+  </style>
+</head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="./dashboard.html">
-      <span class="me-2">⬅️</span> Painel
-    </a>
-    <div class="ms-auto">
-      <span class="badge" style="background-color: var(--mod-cor-2);">Módulo Canva Design</span>
-    </div>
-  </div>
-</nav>
-
-<section class="hero">
-  <div class="container">
-    <h1 class="display-5">Bem-vindo, <span id="nomeAlunoDisplay">Estudante</span> 🎨</h1>
-    <p class="lead opacity-75">
-      “Crie coisas lindas com suas próprias mãos.” <br> 
-      <small>Êxodo 35:32</small>
-    </p>
-  </div>
-</section>
-
-<div class="container mb-5 mt-5">
-  
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="mission-box text-center">
-        🎯 <strong>Missão:</strong> Dominar o design gráfico, criar artes para redes sociais, apresentações, cartões e materiais profissionais com facilidade e beleza!
-      </div>
-    </div>
-  </div>
-
-  <div class="row justify-content-center mt-4">
-    <div class="col-md-8">
-      <div class="text-center p-4 rounded-4" style="background: var(--mod-gradiente); box-shadow: 0 10px 25px rgba(125, 42, 231, 0.25);">
-        <h5 class="mb-1 text-white">Pronto para criar?</h5>
-        <p class="mb-3 text-white opacity-75 small">Acesse sua conta no Canva e comece a praticar agora mesmo.</p>
-        <a href="https://www.canva.com/login" target="_blank" rel="noopener noreferrer" class="btn btn-light fw-bold rounded-pill px-5 py-2">
-          🎨 Entrar no Canva
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="row g-4 mt-4">
-    <div class="col-md-3">
-      <div class="card-aula">
-        <span class="icon-box">📐</span>
-        <h5>Slides da Aula</h5>
-        <p class="text-muted small">Princípios de design e cores.</p>
-        <a href=./visualizador.html?titulo=Slides%20PowerPoint&url=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1Tf2KiBXjDloOIJvsTxo7orzocKstLhsh%2Fembed%3Fstart%3Dfalse%26loop%3Dfalse%26delayms%3D3000" target="_blank" rel="noopener noreferrer" class="btn-modulo">Abrir Conteúdo</a>
+  <header>
+    <div class="brand">
+      <img src="./assets/icon-192.png" alt="NIC" />
+      <div>
+        <strong>NIC Formação Profissional</strong>
+        <span>Canva Quest - Desafio Final</span>
       </div>
     </div>
 
-    <div class="col-md-3">
-      <div class="card-aula">
-        <span class="icon-box">📘</span>
-        <h5>Apostila</h5>
-        <p class="text-muted small">Guia completo de ferramentas do Canva.</p>
-        <a href="visualizador.html?titulo=Arquivo Drive&url=https://drive.google.com/file/d/16UmEJleEKtdwhSRrtQToFoq8sZyILYlp/preview" target="_blank" rel="noopener noreferrer" class="btn-modulo">Ler Agora</a>
-      </div>
+    <div class="top-actions">
+      <a href="./canva.html">Voltar ao módulo</a>
+      <a href="./dashboard.html">Painel</a>
     </div>
+  </header>
 
-    <div class="col-md-3">
-      <div class="card-aula">
-        <span class="icon-box">✍️</span>
-        <h5>Exercícios</h5>
-        <p class="text-muted small">Criação de artes e identidade visual.</p>
-        <a href="https://forms.gle/BV6gxxEkJJXq1z3A9" target="_blank" rel="noopener noreferrer" class="btn-modulo">Enviar Atividade</a>
+  <main>
+    <section id="start" class="panel">
+      <p class="eyebrow">Avaliação final</p>
+      <h1>Canva: Design, Criatividade e Renda Extra</h1>
+
+<p class="lead">
+Bem-vindo ao Canva Quest! Complete os desafios e descubra qual é o seu nível como designer.
+</p>
+
+<p class="lead">
+A prova funciona offline depois que a página for carregada pelo PWA.
+</p>
+
+      <div class="grid">
+       <div class="info"><span>Missões</span><strong>25</strong></div>
+        <div class="info"><span>Valor</span><strong>10 pontos</strong></div>
+        <div class="info"><span>Registro</span><strong>Local</strong></div>
       </div>
-    </div>
 
-    <div class="col-md-3">
-      <div class="card-aula" style="border-color: #ef4444;">
-        <span class="icon-box">📝</span>
-        <h5>Prova Final</h5>
-        <p class="text-muted small">Desafio de criação de material completo.</p>
-        <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 py-2 fw-bold">Iniciar Prova</button>
-      </div>
-    </div>
-  </div>
+      <label for="nome">Nome do aluno</label>
+      <input id="nome" type="text" placeholder="Digite seu nome completo" autocomplete="name" />
+      <button class="primary" type="button" onclick="iniciar()">Iniciar Prova</button>
+    </section>
 
-  <div class="row mt-5">
-    <div class="col-12">
-      <div class="card p-4" style="background: var(--card); border: 1px solid var(--borda); border-radius: 20px;">
-        <h2 class="mb-4 d-flex align-items-center">
-          <span class="me-3">💡</span> Dicas de Ouro do Design
-        </h2>
-        
-        <div class="accordion accordion-flush" id="accordionModulo">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#principios">
-                🎨 Regras de Design
-              </button>
-            </h2>
-            <div id="principios" class="accordion-collapse collapse" data-bs-parent="#accordionModulo">
-              <div class="accordion-body p-0">
-                <table class="table table-dark table-hover mb-0">
-                  <tbody>
-                    <tr><td>🎨</td><td>Use no máximo 3 cores principais</td></tr>
-                    <tr><td>🔤</td><td>Fuja de fontes difíceis de ler</td></tr>
-                    <tr><td>📏</td><td>Alinhe tudo para ter harmonia</td></tr>
-                    <tr><td>🌑</td><td>Espaço vazio também é design</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#atalhos">
-                ⚡ Atalhos Úteis
-              </button>
-            </h2>
-            <div id="atalhos" class="accordion-collapse collapse" data-bs-parent="#accordionModulo">
-              <div class="accordion-body p-0">
-                <table class="table table-dark table-hover mb-0">
-                  <tbody>
-                    <tr><td><kbd>Ctrl</kbd> + <kbd>D</kbd></td><td>Duplicar elemento</td></tr>
-                    <tr><td><kbd>Ctrl</kbd> + <kbd>G</kbd></td><td>Agrupar objetos</td></tr>
-                    <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd></td><td>Desagrupar objetos</td></tr>
-                    <tr><td><kbd>Alt</kbd> + Arrastar</td><td>Duplicar rapidamente</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+    <section id="quiz" class="panel hidden" aria-live="polite">
+      <div class="progress-wrap">
+        <div class="progress-meta">
+          <span id="contador">Questão 1 de 25</span>
+          <span id="porcentagem">0%</span>
         </div>
+        <div class="progress"><div class="bar" id="bar"></div></div>
       </div>
-    </div>
-  </div>
 
-  <div class="row mt-5">
-    <div class="col-12 text-center">
-      <div class="p-4 rounded-4" style="background: rgba(0, 196, 204, 0.05); border: 1px dashed var(--mod-cor);">
-        <h5>🔒 Revisão do Módulo</h5>
-        <p class="text-muted small">Design para impressão e mídias avançadas.</p>
-        <button onclick="acessarRevisao()" class="btn btn-warning px-5 rounded-pill fw-bold py-2">Liberar Conteúdo</button>
+      <h2 id="pergunta"></h2>
+      <div class="options" id="opcoes"></div>
+      <button class="primary" type="button" onclick="proxima()">Próxima</button>
+    </section>
+
+    <section id="fim" class="panel hidden result-card">
+      <p class="eyebrow">Avaliação finalizada</p>
+      <h1 id="aluno">Aluno</h1>
+      <p id="comentarioFinal" class="comentario"></p>
+      <div class="nota" id="nota">0.0</div>
+      <div id="status" class="status">Canva Quest Concluído</div>
+
+      <div class="summary">
+        <div class="info"><span>Acertos</span><strong id="acertos">0 de 25</strong></div>
+        <div class="info"><span>Percentual</span><strong id="percentual">0%</strong></div>
+        <div class="info"><span>Data</span><strong id="dataResultado">--</strong></div>
       </div>
-    </div>
-  </div>
 
-</div>
+      <p class="feedback" id="feedback"></p>
 
-<footer class="text-center py-5">
-  <small>© NIC Formação Profissional — Educação com Propósito</small>
-</footer>
+      <div class="actions-bottom">
+        <button type="button" onclick="window.print()">Imprimir resultado</button>
+        <button type="button" onclick="reiniciar()">Refazer prova</button>
+        <a href="./dashboard.html">Voltar ao painel</a>
+      </div>
+    </section>
+  </main>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const perguntas = [
 
-<script>
-  // ✅ REGISTRO DO SERVICE WORKER PARA O APP
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./service-worker.js');
+["O Canva é...",[
+"Um jogo",
+"Uma plataforma de design",
+"Um antivírus",
+"Um navegador"
+],1],
+
+["O Canva pode ser usado...",[
+"Apenas no computador",
+"Apenas no celular",
+"No computador e celular",
+"Apenas na internet da escola"
+],2],
+
+["O que é um template?",[
+"Um modelo pronto",
+"Uma fonte",
+"Um vídeo",
+"Uma música"
+],0],
+
+["Qual destes pode ser criado no Canva?",[
+"Apenas posts",
+"Apenas vídeos",
+"Apenas apresentações",
+"Posts, vídeos, apresentações e muito mais"
+],3],
+
+["Qual é a principal vantagem dos templates?",[
+"Economizar tempo",
+"Deixar o computador mais rápido",
+"Criar vírus",
+"Aumentar a internet"
+],0],
+
+["Quantas fontes são recomendadas em uma arte?",[
+"Até 3",
+"10",
+"15",
+"20"
+],0],
+
+["O que significa 'Menos é Mais'?",[
+"Usar muitos elementos",
+"Criar artes limpas e organizadas",
+"Escrever textos enormes",
+"Usar muitas cores"
+],1],
+
+["Uma arte organizada precisa de...",[
+"Alinhamento",
+"Muitas imagens",
+"Muitas fontes",
+"Muitos efeitos"
+],0],
+
+["Qual destas combinações costuma ser mais harmoniosa?",[
+"3 cores principais",
+"1 cor base, 1 secundária e 1 destaque",
+"10 cores aleatórias",
+"Apenas preto"
+],1],
+
+["O Canva pode criar vídeos?",[
+"Sim",
+"Não"
+],0],
+
+["Qual formato é usado para exportar vídeos?",[
+"PNG",
+"JPG",
+"MP4",
+"TXT"
+],2],
+
+["As animações servem para...",[
+"Movimentar elementos",
+"Apagar imagens",
+"Criar senhas",
+"Baixar aplicativos"
+],0],
+
+["Vídeos costumam chamar...",[
+"Menos atenção",
+"Mais atenção",
+"Nenhuma atenção",
+"Apenas atenção de professores"
+],1],
+
+["O que é Inteligência Artificial?",[
+"Tecnologia que auxilia tarefas",
+"Um vírus",
+"Uma impressora",
+"Um navegador"
+],0],
+
+["O Magic Design ajuda a...",[
+"Criar layouts automaticamente",
+"Formatar computador",
+"Baixar jogos",
+"Apagar arquivos"
+],0],
+
+["A IA pode ajudar a criar...",[
+"Títulos",
+"Descrições",
+"Ideias",
+"Todas as alternativas"
+],3],
+
+["A IA substitui totalmente o designer?",[
+"Sim",
+"Não"
+],1],
+
+["Quem pode ser cliente de um designer?",[
+"Padarias",
+"Lojas",
+"Igrejas",
+"Todos os anteriores"
+],3],
+
+["Um portfólio é...",[
+"Uma coleção dos seus trabalhos",
+"Uma rede social",
+"Um antivírus",
+"Um navegador"
+],0],
+
+["Qual valor costuma ser cobrado por um post simples para iniciantes?",[
+"R$ 30 a R$ 50",
+"R$ 1.000",
+"R$ 5",
+"Gratuito sempre"
+],0],
+
+["A regra do 50/50 significa...",[
+"Metade na entrada e metade na entrega",
+"50 clientes por dia",
+"50 artes por semana",
+"50 minutos de trabalho"
+],0],
+
+["O Canva possui banco de imagens?",[
+"Sim",
+"Não"
+],0],
+
+["Uma arte profissional deve ser...",[
+"Organizada",
+"Legível",
+"Objetiva",
+"Todas as alternativas"
+],3],
+
+["Antes de vender um serviço é recomendado...",[
+"Criar um portfólio",
+"Comprar outro computador",
+"Criar uma empresa",
+"Mudar de cidade"
+],0],
+
+["Qual o principal objetivo do Canva?",[
+"Comunicar ideias visualmente",
+"Jogar online",
+"Criar vírus",
+"Aumentar a internet"
+],0]
+
+];
+
+    function embaralharPerguntas() {
+      perguntas.sort(() => Math.random() - 0.5);
+    }
+
+    let atual = 0;
+    let acertos = 0;
+    let nomeAluno = '';
+
+    function iniciar() {
+      embaralharPerguntas();
+
+      nomeAluno = document.getElementById('nome').value.trim();
+
+      if (!nomeAluno) {
+        alert('Digite o nome do aluno.');
+        return;
+      }
+
+      localStorage.setItem('nomeAluno', nomeAluno);
+
+      atual = 0;
+      acertos = 0;
+
+      document.getElementById('start').classList.add('hidden');
+      document.getElementById('fim').classList.add('hidden');
+      document.getElementById('quiz').classList.remove('hidden');
+
+      mostrar();
+    }
+
+    function mostrar() {
+      const q = perguntas[atual];
+
+      // Progresso até a questão atual
+      const progresso = Math.round((atual / perguntas.length) * 100);
+
+      document.getElementById('contador').innerText =
+          `Questão ${atual + 1} de ${perguntas.length}`;
+
+      document.getElementById('porcentagem').innerText =
+          `${progresso}%`;
+
+      document.getElementById('bar').style.width =
+          `${progresso}%`;
+
+      document.getElementById('pergunta').innerText = q[0];
+
+      document.getElementById('opcoes').innerHTML = q[1].map((opcao, index) => `
+        <label class="option">
+          <input type="radio" name="resposta" value="${index}">
+          <span>${opcao}</span>
+        </label>
+      `).join('');
+    }
+
+    function proxima() {
+      const marcada = document.querySelector('input[name="resposta"]:checked');
+      if (!marcada) {
+        alert('Selecione uma resposta.');
+        return;
+      }
+
+      if (Number(marcada.value) === perguntas[atual][2]) acertos++;
+      atual++;
+
+      if (atual < perguntas.length) {
+        mostrar();
+      } else {
+        finalizar();
+      }
+    }
+
+    function finalizar() {
+      // Completa a barra ao finalizar
+      document.getElementById('bar').style.width = '100%';
+      document.getElementById('porcentagem').innerText = '100%';
+
+      const nota = Number((acertos * 10 / perguntas.length).toFixed(1));
+      const percentual = Math.round((acertos / perguntas.length) * 100);
+      const data = new Date().toLocaleDateString('pt-BR');
+      const aprovado = nota >= 7;
+
+      document.getElementById('quiz').classList.add('hidden');
+      document.getElementById('fim').classList.remove('hidden');
+      document.getElementById('aluno').innerText = nomeAluno;
+      document.getElementById('nota').innerText = nota.toFixed(1);
+      document.getElementById('acertos').innerText = `${acertos} de ${perguntas.length}`;
+      document.getElementById('percentual').innerText = `${percentual}%`;
+      document.getElementById('dataResultado').innerText = data;
+
+      const status = document.getElementById('status');
+      status.classList.remove('review');
+      if (nota >= 9) {
+        status.innerText = "Excelente";
+      } else if (nota >= 7) {
+        status.innerText = "Aprovado";
+      } else {
+        status.innerText = "Necessita Revisão";
+        status.classList.add('review');
+      }
+
+      let comentario = "";
+      if (nota >= 9) {
+        comentario = "Parabéns! Você demonstrou excelente compreensão do Canva.";
+      } else if (nota >= 7) {
+        comentario = "Bom trabalho! Continue praticando para desenvolver ainda mais suas habilidades.";
+      } else {
+        comentario = "Continue estudando e praticando os conceitos vistos durante o curso.";
+      }
+
+      let feedback = "";
+      if (nota === 10) {
+        feedback = "👑 Mestre do Canva! Você dominou os conceitos apresentados durante o curso.";
+      } else if (nota >= 8) {
+        feedback = "🏆 Designer Profissional! Excelente desempenho e ótima compreensão do Canva.";
+      } else if (nota >= 6) {
+        feedback = "🚀 Designer Criativo! Continue praticando para evoluir ainda mais.";
+      } else {
+        feedback = "🎨 Designer Aprendiz! Você começou sua jornada. Continue explorando o Canva.";
+      }
+
+      document.getElementById('comentarioFinal').innerText = comentario;
+      document.getElementById('feedback').innerText = feedback;
+
+      localStorage.setItem('resultadoCanvaQuest', JSON.stringify({
+        aluno: nomeAluno,
+        nota,
+        acertos,
+        total: perguntas.length,
+        percentual,
+        data
+      }));
+    }
+
+    function reiniciar() {
+      document.getElementById('nome').value = nomeAluno;
+      document.getElementById('fim').classList.add('hidden');
+      document.getElementById('start').classList.remove('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const nomeSalvo = localStorage.getItem('nomeAluno');
+      if (nomeSalvo) document.getElementById('nome').value = nomeSalvo;
     });
-  }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const nomeSalvo = localStorage.getItem("nomeAluno");
-    if (nomeSalvo) {
-      document.getElementById("nomeAlunoDisplay").innerText = nomeSalvo;
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js');
+      });
     }
-  });
-
-  function acessarProva() {
-    const senha = prompt("🔒 Digite a senha da PROVA:");
-    if (senha && senha.trim().toLowerCase() === "provacanva") {
-      alert("✅ Acesso liberado! Você será redirecionado para a prova.");
-      window.location.href = "./canva-quest.html";
-    } else if (senha !== null) {
-      alert("❌ Senha incorreta! Fale com o instrutor.");
-    }
-  }
-
-  function acessarRevisao() {
-    const senha = prompt("🔑 Digite a senha de REVISÃO:");
-    if (senha === "revisaoDesign") {
-      alert("✅ Conteúdo liberado!");
-    } else if (senha !== null) {
-      alert("❌ Acesso negado. Senha incorreta.");
-    }
-  }
-</script>
-
+  </script>
 </body>
 </html>
