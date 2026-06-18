@@ -157,32 +157,41 @@
     </div>
   </div>
 
-  <button
-  class="btn-modulo"
-  onclick="abrirMaterial(
-  'https://docs.google.com/presentation/d/1sML9keDawByawJSHErq8jGz2CDRinWufyOtvTwtMvhA/edit?usp=drive_link',
-  'Slides PowerPoint'
-  )">
-  Abrir Slides
-</button>
+  <div class="row mt-4 g-4">
 
     <div class="col-md-3">
-  <div class="card-aula">
-    <span class="icon-box">📘</span>
-    <h5>Apostila</h5>
-    <p class="text-muted small">Guia completo sobre design.</p>
+      <div class="card-aula">
+        <span class="icon-box">📽️</span>
+        <h5>Slides</h5>
+        <p class="text-muted small">Acesse a apresentação da aula.</p>
 
-    <button
-      class="btn-modulo"
-      onclick="abrirMaterial(
-      'https://drive.google.com/file/d/10LysaWBrohy8xBN5BmJMFVhyEYeoNxGI/view?usp=drive_link',
-      'Apostila PowerPoint'
-      )">
-      Ler Agora
-    </button>
+        <button
+          class="btn-modulo"
+          onclick="abrirMaterial(
+          'https://docs.google.com/presentation/d/1sML9keDawByawJSHErq8jGz2CDRinWufyOtvTwtMvhA/edit?usp=drive_link',
+          'Slides PowerPoint'
+          )">
+          Abrir Slides
+        </button>
+      </div>
+    </div>
 
-  </div>
-</div>
+    <div class="col-md-3">
+      <div class="card-aula">
+        <span class="icon-box">📘</span>
+        <h5>Apostila</h5>
+        <p class="text-muted small">Guia completo sobre design.</p>
+
+        <button
+          class="btn-modulo"
+          onclick="abrirMaterial(
+          'https://drive.google.com/file/d/10LysaWBrohy8xBN5BmJMFVhyEYeoNxGI/view?usp=drive_link',
+          'Apostila PowerPoint'
+          )">
+          Ler Agora
+        </button>
+      </div>
+    </div>
 
     <div class="col-md-3">
       <div class="card-aula">
@@ -201,6 +210,7 @@
         <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 py-2 fw-bold">Iniciar Prova</button>
       </div>
     </div>
+
   </div>
 
   <div class="row mt-5">
@@ -292,7 +302,8 @@
   function acessarProva() {
     const senha = prompt("🔒 Digite a senha da PROVA:");
     if (senha && senha.trim().toLowerCase() === "provappt") {
-      alert("✅ Acesso liberado!");
+      alert("✅ Acesso liberado! Você será redirecionado para a prova.");
+      window.location.href = "https://forms.gle/PPqTCoeAoFCmnS6v8";
     } else if (senha !== null) {
       alert("❌ Senha incorreta! Fale com o instrutor.");
     }
@@ -300,16 +311,18 @@
 
   function acessarRevisao() {
     const senha = prompt("🔑 Digite a senha de REVISÃO:");
-    if (senha === "revisaoPPT") {
-      alert("✅ Conteúdo liberado!");
+    if (senha && senha.trim() === "revisaoPPT") {
+      alert("✅ Conteúdo liberado! Você será redirecionado para a revisão.");
+      window.location.href = "https://gemini.google.com/share/3f4a288fe62f";
     } else if (senha !== null) {
       alert("❌ Acesso negado. Senha incorreta.");
     }
   }
+
   function abrirMaterial(url, titulo) {
-  window.location.href =
-    `./visualizador.html?titulo=${encodeURIComponent(titulo)}&url=${encodeURIComponent(url)}`;
-}
+    window.location.href =
+      `./visualizador.html?titulo=${encodeURIComponent(titulo)}&url=${encodeURIComponent(url)}`;
+  }
 </script>
 
 </body>
