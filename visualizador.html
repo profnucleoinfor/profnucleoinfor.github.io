@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>Visualizador de Aula | NIC Formação Profissional</title>
 
@@ -28,6 +28,8 @@
   --texto:#f8fafc;
   --texto-sec:#94a3b8;
   --erro:#ef4444;
+  --header-h:72px;
+  --vh:100vh;
 }
 
 *{
@@ -39,15 +41,21 @@
 html,
 body{
   height:100%;
-  overflow:hidden;
   font-family:Inter,Segoe UI,Arial,sans-serif;
   background:var(--fundo);
   color:var(--texto);
+  /* overflow:hidden removido — impedia rolagem quando o conteúdo
+     não cabia após rotação ou em telas pequenas */
 }
 
 body{
   display:flex;
   flex-direction:column;
+  /* usa var(--vh) controlada via JS para contornar o bug de 100vh
+     em navegadores mobile (barra de endereço some/aparece) */
+  height:var(--vh);
+  min-height:var(--vh);
+  overscroll-behavior:none;
 }
 
 header{
@@ -57,6 +65,9 @@ header{
   justify-content:space-between;
   align-items:center;
   padding:14px 18px;
+  padding-top:calc(14px + env(safe-area-inset-top));
+  padding-left:calc(18px + env(safe-area-inset-left));
+  padding-right:calc(18px + env(safe-area-inset-right));
   gap:16px;
   flex-shrink:0;
   backdrop-filter:blur(10px);
@@ -73,6 +84,7 @@ header{
   width:42px;
   height:42px;
   border-radius:10px;
+  flex-shrink:0;
 }
 
 .brand h1{
@@ -85,6 +97,7 @@ header{
 .actions{
   display:flex;
   gap:10px;
+  flex-shrink:0;
 }
 
 button,
@@ -97,7 +110,9 @@ a{
   padding:10px 14px;
   cursor:pointer;
   font-weight:600;
+  font:inherit;
   transition:.2s;
+  white-space:nowrap;
 }
 
 button:hover,
@@ -109,7 +124,12 @@ a:hover{
 main{
   flex:1;
   padding:16px;
+  padding-bottom:calc(16px + env(safe-area-inset-bottom));
+  padding-left:calc(16px + env(safe-area-inset-left));
+  padding-right:calc(16px + env(safe-area-inset-right));
   overflow:hidden;
+  min-height:0; /* essencial em flex para o filho respeitar 100% sem vazar */
+  display:flex;
 }
 
 .viewer{
@@ -120,6 +140,12 @@ main{
   overflow:hidden;
   background:#020617;
   position:relative;
+  flex:1;
+}
+
+.viewer.fullscreen-active{
+  border-radius:0;
+  border:none;
 }
 
 iframe{
@@ -127,6 +153,7 @@ iframe{
   height:100%;
   border:none;
   background:white;
+  display:block;
 }
 
 .loading{
@@ -139,6 +166,8 @@ iframe{
   gap:14px;
   background:#020617;
   z-index:10;
+  text-align:center;
+  padding:20px;
 }
 
 .spinner{
@@ -164,6 +193,7 @@ iframe{
   text-align:center;
   padding:30px;
   color:var(--erro);
+  overflow-y:auto;
 }
 
 .error strong{
@@ -173,22 +203,93 @@ iframe{
   color:white;
 }
 
-@media(max-width:700px){
+.rotate-hint{
+  position:absolute;
+  bottom:14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(15,23,42,.92);
+  border:1px solid var(--borda);
+  border-radius:999px;
+  padding:8px 16px;
+  font-size:.82rem;
+  color:var(--texto-sec);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  z-index:5;
+  animation:fadeOut .4s ease 4s forwards;
+  pointer-events:none;
+}
+
+@keyframes fadeOut{
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+
+/* ===== Ajustes de orientação ===== */
+
+/* Paisagem em telas baixas (celular rotacionado): header mais compacto
+   para sobrar altura de fato para o conteúdo */
+@media(max-width:900px) and (orientation:landscape){
 
   header{
-    flex-direction:column;
-    align-items:stretch;
+    padding:8px 14px;
+    padding-top:calc(8px + env(safe-area-inset-top));
+  }
+
+  .brand img{
+    width:32px;
+    height:32px;
+  }
+
+  .brand h1{
+    font-size:.95rem;
+  }
+
+  button,
+  a{
+    padding:7px 11px;
+    font-size:.85rem;
+  }
+
+  main{
+    padding:8px;
+    padding-bottom:calc(8px + env(safe-area-inset-bottom));
+  }
+
+}
+
+/* Retrato em tela estreita: header pode quebrar em duas linhas
+   sem espremer o viewer */
+@media(max-width:700px) and (orientation:portrait){
+
+  header{
+    flex-wrap:wrap;
+  }
+
+  .brand{
+    flex:1 1 100%;
   }
 
   .actions{
-    width:100%;
+    flex:1 1 100%;
   }
 
   .actions button,
   .actions a{
     flex:1;
     text-align:center;
+    justify-content:center;
+    display:inline-flex;
+    align-items:center;
   }
+
+}
+
+@media(max-width:700px){
 
   .brand h1{
     font-size:1rem;
@@ -208,7 +309,8 @@ iframe{
   </div>
 
   <div class="actions">
-    <button id="backBtn">⬅ Voltar</button>
+    <button id="fullscreenBtn" type="button" title="Tela cheia">⤢ Tela cheia</button>
+    <button id="backBtn" type="button">⬅ Voltar</button>
 
     <a
       id="externalLink"
@@ -236,6 +338,40 @@ iframe{
 
 <script>
 
+/* ---------- Correção da altura real da viewport (mobile) ---------- */
+/* 100vh em navegadores mobile não reflete a altura visível real,
+   especialmente após rotacionar a tela ou a barra de endereço
+   esconder/mostrar. Recalcula via JS usando innerHeight. */
+function ajustarAltura(){
+  document.documentElement.style.setProperty('--vh', window.innerHeight + 'px');
+}
+
+ajustarAltura();
+
+window.addEventListener('resize', ajustarAltura);
+window.addEventListener('orientationchange', () => {
+  // pequeno delay: alguns navegadores reportam innerHeight
+  // ainda com o valor antigo no exato momento do evento
+  setTimeout(ajustarAltura, 150);
+  mostrarDicaRotacao();
+});
+
+/* ---------- Dica visual breve ao rotacionar ---------- */
+function mostrarDicaRotacao(){
+
+  const existente = document.querySelector('.rotate-hint');
+  if(existente) existente.remove();
+
+  const hint = document.createElement('div');
+  hint.className = 'rotate-hint';
+  hint.textContent = '↻ Tela ajustada';
+
+  viewer.appendChild(hint);
+
+  setTimeout(() => hint.remove(), 4500);
+
+}
+
 const params = new URLSearchParams(window.location.search);
 
 const rawUrl = params.get('url') || '';
@@ -245,6 +381,7 @@ const viewer = document.getElementById('viewer');
 const pageTitle = document.getElementById('pageTitle');
 const externalLink = document.getElementById('externalLink');
 const loading = document.getElementById('loading');
+const fullscreenBtn = document.getElementById('fullscreenBtn');
 
 pageTitle.textContent = title;
 document.title = `${title} | NIC Formação Profissional`;
@@ -328,11 +465,14 @@ function mostrarErro(titulo,mensagem){
     </div>
   `;
 
+  fullscreenBtn.style.display = 'none';
+
 }
 
 if(!rawUrl){
 
   externalLink.style.display = 'none';
+  fullscreenBtn.style.display = 'none';
 
   mostrarErro(
     'Conteúdo não encontrado',
@@ -342,6 +482,7 @@ if(!rawUrl){
 }else if(!validarUrl(rawUrl)){
 
   externalLink.style.display = 'none';
+  fullscreenBtn.style.display = 'none';
 
   mostrarErro(
     'Conteúdo não permitido',
@@ -353,6 +494,7 @@ if(!rawUrl){
   externalLink.href = rawUrl;
 
   const iframe = document.createElement('iframe');
+  let carregou = false;
 
   iframe.src = converterUrl(rawUrl);
   iframe.title = title;
@@ -363,6 +505,7 @@ if(!rawUrl){
   iframe.allowFullscreen = true;
 
   iframe.onload = () => {
+    carregou = true;
     esconderLoading();
   };
 
@@ -377,11 +520,70 @@ if(!rawUrl){
 
   viewer.appendChild(iframe);
 
-  /* Segurança contra spinner infinito */
+  /* Segurança contra spinner infinito — só força esconder se
+     o onload realmente não disparou (ex.: bloqueio silencioso) */
   setTimeout(() => {
-    esconderLoading();
-  }, 3000);
+    if(!carregou){
+      esconderLoading();
+    }
+  }, 6000);
 
+}
+
+/* ---------- Tela cheia ---------- */
+
+function alternarFullscreen(){
+
+  const elFs =
+    document.fullscreenElement ||
+    document.webkitFullscreenElement;
+
+  if(!elFs){
+
+    const req =
+      viewer.requestFullscreen ||
+      viewer.webkitRequestFullscreen;
+
+    if(req){
+      req.call(viewer).catch(() => {});
+    }
+
+  }else{
+
+    const exit =
+      document.exitFullscreen ||
+      document.webkitExitFullscreen;
+
+    if(exit){
+      exit.call(document).catch(() => {});
+    }
+
+  }
+
+}
+
+fullscreenBtn.addEventListener('click', alternarFullscreen);
+
+function onFullscreenChange(){
+
+  const ativo = !!(
+    document.fullscreenElement ||
+    document.webkitFullscreenElement
+  );
+
+  viewer.classList.toggle('fullscreen-active', ativo);
+  fullscreenBtn.textContent = ativo ? '⤡ Sair da tela cheia' : '⤢ Tela cheia';
+
+  // navegadores que não disparam resize automaticamente ao entrar/saír
+  ajustarAltura();
+
+}
+
+document.addEventListener('fullscreenchange', onFullscreenChange);
+document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+
+if(!(viewer.requestFullscreen || viewer.webkitRequestFullscreen)){
+  fullscreenBtn.style.display = 'none';
 }
 
 document
