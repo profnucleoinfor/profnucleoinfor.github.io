@@ -23,8 +23,9 @@
       --card: #1e293b;
       --borda: #334155;
       --texto: #f1f5f9;
-      --mod-cor: #ec4899;
-      --mod-gradiente: linear-gradient(135deg, #f472b6 0%, #db2777 100%);
+      --mod-cor: #00C4CC;
+      --mod-cor-2: #7D2AE7;
+      --mod-gradiente: linear-gradient(135deg, #00C4CC 0%, #7D2AE7 100%);
     }
 
     body {
@@ -44,13 +45,13 @@
       padding: 60px 20px;
       text-align: center;
       border-radius: 0 0 40px 40px;
-      box-shadow: 0 10px 30px rgba(236, 72, 153, 0.2);
+      box-shadow: 0 10px 30px rgba(125, 42, 231, 0.25);
     }
     .hero h1 span { color: #fde047; font-weight: 700; }
 
     .mission-box {
-      background: rgba(236, 72, 153, 0.1);
-      border: 1px solid #ec4899;
+      background: rgba(125, 42, 231, 0.1);
+      border: 1px solid var(--mod-cor-2);
       padding: 20px;
       border-radius: 16px;
       margin-top: -30px;
@@ -94,7 +95,7 @@
       background-color: #334155;
       border-radius: 5px;
       border: 1px solid #475569;
-      color: #f9a8d4;
+      color: #5eead4;
       padding: 2px 6px;
       font-weight: bold;
       box-shadow: 0 2px 0 #000;
@@ -109,8 +110,8 @@
     }
     .accordion-button::after { filter: invert(1); }
     .accordion-button:not(.collapsed) {
-      background-color: rgba(236, 72, 153, 0.1);
-      color: #f9a8d4;
+      background-color: rgba(0, 196, 204, 0.1);
+      color: #5eead4;
       box-shadow: none;
     }
 
@@ -132,7 +133,7 @@
       <span class="me-2">⬅️</span> Painel
     </a>
     <div class="ms-auto">
-      <span class="badge" style="background-color: var(--mod-cor);">Módulo Canva Design</span>
+      <span class="badge" style="background-color: var(--mod-cor-2);">Módulo Canva Design</span>
     </div>
   </div>
 </nav>
@@ -153,6 +154,18 @@
     <div class="col-md-8">
       <div class="mission-box text-center">
         🎯 <strong>Missão:</strong> Dominar o design gráfico, criar artes para redes sociais, apresentações, cartões e materiais profissionais com facilidade e beleza!
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+      <div class="text-center p-4 rounded-4" style="background: var(--mod-gradiente); box-shadow: 0 10px 25px rgba(125, 42, 231, 0.25);">
+        <h5 class="mb-1 text-white">Pronto para criar?</h5>
+        <p class="mb-3 text-white opacity-75 small">Acesse sua conta no Canva e comece a praticar agora mesmo.</p>
+        <a href="https://www.canva.com/login" target="_blank" rel="noopener noreferrer" class="btn btn-light fw-bold rounded-pill px-5 py-2">
+          🎨 Entrar no Canva
+        </a>
       </div>
     </div>
   </div>
@@ -249,7 +262,7 @@
 
   <div class="row mt-5">
     <div class="col-12 text-center">
-      <div class="p-4 rounded-4" style="background: rgba(236, 72, 153, 0.05); border: 1px dashed #ec4899;">
+      <div class="p-4 rounded-4" style="background: rgba(0, 196, 204, 0.05); border: 1px dashed var(--mod-cor);">
         <h5>🔒 Revisão do Módulo</h5>
         <p class="text-muted small">Design para impressão e mídias avançadas.</p>
         <button onclick="acessarRevisao()" class="btn btn-warning px-5 rounded-pill fw-bold py-2">Liberar Conteúdo</button>
@@ -283,7 +296,8 @@
   function acessarProva() {
     const senha = prompt("🔒 Digite a senha da PROVA:");
     if (senha && senha.trim().toLowerCase() === "provacanva") {
-      alert("✅ Acesso liberado!");
+      alert("✅ Acesso liberado! Você será redirecionado para a prova.");
+      window.location.href = "./canva-quest.html";
     } else if (senha !== null) {
       alert("❌ Senha incorreta! Fale com o instrutor.");
     }
