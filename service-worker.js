@@ -5,7 +5,7 @@
 // Alinhado com:
 // - CACHE_NAME = nic-formacao-v11
 // - manifest.json?v=11
-// - Registro no HTML ?v=11
+// - Registro no HTML sem query string
 // Estratégia:
 // - Network First: HTML, CSS, JS (sempre atualizado)
 // - Cache First: Imagens e manifest locais (desempenho + offline)
