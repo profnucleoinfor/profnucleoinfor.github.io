@@ -406,9 +406,11 @@
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
 
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
 
   // REGISTRO DO SERVICE WORKER - VERSÃO v11 SINCRONIZADA
   if ('serviceWorker' in navigator) {
@@ -433,25 +435,30 @@
   const installAppBtn = document.getElementById('installAppBtn');
 
   window.addEventListener('beforeinstallprompt', (event) => {
+    if (!installAppBtn) return;
     event.preventDefault();
     deferredInstallPrompt = event;
     installAppBtn.classList.remove('hidden');
     installAppBtn.classList.add('inline-flex');
   });
 
-  installAppBtn.addEventListener('click', async () => {
-    if (!deferredInstallPrompt) return;
-    deferredInstallPrompt.prompt();
-    await deferredInstallPrompt.userChoice;
-    deferredInstallPrompt = null;
-    installAppBtn.classList.add('hidden');
-    installAppBtn.classList.remove('inline-flex');
-  });
+  if (installAppBtn) {
+    installAppBtn.addEventListener('click', async () => {
+      if (!deferredInstallPrompt) return;
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      installAppBtn.classList.add('hidden');
+      installAppBtn.classList.remove('inline-flex');
+    });
+  }
 
   window.addEventListener('appinstalled', () => {
     deferredInstallPrompt = null;
-    installAppBtn.classList.add('hidden');
-    installAppBtn.classList.remove('inline-flex');
+    if (installAppBtn) {
+      installAppBtn.classList.add('hidden');
+      installAppBtn.classList.remove('inline-flex');
+    }
   });
 </script>
 

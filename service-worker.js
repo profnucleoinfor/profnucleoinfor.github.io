@@ -32,6 +32,21 @@ const STATIC_ASSETS = [
   './assets/og-image.png'
 ];
 
+const precacheAsset = async (cache, assetUrl) => {
+  try {
+    const response = await fetch(assetUrl, { cache: 'reload' });
+
+    if (response.ok) {
+      await cache.put(assetUrl, response);
+      return;
+    }
+
+    console.warn('[SW] Pre-cache ignorado por resposta invalida:', assetUrl, response.status);
+  } catch (err) {
+    console.warn('[SW] Pre-cache ignorado por falha de rede:', assetUrl, err);
+  }
+};
+
 // ======================================
 // INSTALAÇÃO
 // ======================================
@@ -44,8 +59,10 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('[SW] Arquivos estáticos armazenados com sucesso');
-        return cache.addAll(STATIC_ASSETS);
+        console.log('[SW] Iniciando pre-cache de arquivos estaticos');
+        return Promise.all(
+          STATIC_ASSETS.map(assetUrl => precacheAsset(cache, assetUrl))
+        );
       })
       .catch(err => console.error('[SW] Erro ao armazenar arquivos iniciais:', err))
   );
