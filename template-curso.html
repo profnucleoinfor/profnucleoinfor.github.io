@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template de Curso | NIC Formação</title>
+
+  <!-- PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="NIC Aluno">
+  <meta name="theme-color" content="#043B7B">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* =========================
+       DESIGN SYSTEM NIC (INDEX)
+    ========================== */
+    :root {
+      --nicGreen: #A5E44E;
+      --nicGreenMid: #7CAC3C;
+      --nicBlueDark: #043B7B;
+      --nicBlue: #04244C;
+      --nicTeal: #365C86;
+      --nicGray: #F4F7FB;
+
+      --card: #ffffff;
+      --borda: #e5e7eb;
+      --texto: #04244C;
+
+      --gradiente: linear-gradient(135deg, #043B7B 0%, #365C86 100%);
+    }
+
+    body {
+      background: var(--nicGray);
+      color: var(--texto);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--borda);
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--gradiente);
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 0 0 40px 40px;
+      color: white;
+    }
+
+    .hero h1 span {
+      color: var(--nicGreen);
+    }
+
+    /* MISSÃO */
+    .mission-box {
+      background: white;
+      border: 1px solid var(--borda);
+      padding: 20px;
+      border-radius: 16px;
+      margin-top: -30px;
+      box-shadow: 0 10px 30px rgba(4,59,123,0.08);
+    }
+
+    /* CARDS */
+    .card-aula {
+      background: var(--card);
+      border: 1px solid var(--borda);
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      transition: all .25s ease;
+      height: 100%;
+    }
+
+    .card-aula:hover {
+      transform: translateY(-6px);
+      border-color: var(--nicBlueDark);
+      box-shadow: 0 12px 25px rgba(4,59,123,0.12);
+    }
+
+    .icon-box {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    /* BOTÃO */
+    .btn-modulo {
+      background: var(--nicBlueDark);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      width: 100%;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .card-aula:hover .btn-modulo {
+      background: var(--nicGreenMid);
+      color: white;
+    }
+
+    /* ACCORDION */
+    .accordion-item {
+      border: none;
+      margin-bottom: 10px;
+      background: transparent;
+    }
+
+    .accordion-button {
+      background: white;
+      color: var(--texto);
+      border: 1px solid var(--borda);
+      border-radius: 12px !important;
+      box-shadow: none;
+    }
+
+    .accordion-button::after {
+      filter: invert(1);
+    }
+
+    .accordion-button:not(.collapsed) {
+      background: rgba(4, 59, 123, 0.08);
+      color: var(--nicBlueDark);
+    }
+
+    /* KBD */
+    kbd {
+      background: #e5e7eb;
+      border: 1px solid #cbd5e1;
+      color: var(--nicTeal);
+      font-weight: bold;
+    }
+
+    footer {
+      color: #64748b;
+      font-size: 13px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-nicBlueDark" href="./dashboard.html">
+      ⬅️ Painel
+    </a>
+    <span class="badge" style="background: var(--nicGreenMid);">
+      Módulo de Curso
+    </span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1 class="display-5 fw-bold">
+      Bem-vindo, <span id="nomeAlunoDisplay">Estudante</span>
+    </h1>
+    <p class="lead opacity-75">
+      “Aprender é construir novas possibilidades.”
+    </p>
+  </div>
+</section>
+
+<div class="container mb-5 mt-5">
+
+  <!-- MISSÃO -->
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="mission-box text-center">
+        🎯 <strong>Missão do Curso:</strong>
+        <span id="missaoCurso">Definir objetivo do módulo aqui.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="row g-4 mt-4">
+
+    <div class="col-md-3">
+      <div class="card-aula">
+        <div class="icon-box">📊</div>
+        <h5>Slides</h5>
+        <p class="text-muted small">Conteúdo visual da aula</p>
+        <a href="#" class="btn-modulo">Abrir</a>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-aula">
+        <div class="icon-box">📘</div>
+        <h5>Apostila</h5>
+        <p class="text-muted small">Material de apoio</p>
+        <a href="#" class="btn-modulo">Ler</a>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-aula">
+        <div class="icon-box">✍️</div>
+        <h5>Atividade</h5>
+        <p class="text-muted small">Exercícios práticos</p>
+        <a href="#" class="btn-modulo">Enviar</a>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-aula">
+        <div class="icon-box">📝</div>
+        <h5>Avaliação</h5>
+        <p class="text-muted small">Teste final do módulo</p>
+        <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 fw-bold">
+          Iniciar
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DICAS -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="card p-4" style="background: white; border: 1px solid var(--borda); border-radius: 20px;">
+        <h4 class="mb-4">💡 Dicas do Módulo</h4>
+
+        <div class="accordion" id="accordionCurso">
+
+          <div class="accordion-item">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#dica1">
+              🎯 Conceitos principais
+            </button>
+            <div id="dica1" class="accordion-collapse collapse">
+              <div class="p-3 text-muted">
+                Conteúdo explicativo do módulo.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#dica2">
+              ⚡ Atalhos e práticas
+            </button>
+            <div id="dica2" class="accordion-collapse collapse">
+              <div class="p-3 text-muted">
+                Dicas rápidas e práticas.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="text-center py-5">
+  <small>NIC Formação Profissional • Template Educacional</small>
+</footer>
+
+<script>
+  // aluno
+  const nomeSalvo = localStorage.getItem("nomeAluno");
+  if (nomeSalvo) {
+    document.getElementById("nomeAlunoDisplay").innerText = nomeSalvo;
+  }
+
+  // missão padrão
+  document.getElementById("missaoCurso").innerText =
+    "Dominar os conceitos essenciais deste módulo com prática aplicada.";
+
+  function acessarProva() {
+    const senha = prompt("Digite a senha da avaliação:");
+    if (senha === "1234") {
+      alert("Acesso liberado!");
+    } else if (senha !== null) {
+      alert("Senha incorreta.");
+    }
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
