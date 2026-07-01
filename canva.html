@@ -117,7 +117,7 @@
 
     footer { color: #64748b; font-size: 13px; }
   </style>
-  <link rel="manifest" href="./manifest.json" />
+  <link rel="manifest" href="./manifest.json?v=11" />
   <link rel="icon" type="image/png" href="./assets/favicon.png" />
   <link rel="apple-touch-icon" href="./assets/icon-192.png" />
   <meta property="og:image" content="./assets/og-image.png" />
@@ -176,7 +176,7 @@
         <span class="icon-box">📐</span>
         <h5>Slides da Aula</h5>
         <p class="text-muted small">Princípios de design e cores.</p>
-        <a href=./visualizador.html?titulo=Slides%20PowerPoint&url=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1Tf2KiBXjDloOIJvsTxo7orzocKstLhsh%2Fembed%3Fstart%3Dfalse%26loop%3Dfalse%26delayms%3D3000" target="_blank" rel="noopener noreferrer" class="btn-modulo">Abrir Conteúdo</a>
+        <a href="./visualizador.html?titulo=Slides%20Canva&url=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1Tf2KiBXjDloOIJvsTxo7orzocKstLhsh%2Fembed%3Fstart%3Dfalse%26loop%3Dfalse%26delayms%3D3000" target="_blank" rel="noopener noreferrer" class="btn-modulo">Abrir Conteúdo</a>
       </div>
     </div>
 
@@ -282,7 +282,7 @@
   // ✅ REGISTRO DO SERVICE WORKER PARA O APP
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./service-worker.js');
+      navigator.serviceWorker.register('./service-worker.js?v=11');
     });
   }
 

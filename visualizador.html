@@ -8,9 +8,9 @@
 
 <meta name="theme-color" content="#043B7B">
 
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/assets/favicon.png">
-<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="manifest" href="./manifest.json?v=11">
+<link rel="icon" href="./assets/favicon.png">
+<link rel="apple-touch-icon" href="./assets/icon-192.png">
 
 <!-- Otimização de conexão -->
 <link rel="preconnect" href="https://docs.google.com">
@@ -304,7 +304,7 @@ iframe{
 <header>
 
   <div class="brand">
-    <img src="/assets/icon-192.png" alt="NIC">
+    <img src="./assets/icon-192.png" alt="NIC">
     <h1 id="pageTitle">Visualizador de Aula</h1>
   </div>
 
@@ -593,7 +593,7 @@ document
   if(history.length > 1){
     history.back();
   }else{
-    window.location.href = '/dashboard.html';
+    window.location.href = './dashboard.html';
   }
 
 });
@@ -607,7 +607,7 @@ if('serviceWorker' in navigator){
       .then(reg=>{
 
         if(!reg){
-          navigator.serviceWorker.register('/service-worker.js');
+          navigator.serviceWorker.register('./service-worker.js?v=11');
         }
 
       });

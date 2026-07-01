@@ -8,7 +8,7 @@
 // - Registro no HTML ?v=11
 // Estratégia:
 // - Network First: HTML, CSS, JS (sempre atualizado)
-// - Cache First: Fontes, Imagens, CDNs (desempenho + offline)
+// - Cache First: Imagens e manifest locais (desempenho + offline)
 // - Offline Fallback: Página dedicada quando sem internet
 // ======================================
 
@@ -29,12 +29,7 @@ const STATIC_ASSETS = [
   './assets/favicon.png',
   './assets/icon-192.png',
   './assets/icon-512.png',
-  './assets/og-image.png',
-
-  // Recursos externos essenciais
-  'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap',
-  'https://cdn.tailwindcss.com',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css'
+  './assets/og-image.png'
 ];
 
 // ======================================
@@ -96,7 +91,7 @@ self.addEventListener('message', event => {
 
 /**
  * Cache First: Busca no cache primeiro, senão busca na rede e armazena
- * Usado para: Fontes, Imagens, CDNs, arquivos que mudam pouco
+ * Usado para: imagens locais e manifest, arquivos que mudam pouco
  */
 const cacheFirst = async (request) => {
   // Tenta encontrar no cache
@@ -169,20 +164,6 @@ self.addEventListener('fetch', (event) => {
   // Ignora métodos que não sejam GET (apenas leitura de dados)
   if (request.method !== 'GET') return;
 
-  // ======================================
-  // RECURSOS EXTERNOS: Fontes, CDNs, Imagens
-  // ======================================
-  if (
-    url.origin.includes('fonts.googleapis.com') ||
-    url.origin.includes('fonts.gstatic.com') ||
-    url.origin.includes('cdn.tailwindcss.com') ||
-    url.origin.includes('cdnjs.cloudflare.com') ||
-    url.origin.includes('images.unsplash.com')
-  ) {
-    event.respondWith(cacheFirst(request));
-    return;
-  }
-
   // Apenas processa arquivos do seu domínio
   if (url.origin !== location.origin) return;
 
@@ -211,7 +192,8 @@ self.addEventListener('fetch', (event) => {
   // ======================================
   if (
     request.destination === 'image' ||
-    request.url.endsWith('manifest.json')
+    url.pathname.endsWith('/manifest.json') ||
+    url.pathname.endsWith('manifest.json')
   ) {
     event.respondWith(cacheFirst(request));
     return;
