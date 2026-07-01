@@ -22,7 +22,7 @@ const STATIC_ASSETS = [
   OFFLINE_URL,
   NOT_FOUND_URL,
 
-  './manifest.json',
+  './manifest.json?v=11',
   './robots.txt',
   './sitemap.xml',
 
