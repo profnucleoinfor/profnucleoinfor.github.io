@@ -5,353 +5,314 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Área do Aluno | NIC Formação Profissional</title>
 
-<!-- ✅ CONFIGURAÇÕES PARA FUNCIONAR COMO APP (PWA) -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="NIC Aluno">
-<meta name="theme-color" content="#043B7B">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --fundo:#0f172a;
-  --card:#1e293b;
-  --borda:#334155;
-  --texto:#f1f5f9;
-  --texto-sec:#94a3b8;
-  --azul:#043B7B;         /* Cor NIC - Azul Escuro */
-  --azul-hover:#09448C;  /* Cor NIC - Azul Médio */
-  --verde:#7CAC3C;       /* Cor NIC - Verde */
-  --verde-claro:#A5E44E; /* Cor NIC - Verde Claro */
-  --ouro:#fbbf24;        /* Cor para XP/Pontos */
-  --gradiente:linear-gradient(135deg,#043B7B,#7CAC3C); /* Gradiente NIC */
+  --nic-blue:#043B7B;
+  --nic-blue-dark:#04244C;
+  --nic-green:#A5E44E;
+  --nic-green-mid:#7CAC3C;
+
+  --bg-gradient:
+    radial-gradient(circle at top, #0b2f6b 0%, #04244C 55%, #021933 100%);
+
+  --text:#ffffff;
+  --muted:#cbd5e1;
+
+  --card:rgba(255,255,255,0.92);
+  --border:rgba(255,255,255,0.12);
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
+/* BASE */
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:'Inter',sans-serif;
-  background:var(--fundo);
-  color:var(--texto);
-  line-height: 1.6;
+  color:var(--text);
+
+  background:
+    var(--bg-gradient),
+    url('https://images.unsplash.com/photo-1508780709619-79562169bc64?q=80&w=1600&auto=format&fit=crop');
+
+  background-blend-mode:overlay;
+  background-size:cover;
+  background-attachment:fixed;
 }
 
+/* HEADER */
 header{
-  background:#1e293be0;
-  backdrop-filter:blur(10px);
+  background:rgba(4,36,76,0.75);
+  backdrop-filter:blur(12px);
   padding:15px 25px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid var(--borda);
-  position:sticky; top:0; z-index: 100;
+  position:sticky;
+  top:0;
+  z-index:100;
+  border-bottom:1px solid var(--border);
 }
 
-header h1 {
-  background: var(--gradiente);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 700;
+header h1{
+  font-size:20px;
+  font-weight:800;
+  color:#fff;
 }
 
 .btn-sair{
   background:rgba(255,255,255,0.1);
-  color:#fff;
-  padding:8px 22px;
-  border-radius:30px;
+  border:1px solid var(--border);
+  padding:8px 18px;
+  border-radius:25px;
+  color:white;
   text-decoration:none;
-  font-weight:600;
-  transition:.2s;
-  border: 1px solid var(--borda);
+  transition:.3s;
 }
-.btn-sair:hover{background:#ef4444; border-color:#ef4444;}
 
+.btn-sair:hover{
+  background:#ef4444;
+  border-color:#ef4444;
+}
+
+/* CONTAINER */
 .container{
   max-width:1100px;
   margin:40px auto;
   padding:0 20px;
 }
 
+/* TOPO */
 .dashboard-top{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:20px;
-  margin-bottom:30px;
+  margin-bottom:25px;
 }
 
 .info-box, .avatar-wrapper{
-  background:var(--card);
-  border:1px solid var(--borda);
+  background:rgba(255,255,255,0.95);
+  color:#04244C;
   border-radius:16px;
   padding:22px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
-.info-box strong {
-  color: var(--verde-claro);
-  font-size: 1.1rem;
-}
-
+/* AVATAR */
 .avatar-wrapper{
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:15px;
 }
 
 .avatar-wrapper img{
-  width:64px;height:64px;border-radius:50%;
-  border: 2px solid var(--verde);
-  box-shadow: 0 0 12px rgba(124, 172, 60, 0.4);
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  border:2px solid var(--nic-green-mid);
 }
 
 .fala{
-  background:#334155;
-  padding:12px 18px;
-  border-radius:12px;
+  background:rgba(165,228,78,0.2);
+  border-left:4px solid var(--nic-green-mid);
+  padding:12px;
+  border-radius:10px;
   font-size:14px;
-  transition: opacity 0.4s ease;
-  border-left: 3px solid var(--verde);
+  color:#04244C;
 }
 
+/* BOTÃO XP */
 .btn-pontos{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  padding:16px;
-  background:var(--gradiente);
+  display:block;
+  text-align:center;
+  background:linear-gradient(135deg,var(--nic-blue),var(--nic-green-mid));
+  color:white;
+  padding:15px;
   border-radius:12px;
-  text-decoration:none;
-  color:#fff;
   font-weight:700;
-  margin-bottom:40px;
+  text-decoration:none;
+  margin-bottom:30px;
   transition:.3s;
-  box-shadow: 0 4px 15px rgba(4, 59, 123, 0.3);
 }
-.btn-pontos:hover{transform:translateY(-3px); box-shadow: 0 6px 20px rgba(4, 59, 123, 0.4);}
 
+.btn-pontos:hover{
+  transform:translateY(-4px);
+}
+
+/* GRID */
 .modulos-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:25px;
+  gap:20px;
 }
 
+/* CARD */
 .modulo-card{
-  background:var(--card);
-  border:1px solid var(--borda);
+  background:rgba(255,255,255,0.95);
+  color:#04244C;
   border-radius:16px;
-  padding:24px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  transition:.25s;
-  position: relative;
-  overflow: hidden;
-}
-
-.modulo-card::before {
-    content: "MÓDULO";
-    position: absolute;
-    top: 10px;
-    right: -20px;
-    background: var(--verde);
-    font-size: 10px;
-    padding: 2px 25px;
-    transform: rotate(45deg);
-    color: #fff;
-    font-weight: 600;
+  padding:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.12);
+  transition:.3s;
+  border:1px solid rgba(255,255,255,0.3);
 }
 
 .modulo-card:hover{
   transform:translateY(-6px);
-  border-color:var(--verde);
-  box-shadow: 0 10px 30px rgba(124, 172, 60, 0.2);
+  border-color:var(--nic-green-mid);
 }
 
-.xp-badge {
-    background: rgba(251, 191, 36, 0.1);
-    color: var(--ouro);
-    font-size: 12px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 10px;
-    border: 1px solid rgba(251, 191, 36, 0.3);
+/* XP */
+.xp-badge{
+  display:inline-block;
+  font-size:12px;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(165,228,78,0.25);
+  color:var(--nic-green-mid);
+  font-weight:700;
+  margin-bottom:10px;
 }
 
-.modulo-card h2{margin-bottom:8px; font-size: 1.3rem; color: #fff;}
-.modulo-card p{color:var(--texto-sec);font-size:14px; margin-bottom: 15px;}
+/* TITULO */
+.modulo-card h3{
+  margin-top:6px;
+}
 
+/* DESCRIÇÃO (NOVO) */
+.modulo-desc{
+  margin-top:8px;
+  font-size:13px;
+  color:#334155;
+  line-height:1.4;
+  margin-bottom:10px;
+}
+
+/* BOTÃO */
 .btn-acessar{
+  margin-top:10px;
+  width:100%;
   padding:12px;
   border:none;
-  border-radius:8px;
-  background:var(--borda);
-  color:#fff;
+  border-radius:10px;
+  background:var(--nic-blue);
+  color:white;
   font-weight:700;
   cursor:pointer;
-  transition: .3s;
-}
-.modulo-card:hover .btn-acessar{background:var(--verde); box-shadow: 0 4px 12px rgba(124, 172, 60, 0.3);}
-
-.professor-section{
-  margin-top:40px;
-  padding:30px;
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  border: 1px dashed var(--verde);
-  border-radius:20px;
-  text-align:center;
+  transition:.3s;
 }
 
-.professor-section h3 {
-  color: var(--verde-claro);
+.modulo-card:hover .btn-acessar{
+  background:var(--nic-green-mid);
 }
 
-.foto-prof {
-  border-radius: 50%;
-  border: 3px solid var(--azul);
-  margin-bottom: 15px;
-  box-shadow: 0 0 15px rgba(4, 59, 123, 0.3);
-}
-
+/* RESPONSIVO */
 @media(max-width:768px){
-  .dashboard-top{grid-template-columns:1fr}
+  .dashboard-top{
+    grid-template-columns:1fr;
+  }
 }
 </style>
-  <link rel="manifest" href="./manifest.json?v=11" />
-  <link rel="icon" type="image/png" href="./assets/favicon.png" />
-  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
-  <meta property="og:image" content="./assets/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" /></head>
+</head>
 
 <body>
 
 <header>
   <h1>🎓 Área do Aluno - NIC</h1>
-  <a href="./index.html" class="btn-sair" id="btnSair">SAIR</a>
+  <a href="./index.html" class="btn-sair">SAIR</a>
 </header>
 
 <div class="container">
 
-<div class="dashboard-top">
-  <div class="info-box">
-    👤 <strong id="nomeAluno"></strong><br><br>
-    📅 <span id="diaAula"></span><br>
-    ⏰ <span id="horarioAula"></span>
-  </div>
+  <div class="dashboard-top">
 
-  <div class="avatar-wrapper">
-    <img src="./assets/icon-192.png" alt="Logo NIC">
-    <div class="fala" id="frase">Preparado para evoluir com a gente!</div>
-  </div>
-</div>
-
-<a href="./sistema-pontos.html" class="btn-pontos">🏅 Sistema de Pontos</a>
-
-<div class="modulos-grid" id="gridModulos"></div>
-
-<div class="professor-section">
-    <img src="./assets/icon-192.png" width="100" alt="Elinaldo Junior" class="foto-prof">
-    <div class="professor-text">
-      <h3>👨‍🏫 Seu Instrutor</h3>
-      <p>Olá! Sou <strong>Elinaldo Junior</strong>. Meu objetivo é garantir que você aprenda tecnologia de forma humanizada.</p>
-      <a class="linkedin-icon" href="https://www.linkedin.com/in/elinaldo-junior-389bb911b" target="_blank" rel="noopener noreferrer">
-       <center> <img src="https://i.ibb.co/rRv0hwK7/meu-linkedin-156-1.webp" alt="LinkedIn" width="150"></center>
-      </a>
+    <div class="info-box">
+      👤 <strong id="nomeAluno"></strong><br><br>
+      📅 <span id="diaAula"></span><br>
+      ⏰ <span id="horarioAula"></span>
     </div>
+
+    <div class="avatar-wrapper">
+      <img src="./assets/icon-192.png" alt="NIC">
+      <div class="fala" id="frase">
+        Preparado para evoluir com a gente!
+      </div>
+    </div>
+
   </div>
 
-</div>
+  <a href="./sistema-pontos.html" class="btn-pontos">
+    🏅 Sistema de Pontos
+  </a>
 
-<footer style="text-align:center;padding:40px;color:#94a3b8; font-size: 14px;">
-© 2026 Núcleo Infor - Formação Profissional | Todos os direitos reservados
-</footer>
+  <div class="modulos-grid" id="gridModulos"></div>
+
+</div>
 
 <script>
-/* ✅ REGISTRO DO SERVICE WORKER PARA O APP */
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./service-worker.js');
-  });
-}
+document.getElementById("nomeAluno").innerText =
+localStorage.getItem("nomeAluno") || "Estudante";
 
-/* DADOS DO LOCALSTORAGE - Vem da página de login */
-document.getElementById("nomeAluno").innerText = localStorage.getItem("nomeAluno") || "Estudante";
-document.getElementById("diaAula").innerText = "Dia da aula: " + (localStorage.getItem("diaAula") || "A definir");
-document.getElementById("horarioAula").innerText = "Horário: " + (localStorage.getItem("horarioAula") || "A definir");
+document.getElementById("diaAula").innerText =
+"Dia: " + (localStorage.getItem("diaAula") || "A definir");
 
-/* FUNÇÃO PARA LIMPAR DADOS AO SAIR */
-document.getElementById("btnSair").addEventListener("click", function(e){
-  e.preventDefault(); // Impede o comportamento padrão do link
-  localStorage.clear(); // Apaga TODOS os dados salvos do aluno
-  window.location.href = "index.html"; // Volta para página inicial
-});
+document.getElementById("horarioAula").innerText =
+"Horário: " + (localStorage.getItem("horarioAula") || "A definir");
 
-/* FRASES MOTIVACIONAIS DA NIC */
 const frases=[
-"Conhecimento que transforma o seu futuro.",
-"A educação é o melhor investimento.",
-"Você está no caminho certo para o sucesso!",
-"A tecnologia abre todas as portas.",
-"Aprenda, pratique, evolua.",
-"Núcleo Infor: sua melhor escolha em ensino."
+"Você está no caminho certo!",
+"A educação transforma destinos.",
+"Aprenda tecnologia e evolua!",
+"Seu futuro começa aqui.",
+"Continue avançando!"
 ];
 
-let currentFrase=0;
-const fraseElement = document.getElementById("frase");
-
+let i=0;
 setInterval(()=>{
-  fraseElement.style.opacity=0;
+  const el=document.getElementById("frase");
+  el.style.opacity=0;
   setTimeout(()=>{
-    fraseElement.innerText = frases[currentFrase];
-    fraseElement.style.opacity=1;
-    currentFrase = (currentFrase + 1) % frases.length;
-  },400);
-},6000);
+    el.innerText=frases[i];
+    el.style.opacity=1;
+    i=(i+1)%frases.length;
+  },300);
+},5000);
 
-/* LISTA DE MÓDULOS - APENAS OS DE INFORMÁTICA (Removido Inglês e Gestão) */
-const MODULOS = [
-  {titulo:"🖥️ Windows + Linux", senha:"windows", pagina:"windows.html", desc:"Aprenda a usar os principais sistemas operacionais do mercado.", xp: "1000 XP"},
-  {titulo:"📝 Word + Digitação", senha:"word", pagina:"word.html", desc:"Documentos profissionais e digitação rápida e correta.", xp: "1120 XP"},
-  {titulo:"📊 Excel", senha:"excel", pagina:"excel.html", desc:"Planilhas, cálculos, fórmulas e automação de tarefas.", xp: "1200 XP"},
-  {titulo:"📽️ PowerPoint", senha:"powerpoint", pagina:"powerpoint.html", desc:"Apresentações incríveis que impressionam qualquer público.", xp: "600 XP"},
-  {titulo:"🌐 Internet e Redes Sociais", senha:"internet", pagina:"internet.html", desc:"Navegação segura, pesquisa e uso profissional das redes.", xp: "320 XP"},
-  {titulo:"🎨 Canva e Design", senha:"canva", pagina:"canva.html", desc:"Criação de artes, posts e materiais visuais profissionais.", xp: "360 XP"},
-  {titulo:"🤖 Inteligência Artificial", senha:"ia", pagina:"ia.html", desc:"Como usar a IA para aumentar sua produtividade e aprendizado.", xp: "800 XP"}
+/* MÓDULOS COM DESCRIÇÃO */
+const MODULOS=[
+{t:"Windows + Linux",s:"windows",p:"windows.html",xp:"1000 XP",d:"Aprenda sistemas operacionais do zero até o nível profissional."},
+{t:"Word + Digitação",s:"word",p:"word.html",xp:"1120 XP",d:"Criação de documentos profissionais e digitação eficiente."},
+{t:"Excel",s:"excel",p:"excel.html",xp:"1200 XP",d:"Planilhas, fórmulas e automações essenciais para o mercado."},
+{t:"PowerPoint",s:"powerpoint",p:"powerpoint.html",xp:"600 XP",d:"Apresentações profissionais e impactantes."},
+{t:"Internet e Redes Sociais",s:"internet",p:"internet.html",xp:"320 XP",d:"Uso profissional da internet e mídias sociais."},
+{t:"Canva e Design",s:"canva",p:"canva.html",xp:"360 XP",d:"Criação de artes e identidade visual profissional."},
+{t:"Inteligência Artificial",s:"ia",p:"ia.html",xp:"800 XP",d:"Uso da IA para produtividade e aprendizado moderno."}
 ];
 
-const grid = document.getElementById("gridModulos");
+const grid=document.getElementById("gridModulos");
 
-MODULOS.forEach(mod=>{
-  grid.innerHTML += `
-    <div class="modulo-card">
-      <div>
-        <span class="xp-badge">💎 ${mod.xp}</span>
-        <h2>${mod.titulo}</h2>
-        <p>${mod.desc}</p>
-      </div>
-      <button class="btn-acessar" onclick="acessarModulo('${mod.senha}','${mod.pagina}')">
-        Entrar na Aula
-      </button>
+MODULOS.forEach(m=>{
+  grid.innerHTML+=`
+  <div class="modulo-card">
+    <span class="xp-badge">💎 ${m.xp}</span>
+    <h3>${m.t}</h3>
+
+    <div class="modulo-desc">
+      ${m.d}
     </div>
-  `;
+
+    <button class="btn-acessar" onclick="acessar('${m.s}','${m.p}')">
+      Entrar na Aula
+    </button>
+  </div>`;
 });
 
-/* SISTEMA DE SENHA PARA CADA MÓDULO */
-function acessarModulo(senhaCorreta,pagina){
-  const entrada = prompt("🔒 Digite a senha da aula:");
-  
-  if(!entrada) return;
-
-  if(entrada.trim().toLowerCase() === senhaCorreta.toLowerCase()){
-    window.location.href = pagina;
+function acessar(s,p){
+  const v=prompt("Senha da aula:");
+  if(v && v.toLowerCase()==s){
+    location.href=p;
   }else{
-    alert("❌ Senha incorreta! Procure o instrutor para ajuda.");
+    alert("Senha incorreta!");
   }
 }
 </script>
