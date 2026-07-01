@@ -1,725 +1,379 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo PowerPoint | NIC Formação</title>
 
-<meta charset="UTF-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="NIC Aluno">
+  <meta name="theme-color" content="#043B7B">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-<title>Módulo PowerPoint | NIC Formação</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- PWA -->
+  <style>
+    /* =========================
+        DESIGN SYSTEM NIC (INDEX)
+    ========================== */
+    :root {
+      --nicGreen: #A5E44E;
+      --nicGreenMid: #7CAC3C;
+      --nicBlueDark: #043B7B;
+      --nicBlue: #04244C;
+      --nicTeal: #365C86;
+      --nicGray: #F4F7FB;
 
-<meta name="apple-mobile-web-app-capable" content="yes">
+      --card: #ffffff;
+      --borda: #e5e7eb;
+      --texto: #04244C;
 
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+      --gradiente: linear-gradient(135deg, #043B7B 0%, #365C86 100%);
+    }
 
-<meta name="apple-mobile-web-app-title" content="NIC Aluno">
+    body {
+      background: var(--nicGray);
+      color: var(--texto);
+      font-family: 'Inter', sans-serif;
+    }
 
-<meta name="theme-color" content="#043B7B">
+    /* NAVBAR */
+    .navbar {
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--borda);
+    }
 
-<link rel="manifest" href="./manifest.json?v=11">
+    /* HERO */
+    .hero {
+      background: var(--gradiente);
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 0 0 40px 40px;
+      color: white;
+    }
 
-<link rel="icon" type="image/png" href="./assets/favicon.png">
+    .hero h1 span {
+      color: var(--nicGreen);
+    }
 
-<link rel="apple-touch-icon" href="./assets/icon-192.png">
+    /* MISSÃO */
+    .mission-box {
+      background: white;
+      border: 1px solid var(--borda);
+      padding: 20px;
+      border-radius: 16px;
+      margin-top: -30px;
+      box-shadow: 0 10px 30px rgba(4,59,123,0.08);
+    }
 
-<meta property="og:image" content="./assets/og-image.png">
+    /* CARDS */
+    .card-aula {
+      background: var(--card);
+      border: 1px solid var(--borda);
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      transition: all .25s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-<meta property="og:image:width" content="1200">
+    .card-aula:hover {
+      transform: translateY(-6px);
+      border-color: var(--nicBlueDark);
+      box-shadow: 0 12px 25px rgba(4,59,123,0.12);
+    }
 
-<meta property="og:image:height" content="630">
+    .icon-box {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
 
-<meta name="twitter:card" content="summary_large_image">
+    /* BOTÃO */
+    .btn-modulo {
+      background: var(--nicBlueDark);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      width: 100%;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+    }
 
-<!-- Google Fonts -->
+    .card-aula:hover .btn-modulo {
+      background: var(--nicGreenMid);
+      color: white;
+    }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    /* ACCORDION */
+    .accordion-item {
+      border: none;
+      margin-bottom: 10px;
+      background: transparent;
+    }
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    .accordion-button {
+      background: white;
+      color: var(--texto);
+      border: 1px solid var(--borda);
+      border-radius: 12px !important;
+      box-shadow: none;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    .accordion-button::after {
+      filter: invert(1);
+    }
 
-<!-- Bootstrap -->
+    .accordion-button:not(.collapsed) {
+      background: rgba(4, 59, 123, 0.08);
+      color: var(--nicBlueDark);
+    }
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    /* KBD */
+    kbd {
+      background: #e5e7eb;
+      border: 1px solid #cbd5e1;
+      color: var(--nicTeal);
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
 
-<!-- CSS DO PORTAL -->
+    footer {
+      color: #64748b;
+      font-size: 13px;
+    }
+  </style>
 
-<link rel="stylesheet" href="./assets/css/curso.css">
-
+  <link rel="manifest" href="./manifest.json?v=11" />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <meta property="og:image" content="./assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
 </head>
 
 <body>
 
-<!-- =======================================================
-NAVBAR
-======================================================= -->
-
 <nav class="navbar navbar-expand-lg sticky-top">
-
-<div class="container">
-
-<a class="navbar-brand fw-bold" href="./dashboard.html">
-
-⬅️ Painel
-
-</a>
-
-<span class="badge badge-modulo">
-
-Módulo PowerPoint
-
-</span>
-
-</div>
-
+  <div class="container">
+    <a class="navbar-brand fw-bold" style="color: var(--nicBlueDark);" href="./dashboard.html">
+      ⬅️ Painel
+    </a>
+    <span class="badge" style="background: var(--nicBlueDark); padding: 8px 16px; border-radius: 8px;">
+      Módulo PowerPoint
+    </span>
+  </div>
 </nav>
 
-<!-- =======================================================
-HERO
-======================================================= -->
-
 <section class="hero">
-
-<div class="container">
-
-<h1 class="display-5 fw-bold">
-
-Bem-vindo,
-
-<span id="nomeAlunoDisplay">
-
-Estudante
-
-</span>
-
-📽️
-
-</h1>
-
-<p class="lead mt-3">
-
-"Assim brilhe a luz de vocês."
-
-<br>
-
-<small>Mateus 5:16</small>
-
-</p>
-
-</div>
-
+  <div class="container">
+    <h1 class="display-5 fw-bold">
+      Bem-vindo, <span id="nomeAlunoDisplay">Estudante</span> 📽️
+    </h1>
+    <p class="lead opacity-75">
+      “Assim brilhe a luz de vocês.” <br> 
+      <small style="font-size: 14px;">Mateus 5:16</small>
+    </p>
+  </div>
 </section>
 
-<!-- =======================================================
-CONTEÚDO
-======================================================= -->
-
-<div class="container mt-5 mb-5">
-
-<div class="row justify-content-center">
-
-<div class="col-lg-8">
-
-<div class="mission-box text-center">
-
-🎯
-
-<strong>
-
-Missão:
-
-</strong>
-
-Crie apresentações impactantes com design profissional, animações e transições de forma organizada e eficiente.
-
-</div>
-
-</div>
-
-</div>
-
-<!-- =======================================================
-CARDS
-======================================================= -->
-
-<div class="row g-4 mt-4">
-
-<!-- Slides -->
-
-<div class="col-md-6 col-lg-3">
-
-<div class="card-aula">
-
-<div class="icon-box">
-
-📽️
-
-</div>
-
-<h5>
-
-Slides
-
-</h5>
-
-<p class="text-muted">
-
-Acesse a apresentação da aula.
-
-</p>
-
-<button
-
-class="btn-modulo"
-
-onclick="abrirMaterial(
-
-'https://docs.google.com/presentation/d/1sML9keDawByawJSHErq8jGz2CDRinWufyOtvTwtMvhA/edit?usp=drive_link',
-
-'Slides PowerPoint'
-
-)">
-
-Abrir Slides
-
-</button>
-
-</div>
-
-</div>
-
-<!-- Apostila -->
-
-<div class="col-md-6 col-lg-3">
-
-<div class="card-aula">
-
-<div class="icon-box">
-
-📘
-
-</div>
-
-<h5>
-
-Apostila
-
-</h5>
-
-<p class="text-muted">
-
-Guia completo sobre design.
-
-</p>
-
-<button
-
-class="btn-modulo"
-
-onclick="abrirMaterial(
-
-'https://drive.google.com/file/d/10LysaWBrohy8xBN5BmJMFVhyEYeoNxGI/view?usp=drive_link',
-
-'Apostila PowerPoint'
-
-)">
-
-Ler Agora
-
-</button>
-
-</div>
-
-</div>
-
-<!-- Exercícios -->
-
-<div class="col-md-6 col-lg-3">
-
-<div class="card-aula">
-
-<div class="icon-box">
-
-✍️
-
-</div>
-
-<h5>
-
-Exercícios
-
-</h5>
-
-<p class="text-muted">
-
-Já finalizou e salvou?
-
-</p>
-
-<a
-
-href="https://forms.gle/BV6gxxEkJJXq1z3A9"
-
-target="_blank"
-
-rel="noopener noreferrer"
-
-class="btn-modulo">
-
-Enviar PPT
-
-</a>
-
-</div>
-
-</div>
-
-<!-- Prova -->
-
-<div class="col-md-6 col-lg-3">
-
-<div class="card-aula">
-
-<div class="icon-box">
-
-📝
-
-</div>
-
-<h5>
-
-Prova Final
-
-</h5>
-
-<p class="text-muted">
-
-Desafio prático de Design.
-
-</p>
-
-<button
-
-onclick="acessarProva()"
-
-class="btn btn-danger w-100 fw-bold rounded-3">
-
-Iniciar Prova
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-<!-- =======================================================
-DICAS E ATALHOS
-======================================================= -->
-
-<div class="row mt-5">
-
+<div class="container mb-5 mt-5">
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="mission-box text-center">
+        🎯 <strong>Missão:</strong>
+        <span id="missaoCurso">Crie apresentações impactantes com design profissional e animações fluidas!</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 mt-4">
+
+    <div class="col-md-3">
+      <div class="card-aula">
+        <div>
+          <div class="icon-box">📽️</div>
+          <h5>Slides</h5>
+          <p class="text-muted small">Acesse a apresentação da aula.</p>
+        </div>
+        <button 
+          class="btn-modulo" 
+          onclick="abrirMaterial('https://docs.google.com/presentation/d/1sML9keDawByawJSHErq8jGz2CDRinWufyOtvTwtMvhA/edit?usp=drive_link', 'Slides PowerPoint')">
+          Abrir Slides
+        </button>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-aula">
+        <div>
+          <div class="icon-box">📘</div>
+          <h5>Apostila</h5>
+          <p class="text-muted small">Guia completo sobre design.</p>
+        </div>
+        <button 
+          class="btn-modulo" 
+          onclick="abrirMaterial('https://drive.google.com/file/d/10LysaWBrohy8xBN5BmJMFVhyEYeoNxGI/view?usp=drive_link', 'Apostila PowerPoint')">
+          Ler Agora
+        </button>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-aula">
+        <div>
+          <div class="icon-box">✍️</div>
+          <h5>Exercícios</h5>
+          <p class="text-muted small">Já finalizou e salvou?</p>
+        </div>
+        <a href="https://forms.gle/BV6gxxEkJJXq1z3A9" target="_blank" rel="noopener noreferrer" class="btn-modulo">Enviar PPT</a>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-aula" style="border-color: #ef4444;">
+        <div>
+          <div class="icon-box">📝</div>
+          <h5>Prova Final</h5>
+          <p class="text-muted small">Desafio prático de Design.</p>
+        </div>
+        <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 fw-boldpy-2">
+          Iniciar Prova
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row mt-5">
     <div class="col-12">
-
-        <div class="section-card">
-
-            <h3 class="mb-4">
-
-                ⌨️ Show de Atalhos (PowerPoint)
-
-            </h3>
-
-            <div class="accordion" id="accordionPPT">
-
-                <!-- CRIAÇÃO -->
-
-                <div class="accordion-item">
-
-                    <h2 class="accordion-header">
-
-                        <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#criacao">
-
-                            🎨 Durante a criação dos slides
-
-                        </button>
-
-                    </h2>
-
-                    <div
-                        id="criacao"
-                        class="accordion-collapse collapse"
-                        data-bs-parent="#accordionPPT">
-
-                        <div class="accordion-body p-0">
-
-                            <table class="table table-hover align-middle">
-
-                                <tbody>
-
-                                    <tr>
-
-                                        <td>
-
-                                            <kbd>Ctrl</kbd> +
-                                            <kbd>M</kbd>
-
-                                        </td>
-
-                                        <td>
-
-                                            Inserir novo slide
-
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td>
-
-                                            <kbd>Ctrl</kbd> +
-                                            <kbd>D</kbd>
-
-                                        </td>
-
-                                        <td>
-
-                                            Duplicar slide ou objeto
-
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td>
-
-                                            <kbd>Ctrl</kbd> +
-                                            <kbd>G</kbd>
-
-                                        </td>
-
-                                        <td>
-
-                                            Agrupar objetos
-
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td>
-
-                                            <kbd>Ctrl</kbd> +
-                                            <kbd>T</kbd>
-
-                                        </td>
-
-                                        <td>
-
-                                            Selecionar todos os slides
-
-                                        </td>
-
-                                    </tr>
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- APRESENTAÇÃO -->
-
-                <div class="accordion-item">
-
-                    <h2 class="accordion-header">
-
-                        <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#apresentacao">
-
-                            🚀 Durante a apresentação
-
-                        </button>
-
-                    </h2>
-
-                    <div
-                        id="apresentacao"
-                        class="accordion-collapse collapse"
-                        data-bs-parent="#accordionPPT">
-
-                        <div class="accordion-body p-0">
-
-                            <table class="table table-hover align-middle">
-
-                                <tbody>
-
-                                    <tr>
-
-                                        <td>
-
-                                            <kbd>F5</kbd>
-
-                                        </td>
-
-                                        <td>
-
-                                            Iniciar apresentação
-
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td>
-
-                                            <kbd>Shift</kbd> +
-                                            <kbd>F5</kbd>
-
-                                        </td>
-
-                                        <td>
-
-                                            Iniciar do slide atual
-
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td>
-
-                                            <kbd>Ctrl</kbd> +
-                                            <kbd>P</kbd>
-
-                                        </td>
-
-                                        <td>
-
-                                            Ativar caneta
-
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td>
-
-                                            <kbd>B</kbd>
-
-                                            ou
-
-                                            <kbd>.</kbd>
-
-                                        </td>
-
-                                        <td>
-
-                                            Tela preta
-
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td>
-
-                                            <kbd>Esc</kbd>
-
-                                        </td>
-
-                                        <td>
-
-                                            Encerrar apresentação
-
-                                        </td>
-
-                                    </tr>
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
+      <div class="card p-4" style="background: white; border: 1px solid var(--borda); border-radius: 20px;">
+        <h4 class="mb-4 d-flex align-items-center">
+          <span class="me-2">⌨️</span> Show de Atalhos (PPT)
+        </h4>
+
+        <div class="accordion" id="accordionCurso">
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#criacao">
+                🎨 Durante a Criação de Slides
+              </button>
+            </h2>
+            <div id="criacao" class="accordion-collapse collapse" data-bs-parent="#accordionCurso">
+              <div class="p-0">
+                <table class="table table-hover mb-0">
+                  <tbody>
+                    <tr><td><kbd>CTRL</kbd> + <kbd>M</kbd></td><td>Inserir Novo Slide</td></tr>
+                    <tr><td><kbd>CTRL</kbd> + <kbd>D</kbd></td><td>Duplicar Slide ou Objeto Selecionado</td></tr>
+                    <tr><td><kbd>CTRL</kbd> + <kbd>G</kbd></td><td>Agrupar Objetos</td></tr>
+                    <tr><td><kbd>CTRL</kbd> + <kbd>T</kbd></td><td>Selecionar todos os slides</td></tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#apresentacao">
+                🚀 Durante a Apresentação (Show)
+              </button>
+            </h2>
+            <div id="apresentacao" class="accordion-collapse collapse" data-bs-parent="#accordionCurso">
+              <div class="p-0">
+                <table class="table table-hover mb-0">
+                  <tbody>
+                    <tr><td><kbd>F5</kbd></td><td>Iniciar Apresentação do Começo</td></tr>
+                    <tr><td><kbd>Shift</kbd> + <kbd>F5</kbd></td><td>Iniciar do Slide Atual</td></tr>
+                    <tr><td><kbd>CTRL</kbd> + <kbd>P</kbd></td><td>Ativar Caneta de Desenho</td></tr>
+                    <tr><td><kbd>B</kbd> ou <kbd>.</kbd></td><td>Tela Preta (Pausar atenção)</td></tr>
+                    <tr><td><kbd>Esc</kbd></td><td>Sair do Modo Apresentação</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
 
         </div>
 
+      </div>
     </div>
+  </div>
 
-</div>
-
-<!-- =======================================================
-REVISÃO
-======================================================= -->
-
-<div class="row mt-5">
-
-    <div class="col-12">
-
-        <div class="review-box text-center">
-
-            <h4>
-
-                🔒 Revisão do Módulo
-
-            </h4>
-
-            <p class="text-muted">
-
-                Animações, transições e apresentação profissional.
-
-            </p>
-
-            <button
-                onclick="acessarRevisao()"
-                class="btn btn-warning rounded-pill px-5 fw-bold">
-
-                Liberar Conteúdo
-
-            </button>
-
-        </div>
-
+  <div class="row mt-5">
+    <div class="col-12 text-center">
+      <div class="p-4 rounded-4" style="background: #ffffff; border: 1px dashed var(--nicBlueDark); box-shadow: 0 10px 30px rgba(4,59,123,0.04);">
+        <h5>🔒 Revisão do Módulo</h5>
+        <p class="text-muted small">Animações, transições e apresentação profissional.</p>
+        <button onclick="acessarRevisao()" class="btn btn-warning px-5 rounded-pill fw-bold py-2">Liberar Conteúdo</button>
+      </div>
     </div>
+  </div>
 
 </div>
-
-</div>
-
-<!-- =======================================================
-FOOTER
-======================================================= -->
 
 <footer class="text-center py-5">
-
-<small>
-
-© NIC Formação Profissional — Educação com Propósito
-
-</small>
-
+  <small>NIC Formação Profissional — Educação com Propósito</small>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-/* ==========================================================
-   PWA
-========================================================== */
+  // ✅ REGISTRO DO SERVICE WORKER PARA O APP (PWA)
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./service-worker.js');
+    });
+  }
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./service-worker.js')
-      .catch(err => console.error('Erro ao registrar Service Worker:', err));
+  // Aluno
+  document.addEventListener("DOMContentLoaded", () => {
+    const nomeSalvo = localStorage.getItem("nomeAluno");
+    if (nomeSalvo) {
+      document.getElementById("nomeAlunoDisplay").innerText = nomeSalvo;
+    }
   });
-}
 
-/* ==========================================================
-   NOME DO ALUNO
-========================================================== */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const nomeSalvo = localStorage.getItem("nomeAluno");
-
-  if (nomeSalvo) {
-
-    document.getElementById("nomeAlunoDisplay").textContent = nomeSalvo;
-
+  // Funções operacionais e validações originais
+  function acessarProva() {
+    const senha = prompt("🔒 Digite a senha da PROVA:");
+    if (senha && senha.trim().toLowerCase() === "provappt") {
+      alert("✅ Acesso liberado! Você será redirecionado para a prova.");
+      window.location.href = "https://forms.gle/PPqTCoeAoFCmnS6v8";
+    } else if (senha !== null) {
+      alert("❌ Senha incorreta! Fale com o instrutor.");
+    }
   }
 
-});
+  function acessarRevisao() {
+    const senha = prompt("🔑 Digite a senha de REVISÃO:");
+    if (senha && senha.trim() === "revisaoPPT") {
+      alert("✅ Conteúdo liberado! Você será redirecionado para a revisão.");
+      window.location.href = "https://gemini.google.com/share/3f4a288fe62f";
+    } else if (senha !== null) {
+      alert("❌ Acesso negado. Senha incorreta.");
+    }
+  }
 
-/* ==========================================================
-   ABRIR MATERIAL
-========================================================== */
-
-function abrirMaterial(url, titulo) {
-
-  window.location.href =
-    "./visualizador.html?titulo=" +
-    encodeURIComponent(titulo) +
-    "&url=" +
-    encodeURIComponent(url);
-
-}
-
-/* ==========================================================
-   PROVA
-========================================================== */
-
-function acessarProva() {
-
-  const senha = prompt("🔒 Digite a senha da PROVA:");
-
-  if (senha === null) return;
-
-  if (senha.trim().toLowerCase() === "provappt") {
-
-    alert("✅ Acesso liberado!");
-
+  function abrirMaterial(url, titulo) {
     window.location.href =
-      "https://forms.gle/PPqTCoeAoFCmnS6v8";
-
-  } else {
-
-    alert("❌ Senha incorreta!\n\nFale com o instrutor.");
-
+      `./visualizador.html?titulo=${encodeURIComponent(titulo)}&url=${encodeURIComponent(url)}`;
   }
-
-}
-
-/* ==========================================================
-   REVISÃO
-========================================================== */
-
-function acessarRevisao() {
-
-  const senha = prompt("🔑 Digite a senha da REVISÃO:");
-
-  if (senha === null) return;
-
-  if (senha.trim() === "revisaoPPT") {
-
-    alert("✅ Conteúdo liberado!");
-
-    window.location.href =
-      "https://gemini.google.com/share/3f4a288fe62f";
-
-  } else {
-
-    alert("❌ Senha incorreta.");
-
-  }
-
-}
-
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
