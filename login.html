@@ -3,136 +3,161 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NIC Formação Profissional - Acesso</title>
+  <title>NIC Formação Profissional | Acesso</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.json?v=11" />
+  <link rel="icon" href="./assets/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+
+  <!-- SEO -->
+  <meta property="og:image" content="./assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* =========================
+       DESIGN SYSTEM NIC
+    ========================== */
     :root {
-      --fundo: #0f172a;
-      --card: #1e293b;
-      --azul: #3b82f6;
-      --borda: #334155;
-      --verdeNIC: #7CAC3C;
-      --azulNIC: #043B7B;
+      --nicGreen: #A5E44E;
+      --nicGreenMid: #7CAC3C;
+      --nicBlueDark: #043B7B;
+      --nicBlue: #04244C;
+      --nicTeal: #365C86;
+      --nicGray: #F4F7FB;
+
+      --card: #ffffff;
+      --borda: #e5e7eb;
+      --texto: #04244C;
+
+      --gradiente: linear-gradient(135deg, #043B7B 0%, #365C86 100%);
     }
 
     body {
-      background-color: var(--fundo);
-      font-family: 'Inter', 'Segoe UI', sans-serif;
-      color: #fff;
-      height: 100vh;
       margin: 0;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #043B7B 0%, #0f172a 100%);
+      font-family: 'Inter', sans-serif;
+      background: var(--gradiente);
+      color: var(--texto);
     }
 
+    /* CARD LOGIN */
     .login-box {
-      max-width: 420px;
-      width: 90%;
-      background: rgba(30, 41, 59, 0.7);
-      backdrop-filter: blur(15px);
-      padding: 35px;
-      border-radius: 20px;
-      text-align: center;
+      width: 92%;
+      max-width: 440px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--borda);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      border-radius: 22px;
+      padding: 40px;
+      box-shadow: 0 20px 50px rgba(4,59,123,0.25);
+      text-align: center;
     }
 
     .logo {
-      max-width: 100px;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 0 10px rgba(124, 172, 60, 0.5));
-    }
-
-    .form-label {
-      display: block;
-      text-align: left;
-      font-size: 0.85rem;
-      color: #94a3b8;
-      margin-bottom: 5px;
-      margin-left: 5px;
-    }
-
-    .form-control, .form-select {
-      background-color: rgba(15, 23, 42, 0.6);
-      border: 1px solid var(--borda);
-      color: #fff;
-      padding: 12px;
-      border-radius: 10px;
+      width: 90px;
       margin-bottom: 15px;
     }
 
-    .form-control:focus, .form-select:focus {
-      background-color: rgba(15, 23, 42, 0.8);
-      border-color: var(--verdeNIC);
-      color: #fff;
-      box-shadow: 0 0 0 3px rgba(124, 172, 60, 0.2);
+    h1 {
+      font-weight: 700;
+      color: var(--nicBlueDark);
     }
 
-    .btn-glow {
-      background: linear-gradient(135deg, #7CAC3C 0%, #043B7B 100%);
+    p {
+      color: #64748b;
+    }
+
+    /* FORM */
+    .form-label {
+      text-align: left;
+      display: block;
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 5px;
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 12px;
+      border: 1px solid var(--borda);
+      padding: 12px;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--nicGreenMid);
+      box-shadow: 0 0 0 3px rgba(124,172,60,0.2);
+    }
+
+    /* BOTÃO */
+    .btn-nic {
+      background: linear-gradient(135deg, var(--nicGreenMid), var(--nicBlueDark));
+      color: white;
       border: none;
-      color: #fff;
       font-weight: 700;
       padding: 14px;
-      border-radius: 12px;
-      margin-top: 10px;
+      border-radius: 14px;
+      width: 100%;
       transition: 0.3s;
-      text-transform: uppercase;
       letter-spacing: 1px;
-      cursor: pointer;
+      margin-top: 10px;
     }
 
-    .btn-glow:hover {
+    .btn-nic:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(124, 172, 60, 0.4);
+      box-shadow: 0 10px 20px rgba(4,59,123,0.25);
     }
 
+    /* TEXTO ANIMADO */
     .typed-text {
-      color: #94a3b8;
-      font-size: 14px;
-      margin-top: 25px;
-      font-style: italic;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #64748b;
       min-height: 40px;
+      font-style: italic;
     }
 
     .voltar {
-      margin-top: 20px;
       display: inline-block;
-      color: #94a3b8;
+      margin-top: 18px;
+      font-size: 13px;
+      color: #64748b;
       text-decoration: none;
-      font-size: 0.9rem;
-      transition: 0.2s;
     }
 
     .voltar:hover {
-      color: #7CAC3C;
+      color: var(--nicGreenMid);
     }
   </style>
-  <link rel="manifest" href="./manifest.json?v=11" />
-  <link rel="icon" type="image/png" href="./assets/favicon.png" />
-  <link rel="apple-touch-icon" href="./assets/icon-192.2.png" />
-  <meta property="og:image" content="./assets/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" /></head>
+</head>
 
 <body>
 
 <main class="login-box">
-  <img src="./assets/icon-192.2.png" class="logo" alt="NIC Formação Profissional" />
 
-  <h1 class="h4 mb-1">Bem-vindo(a)</h1>
-  <p class="text-muted mb-4">Identifique-se para acessar sua área de aluno</p>
+  <img src="./assets/icon-192.png" class="logo" alt="NIC Formação">
+
+  <h1 class="h4">Bem-vindo(a)</h1>
+  <p>Identifique-se para acessar o portal do aluno</p>
 
   <form onsubmit="return validateLogin()" autocomplete="off">
-    <label class="form-label">Nome Completo</label>
-    <input type="text" id="username" class="form-control" placeholder="Digite seu nome completo" required>
 
-    <div class="row">
+    <label class="form-label">Nome Completo</label>
+    <input type="text" id="username" class="form-control" placeholder="Digite seu nome" required>
+
+    <div class="row mt-2">
       <div class="col-6">
         <label class="form-label">Dia da Aula</label>
         <select id="diaAula" class="form-select" required>
@@ -141,59 +166,59 @@
           <option value="Sábado">Sábado</option>
         </select>
       </div>
+
       <div class="col-6">
         <label class="form-label">Horário</label>
         <input type="time" id="horarioAula" class="form-control" required>
       </div>
     </div>
 
-    <button type="submit" class="btn btn-glow w-100">Entrar no Portal</button>
+    <button type="submit" class="btn-nic">
+      ENTRAR NO PORTAL
+    </button>
+
   </form>
 
   <div class="typed-text">
     <span id="typed-text"></span>
   </div>
 
-  <a href="./index.html" class="voltar">← Voltar para página inicial</a>
+  <a href="./index.html" class="voltar">← Voltar ao início</a>
+
 </main>
 
+<!-- Typed.js -->
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // Texto animado
-    if (window.Typed) {
-      new Typed('#typed-text', {
-        strings: [
-          '"O conhecimento transforma vidas."',
-          '"Invista em voce, invista no seu futuro."',
-          '"A educacao e o caminho para o sucesso."'
-        ],
-        typeSpeed: 50,
-        backSpeed: 30,
-        loop: true
-      });
-    }
-
-    // Recuperar nome salvo para facilitar
-    const nomeSalvo = localStorage.getItem("nomeAluno");
-    if (nomeSalvo) document.getElementById("username").value = nomeSalvo;
+  // animação texto
+  new Typed('#typed-text', {
+    strings: [
+      '"O conhecimento transforma vidas."',
+      '"Invista em você, invista no seu futuro."',
+      '"A educação é o caminho para o sucesso."'
+    ],
+    typeSpeed: 50,
+    backSpeed: 30,
+    loop: true
   });
 
+  // pré-preenchimento
+  const nomeSalvo = localStorage.getItem("nomeAluno");
+  if (nomeSalvo) document.getElementById("username").value = nomeSalvo;
+
+  // login
   function validateLogin() {
     const nome = document.getElementById("username").value.trim();
     const dia = document.getElementById("diaAula").value;
     const hora = document.getElementById("horarioAula").value;
 
-    // Salva os dados no navegador (funciona sem banco de dados)
     localStorage.setItem("nomeAluno", nome);
     localStorage.setItem("diaAula", dia);
     localStorage.setItem("horarioAula", hora);
 
-    // Redireciona para a página da área do aluno
     window.location.href = "./dashboard.html";
-
-    return false; // Impede recarregamento
+    return false;
   }
 </script>
 
