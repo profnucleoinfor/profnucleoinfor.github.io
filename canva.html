@@ -3,63 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Módulo Canva Design</title>
+  <title>Módulo Canva Design | NIC Formação</title>
 
-  <!-- ✅ CONFIGURAÇÕES PARA FUNCIONAR COMO APP (PWA) -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="NIC Aluno">
-    <meta name="theme-color" content="#043B7B">
+  <meta name="theme-color" content="#043B7B">
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
+    /* =========================
+       DESIGN SYSTEM NIC (INDEX)
+    ========================== */
     :root {
-      --fundo: #0f172a;
-      --card: #1e293b;
-      --borda: #334155;
-      --texto: #f1f5f9;
-      --mod-cor: #00C4CC;
-      --mod-cor-2: #7D2AE7;
-      --mod-gradiente: linear-gradient(135deg, #00C4CC 0%, #7D2AE7 100%);
+      --nicGreen: #A5E44E;
+      --nicGreenMid: #7CAC3C;
+      --nicBlueDark: #043B7B;
+      --nicBlue: #04244C;
+      --nicTeal: #365C86;
+      --nicGray: #F4F7FB;
+
+      --card: #ffffff;
+      --borda: #e5e7eb;
+      --texto: #04244C;
+
+      --gradiente: linear-gradient(135deg, #043B7B 0%, #365C86 100%);
     }
 
     body {
-      background-color: var(--fundo);
+      background: var(--nicGray);
       color: var(--texto);
       font-family: 'Inter', sans-serif;
     }
 
+    /* NAVBAR */
     .navbar {
-      background: rgba(30, 41, 59, 0.8);
+      background: rgba(255,255,255,0.9);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--borda);
     }
 
+    /* HERO */
     .hero {
-      background: var(--mod-gradiente);
+      background: var(--gradiente);
       padding: 60px 20px;
       text-align: center;
       border-radius: 0 0 40px 40px;
-      box-shadow: 0 10px 30px rgba(125, 42, 231, 0.25);
+      color: white;
     }
-    .hero h1 span { color: #fde047; font-weight: 700; }
 
+    .hero h1 span {
+      color: var(--nicGreen);
+    }
+
+    /* MISSÃO */
     .mission-box {
-      background: rgba(125, 42, 231, 0.1);
-      border: 1px solid var(--mod-cor-2);
+      background: white;
+      border: 1px solid var(--borda);
       padding: 20px;
       border-radius: 16px;
       margin-top: -30px;
-      position: relative;
-      z-index: 10;
-      backdrop-filter: blur(5px);
+      box-shadow: 0 10px 25px rgba(4,59,123,0.08);
     }
 
+    /* CARDS */
     .card-aula {
       background: var(--card);
       border: 1px solid var(--borda);
@@ -67,89 +82,105 @@
       padding: 30px;
       text-align: center;
       height: 100%;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
     }
+
     .card-aula:hover {
       transform: translateY(-8px);
-      border-color: var(--mod-cor);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+      border-color: var(--nicBlueDark);
+      box-shadow: 0 15px 30px rgba(4,59,123,0.15);
     }
 
-    .icon-box { font-size: 40px; margin-bottom: 15px; display: block; }
+    .icon-box {
+      font-size: 40px;
+      margin-bottom: 15px;
+      display: block;
+    }
 
+    /* BOTÃO */
     .btn-modulo {
-      background: var(--borda);
+      background: var(--nicBlueDark);
       color: white;
       border: none;
       padding: 10px 25px;
       border-radius: 12px;
       font-weight: 600;
-      transition: 0.3s;
       width: 100%;
-      text-decoration: none;
       display: inline-block;
+      text-decoration: none;
+      transition: 0.3s;
     }
-    .card-aula:hover .btn-modulo { background: var(--mod-cor); }
+
+    .card-aula:hover .btn-modulo {
+      background: var(--nicGreenMid);
+    }
+
+    /* ACCORDION */
+    .accordion-item {
+      border: none;
+      margin-bottom: 10px;
+      background: transparent;
+    }
+
+    .accordion-button {
+      background: white;
+      color: var(--texto);
+      border: 1px solid var(--borda);
+      border-radius: 12px !important;
+    }
+
+    .accordion-button::after {
+      filter: invert(1);
+    }
+
+    .accordion-button:not(.collapsed) {
+      background: rgba(4, 59, 123, 0.08);
+      color: var(--nicBlueDark);
+    }
 
     kbd {
-      background-color: #334155;
-      border-radius: 5px;
-      border: 1px solid #475569;
-      color: #5eead4;
-      padding: 2px 6px;
-      font-weight: bold;
-      box-shadow: 0 2px 0 #000;
+      background: #e5e7eb;
+      border: 1px solid #cbd5e1;
+      color: var(--nicTeal);
     }
 
-    .accordion-item { border: none; margin-bottom: 10px; background: transparent; }
-    .accordion-button { 
-      border-radius: 12px !important; 
-      background-color: var(--card); 
-      color: white; 
-      border: 1px solid var(--borda);
+    footer {
+      color: #64748b;
+      font-size: 13px;
     }
-    .accordion-button::after { filter: invert(1); }
-    .accordion-button:not(.collapsed) {
-      background-color: rgba(0, 196, 204, 0.1);
-      color: #5eead4;
-      box-shadow: none;
-    }
-
-    footer { color: #64748b; font-size: 13px; }
   </style>
-  <link rel="manifest" href="./manifest.json?v=11" />
-  <link rel="icon" type="image/png" href="./assets/favicon.png" />
-  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
-  <meta property="og:image" content="./assets/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" /></head>
+</head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg sticky-top">
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="./dashboard.html">
-      <span class="me-2">⬅️</span> Painel
+    <a class="navbar-brand fw-bold text-nicBlueDark" href="./dashboard.html">
+      ⬅️ Painel
     </a>
-    <div class="ms-auto">
-      <span class="badge" style="background-color: var(--mod-cor-2);">Módulo Canva Design</span>
-    </div>
+    <span class="badge" style="background: var(--nicGreenMid);">
+      Módulo Canva Design
+    </span>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="container">
-    <h1 class="display-5">Bem-vindo, <span id="nomeAlunoDisplay">Estudante</span> 🎨</h1>
+    <h1 class="display-5 fw-bold">
+      Bem-vindo, <span id="nomeAlunoDisplay">Estudante</span> 🎨
+    </h1>
     <p class="lead opacity-75">
-      “Crie coisas lindas com suas próprias mãos.” <br> 
+      “Crie coisas lindas com suas próprias mãos.” <br>
       <small>Êxodo 35:32</small>
     </p>
   </div>
 </section>
 
 <div class="container mb-5 mt-5">
-  
+
+  <!-- MISSÃO -->
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="mission-box text-center">
@@ -158,25 +189,17 @@
     </div>
   </div>
 
-  <div class="row justify-content-center mt-4">
-    <div class="col-md-8">
-      <div class="text-center p-4 rounded-4" style="background: var(--mod-gradiente); box-shadow: 0 10px 25px rgba(125, 42, 231, 0.25);">
-        <h5 class="mb-1 text-white">Pronto para criar?</h5>
-        <p class="mb-3 text-white opacity-75 small">Acesse sua conta no Canva e comece a praticar agora mesmo.</p>
-        <a href="https://www.canva.com/login" target="_blank" rel="noopener noreferrer" class="btn btn-light fw-bold rounded-pill px-5 py-2">
-          🎨 Entrar no Canva
-        </a>
-      </div>
-    </div>
-  </div>
-
+  <!-- CARDS -->
   <div class="row g-4 mt-4">
+
     <div class="col-md-3">
       <div class="card-aula">
         <span class="icon-box">📐</span>
         <h5>Slides da Aula</h5>
         <p class="text-muted small">Princípios de design e cores.</p>
-        <a href="./visualizador.html?titulo=Slides%20Canva&url=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1Tf2KiBXjDloOIJvsTxo7orzocKstLhsh%2Fembed%3Fstart%3Dfalse%26loop%3Dfalse%26delayms%3D3000" target="_blank" rel="noopener noreferrer" class="btn-modulo">Abrir Conteúdo</a>
+        <a href="./visualizador.html?titulo=Slides Canva&url=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1Tf2KiBXjDloOIJvsTxo7orzocKstLhsh%2Fembed" class="btn-modulo">
+          Abrir Conteúdo
+        </a>
       </div>
     </div>
 
@@ -185,7 +208,9 @@
         <span class="icon-box">📘</span>
         <h5>Apostila</h5>
         <p class="text-muted small">Guia completo de ferramentas do Canva.</p>
-        <a href="visualizador.html?titulo=Arquivo Drive&url=https://drive.google.com/file/d/16UmEJleEKtdwhSRrtQToFoq8sZyILYlp/preview" target="_blank" rel="noopener noreferrer" class="btn-modulo">Ler Agora</a>
+        <a href="./visualizador.html?titulo=Apostila Canva&url=https://drive.google.com/file/d/16UmEJleEKtdwhSRrtQToFoq8sZyILYlp/preview" class="btn-modulo">
+          Ler Agora
+        </a>
       </div>
     </div>
 
@@ -194,37 +219,40 @@
         <span class="icon-box">✍️</span>
         <h5>Exercícios</h5>
         <p class="text-muted small">Criação de artes e identidade visual.</p>
-        <a href="https://forms.gle/BV6gxxEkJJXq1z3A9" target="_blank" rel="noopener noreferrer" class="btn-modulo">Enviar Atividade</a>
+        <a href="https://forms.gle/BV6gxxEkJJXq1z3A9" target="_blank" class="btn-modulo">
+          Enviar Atividade
+        </a>
       </div>
     </div>
 
     <div class="col-md-3">
-      <div class="card-aula" style="border-color: #ef4444;">
+      <div class="card-aula" style="border-color:#ef4444;">
         <span class="icon-box">📝</span>
         <h5>Prova Final</h5>
         <p class="text-muted small">Desafio de criação de material completo.</p>
-        <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 py-2 fw-bold">Iniciar Prova</button>
+        <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 fw-bold">
+          Iniciar Prova
+        </button>
       </div>
     </div>
+
   </div>
 
+  <!-- DICAS -->
   <div class="row mt-5">
     <div class="col-12">
-      <div class="card p-4" style="background: var(--card); border: 1px solid var(--borda); border-radius: 20px;">
-        <h2 class="mb-4 d-flex align-items-center">
-          <span class="me-3">💡</span> Dicas de Ouro do Design
-        </h2>
-        
-        <div class="accordion accordion-flush" id="accordionModulo">
+      <div class="card p-4" style="background:white; border:1px solid var(--borda); border-radius:20px;">
+        <h2 class="mb-4">💡 Dicas de Ouro do Design</h2>
+
+        <div class="accordion" id="accordionModulo">
+
           <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#principios">
-                🎨 Regras de Design
-              </button>
-            </h2>
-            <div id="principios" class="accordion-collapse collapse" data-bs-parent="#accordionModulo">
-              <div class="accordion-body p-0">
-                <table class="table table-dark table-hover mb-0">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#principios">
+              🎨 Regras de Design
+            </button>
+            <div id="principios" class="accordion-collapse collapse">
+              <div class="p-3">
+                <table class="table table-hover mb-0">
                   <tbody>
                     <tr><td>🎨</td><td>Use no máximo 3 cores principais</td></tr>
                     <tr><td>🔤</td><td>Fuja de fontes difíceis de ler</td></tr>
@@ -237,35 +265,24 @@
           </div>
 
           <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#atalhos">
-                ⚡ Atalhos Úteis
-              </button>
-            </h2>
-            <div id="atalhos" class="accordion-collapse collapse" data-bs-parent="#accordionModulo">
-              <div class="accordion-body p-0">
-                <table class="table table-dark table-hover mb-0">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#atalhos">
+              ⚡ Atalhos Úteis
+            </button>
+            <div id="atalhos" class="accordion-collapse collapse">
+              <div class="p-3">
+                <table class="table table-hover mb-0">
                   <tbody>
-                    <tr><td><kbd>Ctrl</kbd> + <kbd>D</kbd></td><td>Duplicar elemento</td></tr>
-                    <tr><td><kbd>Ctrl</kbd> + <kbd>G</kbd></td><td>Agrupar objetos</td></tr>
-                    <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd></td><td>Desagrupar objetos</td></tr>
-                    <tr><td><kbd>Alt</kbd> + Arrastar</td><td>Duplicar rapidamente</td></tr>
+                    <tr><td><kbd>Ctrl+D</kbd></td><td>Duplicar elemento</td></tr>
+                    <tr><td><kbd>Ctrl+G</kbd></td><td>Agrupar objetos</td></tr>
+                    <tr><td><kbd>Alt</kbd></td><td>Duplicação rápida</td></tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="row mt-5">
-    <div class="col-12 text-center">
-      <div class="p-4 rounded-4" style="background: rgba(0, 196, 204, 0.05); border: 1px dashed var(--mod-cor);">
-        <h5>🔒 Revisão do Módulo</h5>
-        <p class="text-muted small">Design para impressão e mídias avançadas.</p>
-        <button onclick="acessarRevisao()" class="btn btn-warning px-5 rounded-pill fw-bold py-2">Liberar Conteúdo</button>
+        </div>
+
       </div>
     </div>
   </div>
@@ -273,45 +290,24 @@
 </div>
 
 <footer class="text-center py-5">
-  <small>© NIC Formação Profissional — Educação com Propósito</small>
+  <small>NIC Formação Profissional • Canva Design</small>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
-  // ✅ REGISTRO DO SERVICE WORKER PARA O APP
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./service-worker.js');
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const nomeSalvo = localStorage.getItem("nomeAluno");
-    if (nomeSalvo) {
-      document.getElementById("nomeAlunoDisplay").innerText = nomeSalvo;
-    }
-  });
+  const nome = localStorage.getItem("nomeAluno");
+  if (nome) document.getElementById("nomeAlunoDisplay").innerText = nome;
 
   function acessarProva() {
-    const senha = prompt("🔒 Digite a senha da PROVA:");
-    if (senha && senha.trim().toLowerCase() === "tentei") {
-      alert("✅ Acesso liberado! Você será redirecionado para a prova.");
+    const senha = prompt("Digite a senha da prova:");
+    if (senha === "tentei") {
       window.location.href = "./canva-quest.html";
     } else if (senha !== null) {
-      alert("❌ Senha incorreta! Fale com o instrutor.");
-    }
-  }
-
-  function acessarRevisao() {
-    const senha = prompt("🔑 Digite a senha de REVISÃO:");
-    if (senha === "revisaoDesign") {
-      alert("✅ Conteúdo liberado!");
-    } else if (senha !== null) {
-      alert("❌ Acesso negado. Senha incorreta.");
+      alert("Senha incorreta.");
     }
   }
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
