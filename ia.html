@@ -3,300 +3,748 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Módulo Inteligência Artificial</title>
 
-  <!-- ✅ CONFIGURAÇÕES PARA FUNCIONAR COMO APP (PWA) -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Módulo Inteligência Artificial | NIC Formação</title>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="NIC Aluno">
-    <meta name="theme-color" content="#043B7B">
+  <meta name="theme-color" content="#043B7B">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <style>
-    :root {
-      --fundo: #0f172a;
-      --card: #1e293b;
-      --borda: #334155;
-      --texto: #f1f5f9;
-      --mod-cor: #8b5cf6;
-      --mod-gradiente: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
-    }
+<style>
 
-    body {
-      background-color: var(--fundo);
-      color: var(--texto);
-      font-family: 'Inter', sans-serif;
-    }
+/* =========================
+      DESIGN SYSTEM NIC
+========================= */
 
-    .navbar {
-      background: rgba(30, 41, 59, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--borda);
-    }
+:root{
 
-    .hero {
-      background: var(--mod-gradiente);
-      padding: 60px 20px;
-      text-align: center;
-      border-radius: 0 0 40px 40px;
-      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
-    }
-    .hero h1 span { color: #fde047; font-weight: 700; }
+--nicGreen:#A5E44E;
+--nicGreenMid:#7CAC3C;
 
-    .mission-box {
-      background: rgba(139, 92, 246, 0.1);
-      border: 1px solid #8b5cf6;
-      padding: 20px;
-      border-radius: 16px;
-      margin-top: -30px;
-      position: relative;
-      z-index: 10;
-      backdrop-filter: blur(5px);
-    }
+--nicBlueDark:#043B7B;
+--nicBlue:#04244C;
+--nicTeal:#365C86;
 
-    .card-aula {
-      background: var(--card);
-      border: 1px solid var(--borda);
-      border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-      height: 100%;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .card-aula:hover {
-      transform: translateY(-8px);
-      border-color: var(--mod-cor);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-    }
+--nicGray:#F4F7FB;
 
-    .icon-box { font-size: 40px; margin-bottom: 15px; display: block; }
+--card:#ffffff;
+--borda:#e5e7eb;
+--texto:#04244C;
 
-    .btn-modulo {
-      background: var(--borda);
-      color: white;
-      border: none;
-      padding: 10px 25px;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: 0.3s;
-      width: 100%;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .card-aula:hover .btn-modulo { background: var(--mod-cor); }
+--gradiente:linear-gradient(135deg,#043B7B 0%,#365C86 100%);
 
-    kbd {
-      background-color: #334155;
-      border-radius: 5px;
-      border: 1px solid #475569;
-      color: #d8b4fe;
-      padding: 2px 6px;
-      font-weight: bold;
-      box-shadow: 0 2px 0 #000;
-    }
+}
 
-    .accordion-item { border: none; margin-bottom: 10px; background: transparent; }
-    .accordion-button { 
-      border-radius: 12px !important; 
-      background-color: var(--card); 
-      color: white; 
-      border: 1px solid var(--borda);
-    }
-    .accordion-button::after { filter: invert(1); }
-    .accordion-button:not(.collapsed) {
-      background-color: rgba(139, 92, 246, 0.1);
-      color: #d8b4fe;
-      box-shadow: none;
-    }
+body{
 
-    footer { color: #64748b; font-size: 13px; }
-  </style>
-  <link rel="manifest" href="./manifest.json?v=11" />
-  <link rel="icon" type="image/png" href="./assets/favicon.png" />
-  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
-  <meta property="og:image" content="./assets/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" /></head>
+background:var(--nicGray);
+font-family:'Inter',sans-serif;
+color:var(--texto);
+
+}
+
+/* NAVBAR */
+
+.navbar{
+
+background:rgba(255,255,255,.92);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--borda);
+
+}
+
+/* HERO */
+
+.hero{
+
+background:var(--gradiente);
+padding:60px 20px;
+border-radius:0 0 40px 40px;
+text-align:center;
+color:white;
+
+}
+
+.hero h1 span{
+
+color:var(--nicGreen);
+
+}
+
+/* MISSÃO */
+
+.mission-box{
+
+background:white;
+border:1px solid var(--borda);
+padding:20px;
+border-radius:16px;
+margin-top:-30px;
+box-shadow:0 10px 30px rgba(4,59,123,.08);
+
+}
+
+/* CARDS */
+
+.card-aula{
+
+background:white;
+border:1px solid var(--borda);
+border-radius:20px;
+padding:25px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+height:100%;
+transition:.25s;
+
+}
+
+.card-aula:hover{
+
+transform:translateY(-6px);
+border-color:var(--nicBlueDark);
+box-shadow:0 12px 25px rgba(4,59,123,.12);
+
+}
+
+.icon-box{
+
+font-size:42px;
+margin-bottom:12px;
+display:block;
+
+}
+
+.btn-modulo{
+
+background:var(--nicBlueDark);
+color:white;
+padding:10px 18px;
+border-radius:12px;
+text-decoration:none;
+font-weight:600;
+display:block;
+transition:.3s;
+
+}
+
+.card-aula:hover .btn-modulo{
+
+background:var(--nicGreenMid);
+color:white;
+
+}
+
+/* ACCORDION */
+
+.accordion-item{
+
+border:none;
+margin-bottom:10px;
+background:transparent;
+
+}
+
+.accordion-button{
+
+background:white;
+border:1px solid var(--borda);
+border-radius:12px!important;
+color:var(--texto);
+box-shadow:none;
+
+}
+
+.accordion-button:not(.collapsed){
+
+background:rgba(4,59,123,.08);
+color:var(--nicBlueDark);
+
+}
+
+kbd{
+
+background:#e5e7eb;
+border:1px solid #cbd5e1;
+padding:2px 6px;
+border-radius:4px;
+
+}
+
+footer{
+
+color:#64748b;
+font-size:13px;
+
+}
+
+</style>
+
+<link rel="manifest" href="./manifest.json?v=11">
+<link rel="icon" href="./assets/favicon.png">
+<link rel="apple-touch-icon" href="./assets/icon-192.png">
+
+</head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="./dashboard.html">
-      <span class="me-2">⬅️</span> Painel
-    </a>
-    <div class="ms-auto">
-      <span class="badge" style="background-color: var(--mod-cor);">Módulo Inteligência Artificial</span>
-    </div>
-  </div>
-</nav>
+<nav class="navbar navbar-expand-lg sticky-top">
 
-<section class="hero">
-  <div class="container">
-    <h1 class="display-5">Bem-vindo, <span id="nomeAlunoDisplay">Estudante</span> 🤖</h1>
-    <p class="lead opacity-75">
-      “Use a tecnologia para multiplicar o seu talento.” <br> 
-      <small>Mateus 25:14-30</small>
-    </p>
-  </div>
-</section>
+<div class="container">
 
-<div class="container mb-5 mt-5">
-  
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="mission-box text-center">
-        🎯 <strong>Missão:</strong> Entender o que é IA, aprender a usar ferramentas de forma ética e produtiva, automatizar tarefas e criar conteúdos incríveis com ajuda da tecnologia!
-      </div>
-    </div>
-  </div>
+<a class="navbar-brand fw-bold d-flex align-items-center"
+style="color:var(--nicBlueDark)"
+href="./dashboard.html">
 
-  <div class="row g-4 mt-4">
-    <div class="col-md-3">
-      <div class="card-aula">
-        <span class="icon-box">🧠</span>
-        <h5>Slides da Aula</h5>
-        <p class="text-muted small">Conceitos e aplicações da IA.</p>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="btn-modulo">Abrir Conteúdo</a>
-      </div>
-    </div>
+<span class="me-2">⬅️</span>
 
-    <div class="col-md-3">
-      <div class="card-aula">
-        <span class="icon-box">📘</span>
-        <h5>Apostila</h5>
-        <p class="text-muted small">Guia de ferramentas e engenharia de prompt.</p>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="btn-modulo">Ler Agora</a>
-      </div>
-    </div>
+Painel
 
-    <div class="col-md-3">
-      <div class="card-aula">
-        <span class="icon-box">✍️</span>
-        <h5>Exercícios</h5>
-        <p class="text-muted small">Criação de textos, imagens e códigos.</p>
-        <a href="https://forms.gle/BV6gxxEkJJXq1z3A9" target="_blank" rel="noopener noreferrer" class="btn-modulo">Enviar Atividade</a>
-      </div>
-    </div>
+</a>
 
-    <div class="col-md-3">
-      <div class="card-aula" style="border-color: #ef4444;">
-        <span class="icon-box">📝</span>
-        <h5>Prova Final</h5>
-        <p class="text-muted small">Desafio de solução com IA.</p>
-        <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 py-2 fw-bold">Iniciar Prova</button>
-      </div>
-    </div>
-  </div>
+<div class="ms-auto">
 
-  <div class="row mt-5">
-    <div class="col-12">
-      <div class="card p-4" style="background: var(--card); border: 1px solid var(--borda); border-radius: 20px;">
-        <h2 class="mb-4 d-flex align-items-center">
-          <span class="me-3">💡</span> Segredos do Prompt Perfeito
-        </h2>
-        
-        <div class="accordion accordion-flush" id="accordionModulo">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#regras">
-                ✍️ Como Pedir Certo
-              </button>
-            </h2>
-            <div id="regras" class="accordion-collapse collapse" data-bs-parent="#accordionModulo">
-              <div class="accordion-body p-0">
-                <table class="table table-dark table-hover mb-0">
-                  <tbody>
-                    <tr><td>🎯</td><td>Seja claro e específico no que quer</td></tr>
-                    <tr><td>📝</td><td>Dê contexto e explique o objetivo</td></tr>
-                    <tr><td>🎨</td><td>Defina o tom, estilo e formato</td></tr>
-                    <tr><td>✅</td><td>Peça para revisar ou melhorar</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+<span class="badge"
+style="background:var(--nicBlueDark);padding:8px 16px;border-radius:8px;">
 
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usos">
-                🚀 Onde usar no dia a dia
-              </button>
-            </h2>
-            <div id="usos" class="accordion-collapse collapse" data-bs-parent="#accordionModulo">
-              <div class="accordion-body p-0">
-                <table class="table table-dark table-hover mb-0">
-                  <tbody>
-                    <tr><td>📧</td><td>Escrever e-mails e mensagens</td></tr>
-                    <tr><td>📚</td><td>Resumir textos e estudos</td></tr>
-                    <tr><td>💡</td><td>Criar ideias e planejamentos</td></tr>
-                    <tr><td>🖼️</td><td>Gerar imagens e arte</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+Módulo Inteligência Artificial
 
-  <div class="row mt-5">
-    <div class="col-12 text-center">
-      <div class="p-4 rounded-4" style="background: rgba(139, 92, 246, 0.05); border: 1px dashed #8b5cf6;">
-        <h5>🔒 Revisão do Módulo</h5>
-        <p class="text-muted small">Ética, privacidade e futuro da inteligência artificial.</p>
-        <button onclick="acessarRevisao()" class="btn btn-warning px-5 rounded-pill fw-bold py-2">Liberar Conteúdo</button>
-      </div>
-    </div>
-  </div>
+</span>
 
 </div>
 
+</div>
+
+</nav>
+
+<section class="hero">
+
+<div class="container">
+
+<h1 class="display-5 fw-bold">
+
+Bem-vindo,
+
+<span id="nomeAlunoDisplay">Estudante</span>
+
+🤖
+
+</h1>
+
+<p class="lead opacity-75">
+
+"Use a tecnologia para multiplicar o seu talento."
+
+<br>
+
+<small>Mateus 25:14-30</small>
+
+</p>
+
+</div>
+
+</section>
+
+<div class="container mb-5 mt-5">
+<div class="row justify-content-center">
+
+    <div class="col-md-8">
+        <div class="mission-box text-center">
+
+            🎯 <strong>Missão:</strong>
+
+            Entender o que é Inteligência Artificial,
+            utilizar ferramentas de forma ética,
+            automatizar tarefas e criar conteúdos incríveis
+            com auxílio da tecnologia.
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row g-4 mt-4">
+
+    <!-- Slides -->
+
+    <div class="col-md-3">
+
+        <div class="card-aula">
+
+            <div>
+
+                <span class="icon-box">🧠</span>
+
+                <h5>Slides da Aula</h5>
+
+                <p class="text-muted small">
+
+                    Conceitos, aplicações e ferramentas de IA.
+
+                </p>
+
+            </div>
+
+            <a href="#"
+               class="btn-modulo">
+
+                Abrir Conteúdo
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Apostila -->
+
+    <div class="col-md-3">
+
+        <div class="card-aula">
+
+            <div>
+
+                <span class="icon-box">📘</span>
+
+                <h5>Apostila</h5>
+
+                <p class="text-muted small">
+
+                    Guia completo do módulo.
+
+                </p>
+
+            </div>
+
+            <a href="#"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn-modulo">
+
+                Ler Agora
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Exercícios -->
+
+    <div class="col-md-3">
+
+        <div class="card-aula">
+
+            <div>
+
+                <span class="icon-box">✍️</span>
+
+                <h5>Exercícios</h5>
+
+                <p class="text-muted small">
+
+                    Atividades práticas utilizando IA.
+
+                </p>
+
+            </div>
+
+            <a href="https://forms.gle/BV6gxxEkJJXq1z3A9"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn-modulo">
+
+                Enviar Atividade
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Prova -->
+
+    <div class="col-md-3">
+
+        <div class="card-aula"
+             style="border-color:#ef4444;">
+
+            <div>
+
+                <span class="icon-box">📝</span>
+
+                <h5>Prova Final</h5>
+
+                <p class="text-muted small">
+
+                    Avaliação prática utilizando IA.
+
+                </p>
+
+            </div>
+
+            <button
+                onclick="acessarProva()"
+                class="btn btn-danger w-100 rounded-3 fw-bold py-2">
+
+                Iniciar Prova
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- DICAS -->
+
+<div class="row mt-5">
+
+<div class="col-12">
+
+<div class="card p-4"
+style="background:white;
+border:1px solid var(--borda);
+border-radius:20px;">
+
+<h4 class="mb-4 d-flex align-items-center">
+
+<span class="me-3">
+
+💡
+
+</span>
+
+Segredos do Prompt Perfeito
+
+</h4>
+
+
+<div class="accordion accordion-flush"
+id="accordionModulo">
+
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button
+class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#prompt">
+
+✍️ Como criar um bom Prompt
+
+</button>
+
+</h2>
+
+<div id="prompt"
+class="accordion-collapse collapse"
+data-bs-parent="#accordionModulo">
+
+<div class="p-3">
+
+<table class="table table-hover mb-0">
+
+<tbody>
+
+<tr>
+
+<td style="width:60px;text-align:center;">🎯</td>
+
+<td>Explique claramente o que deseja.</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;">📝</td>
+
+<td>Forneça contexto suficiente.</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;">🎨</td>
+
+<td>Informe formato, tom e estilo.</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;">✅</td>
+
+<td>Peça revisões e melhorias.</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button
+class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#usosia">
+
+🚀 Onde utilizar IA
+
+</button>
+
+</h2>
+
+<div id="usosia"
+class="accordion-collapse collapse"
+data-bs-parent="#accordionModulo">
+
+<div class="p-3">
+
+<table class="table table-hover mb-0">
+
+<tbody>
+
+<tr>
+
+<td style="width:60px;text-align:center;">📧</td>
+
+<td>Produção de textos e e-mails.</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;">📚</td>
+
+<td>Resumo e organização de estudos.</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;">💡</td>
+
+<td>Planejamento e geração de ideias.</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;">🖼️</td>
+
+<td>Criação de imagens e apresentações.</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;">💻</td>
+
+<td>Auxílio na programação.</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="row mt-5">
+
+<div class="col-12 text-center">
+
+<div
+class="p-4 rounded-4"
+style="
+background:#ffffff;
+border:1px dashed var(--nicBlueDark);
+box-shadow:0 10px 30px rgba(4,59,123,.05);
+">
+
+<h5>
+
+🔒 Revisão do Módulo
+
+</h5>
+
+<p class="text-muted small">
+
+Ética, privacidade,
+engenharia de prompt,
+automação
+e o futuro da Inteligência Artificial.
+
+</p>
+
+<button
+onclick="acessarRevisao()"
+class="btn btn-warning px-5 rounded-pill fw-bold py-2">
+
+Liberar Conteúdo
+
+</button>
+
+</div>
+
+</div>
+
+</div>
 <footer class="text-center py-5">
-  <small>© NIC Formação Profissional — Educação com Propósito</small>
+    <small>© NIC Formação Profissional — Educação com Propósito</small>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  // ✅ REGISTRO DO SERVICE WORKER PARA O APP
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./service-worker.js');
+
+//
+// REGISTRO DO SERVICE WORKER
+//
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", () => {
+
+        navigator.serviceWorker.register("./service-worker.js");
+
     });
-  }
 
-  document.addEventListener("DOMContentLoaded", () => {
+}
+
+
+
+//
+// CARREGA O NOME DO ALUNO
+//
+
+document.addEventListener("DOMContentLoaded", () => {
+
     const nomeSalvo = localStorage.getItem("nomeAluno");
+
     if (nomeSalvo) {
-      document.getElementById("nomeAlunoDisplay").innerText = nomeSalvo;
-    }
-  });
 
-  function acessarProva() {
+        document.getElementById("nomeAlunoDisplay").textContent = nomeSalvo;
+
+    }
+
+});
+
+
+
+//
+// PROVA
+//
+
+function acessarProva() {
+
     const senha = prompt("🔒 Digite a senha da PROVA:");
-    if (senha && senha.trim().toLowerCase() === "provaia") {
-      alert("✅ Acesso liberado!");
-    } else if (senha !== null) {
-      alert("❌ Senha incorreta! Fale com o instrutor.");
-    }
-  }
 
-  function acessarRevisao() {
-    const senha = prompt("🔑 Digite a senha de REVISÃO:");
-    if (senha === "revisaoIA") {
-      alert("✅ Conteúdo liberado!");
-    } else if (senha !== null) {
-      alert("❌ Acesso negado. Senha incorreta.");
+    if (senha === null) return;
+
+    if (senha.trim().toLowerCase() === "provaia") {
+
+        alert("✅ Acesso liberado!");
+
+        /*
+        Quando a prova estiver pronta,
+        basta trocar a linha abaixo.
+
+        Exemplo:
+
+        window.location.href = "prova-ia.html";
+
+        */
+
     }
-  }
+
+    else {
+
+        alert("❌ Senha incorreta! Fale com o instrutor.");
+
+    }
+
+}
+
+
+
+//
+// REVISÃO
+//
+
+function acessarRevisao() {
+
+    const senha = prompt("🔑 Digite a senha da REVISÃO:");
+
+    if (senha === null) return;
+
+    if (senha.trim() === "revisaoIA") {
+
+        alert("✅ Conteúdo liberado!");
+
+        /*
+        Quando a revisão estiver pronta:
+
+        window.location.href="rvia.html";
+
+        */
+
+    }
+
+    else {
+
+        alert("❌ Senha incorreta.");
+
+    }
+
+}
+
 </script>
 
 </body>
