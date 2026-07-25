@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Quest | NIC Formação Profissional</title>
+    <meta name="description" content="Avaliação do Módulo Inteligência Artificial da NIC Formação Profissional.">
+    <meta name="theme-color" content="#043B7B">
+    <link rel="manifest" href="./manifest.json?v=11">
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+    <link rel="apple-touch-icon" href="./assets/icon-192.png">
+    <meta property="og:image" content="./assets/og-image.png">
+
+    <style>
+        :root {
+            --fundo: #0f172a;
+            --card: #1e293b;
+            --borda: #334155;
+            --texto: #f8fafc;
+            --texto-sec: #94a3b8;
+            --azul: #043B7B;
+            --verde: #7CAC3C;
+            --verdeClaro: #A5E44E;
+            --erro: #ef4444;
+            --ok: #22c55e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(4,59,123,.96), rgba(15,23,42,.98));
+            font-family: Inter, Segoe UI, Arial, sans-serif;
+            color: var(--texto);
+            line-height: 1.5;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 24px;
+            background: rgba(15,23,42,.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--borda);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+        }
+
+        .brand strong {
+            display: block;
+            font-size: 1.05rem;
+        }
+
+        .brand span {
+            color: var(--texto-sec);
+            font-size: .85rem;
+        }
+
+        .top-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        a, button {
+            border: 1px solid var(--borda);
+            background: #253247;
+            color: white;
+            padding: 11px 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 700;
+            transition: .25s;
+        }
+
+        a:hover, button:hover {
+            border-color: var(--verdeClaro);
+        }
+
+        main {
+            width: min(980px, 100%);
+            margin: auto;
+            padding: 30px 18px 50px;
+        }
+
+        .panel {
+            background: rgba(30,41,59,.93);
+            border: 1px solid var(--borda);
+            border-radius: 18px;
+            padding: 32px;
+            box-shadow: 0 18px 45px rgba(0,0,0,.28);
+        }
+
+        .eyebrow {
+            color: var(--verdeClaro);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            font-weight: 800;
+            font-size: .78rem;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+        }
+
+        h2 {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            margin-bottom: 15px;
+        }
+
+        .lead {
+            color: var(--texto-sec);
+            margin-top: 20px;
+            max-width: 700px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .info {
+            background: rgba(15,23,42,.55);
+            border: 1px solid var(--borda);
+            border-radius: 14px;
+            padding: 15px;
+        }
+
+        .info span {
+            display: block;
+            color: var(--texto-sec);
+            font-size: .82rem;
+        }
+
+        .info strong {
+            font-size: 1.1rem;
+        }
+
+        label {
+            display: block;
+            margin: 20px 0 8px;
+            font-weight: 700;
+            color: var(--texto-sec);
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid var(--borda);
+            background: #0f172a;
+            color: white;
+            font: inherit;
+        }
+
+        .primary {
+            margin-top: 20px;
+            width: 100%;
+            border: none;
+            background: linear-gradient(135deg, var(--verde), var(--azul));
+            color: white;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .progress-wrap {
+            display: grid;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .progress-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--texto-sec);
+        }
+
+        .progress {
+            height: 14px;
+            background: rgba(255,255,255,.15);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .bar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--verde), var(--verdeClaro));
+            transition: .3s;
+        }
+
+        .options {
+            display: grid;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            border: 1px solid var(--borda);
+            border-radius: 14px;
+            cursor: pointer;
+            background: rgba(15,23,42,.55);
+            transition: .25s;
+        }
+
+        .option:hover {
+            border-color: var(--verde);
+        }
+
+        .option input {
+            margin-top: 4px;
+            accent-color: var(--verde);
+            width: auto;
+        }
+
+        .result-card {
+            text-align: center;
+        }
+
+        .nota {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            color: var(--verdeClaro);
+            margin: 20px 0;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: rgba(34,197,94,.15);
+            border: 1px solid rgba(34,197,94,.35);
+            font-weight: bold;
+        }
+
+        .status.review {
+            background: rgba(239,68,68,.15);
+            border-color: rgba(239,68,68,.35);
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin: 30px 0;
+        }
+
+        .feedback {
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: var(--texto-sec);
+        }
+
+        .actions-bottom {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .comentario {
+            margin: 20px auto;
+            max-width: 700px;
+            padding: 18px;
+            border-radius: 14px;
+            background: rgba(124,172,60,.10);
+            line-height: 1.7;
+        }
+
+        @media print {
+            header, .actions-bottom {
+                display: none;
+            }
+            body {
+                background: white;
+                color: black;
+            }
+            .panel {
+                border: none;
+                box-shadow: none;
+                background: transparent;
+            }
+            .info, .comentario {
+                border: 1px solid #ccc;
+                background: #f9f9f9;
+            }
+        }
+
+        @media(max-width:700px) {
+            .grid, .summary {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .actions-bottom {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <img src="./assets/icon-192.png" alt="Logo NIC">
+            <div>
+                <strong>NIC Formação Profissional</strong>
+                <span>IA Quest • Desafio Final</span>
+            </div>
+        </div>
+        <div class="top-actions">
+            <a href="./ia.html">Voltar ao módulo</a>
+            <a href="./dashboard.html">Painel</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="start" class="panel">
+            <p class="eyebrow">Avaliação Final</p>
+            <h1>🤖 IA Quest</h1>
+            <p class="lead">
+                Bem-vindo ao IA Quest! Esta avaliação foi elaborada para verificar os conhecimentos adquiridos durante o Módulo de Inteligência Artificial da NIC Formação Profissional. Leia atentamente cada questão antes de responder.
+            </p>
+            <p class="lead">A prova funciona normalmente offline após ser carregada pelo PWA.</p>
+
+            <div class="grid">
+                <div class="info">
+                    <span>Questões</span>
+                    <strong>20</strong>
+                </div>
+                <div class="info">
+                    <span>Valor</span>
+                    <strong>10 Pontos</strong>
+                </div>
+                <div class="info">
+                    <span>Registro</span>
+                    <strong>Local</strong>
+                </div>
+            </div>
+
+            <label>Nome do aluno</label>
+            <input id="nome" type="text" placeholder="Digite seu nome completo" autocomplete="name">
+            <button class="primary" onclick="iniciar()">Iniciar IA Quest</button>
+        </section>
+
+        <section id="quiz" class="panel hidden" aria-live="polite">
+            <div class="progress-wrap">
+                <div class="progress-meta">
+                    <span id="contador">Questão 1 de 20</span>
+                    <span id="porcentagem">0%</span>
+                </div>
+                <div class="progress">
+                    <div class="bar" id="bar"></div>
+                </div>
+            </div>
+            <h2 id="pergunta"></h2>
+            <div class="options" id="opcoes"></div>
+            <button class="primary" type="button" onclick="proxima()">Próxima Questão</button>
+        </section>
+
+        <section id="fim" class="panel hidden result-card">
+            <p class="eyebrow">Avaliação Finalizada</p>
+            <h1 id="aluno">Aluno</h1>
+            <p id="comentarioFinal" class="comentario"></p>
+            <div class="nota" id="nota">0.0</div>
+            <div id="status" class="status">IA Quest Concluído</div>
+
+            <div class="summary">
+                <div class="info">
+                    <span>Acertos</span>
+                    <strong id="acertos">0 de 20</strong>
+                </div>
+                <div class="info">
+                    <span>Percentual</span>
+                    <strong id="percentual">0%</strong>
+                </div>
+                <div class="info">
+                    <span>Data</span>
+                    <strong id="dataResultado">--</strong>
+                </div>
+            </div>
+
+            <p class="feedback" id="feedback"></p>
+
+            <div class="actions-bottom">
+                <button type="button" onclick="window.print()">🖨 Imprimir Resultado</button>
+                <button type="button" onclick="reiniciar()">🔄 Refazer Prova</button>
+                <a href="./ia.html">Voltar ao Módulo</a>
+                <a href="./dashboard.html">Painel</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Perguntas com índices corretos
+        const perguntas = [
+            ["O que é Inteligência Artificial (IA)?", ["Um tipo de computador", "Uma tecnologia capaz de executar tarefas que normalmente exigem inteligência humana", "Um programa utilizado apenas para jogos", "Um sistema operacional"], 1],
+            ["Qual das opções abaixo utiliza Inteligência Artificial?", ["ChatGPT", "Gemini", "Copilot", "Todas as alternativas"], 3],
+            ["Qual é a principal função de um prompt?", ["Instalar programas", "Dar instruções para a IA gerar uma resposta", "Pesquisar vírus", "Formatar o computador"], 1],
+            ["Quanto mais claro for um prompt...", ["Pior será a resposta", "Melhor tende a ser a resposta da IA", "A IA deixa de funcionar", "O computador fica mais lento"], 1],
+            ["O Método NIC foi criado para ajudar o usuário a...", ["Montar computadores", "Criar prompts mais eficientes", "Instalar sistemas operacionais", "Criar senhas"], 1],
+            ["No Método NIC, a letra N representa:", ["Navegação", "Necessidade", "Nível", "Objetivo (o que você deseja alcançar)"], 3],
+            ["No Método NIC, o Contexto serve para:", ["Informar detalhes importantes sobre a situação", "Escolher a cor do texto", "Fechar o programa", "Apagar o histórico"], 0],
+            ["O Papel define:", ["O idioma do computador", "Quem a IA deve representar", "A velocidade da internet", "O tamanho da tela"], 1],
+            ["O elemento Formato informa:", ["Como a resposta deve ser apresentada", "A marca do computador", "O navegador utilizado", "A memória RAM"], 0],
+            ["O elemento Estilo permite que a resposta seja:", ["Formal, criativa, técnica ou simples", "Apenas em inglês", "Apenas em PDF", "Somente em tabelas"], 0],
+            ["O elemento Limites serve para:", ["Definir restrições como tamanho, idioma ou quantidade", "Aumentar a velocidade da IA", "Bloquear o computador", "Excluir arquivos"], 0],
+            ["Qual destas informações NÃO deve ser compartilhada com uma IA pública?", ["Receitas culinárias", "Senhas e dados pessoais", "Perguntas escolares", "Curiosidades"], 1],
+            ["A IA pode cometer erros?", ["Não, nunca", "Sim, por isso devemos revisar as respostas", "Apenas quando está offline", "Somente em celulares"], 1],
+            ["O pensamento crítico significa:", ["Aceitar qualquer resposta sem conferir", "Analisar e verificar as informações antes de utilizá-las", "Copiar tudo automaticamente", "Desligar a IA"], 1],
+            ["A Inteligência Artificial substitui totalmente o ser humano?", ["Sim", "Não, ela auxilia as pessoas", "Somente nas escolas", "Somente nas empresas"], 1],
+            ["A IA pode ajudar nos estudos porque:", ["Explica conteúdos e auxilia na aprendizagem", "Faz o aluno aprender sem estudar", "Substitui o professor", "Impede pesquisas"], 0],
+            ["Qual é um bom exemplo de uso da IA no trabalho?", ["Automatizar tarefas repetitivas", "Desligar computadores", "Remover a internet", "Formatar HDs automaticamente"], 0],
+            ["Antes de utilizar uma resposta da IA devemos:", ["Publicar imediatamente", "Verificar se a informação está correta", "Apagar o prompt", "Trocar de navegador"], 1],
+            ["Qual é o principal objetivo da Engenharia de Prompt?", ["Criar computadores", "Melhorar a comunicação entre o usuário e a IA", "Instalar programas", "Aumentar a memória RAM"], 1],
+            ["Segundo o módulo, a IA deve ser utilizada de forma:", ["Ética, responsável e consciente", "Sem revisar as respostas", "Compartilhando dados pessoais", "Para substituir totalmente o pensamento humano"], 0]
+        ];
+
+        function embaralharPerguntas() {
+            perguntas.sort(() => Math.random() - 0.5);
+        }
+
+        let atual = 0;
+        let acertos = 0;
+        let nomeAluno = "";
+
+        function iniciar() {
+            embaralharPerguntas();
+            nomeAluno = document.getElementById("nome").value.trim();
+            if (!nomeAluno) {
+                alert("Digite o nome do aluno.");
+                return;
+            }
+            localStorage.setItem("nomeAluno", nomeAluno);
+            atual = 0;
+            acertos = 0;
+            document.getElementById("start").classList.add("hidden");
+            document.getElementById("fim").classList.add("hidden");
+            document.getElementById("quiz").classList.remove("hidden");
+            mostrar();
+        }
+
+        function mostrar() {
+            const q = perguntas[atual];
+            const progresso = Math.round((atual / perguntas.length) * 100);
+            document.getElementById("contador").innerText = `Questão ${atual + 1} de ${perguntas.length}`;
+            document.getElementById("porcentagem").innerText = `${progresso}%`;
+            document.getElementById("bar").style.width = `${progresso}%`;
+            document.getElementById("pergunta").innerText = q[0];
+            document.getElementById("opcoes").innerHTML = q[1].map((opcao, index) => `
+                <label class="option">
+                    <input type="radio" name="resposta" value="${index}">
+                    <span>${opcao}</span>
+                </label>
+            `).join("");
+        }
+
+        function proxima() {
+            const marcada = document.querySelector('input[name="resposta"]:checked');
+            if (!marcada) {
+                alert("Selecione uma resposta.");
+                return;
+            }
+            if (Number(marcada.value) === perguntas[atual][2]) acertos++;
+            atual++;
+            atual < perguntas.length ? mostrar() : finalizar();
+        }
+
+        function finalizar() {
+            document.getElementById("bar").style.width = "100%";
+            document.getElementById("porcentagem").innerText = "100%";
+            const nota = Number((acertos * 10 / perguntas.length).toFixed(1));
+            const percentual = Math.round((acertos / perguntas.length) * 100);
+            const data = new Date().toLocaleDateString("pt-BR");
+
+            document.getElementById("quiz").classList.add("hidden");
+            document.getElementById("fim").classList.remove("hidden");
+            document.getElementById("aluno").innerText = nomeAluno;
+            document.getElementById("nota").innerText = nota.toFixed(1);
+            document.getElementById("acertos").innerText = `${acertos} de ${perguntas.length}`;
+            document.getElementById("percentual").innerText = `${percentual}%`;
+            document.getElementById("dataResultado").innerText = data;
+
+            const status = document.getElementById("status");
+            status.classList.remove("review");
+            let comentario = "", feedback = "";
+
+            if (nota === 10) {
+                status.innerText = "👑 Mestre da Inteligência Artificial";
+                comentario = "Parabéns! Você demonstrou domínio completo dos conceitos estudados durante o módulo.";
+                feedback = "Você domina os fundamentos da Inteligência Artificial, sabe utilizar o Método NIC e compreende a importância da ética, da segurança e do pensamento crítico.";
+            } else if (nota >= 9) {
+                status.innerText = "🏆 Especialista em IA";
+                comentario = "Excelente desempenho! Você compreendeu muito bem os conceitos apresentados.";
+                feedback = "Continue praticando a criação de prompts para evoluir ainda mais.";
+            } else if (nota >= 7) {
+                status.innerText = "🥇 Usuário Avançado";
+                comentario = "Muito bom! Você atingiu os objetivos do módulo.";
+                feedback = "Continue utilizando o Método NIC e sempre revise as respostas produzidas pela IA.";
+            } else if (nota >= 5) {
+                status.classList.add("review");
+                status.innerText = "📚 Em Desenvolvimento";
+                comentario = "Você compreendeu parte do conteúdo, mas ainda precisa revisar alguns conceitos.";
+                feedback = "Releia a apostila, reveja os slides e pratique a elaboração de prompts.";
+            } else {
+                status.classList.add("review");
+                status.innerText = "🔄 Necessita Revisão";
+                comentario = "É importante revisar todo o conteúdo antes de utilizar a IA em situações reais.";
+                feedback = "Assista novamente às aulas e pratique o Método NIC antes de refazer a avaliação.";
+            }
+
+            document.getElementById("comentarioFinal").innerText = comentario;
+            document.getElementById("feedback").innerText = feedback;
+
+            localStorage.setItem("resultadoIAQuest", JSON.stringify({
+                aluno: nomeAluno, nota, acertos, total: perguntas.length, percentual, data
+            }));
+        }
+
+        function reiniciar() {
+            document.getElementById("nome").value = nomeAluno;
+            document.getElementById("fim").classList.add("hidden");
+            document.getElementById("start").classList.remove("hidden");
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const nomeSalvo = localStorage.getItem("nomeAluno");
+            if (nomeSalvo) document.getElementById("nome").value = nomeSalvo;
+        });
+
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./service-worker.js");
+            });
+        }
+    </script>
+</body>
+</html>
