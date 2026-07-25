@@ -1,28 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Módulo Inteligência Artificial | NIC Formação</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="NIC Aluno">
-  <meta name="theme-color" content="#043B7B">
+<title>Módulo Inteligência Artificial | NIC Formação</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="theme-color" content="#043B7B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="NIC Aluno">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="manifest" href="./manifest.json?v=11">
+<link rel="icon" href="./assets/favicon.png">
+<link rel="apple-touch-icon" href="./assets/icon-192.png">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
-
-/* =========================
-      DESIGN SYSTEM NIC
-========================= */
 
 :root{
 
@@ -36,32 +38,28 @@
 --nicGray:#F4F7FB;
 
 --card:#ffffff;
---borda:#e5e7eb;
+--borda:#E5E7EB;
 --texto:#04244C;
 
---gradiente:linear-gradient(135deg,#043B7B 0%,#365C86 100%);
+--gradiente:linear-gradient(135deg,#043B7B,#365C86);
 
 }
 
 body{
 
 background:var(--nicGray);
-font-family:'Inter',sans-serif;
+font-family:Inter,sans-serif;
 color:var(--texto);
 
 }
 
-/* NAVBAR */
-
 .navbar{
 
-background:rgba(255,255,255,.92);
-backdrop-filter:blur(10px);
+background:rgba(255,255,255,.94);
+backdrop-filter:blur(12px);
 border-bottom:1px solid var(--borda);
 
 }
-
-/* HERO */
 
 .hero{
 
@@ -69,41 +67,37 @@ background:var(--gradiente);
 padding:60px 20px;
 border-radius:0 0 40px 40px;
 text-align:center;
-color:white;
+color:#fff;
 
 }
 
-.hero h1 span{
+.hero span{
 
 color:var(--nicGreen);
 
 }
 
-/* MISSÃO */
-
 .mission-box{
 
-background:white;
-border:1px solid var(--borda);
-padding:20px;
-border-radius:16px;
+background:#fff;
+padding:22px;
+border-radius:18px;
 margin-top:-30px;
-box-shadow:0 10px 30px rgba(4,59,123,.08);
+border:1px solid var(--borda);
+box-shadow:0 12px 25px rgba(4,59,123,.08);
 
 }
 
-/* CARDS */
-
 .card-aula{
 
-background:white;
-border:1px solid var(--borda);
+background:#fff;
 border-radius:20px;
-padding:25px;
+border:1px solid var(--borda);
+padding:24px;
+height:100%;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
-height:100%;
 transition:.25s;
 
 }
@@ -112,541 +106,518 @@ transition:.25s;
 
 transform:translateY(-6px);
 border-color:var(--nicBlueDark);
-box-shadow:0 12px 25px rgba(4,59,123,.12);
+box-shadow:0 15px 30px rgba(4,59,123,.10);
 
 }
 
 .icon-box{
 
 font-size:42px;
-margin-bottom:12px;
 display:block;
+margin-bottom:15px;
 
 }
 
 .btn-modulo{
 
+display:block;
 background:var(--nicBlueDark);
 color:white;
-padding:10px 18px;
-border-radius:12px;
 text-decoration:none;
+padding:12px;
+border-radius:12px;
 font-weight:600;
-display:block;
-transition:.3s;
+text-align:center;
+transition:.25s;
 
 }
 
-.card-aula:hover .btn-modulo{
+.btn-modulo:hover{
 
 background:var(--nicGreenMid);
 color:white;
 
 }
 
-/* ACCORDION */
-
-.accordion-item{
-
-border:none;
-margin-bottom:10px;
-background:transparent;
-
-}
-
 .accordion-button{
 
-background:white;
-border:1px solid var(--borda);
 border-radius:12px!important;
-color:var(--texto);
-box-shadow:none;
-
-}
-
-.accordion-button:not(.collapsed){
-
-background:rgba(4,59,123,.08);
-color:var(--nicBlueDark);
-
-}
-
-kbd{
-
-background:#e5e7eb;
-border:1px solid #cbd5e1;
-padding:2px 6px;
-border-radius:4px;
 
 }
 
 footer{
 
-color:#64748b;
 font-size:13px;
+color:#64748b;
 
 }
 
 </style>
 
-<link rel="manifest" href="./manifest.json?v=11">
-<link rel="icon" href="./assets/favicon.png">
-<link rel="apple-touch-icon" href="./assets/icon-192.png">
-
 </head>
 
 <body>
-
 <nav class="navbar navbar-expand-lg sticky-top">
 
-<div class="container">
+    <div class="container">
 
-<a class="navbar-brand fw-bold d-flex align-items-center"
-style="color:var(--nicBlueDark)"
-href="./dashboard.html">
+        <a class="navbar-brand fw-bold d-flex align-items-center"
+           href="./dashboard.html"
+           style="color:var(--nicBlueDark)">
 
-<span class="me-2">⬅️</span>
+            <span class="me-2">⬅️</span>
+            Painel
 
-Painel
+        </a>
 
-</a>
+        <div class="ms-auto">
 
-<div class="ms-auto">
+            <span class="badge"
+                  style="background:var(--nicBlueDark);padding:8px 16px;border-radius:8px;">
 
-<span class="badge"
-style="background:var(--nicBlueDark);padding:8px 16px;border-radius:8px;">
+                Módulo Inteligência Artificial
 
-Módulo Inteligência Artificial
+            </span>
 
-</span>
+        </div>
 
-</div>
-
-</div>
+    </div>
 
 </nav>
 
+
 <section class="hero">
 
-<div class="container">
+    <div class="container">
 
-<h1 class="display-5 fw-bold">
+        <h1 class="display-5 fw-bold">
 
-Bem-vindo,
+            Bem-vindo,
 
-<span id="nomeAlunoDisplay">Estudante</span>
+            <span id="nomeAlunoDisplay">Estudante</span>
 
-🤖
+            🤖
 
-</h1>
+        </h1>
 
-<p class="lead opacity-75">
+        <p class="lead opacity-75">
 
-"Use a tecnologia para multiplicar o seu talento."
+            Use a tecnologia para multiplicar o seu talento.
 
-<br>
+            <br>
 
-<small>Mateus 25:14-30</small>
+            <small>Mateus 25:14–30</small>
 
-</p>
+        </p>
 
-</div>
+    </div>
 
 </section>
 
-<div class="container mb-5 mt-5">
-<div class="row justify-content-center">
 
-    <div class="col-md-8">
-        <div class="mission-box text-center">
+<div class="container mt-5 mb-5">
 
-            🎯 <strong>Missão:</strong>
+    <div class="row justify-content-center">
 
-            Entender o que é Inteligência Artificial,
-            utilizar ferramentas de forma ética,
-            automatizar tarefas e criar conteúdos incríveis
-            com auxílio da tecnologia.
+        <div class="col-lg-8">
 
-        </div>
-    </div>
+            <div class="mission-box text-center">
 
-</div>
+                <h5 class="fw-bold mb-3">
 
+                    🎯 Missão do Módulo
 
-<div class="row g-4 mt-4">
+                </h5>
 
-    <!-- Slides -->
+                <p class="mb-0">
 
-    <div class="col-md-3">
-
-        <div class="card-aula">
-
-            <div>
-
-                <span class="icon-box">🧠</span>
-
-                <h5>Slides da Aula</h5>
-
-                <p class="text-muted small">
-
-                    Conceitos, aplicações e ferramentas de IA.
+                    Compreender o funcionamento da Inteligência Artificial,
+                    aprender Engenharia de Prompt,
+                    utilizar ferramentas de IA com responsabilidade
+                    e aumentar sua produtividade utilizando tecnologia.
 
                 </p>
 
             </div>
 
-            <a href="#"
-               class="btn-modulo">
-
-                Abrir Conteúdo
-
-            </a>
-
         </div>
 
     </div>
 
 
-    <!-- Apostila -->
 
-    <div class="col-md-3">
+    <div class="row g-4 mt-4">
 
-        <div class="card-aula">
 
-            <div>
+        <!-- Slides -->
 
-                <span class="icon-box">📘</span>
+        <div class="col-md-6 col-xl-3">
 
-                <h5>Apostila</h5>
+            <div class="card-aula">
 
-                <p class="text-muted small">
+                <div>
 
-                    Guia completo do módulo.
+                    <span class="icon-box">🧠</span>
 
-                </p>
+                    <h5>Slides da Aula</h5>
+
+                    <p class="text-muted">
+
+                        Material apresentado em sala.
+
+                    </p>
+
+                </div>
+
+                <a href="visualizador.html?tipo=slides&id=1qoLqX-G0ktIQcIgTLk5Im0fIN-Wn4Gju"
+                   class="btn-modulo">
+
+                    Abrir Slides
+
+                </a>
 
             </div>
 
-            <a href="#"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="btn-modulo">
-
-                Ler Agora
-
-            </a>
-
         </div>
 
-    </div>
 
 
-    <!-- Exercícios -->
+        <!-- Apostila -->
 
-    <div class="col-md-3">
+        <div class="col-md-6 col-xl-3">
 
-        <div class="card-aula">
+            <div class="card-aula">
 
-            <div>
+                <div>
 
-                <span class="icon-box">✍️</span>
+                    <span class="icon-box">📘</span>
 
-                <h5>Exercícios</h5>
+                    <h5>Apostila</h5>
 
-                <p class="text-muted small">
+                    <p class="text-muted">
 
-                    Atividades práticas utilizando IA.
+                        Conteúdo completo do módulo.
 
-                </p>
+                    </p>
+
+                </div>
+
+                <a href="visualizador.html?tipo=pdf&id=1dTwz1ozqXX_xPOUFM3iJ-26R21mubr-r"
+                   class="btn-modulo">
+
+                    Ler Apostila
+
+                </a>
 
             </div>
 
-            <a href="https://forms.gle/BV6gxxEkJJXq1z3A9"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="btn-modulo">
-
-                Enviar Atividade
-
-            </a>
-
         </div>
 
-    </div>
 
 
-    <!-- Prova -->
+        <!-- Exercícios -->
 
-    <div class="col-md-3">
+        <div class="col-md-6 col-xl-3">
 
-        <div class="card-aula"
-             style="border-color:#ef4444;">
+            <div class="card-aula">
 
-            <div>
+                <div>
 
-                <span class="icon-box">📝</span>
+                    <span class="icon-box">✍️</span>
 
-                <h5>Prova Final</h5>
+                    <h5>Exercícios</h5>
 
-                <p class="text-muted small">
+                    <p class="text-muted">
 
-                    Avaliação prática utilizando IA.
+                        Atividades práticas utilizando IA.
 
-                </p>
+                    </p>
+
+                </div>
+
+                <a href="https://forms.gle/BV6gxxEkJJXq1z3A9"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn-modulo">
+
+                    Resolver Exercícios
+
+                </a>
 
             </div>
 
-            <button
-                onclick="acessarProva()"
-                class="btn btn-danger w-100 rounded-3 fw-bold py-2">
+        </div>
 
-                Iniciar Prova
 
-            </button>
+
+        <!-- Prova -->
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="card-aula border-danger">
+
+                <div>
+
+                    <span class="icon-box">📝</span>
+
+                    <h5>Prova Final</h5>
+
+                    <p class="text-muted">
+
+                        Avaliação prática do módulo.
+
+                    </p>
+
+                </div>
+
+                <button
+                    onclick="acessarProva()"
+                    class="btn btn-danger fw-bold rounded-3">
+
+                    Iniciar Prova
+
+                </button>
+
+            </div>
 
         </div>
 
     </div>
-
-</div>
-
-
-
-<!-- DICAS -->
+	<!-- ==========================================================
+DICAS DO MÓDULO
+=========================================================== -->
 
 <div class="row mt-5">
 
-<div class="col-12">
+    <div class="col-12">
 
-<div class="card p-4"
-style="background:white;
-border:1px solid var(--borda);
-border-radius:20px;">
+        <div class="card shadow-sm border-0 rounded-4">
 
-<h4 class="mb-4 d-flex align-items-center">
+            <div class="card-body p-4">
 
-<span class="me-3">
+                <h3 class="mb-4">
 
-💡
+                    💡 Segredos do Prompt Perfeito
 
-</span>
+                </h3>
 
-Segredos do Prompt Perfeito
+                <div class="accordion" id="accordionIA">
 
-</h4>
+                    <!-- MÉTODO NIC -->
 
+                    <div class="accordion-item">
 
-<div class="accordion accordion-flush"
-id="accordionModulo">
+                        <h2 class="accordion-header">
 
+                            <button
+                                class="accordion-button"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#nicPrompt">
 
-<div class="accordion-item">
+                                🎯 Método NIC
 
-<h2 class="accordion-header">
+                            </button>
 
-<button
-class="accordion-button collapsed"
-type="button"
-data-bs-toggle="collapse"
-data-bs-target="#prompt">
+                        </h2>
 
-✍️ Como criar um bom Prompt
+                        <div id="nicPrompt"
+                             class="accordion-collapse collapse show"
+                             data-bs-parent="#accordionIA">
 
-</button>
+                            <div class="accordion-body">
 
-</h2>
+                                <table class="table table-bordered align-middle">
 
-<div id="prompt"
-class="accordion-collapse collapse"
-data-bs-parent="#accordionModulo">
+                                    <tbody>
 
-<div class="p-3">
+                                        <tr>
+                                            <td width="60"><strong>🎯</strong></td>
+                                            <td><strong>Objetivo</strong><br>Explique claramente o que deseja.</td>
+                                        </tr>
 
-<table class="table table-hover mb-0">
+                                        <tr>
+                                            <td><strong>📖</strong></td>
+                                            <td><strong>Contexto</strong><br>Informe a situação e os detalhes importantes.</td>
+                                        </tr>
 
-<tbody>
+                                        <tr>
+                                            <td><strong>👤</strong></td>
+                                            <td><strong>Papel</strong><br>Defina quem a IA deve representar.</td>
+                                        </tr>
 
-<tr>
+                                        <tr>
+                                            <td><strong>📄</strong></td>
+                                            <td><strong>Formato</strong><br>Texto, tabela, código, lista, apresentação...</td>
+                                        </tr>
 
-<td style="width:60px;text-align:center;">🎯</td>
+                                        <tr>
+                                            <td><strong>✍️</strong></td>
+                                            <td><strong>Estilo</strong><br>Formal, criativo, técnico, resumido...</td>
+                                        </tr>
 
-<td>Explique claramente o que deseja.</td>
+                                        <tr>
+                                            <td><strong>📏</strong></td>
+                                            <td><strong>Limites</strong><br>Quantidade de palavras, idioma, restrições etc.</td>
+                                        </tr>
 
-</tr>
+                                    </tbody>
 
-<tr>
+                                </table>
 
-<td style="text-align:center;">📝</td>
+                            </div>
 
-<td>Forneça contexto suficiente.</td>
+                        </div>
 
-</tr>
+                    </div>
 
-<tr>
+                    <!-- USOS -->
 
-<td style="text-align:center;">🎨</td>
+                    <div class="accordion-item mt-3">
 
-<td>Informe formato, tom e estilo.</td>
+                        <h2 class="accordion-header">
 
-</tr>
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#usosIA">
 
-<tr>
+                                🚀 Onde utilizar IA
 
-<td style="text-align:center;">✅</td>
+                            </button>
 
-<td>Peça revisões e melhorias.</td>
+                        </h2>
 
-</tr>
+                        <div id="usosIA"
+                             class="accordion-collapse collapse"
+                             data-bs-parent="#accordionIA">
 
-</tbody>
+                            <div class="accordion-body">
 
-</table>
+                                <ul class="mb-0">
+
+                                    <li>📚 Estudos</li>
+                                    <li>💻 Programação</li>
+                                    <li>📝 Produção de textos</li>
+                                    <li>📊 Planilhas e relatórios</li>
+                                    <li>🎨 Canva e Design</li>
+                                    <li>📈 Marketing Digital</li>
+                                    <li>🎬 Roteiros e apresentações</li>
+                                    <li>🤖 Automação de tarefas</li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
-</div>
-
-</div>
-
-
-
-<div class="accordion-item">
-
-<h2 class="accordion-header">
-
-<button
-class="accordion-button collapsed"
-type="button"
-data-bs-toggle="collapse"
-data-bs-target="#usosia">
-
-🚀 Onde utilizar IA
-
-</button>
-
-</h2>
-
-<div id="usosia"
-class="accordion-collapse collapse"
-data-bs-parent="#accordionModulo">
-
-<div class="p-3">
-
-<table class="table table-hover mb-0">
-
-<tbody>
-
-<tr>
-
-<td style="width:60px;text-align:center;">📧</td>
-
-<td>Produção de textos e e-mails.</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;">📚</td>
-
-<td>Resumo e organização de estudos.</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;">💡</td>
-
-<td>Planejamento e geração de ideias.</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;">🖼️</td>
-
-<td>Criação de imagens e apresentações.</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;">💻</td>
-
-<td>Auxílio na programação.</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
+<!-- ==========================================================
+TESTAR IA
+=========================================================== -->
 
 <div class="row mt-5">
 
-<div class="col-12 text-center">
+    <div class="col-lg-6 mb-4">
 
-<div
-class="p-4 rounded-4"
-style="
-background:#ffffff;
-border:1px dashed var(--nicBlueDark);
-box-shadow:0 10px 30px rgba(4,59,123,.05);
-">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
 
-<h5>
+            <div class="card-body text-center p-4">
 
-🔒 Revisão do Módulo
+                <h4>🤖 Teste seus Prompts</h4>
 
-</h5>
+                <p class="text-muted">
 
-<p class="text-muted small">
+                    Pratique o Método NIC diretamente no ChatGPT.
 
-Ética, privacidade,
-engenharia de prompt,
-automação
-e o futuro da Inteligência Artificial.
+                </p>
 
-</p>
+                <a href="https://chat.openai.com/"
+                   target="_blank"
+                   class="btn btn-success btn-lg rounded-pill">
 
-<button
-onclick="acessarRevisao()"
-class="btn btn-warning px-5 rounded-pill fw-bold py-2">
+                    Abrir ChatGPT
 
-Liberar Conteúdo
+                </a>
 
-</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-6 mb-4">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body text-center p-4">
+
+                <h4>🔒 Revisão do Módulo</h4>
+
+                <p class="text-muted">
+
+                    Acesse a revisão após informar a senha fornecida pelo instrutor.
+
+                </p>
+
+                <button
+                    class="btn btn-warning btn-lg rounded-pill fw-bold"
+                    onclick="acessarRevisao()">
+
+                    Liberar Revisão
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
-</div>
-
-</div>
 <footer class="text-center py-5">
-    <small>© NIC Formação Profissional — Educação com Propósito</small>
-</footer>
 
+    <hr>
+
+    <p class="mb-1">
+
+        <strong>NIC Formação Profissional</strong>
+
+    </p>
+
+    <small>
+
+        Educação com Propósito • Inteligência Artificial • 2026
+
+    </small>
+
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 
-//
-// REGISTRO DO SERVICE WORKER
-//
+/*=========================================================
+NIC FORMAÇÃO
+MÓDULO IA
+=========================================================*/
+
+
+/*=========================================================
+REGISTRA O SERVICE WORKER
+=========================================================*/
 
 if ("serviceWorker" in navigator) {
 
@@ -659,28 +630,26 @@ if ("serviceWorker" in navigator) {
 }
 
 
-
-//
-// CARREGA O NOME DO ALUNO
-//
+/*=========================================================
+CARREGA O NOME DO ALUNO
+=========================================================*/
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const nomeSalvo = localStorage.getItem("nomeAluno");
+    const nome = localStorage.getItem("nomeAluno");
 
-    if (nomeSalvo) {
+    if (nome) {
 
-        document.getElementById("nomeAlunoDisplay").textContent = nomeSalvo;
+        document.getElementById("nomeAlunoDisplay").textContent = nome;
 
     }
 
 });
 
 
-
-//
-// PROVA
-//
+/*=========================================================
+PROVA
+=========================================================*/
 
 function acessarProva() {
 
@@ -688,35 +657,31 @@ function acessarProva() {
 
     if (senha === null) return;
 
-    if (senha.trim().toLowerCase() === "provaia") {
+    if (senha.trim().toLowerCase() === "provaiaia") {
 
         alert("✅ Acesso liberado!");
 
         /*
         Quando a prova estiver pronta,
-        basta trocar a linha abaixo.
-
-        Exemplo:
-
-        window.location.href = "prova-ia.html";
-
+        altere apenas a linha abaixo.
         */
+
+        // window.location.href = "prova-ia.html";
 
     }
 
     else {
 
-        alert("❌ Senha incorreta! Fale com o instrutor.");
+        alert("❌ Senha incorreta.\n\nSolicite ao instrutor.");
 
     }
 
 }
 
 
-
-//
-// REVISÃO
-//
+/*=========================================================
+REVISÃO
+=========================================================*/
 
 function acessarRevisao() {
 
@@ -724,16 +689,13 @@ function acessarRevisao() {
 
     if (senha === null) return;
 
-    if (senha.trim() === "revisaoIA") {
+    if (senha.trim().toLowerCase() === "revisaoia") {
 
-        alert("✅ Conteúdo liberado!");
-
-        /*
-        Quando a revisão estiver pronta:
-
-        window.location.href="rvia.html";
-
-        */
+        window.open(
+            "https://share.gemini.google/dyVjUlMwwOWv",
+            "_blank",
+            "noopener"
+        );
 
     }
 
@@ -742,6 +704,26 @@ function acessarRevisao() {
         alert("❌ Senha incorreta.");
 
     }
+
+}
+
+
+/*=========================================================
+ATALHOS FUTUROS
+=========================================================*/
+
+function abrirSlides(){
+
+    window.location.href =
+    "visualizador.html?tipo=slides&id=1qoLqX-G0ktIQcIgTLk5Im0fIN-Wn4Gju";
+
+}
+
+
+function abrirApostila(){
+
+    window.location.href =
+    "visualizador.html?tipo=pdf&id=1dTwz1ozqXX_xPOUFM3iJ-26R21mubr-r";
 
 }
 
