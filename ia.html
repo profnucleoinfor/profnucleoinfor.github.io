@@ -1,731 +1,386 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo Inteligência Artificial | NIC Formação</title>
+    <meta name="theme-color" content="#043B7B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="NIC Aluno">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="./manifest.json?v=11">
+    <link rel="icon" href="./assets/favicon.png">
+    <link rel="apple-touch-icon" href="./assets/icon-192.png">
 
-<title>Módulo Inteligência Artificial | NIC Formação</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-<meta name="theme-color" content="#043B7B">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="NIC Aluno">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<link rel="manifest" href="./manifest.json?v=11">
-<link rel="icon" href="./assets/favicon.png">
-<link rel="apple-touch-icon" href="./assets/icon-192.png">
+    <style>
+        :root{
+            --nicGreen:#A5E44E;
+            --nicGreenMid:#7CAC3C;
+            --nicBlueDark:#043B7B;
+            --nicBlue:#04244C;
+            --nicTeal:#365C86;
+            --nicGray:#F4F7FB;
+            --card:#ffffff;
+            --borda:#E5E7EB;
+            --texto:#04244C;
+            --gradiente:linear-gradient(135deg,#043B7B,#365C86);
+        }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        body{
+            background:var(--nicGray);
+            font-family:Inter,sans-serif;
+            color:var(--texto);
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+        .navbar{
+            background:rgba(255,255,255,.94);
+            backdrop-filter:blur(12px);
+            border-bottom:1px solid var(--borda);
+        }
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        .hero{
+            background:var(--gradiente);
+            padding:60px 20px;
+            border-radius:0 0 40px 40px;
+            text-align:center;
+            color:#fff;
+        }
 
-<style>
+        .hero span{
+            color:var(--nicGreen);
+        }
 
-:root{
+        .mission-box{
+            background:#fff;
+            padding:22px;
+            border-radius:18px;
+            margin-top:-30px;
+            border:1px solid var(--borda);
+            box-shadow:0 12px 25px rgba(4,59,123,.08);
+        }
 
---nicGreen:#A5E44E;
---nicGreenMid:#7CAC3C;
+        .card-aula{
+            background:#fff;
+            border-radius:20px;
+            border:1px solid var(--borda);
+            padding:24px;
+            height:100%;
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+            transition:.25s;
+        }
 
---nicBlueDark:#043B7B;
---nicBlue:#04244C;
---nicTeal:#365C86;
+        .card-aula:hover{
+            transform:translateY(-6px);
+            border-color:var(--nicBlueDark);
+            box-shadow:0 15px 30px rgba(4,59,123,.10);
+        }
 
---nicGray:#F4F7FB;
+        .icon-box{
+            font-size:42px;
+            display:block;
+            margin-bottom:15px;
+        }
 
---card:#ffffff;
---borda:#E5E7EB;
---texto:#04244C;
+        .btn-modulo{
+            display:block;
+            background:var(--nicBlueDark);
+            color:white;
+            text-decoration:none;
+            padding:12px;
+            border-radius:12px;
+            font-weight:600;
+            text-align:center;
+            transition:.25s;
+        }
 
---gradiente:linear-gradient(135deg,#043B7B,#365C86);
+        .btn-modulo:hover{
+            background:var(--nicGreenMid);
+            color:white;
+        }
 
-}
+        .accordion-button{
+            border-radius:12px!important;
+        }
 
-body{
-
-background:var(--nicGray);
-font-family:Inter,sans-serif;
-color:var(--texto);
-
-}
-
-.navbar{
-
-background:rgba(255,255,255,.94);
-backdrop-filter:blur(12px);
-border-bottom:1px solid var(--borda);
-
-}
-
-.hero{
-
-background:var(--gradiente);
-padding:60px 20px;
-border-radius:0 0 40px 40px;
-text-align:center;
-color:#fff;
-
-}
-
-.hero span{
-
-color:var(--nicGreen);
-
-}
-
-.mission-box{
-
-background:#fff;
-padding:22px;
-border-radius:18px;
-margin-top:-30px;
-border:1px solid var(--borda);
-box-shadow:0 12px 25px rgba(4,59,123,.08);
-
-}
-
-.card-aula{
-
-background:#fff;
-border-radius:20px;
-border:1px solid var(--borda);
-padding:24px;
-height:100%;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-transition:.25s;
-
-}
-
-.card-aula:hover{
-
-transform:translateY(-6px);
-border-color:var(--nicBlueDark);
-box-shadow:0 15px 30px rgba(4,59,123,.10);
-
-}
-
-.icon-box{
-
-font-size:42px;
-display:block;
-margin-bottom:15px;
-
-}
-
-.btn-modulo{
-
-display:block;
-background:var(--nicBlueDark);
-color:white;
-text-decoration:none;
-padding:12px;
-border-radius:12px;
-font-weight:600;
-text-align:center;
-transition:.25s;
-
-}
-
-.btn-modulo:hover{
-
-background:var(--nicGreenMid);
-color:white;
-
-}
-
-.accordion-button{
-
-border-radius:12px!important;
-
-}
-
-footer{
-
-font-size:13px;
-color:#64748b;
-
-}
-
-</style>
-
+        footer{
+            font-size:13px;
+            color:#64748b;
+        }
+    </style>
 </head>
-
 <body>
 <nav class="navbar navbar-expand-lg sticky-top">
-
     <div class="container">
-
         <a class="navbar-brand fw-bold d-flex align-items-center"
            href="./dashboard.html"
            style="color:var(--nicBlueDark)">
-
             <span class="me-2">⬅️</span>
             Painel
-
         </a>
-
         <div class="ms-auto">
-
-            <span class="badge"
-                  style="background:var(--nicBlueDark);padding:8px 16px;border-radius:8px;">
-
+            <span class="badge" style="background:var(--nicBlueDark);padding:8px 16px;border-radius:8px;">
                 Módulo Inteligência Artificial
-
             </span>
-
         </div>
-
     </div>
-
 </nav>
 
-
 <section class="hero">
-
     <div class="container">
-
         <h1 class="display-5 fw-bold">
-
             Bem-vindo,
-
             <span id="nomeAlunoDisplay">Estudante</span>
-
             🤖
-
         </h1>
-
         <p class="lead opacity-75">
-
             Use a tecnologia para multiplicar o seu talento.
-
             <br>
-
             <small>Mateus 25:14–30</small>
-
         </p>
-
     </div>
-
 </section>
 
-
 <div class="container mt-5 mb-5">
-
     <div class="row justify-content-center">
-
         <div class="col-lg-8">
-
             <div class="mission-box text-center">
-
-                <h5 class="fw-bold mb-3">
-
-                    🎯 Missão do Módulo
-
-                </h5>
-
+                <h5 class="fw-bold mb-3">🎯 Missão do Módulo</h5>
                 <p class="mb-0">
-
                     Compreender o funcionamento da Inteligência Artificial,
                     aprender Engenharia de Prompt,
                     utilizar ferramentas de IA com responsabilidade
                     e aumentar sua produtividade utilizando tecnologia.
-
                 </p>
-
             </div>
-
         </div>
-
     </div>
 
-
-
     <div class="row g-4 mt-4">
-
-
         <!-- Slides -->
-
         <div class="col-md-6 col-xl-3">
-
             <div class="card-aula">
-
                 <div>
-
                     <span class="icon-box">🧠</span>
-
                     <h5>Slides da Aula</h5>
-
-                    <p class="text-muted">
-
-                        Material apresentado em sala.
-
-                    </p>
-
+                    <p class="text-muted">Material apresentado em sala.</p>
                 </div>
-
-                <a href="visualizador.html?tipo=slides&id=1qoLqX-G0ktIQcIgTLk5Im0fIN-Wn4Gju"
-   class="btn-modulo">
-    Abrir Slides
-</a>
-
+                <a href="visualizador.html?url=https://docs.google.com/presentation/d/1qoLqX-G0ktIQcIgTLk5Im0fIN-Wn4Gju/edit?usp=sharing&ouid=117693596403024623615&rtpof=true&sd=true&titulo=Slides da Aula"
+                   class="btn-modulo">
+                    Abrir Slides
+                </a>
             </div>
-
         </div>
-
-
 
         <!-- Apostila -->
-
         <div class="col-md-6 col-xl-3">
-
             <div class="card-aula">
-
                 <div>
-
                     <span class="icon-box">📘</span>
-
                     <h5>Apostila</h5>
-
-                    <p class="text-muted">
-
-                        Conteúdo completo do módulo.
-
-                    </p>
-
+                    <p class="text-muted">Conteúdo completo do módulo.</p>
                 </div>
-
-                <a href="visualizador.html?tipo=pdf&id=1dTwz1ozqXX_xPOUFM3iJ-26R21mubr-r"
-   class="btn-modulo">
-    Ler Apostila
-</a>
-
+                <a href="visualizador.html?url=https://drive.google.com/file/d/1dTwz1ozqXX_xPOUFM3iJ-26R21mubr-r/view?usp=sharing&titulo=Apostila do Módulo"
+                   class="btn-modulo">
+                    Ler Apostila
                 </a>
-
             </div>
-
         </div>
 
-
-
         <!-- Exercícios -->
-
         <div class="col-md-6 col-xl-3">
-
             <div class="card-aula">
-
                 <div>
-
                     <span class="icon-box">✍️</span>
-
                     <h5>Exercícios</h5>
-
-                    <p class="text-muted">
-
-                        Atividades práticas utilizando IA.
-
-                    </p>
-
+                    <p class="text-muted">Atividades práticas utilizando IA.</p>
                 </div>
-
                 <a href="https://forms.gle/BV6gxxEkJJXq1z3A9"
                    target="_blank"
                    rel="noopener noreferrer"
                    class="btn-modulo">
-
                     Resolver Exercícios
-
                 </a>
-
             </div>
-
         </div>
-
-
 
         <!-- Prova -->
-
         <div class="col-md-6 col-xl-3">
-
             <div class="card-aula border-danger">
-
                 <div>
-
                     <span class="icon-box">📝</span>
-
                     <h5>Prova Final</h5>
-
-                    <p class="text-muted">
-
-                        Avaliação prática do módulo.
-
-                    </p>
-
+                    <p class="text-muted">Avaliação prática do módulo.</p>
                 </div>
-
-                <button
-                    onclick="acessarProva()"
-                    class="btn btn-danger fw-bold rounded-3">
-
+                <button onclick="acessarProva()" class="btn btn-danger fw-bold rounded-3">
                     Iniciar Prova
-
                 </button>
-
             </div>
-
         </div>
-
     </div>
-	<!-- ==========================================================
-DICAS DO MÓDULO
-=========================================================== -->
 
-<div class="row mt-5">
-
-    <div class="col-12">
-
-        <div class="card shadow-sm border-0 rounded-4">
-
-            <div class="card-body p-4">
-
-                <h3 class="mb-4">
-
-                    💡 Segredos do Prompt Perfeito
-
-                </h3>
-
-                <div class="accordion" id="accordionIA">
-
-                    <!-- MÉTODO NIC -->
-
-                    <div class="accordion-item">
-
-                        <h2 class="accordion-header">
-
-                            <button
-                                class="accordion-button"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#nicPrompt">
-
-                                🎯 Método NIC
-
-                            </button>
-
-                        </h2>
-
-                        <div id="nicPrompt"
-                             class="accordion-collapse collapse show"
-                             data-bs-parent="#accordionIA">
-
-                            <div class="accordion-body">
-
-                                <table class="table table-bordered align-middle">
-
-                                    <tbody>
-
-                                        <tr>
-                                            <td width="60"><strong>🎯</strong></td>
-                                            <td><strong>Objetivo</strong><br>Explique claramente o que deseja.</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><strong>📖</strong></td>
-                                            <td><strong>Contexto</strong><br>Informe a situação e os detalhes importantes.</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><strong>👤</strong></td>
-                                            <td><strong>Papel</strong><br>Defina quem a IA deve representar.</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><strong>📄</strong></td>
-                                            <td><strong>Formato</strong><br>Texto, tabela, código, lista, apresentação...</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><strong>✍️</strong></td>
-                                            <td><strong>Estilo</strong><br>Formal, criativo, técnico, resumido...</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><strong>📏</strong></td>
-                                            <td><strong>Limites</strong><br>Quantidade de palavras, idioma, restrições etc.</td>
-                                        </tr>
-
-                                    </tbody>
-
-                                </table>
-
+    <!-- Dicas do Módulo -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h3 class="mb-4">💡 Segredos do Prompt Perfeito</h3>
+                    <div class="accordion" id="accordionIA">
+                        <!-- Método NIC -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#nicPrompt">
+                                    🎯 Método NIC
+                                </button>
+                            </h2>
+                            <div id="nicPrompt" class="accordion-collapse collapse show" data-bs-parent="#accordionIA">
+                                <div class="accordion-body">
+                                    <table class="table table-bordered align-middle">
+                                        <tbody>
+                                            <tr>
+                                                <td width="60"><strong>🎯</strong></td>
+                                                <td><strong>Objetivo</strong><br>Explique claramente o que deseja.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>📖</strong></td>
+                                                <td><strong>Contexto</strong><br>Informe a situação e os detalhes importantes.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>👤</strong></td>
+                                                <td><strong>Papel</strong><br>Defina quem a IA deve representar.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>📄</strong></td>
+                                                <td><strong>Formato</strong><br>Texto, tabela, código, lista, apresentação...</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>✍️</strong></td>
+                                                <td><strong>Estilo</strong><br>Formal, criativa, técnica, resumida...</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>📏</strong></td>
+                                                <td><strong>Limites</strong><br>Quantidade de palavras, idioma, restrições etc.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-
                         </div>
 
-                    </div>
-
-                    <!-- USOS -->
-
-                    <div class="accordion-item mt-3">
-
-                        <h2 class="accordion-header">
-
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#usosIA">
-
-                                🚀 Onde utilizar IA
-
-                            </button>
-
-                        </h2>
-
-                        <div id="usosIA"
-                             class="accordion-collapse collapse"
-                             data-bs-parent="#accordionIA">
-
-                            <div class="accordion-body">
-
-                                <ul class="mb-0">
-
-                                    <li>📚 Estudos</li>
-                                    <li>💻 Programação</li>
-                                    <li>📝 Produção de textos</li>
-                                    <li>📊 Planilhas e relatórios</li>
-                                    <li>🎨 Canva e Design</li>
-                                    <li>📈 Marketing Digital</li>
-                                    <li>🎬 Roteiros e apresentações</li>
-                                    <li>🤖 Automação de tarefas</li>
-
-                                </ul>
-
+                        <!-- Onde utilizar IA -->
+                        <div class="accordion-item mt-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usosIA">
+                                    🚀 Onde utilizar IA
+                                </button>
+                            </h2>
+                            <div id="usosIA" class="accordion-collapse collapse" data-bs-parent="#accordionIA">
+                                <div class="accordion-body">
+                                    <ul class="mb-0">
+                                        <li>📚 Estudos</li>
+                                        <li>💻 Programação</li>
+                                        <li>📝 Produção de textos</li>
+                                        <li>📊 Planilhas e relatórios</li>
+                                        <li>🎨 Canva e Design</li>
+                                        <li>📈 Marketing Digital</li>
+                                        <li>🎬 Roteiros e apresentações</li>
+                                        <li>🤖 Automação de tarefas</li>
+                                    </ul>
+                                </div>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
-</div>
-
-<!-- ==========================================================
-TESTAR IA
-=========================================================== -->
-
-<div class="row mt-5">
-
-    <div class="col-lg-6 mb-4">
-
-        <div class="card border-0 shadow-sm rounded-4 h-100">
-
-            <div class="card-body text-center p-4">
-
-                <h4>🤖 Teste seus Prompts</h4>
-
-                <p class="text-muted">
-
-                    Pratique o Método NIC diretamente no ChatGPT.
-
-                </p>
-
-                <a href="https://chat.openai.com/"
-                   target="_blank"
-                   class="btn btn-success btn-lg rounded-pill">
-
-                    Abrir ChatGPT
-
-                </a>
-
+    <!-- Testar IA -->
+    <div class="row mt-5">
+        <div class="col-lg-6 mb-4">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body text-center p-4">
+                    <h4>🤖 Teste seus Prompts</h4>
+                    <p class="text-muted">Pratique o Método NIC diretamente no ChatGPT.</p>
+                    <a href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg rounded-pill">
+                        Abrir ChatGPT
+                    </a>
+                </div>
             </div>
-
         </div>
-
-    </div>
-
-    <div class="col-lg-6 mb-4">
-
-        <div class="card border-0 shadow-sm rounded-4 h-100">
-
-            <div class="card-body text-center p-4">
-
-                <h4>🔒 Revisão do Módulo</h4>
-
-                <p class="text-muted">
-
-                    Acesse a revisão após informar a senha fornecida pelo instrutor.
-
-                </p>
-
-                <button
-                    class="btn btn-warning btn-lg rounded-pill fw-bold"
-                    onclick="acessarRevisao()">
-
-                    Liberar Revisão
-
-                </button>
-
+        <div class="col-lg-6 mb-4">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body text-center p-4">
+                    <h4>🔒 Revisão do Módulo</h4>
+                    <p class="text-muted">Acesse a revisão após informar a senha fornecida pelo instrutor.</p>
+                    <button class="btn btn-warning btn-lg rounded-pill fw-bold" onclick="acessarRevisao()">
+                        Liberar Revisão
+                    </button>
+                </div>
             </div>
-
         </div>
-
     </div>
-
 </div>
 
 <footer class="text-center py-5">
-
     <hr>
-
-    <p class="mb-1">
-
-        <strong>NIC Formação Profissional</strong>
-
-    </p>
-
-    <small>
-
-        Educação com Propósito • Inteligência Artificial • 2026
-
-    </small>
-
+    <p class="mb-1"><strong>NIC Formação Profissional</strong></p>
+    <small>Educação com Propósito • Inteligência Artificial • 2026</small>
 </footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
-
-/*=========================================================
-NIC FORMAÇÃO
-MÓDULO IA
-=========================================================*/
-
-
-/*=========================================================
-REGISTRA O SERVICE WORKER
-=========================================================*/
-
+/* Service Worker */
 if ("serviceWorker" in navigator) {
-
     window.addEventListener("load", () => {
-
         navigator.serviceWorker.register("./service-worker.js");
-
     });
-
 }
 
-
-/*=========================================================
-CARREGA O NOME DO ALUNO
-=========================================================*/
-
+/* Carregar nome do aluno */
 document.addEventListener("DOMContentLoaded", () => {
-
     const nome = localStorage.getItem("nomeAluno");
-
     if (nome) {
-
         document.getElementById("nomeAlunoDisplay").textContent = nome;
-
     }
-
 });
 
-
-/*=========================================================
-PROVA
-=========================================================*/
-
+/* Acessar Prova */
 function acessarProva() {
-
     const senha = prompt("🔒 Digite a senha da PROVA:");
-
     if (senha === null) return;
 
     if (senha.trim().toLowerCase() === "provaiaia") {
-
         alert("✅ Acesso liberado!");
-
-        /*
-        Quando a prova estiver pronta,
-        altere apenas a linha abaixo.
-        */
-
-        // window.location.href = "ia-quest.html";
-
-    }
-
-    else {
-
+        window.location.href = "ia-quest.html";
+    } else {
         alert("❌ Senha incorreta.\n\nSolicite ao instrutor.");
-
     }
-
 }
 
-
-/*=========================================================
-REVISÃO
-=========================================================*/
-
+/* Acessar Revisão */
 function acessarRevisao() {
-
     const senha = prompt("🔑 Digite a senha da REVISÃO:");
-
     if (senha === null) return;
 
     if (senha.trim().toLowerCase() === "revisaoia") {
-
         window.open(
-            "https://share.gemini.google/dyVjUlMwwOWv",
+            "https://share.gemini.google.com/dyVjUlMwwOWv",
             "_blank",
-            "noopener"
+            "noopener,noreferrer"
         );
-
-    }
-
-    else {
-
+    } else {
         alert("❌ Senha incorreta.");
-
     }
-
 }
-
-
-/*=========================================================
-ATALHOS FUTUROS
-=========================================================*/
-
-function abrirSlides(){
-
-    window.location.href =
-    "visualizador.html?tipo=slides&id=1qoLqX-G0ktIQcIgTLk5Im0fIN-Wn4Gju";
-
-}
-
-
-function abrirApostila(){
-
-    window.location.href =
-    "visualizador.html?tipo=pdf&id=1dTwz1ozqXX_xPOUFM3iJ-26R21mubr-r";
-
-}
-
 </script>
-
 </body>
 </html>
