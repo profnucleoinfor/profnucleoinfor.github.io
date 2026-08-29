@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#043B7B">
+<title>Hardware Quest — Exercício Simulado</title>
+
+<style>
+:root{
+    --azul:#043B7B;
+    --azul-escuro:#06264a;
+    --verde:#7CAC3C;
+    --verde-claro:#A5E44E;
+    --fundo:#f4f7fb;
+    --branco:#fff;
+    --texto:#172033;
+    --muted:#657086;
+    --borda:#dfe5ee;
+    --certo:#17834b;
+    --certo-bg:#eaf8f0;
+    --erro:#c43b3b;
+    --erro-bg:#fff0f0;
+    --aviso:#a56a00;
+    --aviso-bg:#fff8e5;
+    --sombra:0 12px 35px rgba(15,36,65,.10);
+}
+
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Inter,"Segoe UI",Arial,sans-serif;
+    color:var(--texto);
+    background:
+        radial-gradient(circle at 10% 0%,rgba(124,172,60,.13),transparent 28%),
+        linear-gradient(135deg,#eef4fb,var(--fundo));
+    min-height:100vh;
+}
+
+button,input{font:inherit}
+
+.topbar{
+    background:var(--azul-escuro);
+    color:white;
+    padding:15px 22px;
+}
+
+.topbar-inner{
+    width:min(1050px,100%);
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.brand-icon{
+    width:44px;
+    height:44px;
+    display:grid;
+    place-items:center;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--verde),var(--azul));
+    font-size:22px;
+}
+
+.brand strong{display:block}
+.brand small{color:#c8d5e6}
+
+main{
+    width:min(950px,100%);
+    margin:auto;
+    padding:28px 18px 55px;
+}
+
+.card{
+    background:var(--branco);
+    border:1px solid var(--borda);
+    border-radius:20px;
+    box-shadow:var(--sombra);
+    padding:32px;
+}
+
+.hidden{display:none!important}
+
+.kicker{
+    color:var(--verde);
+    text-transform:uppercase;
+    letter-spacing:.09em;
+    font-size:.78rem;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+h1{
+    margin:0;
+    color:var(--azul);
+    font-size:clamp(2rem,5vw,3.2rem);
+}
+
+h2{
+    color:var(--azul);
+    line-height:1.3;
+}
+
+p{line-height:1.65}
+
+.intro{
+    color:var(--muted);
+    max-width:760px;
+}
+
+.notice{
+    margin:22px 0;
+    padding:17px 18px;
+    border-left:5px solid var(--verde);
+    background:#f3f8ea;
+    border-radius:10px;
+}
+
+.notice strong{color:var(--azul)}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:13px;
+    margin:25px 0;
+}
+
+.info{
+    padding:16px;
+    border:1px solid var(--borda);
+    border-radius:13px;
+    background:#f8fafc;
+}
+
+.info span{
+    display:block;
+    color:var(--muted);
+    font-size:.82rem;
+}
+
+.info strong{
+    display:block;
+    margin-top:3px;
+    color:var(--azul);
+}
+
+label.nome-label{
+    display:block;
+    font-weight:700;
+    margin:20px 0 7px;
+}
+
+input[type=text]{
+    width:100%;
+    border:1px solid #cbd5e1;
+    border-radius:12px;
+    padding:14px;
+    outline:none;
+}
+
+input[type=text]:focus{
+    border-color:var(--verde);
+    box-shadow:0 0 0 3px rgba(124,172,60,.15);
+}
+
+.btn{
+    border:0;
+    border-radius:12px;
+    padding:13px 18px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.btn:hover{transform:translateY(-1px)}
+
+.btn-primary{
+    width:100%;
+    margin-top:15px;
+    color:white;
+    background:linear-gradient(135deg,var(--azul),#075ba5);
+}
+
+.btn-secondary{
+    color:var(--azul);
+    background:#edf3fa;
+}
+
+.quiz-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:10px;
+}
+
+.progress-label{
+    color:var(--muted);
+    font-size:.9rem;
+    font-weight:700;
+}
+
+.progress{
+    height:11px;
+    background:#e7edf4;
+    border-radius:99px;
+    overflow:hidden;
+    margin:8px 0 28px;
+}
+
+.progress-bar{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,var(--verde),var(--verde-claro));
+    transition:.3s;
+}
+
+.question-number{
+    color:var(--verde);
+    font-weight:900;
+    font-size:.85rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+}
+
+.question{
+    margin:7px 0 22px;
+    font-size:clamp(1.25rem,3vw,1.7rem);
+}
+
+.options{
+    display:grid;
+    gap:11px;
+}
+
+.option{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    border:2px solid var(--borda);
+    border-radius:13px;
+    padding:15px;
+    cursor:pointer;
+    background:white;
+    transition:.2s;
+}
+
+.option:hover{
+    border-color:#9bb7d4;
+    background:#f8fbff;
+}
+
+.option input{
+    margin-top:4px;
+    accent-color:var(--azul);
+}
+
+.option.selected{
+    border-color:var(--azul);
+    background:#f1f6fc;
+}
+
+.option.correct{
+    border-color:var(--certo);
+    background:var(--certo-bg);
+}
+
+.option.wrong{
+    border-color:var(--erro);
+    background:var(--erro-bg);
+}
+
+.feedback{
+    margin-top:20px;
+    border-radius:14px;
+    padding:17px;
+    display:none;
+}
+
+.feedback.show{display:block}
+
+.feedback.correct{
+    background:var(--certo-bg);
+    border:1px solid #9ed7b7;
+}
+
+.feedback.wrong{
+    background:var(--erro-bg);
+    border:1px solid #edb2b2;
+}
+
+.feedback-title{
+    font-weight:900;
+    margin-bottom:5px;
+}
+
+.feedback p{
+    margin:0;
+    color:#39465a;
+}
+
+.actions{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:22px;
+    gap:10px;
+}
+
+.actions .btn-primary{
+    width:auto;
+    margin:0;
+}
+
+.challenge{
+    margin-top:30px;
+    padding:22px;
+    background:#f8fafc;
+    border:1px solid var(--borda);
+    border-radius:16px;
+}
+
+.challenge h3{color:var(--azul);margin-top:0}
+
+.challenge-items{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:15px 0;
+}
+
+.challenge-item{
+    background:white;
+    padding:12px;
+    border:1px solid var(--borda);
+    border-radius:10px;
+}
+
+.match{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:18px;
+}
+
+.match select{
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    background:white;
+}
+
+.challenge-feedback{
+    margin-top:15px;
+    padding:14px;
+    border-radius:11px;
+    background:var(--certo-bg);
+    border:1px solid #9ed7b7;
+    display:none;
+}
+
+.result{
+    text-align:center;
+}
+
+.score{
+    font-size:clamp(3.5rem,12vw,6.5rem);
+    line-height:1;
+    color:var(--azul);
+    font-weight:900;
+    margin:22px 0 8px;
+}
+
+.result-message{
+    max-width:720px;
+    margin:12px auto;
+    color:var(--muted);
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:25px 0;
+    text-align:left;
+}
+
+.result .actions{
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.result .actions .btn-primary{width:auto}
+
+@media(max-width:680px){
+    .card{padding:22px}
+    .topbar-inner{align-items:flex-start}
+    .info-grid,.result-grid,.challenge-items,.match{grid-template-columns:1fr}
+    .quiz-head{align-items:flex-start;flex-direction:column}
+}
+
+@media print{
+    .topbar,.actions,#start,#quiz,.challenge{display:none!important}
+    body{background:white}
+    .card{box-shadow:none;border:0}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <div class="brand">
+            <div class="brand-icon">🧩</div>
+            <div>
+                <strong>NIC Formação Profissional</strong>
+                <small>Windows e Linux • Aula 01</small>
+            </div>
+        </div>
+        <div>Hardware Quest</div>
+    </div>
+</header>
+
+<main>
+
+<section id="start" class="card">
+    <div class="kicker">Exercício Simulado</div>
+    <h1>🖥️ Hardware Quest</h1>
+
+    <p class="intro">
+        Vamos revisar o que aprendemos na Aula 01: energia elétrica,
+        fonte de alimentação, proteção, hardware, CPU, placa-mãe,
+        memória RAM, armazenamento, GPU e periféricos.
+    </p>
+
+    <div class="notice">
+        <strong>🎯 Atenção:</strong> este não é uma prova.
+        É um <strong>exercício simulado para aprender e revisar</strong>.
+        Depois de cada resposta, você receberá um feedback explicando
+        o conceito.
+    </div>
+
+    <div class="info-grid">
+        <div class="info"><span>Questões</span><strong>15</strong></div>
+        <div class="info"><span>Objetivo</span><strong>Aprender</strong></div>
+        <div class="info"><span>Feedback</span><strong>Após cada resposta</strong></div>
+    </div>
+
+    <label class="nome-label" for="nome">Seu nome</label>
+    <input id="nome" type="text" placeholder="Digite seu nome">
+
+    <button class="btn btn-primary" onclick="iniciar()">Começar exercício</button>
+</section>
+
+<section id="quiz" class="card hidden">
+    <div class="quiz-head">
+        <div>
+            <div class="question-number" id="tema"></div>
+            <div class="progress-label" id="contador"></div>
+        </div>
+        <strong id="percentual">0%</strong>
+    </div>
+
+    <div class="progress"><div class="progress-bar" id="barra"></div></div>
+
+    <h2 class="question" id="pergunta"></h2>
+
+    <div class="options" id="opcoes"></div>
+
+    <div id="feedback" class="feedback">
+        <div class="feedback-title" id="feedbackTitulo"></div>
+        <p id="feedbackTexto"></p>
+    </div>
+
+    <div class="actions">
+        <button id="btnProximo" class="btn btn-primary" onclick="responder()">Verificar resposta</button>
+    </div>
+</section>
+
+<section id="desafio" class="card hidden">
+    <div class="kicker">Desafio de aplicação</div>
+    <h1>🛡️ Qual proteção escolher?</h1>
+
+    <p>
+        Agora vamos aplicar o que aprendemos sobre
+        <strong>filtro de linha, estabilizador e nobreak</strong>.
+    </p>
+
+    <div class="challenge">
+        <h3>Você recebeu três equipamentos:</h3>
+        <div class="challenge-items">
+            <div class="challenge-item">🔌 <strong>Filtro de linha</strong></div>
+            <div class="challenge-item">🛡️ <strong>Estabilizador</strong></div>
+            <div class="challenge-item">🔋 <strong>Nobreak</strong></div>
+        </div>
+
+        <h3>Associe cada situação à solução mais adequada:</h3>
+
+        <div class="match">
+            <label>
+                <strong>A)</strong> Computador em uma região com quedas frequentes de energia.
+                <select id="respA">
+                    <option value="">Escolha...</option>
+                    <option value="filtro">🔌 Filtro de linha</option>
+                    <option value="estabilizador">🛡️ Estabilizador</option>
+                    <option value="nobreak">🔋 Nobreak</option>
+                </select>
+            </label>
+
+            <label>
+                <strong>B)</strong> Computador utilizado em instalação com proteção contra surtos adequada.
+                <select id="respB">
+                    <option value="">Escolha...</option>
+                    <option value="filtro">🔌 Filtro de linha</option>
+                    <option value="estabilizador">🛡️ Estabilizador</option>
+                    <option value="nobreak">🔋 Nobreak</option>
+                </select>
+            </label>
+
+            <label>
+                <strong>C)</strong> Equipamento que precisa continuar funcionando durante uma falta de energia.
+                <select id="respC">
+                    <option value="">Escolha...</option>
+                    <option value="filtro">🔌 Filtro de linha</option>
+                    <option value="estabilizador">🛡️ Estabilizador</option>
+                    <option value="nobreak">🔋 Nobreak</option>
+                </select>
+            </label>
+        </div>
+
+        <button class="btn btn-primary" onclick="verificarDesafio()">Verificar desafio</button>
+
+        <div id="desafioFeedback" class="challenge-feedback"></div>
+    </div>
+
+    <div class="actions">
+        <button class="btn btn-secondary" onclick="finalizar()">Ver meu resultado</button>
+    </div>
+</section>
+
+<section id="fim" class="card result hidden">
+    <div class="kicker">Exercício concluído</div>
+    <h1 id="nomeResultado"></h1>
+
+    <div class="score" id="nota"></div>
+    <strong id="classificacao"></strong>
+
+    <p class="result-message" id="mensagemResultado"></p>
+
+    <div class="result-grid">
+        <div class="info"><span>Acertos</span><strong id="acertos"></strong></div>
+        <div class="info"><span>Aproveitamento</span><strong id="aproveitamento"></strong></div>
+        <div class="info"><span>Tipo</span><strong>Simulado</strong></div>
+    </div>
+
+    <div class="notice">
+        💡 <strong>Importante:</strong> o resultado serve para você descobrir
+        o que já entendeu e o que precisa revisar. Errar faz parte do processo de aprendizagem.
+    </div>
+
+    <div class="actions">
+        <button class="btn btn-secondary" onclick="window.print()">🖨️ Imprimir</button>
+        <button class="btn btn-primary" onclick="reiniciar()">🔄 Fazer novamente</button>
+    </div>
+</section>
+
+</main>
+
+<script>
+const perguntas = [
+{
+    tema:"Energia elétrica",
+    pergunta:"Qual tipo de corrente elétrica chega normalmente às tomadas residenciais?",
+    opcoes:["Corrente contínua (CC)","Corrente alternada (CA)","Corrente lógica","Corrente digital"],
+    correta:1,
+    explicacao:"A rede elétrica residencial fornece corrente alternada (CA). O computador utiliza uma fonte de alimentação para converter a energia e fornecer as tensões adequadas aos seus circuitos."
+},
+{
+    tema:"Energia elétrica",
+    pergunta:"Qual é a frequência da rede elétrica utilizada no Brasil?",
+    opcoes:["30 Hz","50 Hz","60 Hz","120 Hz"],
+    correta:2,
+    explicacao:"A frequência da rede elétrica no Brasil é normalmente de 60 Hz, ou seja, 60 ciclos por segundo."
+},
+{
+    tema:"CA e CC",
+    pergunta:"Qual alternativa representa corretamente a diferença entre CA e CC?",
+    opcoes:[
+        "CA é usada somente em baterias e CC somente nas tomadas.",
+        "CA varia periodicamente; CC mantém sua polaridade essencialmente constante.",
+        "CA e CC são exatamente a mesma coisa.",
+        "CC sempre possui frequência de 60 Hz."
+    ],
+    correta:1,
+    explicacao:"Na corrente alternada a tensão varia periodicamente. Na corrente contínua, a polaridade permanece essencialmente constante. Baterias são exemplos de fontes de CC."
+},
+{
+    tema:"Fonte de alimentação",
+    pergunta:"Qual é uma das principais funções da fonte de alimentação do computador?",
+    opcoes:[
+        "Armazenar fotos e documentos.",
+        "Converter e fornecer energia adequada aos componentes.",
+        "Aumentar a velocidade da internet.",
+        "Substituir a memória RAM."
+    ],
+    correta:1,
+    explicacao:"A fonte recebe energia da rede elétrica e realiza a conversão, filtragem e regulação necessárias para fornecer energia adequada aos componentes do computador."
+},
+{
+    tema:"Proteção",
+    pergunta:"Qual equipamento utiliza uma bateria para fornecer autonomia quando falta energia?",
+    opcoes:["Filtro de linha","Estabilizador","Nobreak","Placa-mãe"],
+    correta:2,
+    explicacao:"O nobreak possui bateria e pode manter o equipamento funcionando por determinado período durante uma interrupção da rede elétrica."
+},
+{
+    tema:"Proteção",
+    pergunta:"Qual é a principal função de um estabilizador?",
+    opcoes:[
+        "Fornecer bateria ao computador.",
+        "Regular a tensão dentro das características do equipamento.",
+        "Armazenar arquivos.",
+        "Substituir a fonte."
+    ],
+    correta:1,
+    explicacao:"O estabilizador tem como função principal regular a tensão. Sua necessidade deve ser avaliada de acordo com a instalação, o equipamento e a tecnologia utilizada."
+},
+{
+    tema:"Proteção",
+    pergunta:"Qual afirmação sobre filtro de linha está correta?",
+    opcoes:[
+        "Ele possui bateria obrigatoriamente.",
+        "Ele pode oferecer filtragem e proteção contra determinados surtos, conforme o projeto.",
+        "Ele mantém o computador ligado durante qualquer queda de energia.",
+        "Ele substitui o aterramento da instalação."
+    ],
+    correta:1,
+    explicacao:"Um filtro de linha não possui bateria. Dependendo do modelo, pode oferecer filtragem e proteção contra determinados surtos. A proteção real depende da construção e das especificações do equipamento."
+},
+{
+    tema:"Hardware",
+    pergunta:"O que é hardware?",
+    opcoes:[
+        "A parte física do computador.",
+        "Somente o Windows.",
+        "Somente os programas.",
+        "A conexão com a internet."
+    ],
+    correta:0,
+    explicacao:"Hardware é a parte física do sistema: placas, chips, cabos, unidades de armazenamento, periféricos e demais componentes."
+},
+{
+    tema:"Placa-mãe",
+    pergunta:"Qual é uma função fundamental da placa-mãe?",
+    opcoes:[
+        "Conectar e permitir a comunicação entre diversos componentes.",
+        "Guardar permanentemente todos os arquivos.",
+        "Substituir o monitor.",
+        "Fornecer internet."
+    ],
+    correta:0,
+    explicacao:"A placa-mãe é a principal plataforma de conexão do computador. Nela se conectam componentes como CPU, RAM, armazenamento e dispositivos de expansão."
+},
+{
+    tema:"CPU",
+    pergunta:"O que significa CPU?",
+    opcoes:[
+        "Computer Power Unit",
+        "Central Processing Unit",
+        "Central Peripheral Utility",
+        "Computer Program User"
+    ],
+    correta:1,
+    explicacao:"CPU significa Central Processing Unit, ou Unidade Central de Processamento. Ela executa instruções e realiza operações de processamento."
+},
+{
+    tema:"Memória RAM",
+    pergunta:"Qual descrição representa melhor a memória RAM?",
+    opcoes:[
+        "É uma área de trabalho temporária usada durante o processamento.",
+        "É uma bateria.",
+        "É o monitor do computador.",
+        "É um tipo de impressora."
+    ],
+    correta:0,
+    explicacao:"A RAM funciona como uma área de trabalho temporária. Ela mantém dados e instruções que estão sendo utilizados pelo sistema e pelos programas."
+},
+{
+    tema:"Armazenamento",
+    pergunta:"Qual componente é utilizado para armazenar arquivos e programas de forma persistente?",
+    opcoes:["RAM","CPU","SSD ou HD","Fonte"],
+    correta:2,
+    explicacao:"SSD e HD são dispositivos de armazenamento persistente. Neles podem ficar documentos, fotos, vídeos, programas e o sistema operacional."
+},
+{
+    tema:"GPU",
+    pergunta:"Qual é a principal especialidade de uma GPU?",
+    opcoes:[
+        "Processamento gráfico.",
+        "Fornecimento de energia.",
+        "Armazenamento permanente.",
+        "Controle do teclado."
+    ],
+    correta:0,
+    explicacao:"GPU significa Graphics Processing Unit. Ela é especializada em processamento gráfico e pode estar integrada ao processador ou ser uma unidade dedicada."
+},
+{
+    tema:"Periféricos",
+    pergunta:"Qual alternativa contém somente dispositivos de entrada?",
+    opcoes:[
+        "Teclado, mouse e microfone",
+        "Monitor, impressora e áudio",
+        "Monitor, teclado e impressora",
+        "Caixa de som, monitor e projetor"
+    ],
+    correta:0,
+    explicacao:"Teclado, mouse e microfone enviam informações para o computador, portanto são exemplos de dispositivos de entrada."
+},
+{
+    tema:"Inicialização",
+    pergunta:"Antes de o Windows ou Linux assumir o controle, qual software de baixo nível participa da inicialização do computador?",
+    opcoes:["Word","Firmware (BIOS/UEFI)","Paint","Navegador"],
+    correta:1,
+    explicacao:"O firmware, como BIOS/UEFI, participa da inicialização: prepara e verifica componentes e procura um dispositivo inicializável."
+}
+];
+
+let atual=0;
+let acertos=0;
+let respondeu=false;
+let nome="";
+
+function iniciar(){
+    nome=document.getElementById("nome").value.trim();
+    if(!nome){
+        alert("Digite seu nome para começar.");
+        document.getElementById("nome").focus();
+        return;
+    }
+
+    atual=0;
+    acertos=0;
+    respondeu=false;
+
+    document.getElementById("start").classList.add("hidden");
+    document.getElementById("fim").classList.add("hidden");
+    document.getElementById("desafio").classList.add("hidden");
+    document.getElementById("quiz").classList.remove("hidden");
+
+    mostrarPergunta();
+}
+
+function mostrarPergunta(){
+    const q=perguntas[atual];
+    const progresso=Math.round((atual/perguntas.length)*100);
+
+    document.getElementById("tema").textContent=q.tema;
+    document.getElementById("contador").textContent=`Questão ${atual+1} de ${perguntas.length}`;
+    document.getElementById("percentual").textContent=`${progresso}%`;
+    document.getElementById("barra").style.width=`${progresso}%`;
+    document.getElementById("pergunta").textContent=q.pergunta;
+
+    document.getElementById("opcoes").innerHTML=q.opcoes.map((opcao,i)=>`
+        <label class="option" data-index="${i}">
+            <input type="radio" name="resposta" value="${i}">
+            <span>${opcao}</span>
+        </label>
+    `).join("");
+
+    document.querySelectorAll(".option").forEach(el=>{
+        el.addEventListener("click",()=>{
+            if(respondeu)return;
+            document.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));
+            el.classList.add("selected");
+            el.querySelector("input").checked=true;
+        });
+    });
+
+    document.getElementById("feedback").className="feedback";
+    document.getElementById("feedbackTitulo").textContent="";
+    document.getElementById("feedbackTexto").textContent="";
+
+    respondeu=false;
+    document.getElementById("btnProximo").textContent="Verificar resposta";
+}
+
+function responder(){
+    const marcada=document.querySelector('input[name="resposta"]:checked');
+
+    if(!marcada){
+        alert("Escolha uma alternativa antes de continuar.");
+        return;
+    }
+
+    const q=perguntas[atual];
+    const escolhida=Number(marcada.value);
+    const correto=escolhida===q.correta;
+
+    if(respondeu){
+        atual++;
+
+        if(atual<perguntas.length){
+            mostrarPergunta();
+        }else{
+            document.getElementById("quiz").classList.add("hidden");
+            document.getElementById("desafio").classList.remove("hidden");
+        }
+        return;
+    }
+
+    respondeu=true;
+
+    document.querySelectorAll(".option").forEach((el,i)=>{
+        el.style.cursor="default";
+        if(i===q.correta)el.classList.add("correct");
+        if(i===escolhida && !correto)el.classList.add("wrong");
+    });
+
+    if(correto){
+        acertos++;
+        document.getElementById("feedback").className="feedback show correct";
+        document.getElementById("feedbackTitulo").textContent="✅ Muito bem! Resposta correta.";
+    }else{
+        document.getElementById("feedback").className="feedback show wrong";
+        document.getElementById("feedbackTitulo").textContent="📚 Quase! Vamos aprender com o erro.";
+    }
+
+    document.getElementById("feedbackTexto").textContent=q.explicacao;
+
+    document.getElementById("btnProximo").textContent=
+        atual===perguntas.length-1 ? "Ir para o desafio" : "Próxima questão";
+}
+
+function verificarDesafio(){
+    const a=document.getElementById("respA").value;
+    const b=document.getElementById("respB").value;
+    const c=document.getElementById("respC").value;
+
+    const box=document.getElementById("desafioFeedback");
+
+    if(!a||!b||!c){
+        box.style.display="block";
+        box.style.background="var(--aviso-bg)";
+        box.style.borderColor="#e5c16b";
+        box.textContent="⚠️ Responda as três situações antes de verificar.";
+        return;
+    }
+
+    if(a==="nobreak" && b==="filtro" && c==="nobreak"){
+        box.style.display="block";
+        box.style.background="var(--certo-bg)";
+        box.style.borderColor="#9ed7b7";
+        box.innerHTML="<strong>🎉 Excelente!</strong><br>A) Nobreak — atende à necessidade de autonomia durante quedas de energia.<br>B) Filtro de linha — pode ser considerado para conexão/proteção complementar, conforme o equipamento e a instalação.<br>C) Nobreak — é a opção que fornece autonomia durante a falta de energia.";
+    }else{
+        box.style.display="block";
+        box.style.background="var(--aviso-bg)";
+        box.style.borderColor="#e5c16b";
+        box.innerHTML="<strong>💡 Vamos revisar:</strong><br>A) <strong>Nobreak</strong> quando a necessidade é manter o computador funcionando durante quedas de energia.<br>B) Em uma instalação que já possui proteção contra surtos adequada, um <strong>filtro de linha</strong> pode ser usado para conexão/proteção complementar, conforme suas especificações.<br>C) <strong>Nobreak</strong> quando o equipamento precisa continuar funcionando durante uma falta de energia.";
+    }
+}
+
+function finalizar(){
+    document.getElementById("desafio").classList.add("hidden");
+    document.getElementById("quiz").classList.add("hidden");
+    document.getElementById("fim").classList.remove("hidden");
+
+    const percentual=Math.round((acertos/perguntas.length)*100);
+    const nota=(acertos/perguntas.length*10).toFixed(1);
+
+    let classificacao;
+    let mensagem;
+
+    if(percentual>=90){
+        classificacao="🏆 Excelente domínio!";
+        mensagem="Você demonstrou uma ótima compreensão dos fundamentos estudados. Continue praticando e explicando os conceitos com suas próprias palavras.";
+    }else if(percentual>=70){
+        classificacao="👏 Muito bom!";
+        mensagem="Você já possui uma boa base. Revise os conceitos em que teve dificuldade e tente novamente.";
+    }else if(percentual>=50){
+        classificacao="📚 Bom começo!";
+        mensagem="Você já identificou vários conceitos importantes. Use os feedbacks do exercício para reforçar os pontos que ainda geram dúvida.";
+    }else{
+        classificacao="🔄 Hora de revisar!";
+        mensagem="Não tem problema errar. Este exercício foi feito justamente para ajudar você a descobrir o que precisa estudar novamente.";
+    }
+
+    document.getElementById("nomeResultado").textContent=`Parabéns, ${nome}!`;
+    document.getElementById("nota").textContent=nota;
+    document.getElementById("classificacao").textContent=classificacao;
+    document.getElementById("mensagemResultado").textContent=mensagem;
+    document.getElementById("acertos").textContent=`${acertos} de ${perguntas.length}`;
+    document.getElementById("aproveitamento").textContent=`${percentual}%`;
+}
+
+function reiniciar(){
+    document.getElementById("fim").classList.add("hidden");
+    document.getElementById("start").classList.remove("hidden");
+    document.getElementById("nome").value=nome;
+}
+</script>
+
+</body>
+</html>
