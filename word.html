@@ -3,222 +3,516 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Módulo Word + Digitação</title>
-
-  <!-- ✅ CONFIGURAÇÕES PARA FUNCIONAR COMO APP (PWA) -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Módulo Word + Digitação | NIC Formação</title>
+  <!-- ✅ PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="NIC Aluno">
-    <meta name="theme-color" content="#043B7B">
-
+  <meta name="theme-color" content="#043B7B">
+  <!-- SEO / Compartilhamento -->
+  <meta name="description" content="Módulo Word + Digitação — NIC Formação Profissional.">
+  <meta property="og:image" content="./assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.json?v=11">
+  <!-- Ícones -->
+  <link rel="icon" type="image/png" href="./assets/favicon.png">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
   <style>
+    /* =========================================================
+       DESIGN SYSTEM — MÓDULO WORD
+       Mantém identidade com padrão NIC
+    ========================================================= */
     :root {
-      --fundo: #0f172a;
-      --card: #1e293b;
-      --borda: #334155;
-      --texto: #f1f5f9;
+      --nicBlueDark: #043B7B;
+      --nicBlue: #04244C;
+      --nicTeal: #365C86;
+      --nicGray: #F4F7FB;
+      --card: #ffffff;
+      --borda: #e5e7eb;
+      --texto: #04244C;
+      --textoSecundario: #64748b;
       --mod-cor: #2563eb;
       --mod-gradiente: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      --mod-fundo: #eff6ff;
     }
-
+    /* =========================================================
+       BASE
+    ========================================================= */
     body {
-      background-color: var(--fundo);
+      background: var(--nicGray);
       color: var(--texto);
       font-family: 'Inter', sans-serif;
+      line-height: 1.6;
     }
-
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
     .navbar {
-      background: rgba(30, 41, 59, 0.8);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--borda);
     }
-
+    .navbar-brand {
+      color: var(--nicBlueDark) !important;
+    }
+    .navbar .badge {
+      font-weight: 600;
+      padding: 8px 12px;
+      background: var(--mod-cor) !important;
+    }
+    /* =========================================================
+       HERO
+    ========================================================= */
     .hero {
       background: var(--mod-gradiente);
       padding: 60px 20px;
       text-align: center;
       border-radius: 0 0 40px 40px;
-      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+      color: white;
     }
-    .hero h1 span { color: #fde047; font-weight: 700; }
-
+    .hero h1 {
+      font-weight: 700;
+    }
+    .hero h1 span {
+      color: #fde047;
+    }
+    .hero small {
+      font-size: 0.85rem;
+    }
+    /* =========================================================
+       MISSÃO
+    ========================================================= */
     .mission-box {
-      background: rgba(59, 130, 246, 0.1);
+      background: var(--mod-fundo);
       border: 1px solid #3b82f6;
-      padding: 20px;
+      padding: 24px;
       border-radius: 16px;
       margin-top: -30px;
       position: relative;
       z-index: 10;
-      backdrop-filter: blur(5px);
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
     }
-
+    /* =========================================================
+       CARDS
+    ========================================================= */
     .card-aula {
       background: var(--card);
       border: 1px solid var(--borda);
       border-radius: 20px;
-      padding: 30px;
+      padding: 25px;
       text-align: center;
+      transition: all 0.25s ease;
       height: 100%;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .card-aula:hover {
-      transform: translateY(-8px);
+      transform: translateY(-6px);
       border-color: var(--mod-cor);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+      box-shadow: 0 12px 25px rgba(37, 99, 235, 0.12);
     }
-
-    .icon-box { font-size: 40px; margin-bottom: 15px; display: block; }
-
+    .icon-box {
+      font-size: 40px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .card-aula h5 {
+      font-weight: 700;
+      color: var(--texto);
+      margin-bottom: 10px;
+    }
+    .card-aula p {
+      color: var(--textoSecundario);
+    }
+    /* =========================================================
+       BOTÕES
+    ========================================================= */
     .btn-modulo {
-      background: var(--borda);
+      background: var(--mod-cor);
       color: white;
       border: none;
-      padding: 10px 25px;
+      padding: 10px 20px;
       border-radius: 12px;
-      font-weight: 600;
-      transition: 0.3s;
       width: 100%;
+      font-weight: 600;
       text-decoration: none;
       display: inline-block;
+      transition: background 0.3s ease;
     }
-    .card-aula:hover .btn-modulo { background: var(--mod-cor); }
-
-    kbd {
-      background-color: #334155;
-      border-radius: 5px;
-      border: 1px solid #475569;
-      color: #93c5fd;
-      padding: 2px 6px;
-      font-weight: bold;
-      box-shadow: 0 2px 0 #000;
+    .btn-modulo:hover {
+      background: #1d4ed8;
+      color: white;
     }
-
-    .accordion-item { border: none; margin-bottom: 10px; background: transparent; }
-    .accordion-button { 
-      border-radius: 12px !important; 
-      background-color: var(--card); 
-      color: white; 
+    .card-aula:hover .btn-modulo {
+      background: #1d4ed8;
+      color: white;
+    }
+    /* =========================================================
+       CARD DE AVALIAÇÃO
+    ========================================================= */
+    .card-avaliacao {
+      border-color: #ef4444;
+    }
+    .card-avaliacao:hover {
+      border-color: #dc2626;
+      box-shadow: 0 12px 25px rgba(220, 38, 38, 0.12);
+    }
+    /* =========================================================
+       SEÇÕES DE CONTEÚDO
+    ========================================================= */
+    .content-card {
+      background: white;
       border: 1px solid var(--borda);
+      border-radius: 20px;
+      padding: 25px;
     }
-    .accordion-button::after { filter: invert(1); }
+    .section-title {
+      color: var(--texto);
+      font-weight: 700;
+    }
+    /* =========================================================
+       ACCORDION
+    ========================================================= */
+    .accordion-item {
+      border: none;
+      margin-bottom: 10px;
+      background: transparent;
+    }
+    .accordion-button {
+      background: white;
+      color: var(--texto);
+      border: 1px solid var(--borda);
+      border-radius: 12px !important;
+      box-shadow: none;
+      font-weight: 600;
+    }
+    .accordion-button:hover {
+      color: var(--mod-cor);
+    }
+    .accordion-button::after {
+      filter: none;
+    }
     .accordion-button:not(.collapsed) {
-      background-color: rgba(59, 130, 246, 0.1);
-      color: #93c5fd;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--mod-cor);
       box-shadow: none;
     }
-
-    footer { color: #64748b; font-size: 13px; }
+    .accordion-body {
+      background: white;
+      border: 1px solid var(--borda);
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+    }
+    /* =========================================================
+       TABELA DE ATALHOS
+    ========================================================= */
+    .shortcut-table {
+      margin-bottom: 0;
+    }
+    .shortcut-table td {
+      color: var(--texto);
+      vertical-align: middle;
+      padding: 12px 15px;
+      border-color: var(--borda);
+    }
+    .shortcut-table tr:last-child td {
+      border-bottom: none;
+    }
+    /* =========================================================
+       KBD
+    ========================================================= */
+    kbd {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      font-weight: bold;
+      border-radius: 5px;
+      padding: 3px 7px;
+      box-shadow: 0 2px 0 #dbeafe;
+      font-family: inherit;
+    }
+    /* =========================================================
+       REVISÃO
+    ========================================================= */
+    .review-box {
+      background: rgba(37, 99, 235, 0.04);
+      border: 1px dashed var(--mod-cor);
+      border-radius: 20px;
+    }
+    .review-box h5 {
+      color: var(--mod-cor);
+      font-weight: 700;
+    }
+    /* =========================================================
+       RODAPÉ
+    ========================================================= */
+    footer {
+      color: #64748b;
+      font-size: 13px;
+    }
+    /* =========================================================
+       RESPONSIVIDADE
+    ========================================================= */
+    @media (max-width: 767.98px) {
+      .hero {
+        padding: 45px 15px;
+        border-radius: 0 0 30px 30px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .mission-box {
+        margin-top: -20px;
+        padding: 20px;
+      }
+      .card-aula {
+        padding: 22px;
+      }
+      .shortcut-table {
+        font-size: 14px;
+      }
+      .shortcut-table td {
+        padding: 10px;
+      }
+    }
   </style>
-  <link rel="manifest" href="./manifest.json?v=11" />
-  <link rel="icon" type="image/png" href="./assets/favicon.png" />
-  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
-  <meta property="og:image" content="./assets/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" /></head>
-
+</head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+<nav class="navbar navbar-expand-lg sticky-top">
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="./dashboard.html">
+    <a
+      class="navbar-brand fw-bold d-flex align-items-center"
+      href="./dashboard.html"
+    >
       <span class="me-2">⬅️</span> Painel
     </a>
-    <div class="ms-auto">
-      <span class="badge" style="background-color: var(--mod-cor);">Módulo Word + Digitação</span>
-    </div>
+    <span class="badge">
+      Módulo Word + Digitação
+    </span>
   </div>
 </nav>
-
+<!-- =========================================================
+     HERO
+========================================================= -->
 <section class="hero">
   <div class="container">
-    <h1 class="display-5">Bem-vindo, <span id="nomeAlunoDisplay">Estudante</span> 📝</h1>
-    <p class="lead opacity-75">
-      “Escreva a sua história com excelência.” <br> 
+    <h1 class="display-5 fw-bold">
+      Bem-vindo,
+      <span id="nomeAlunoDisplay">Estudante</span>
+      📝
+    </h1>
+    <p class="lead opacity-75 mb-0">
+      "Escreva a sua história com excelência."
+      <br>
       <small>Provérbios 16:3</small>
     </p>
   </div>
 </section>
-
+<!-- =========================================================
+     CONTEÚDO PRINCIPAL
+========================================================= -->
 <div class="container mb-5 mt-5">
-  
+  <!-- =======================================================
+       MISSÃO
+  ======================================================== -->
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="mission-box text-center">
-        🎯 <strong>Missão:</strong> Criar documentos profissionais, dominar formatação, tabelas, mala direta e digitar com velocidade e precisão!
+        🎯 <strong>Missão:</strong>
+        Criar documentos profissionais, dominar formatação, tabelas,
+        mala direta e digitar com velocidade e precisão!
       </div>
     </div>
   </div>
-
+  <!-- =======================================================
+       RECURSOS DO MÓDULO
+  ======================================================== -->
   <div class="row g-4 mt-4">
-    <div class="col-md-3">
+    <!-- MATERIAL -->
+    <div class="col-md-3 col-sm-6">
       <div class="card-aula">
         <span class="icon-box">📄</span>
         <h5>Slides da Aula</h5>
-        <p class="text-muted small">Tudo sobre formatação de texto.</p>
-        <a href="./visualizador.html?titulo=Slides%20Word%20%2B%20Digita%C3%A7%C3%A3o&url=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1tFp0vR61l2u96PF3DQWwDd2IvVg13m-DaDIVhFf0VYA%2Fedit%3Fusp%3Ddrive_link" class="btn-modulo">Abrir Material</a>
+        <p class="small">Conceitos e práticas de formatação.</p>
+        <a
+          href="./visualizador.html?titulo=Slides%20Word%20%2B%20Digita%C3%A7%C3%A3o&url=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1tFp0vR61l2u96PF3DQWwDd2IvVg13m-DaDIVhFf0VYA%2Fedit%3Fusp%3Ddrive_link"
+          class="btn-modulo"
+        >
+          Abrir Material
+        </a>
       </div>
     </div>
-
-    <div class="col-md-3">
+    <!-- APOSTILA -->
+    <div class="col-md-3 col-sm-6">
       <div class="card-aula">
         <span class="icon-box">📘</span>
-        <h5>Apostila</h5>
-        <p class="text-muted small">Guia completo do Word e Digitação.</p>
-        <a href="https://drive.google.com/file/d/1gqNYTYBZHHvUvnsSwSWOiixcQin5suX_/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-modulo">Ler Agora</a>
+        <h5>Apostila Completa</h5>
+        <p class="small">Guia completo do Word e Digitação.</p>
+        <a
+          href="https://drive.google.com/file/d/1gqNYTYBZHHvUvnsSwSWOiixcQin5suX_/view?usp=drive_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-modulo"
+        >
+          Ler Agora
+        </a>
       </div>
     </div>
-
-    <div class="col-md-3">
+    <!-- EXERCÍCIOS -->
+    <div class="col-md-3 col-sm-6">
       <div class="card-aula">
         <span class="icon-box">✍️</span>
         <h5>Exercícios</h5>
-        <p class="text-muted small">Prática de digitação e formatação.</p>
-        <a href="https://forms.gle/BV6gxxEkJJXq1z3A9" target="_blank" rel="noopener noreferrer" class="btn-modulo">Enviar Atividade</a>
+        <p class="small">Prática de digitação e formatação.</p>
+        <a
+          href="https://forms.gle/BV6gxxEkJJXq1z3A9"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-modulo"
+        >
+          Enviar Atividade
+        </a>
       </div>
     </div>
-
-    <div class="col-md-3">
-      <div class="card-aula" style="border-color: #ef4444;">
+    <!-- AVALIAÇÃO -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card-aula card-avaliacao">
         <span class="icon-box">📝</span>
-        <h5>Prova Final</h5>
-        <p class="text-muted small">Desafio de documento complexo.</p>
-        <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 py-2 fw-bold">Iniciar Prova</button>
+        <h5>Avaliação Final</h5>
+        <p class="small">Desafio de documento complexo.</p>
+        <button
+          onclick="acessarProva()"
+          class="btn btn-danger w-100 rounded-3 py-2 fw-bold"
+        >
+          Iniciar Prova
+        </button>
       </div>
     </div>
   </div>
-
+  <!-- =======================================================
+       ATALHOS ESSENCIAIS
+  ======================================================== -->
   <div class="row mt-5">
     <div class="col-12">
-      <div class="card p-4" style="background: var(--card); border: 1px solid var(--borda); border-radius: 20px;">
-        <h2 class="mb-4 d-flex align-items-center">
-          <span class="me-3">⌨️</span> Atalhos do Word
+      <div class="content-card">
+        <h2 class="section-title mb-4 d-flex align-items-center">
+          <span class="me-3">⌨️</span>
+          Atalhos do Word
         </h2>
-        
-        <div class="accordion accordion-flush" id="accordionModulo">
+        <div class="accordion" id="accordionModulo">
+          <!-- EDIÇÃO E FORMATAÇÃO -->
           <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#edicao">
+            <h2 class="accordion-header" id="cabecalho-edicao">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#edicao"
+                aria-expanded="false"
+                aria-controls="edicao"
+              >
                 ✏️ Edição e Formatação
               </button>
             </h2>
-            <div id="edicao" class="accordion-collapse collapse" data-bs-parent="#accordionModulo">
+            <div
+              id="edicao"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionModulo"
+              aria-labelledby="cabecalho-edicao"
+            >
               <div class="accordion-body p-0">
-                <table class="table table-dark table-hover mb-0">
-                  <tbody>
-                    <tr><td><kbd>Ctrl</kbd> + <kbd>B</kbd></td><td>Negrito</td></tr>
-                    <tr><td><kbd>Ctrl</kbd> + <kbd>I</kbd></td><td>Itálico</td></tr>
-                    <tr><td><kbd>Ctrl</kbd> + <kbd>U</kbd></td><td>Sublinhado</td></tr>
-                    <tr><td><kbd>Ctrl</kbd> + <kbd>Enter</kbd></td><td>Inserir quebra de página</td></tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table shortcut-table">
+                    <tbody>
+                      <tr>
+                        <td><kbd>Ctrl</kbd> + <kbd>B</kbd></td>
+                        <td>Negrito</td>
+                      </tr>
+                      <tr>
+                        <td><kbd>Ctrl</kbd> + <kbd>I</kbd></td>
+                        <td>Itálico</td>
+                      </tr>
+                      <tr>
+                        <td><kbd>Ctrl</kbd> + <kbd>U</kbd></td>
+                        <td>Sublinhado</td>
+                      </tr>
+                      <tr>
+                        <td><kbd>Ctrl</kbd> + <kbd>Enter</kbd></td>
+                        <td>Inserir quebra de página</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- DIGITAÇÃO E NAVEGAÇÃO -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="cabecalho-digitar">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#digitar"
+                aria-expanded="false"
+                aria-controls="digitar"
+              >
+                ⌨️ Digitação e Navegação
+              </button>
+            </h2>
+            <div
+              id="digitar"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionModulo"
+              aria-labelledby="cabecalho-digitar"
+            >
+              <div class="accordion-body p-0">
+                <div class="table-responsive">
+                  <table class="table shortcut-table">
+                    <tbody>
+                      <tr>
+                        <td><kbd>Ctrl</kbd> + <kbd>A</kbd></td>
+                        <td>Selecionar tudo</td>
+                      </tr>
+                      <tr>
+                        <td><kbd>Ctrl</kbd> + <kbd>C</kbd></td>
+                        <td>Copiar</td>
+                      </tr>
+                      <tr>
+                        <td><kbd>Ctrl</kbd> + <kbd>X</kbd></td>
+                        <td>Recortar</td>
+                      </tr>
+                      <tr>
+                        <td><kbd>Ctrl</kbd> + <kbd>V</kbd></td>
+                        <td>Colar</td>
+                      </tr>
+                      <tr>
+                        <td><kbd>Ctrl</kbd> + <kbd>Z</kbd></td>
+                        <td>Desfazer</td>
+                      </tr>
+                      <tr>
+                        <td><kbd>Ctrl</kbd> + <kbd>Y</kbd></td>
+                        <td>Refazer</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -226,58 +520,79 @@
       </div>
     </div>
   </div>
-
+  <!-- =======================================================
+       REVISÃO DO MÓDULO
+  ======================================================== -->
   <div class="row mt-5">
     <div class="col-12 text-center">
-      <div class="p-4 rounded-4" style="background: rgba(59, 130, 246, 0.05); border: 1px dashed #3b82f6;">
+      <div class="review-box p-4">
         <h5>🔒 Revisão do Módulo</h5>
-        <p class="text-muted small">Dicas para digitação rápida e sem erros.</p>
-        <button onclick="acessarRevisao()" class="btn btn-warning px-5 rounded-pill fw-bold py-2">Liberar Conteúdo</button>
+        <p class="text-muted small mb-3">
+          Dicas para digitação rápida e sem erros.
+        </p>
+        <button
+          onclick="acessarRevisao()"
+          class="btn btn-primary px-5 rounded-pill fw-bold py-2"
+        >
+          Liberar Conteúdo
+        </button>
       </div>
     </div>
   </div>
-
 </div>
-
+<!-- =========================================================
+     RODAPÉ
+========================================================= -->
 <footer class="text-center py-5">
   <small>© NIC Formação Profissional — Educação com Propósito</small>
 </footer>
-
+<!-- Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
-  // ✅ REGISTRO DO SERVICE WORKER PARA O APP
+  /* =========================================================
+     SERVICE WORKER
+  ========================================================= */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./service-worker.js');
+      navigator.serviceWorker.register('./service-worker.js')
+        .catch(error => {
+          console.error('Erro ao registrar Service Worker:', error);
+        });
     });
   }
-
+  /* =========================================================
+     NOME DO ALUNO
+  ========================================================= */
   document.addEventListener("DOMContentLoaded", () => {
     const nomeSalvo = localStorage.getItem("nomeAluno");
     if (nomeSalvo) {
       document.getElementById("nomeAlunoDisplay").innerText = nomeSalvo;
     }
   });
-
+  /* =========================================================
+     ACESSAR PROVA
+  ========================================================= */
   function acessarProva() {
     const senha = prompt("🔒 Digite a senha da PROVA:");
     if (senha && senha.trim().toLowerCase() === "provaword") {
       alert("✅ Acesso liberado!");
+      // window.open("LINK_DA_PROVA", "_blank");
     } else if (senha !== null) {
       alert("❌ Senha incorreta! Fale com o instrutor.");
     }
   }
-
+  /* =========================================================
+     ACESSAR REVISÃO
+  ========================================================= */
   function acessarRevisao() {
     const senha = prompt("🔑 Digite a senha de REVISÃO:");
     if (senha === "revisaoWord") {
       alert("✅ Conteúdo liberado!");
+      // window.location.href = "LINK_DA_REVISAO";
     } else if (senha !== null) {
       alert("❌ Acesso negado. Senha incorreta.");
     }
   }
 </script>
-
 </body>
 </html>
