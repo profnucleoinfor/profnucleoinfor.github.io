@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulado - Software e Sistemas Operacionais</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f2f5f9;
+      color: #1f2937;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: min(100% - 30px, 900px);
+      margin: 30px auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      padding: 35px 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      margin-bottom: 22px;
+    }
+
+    .header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      opacity: 0.95;
+    }
+
+    .student-info {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .student-info label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .student-info input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .student-info input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .question {
+      background: white;
+      padding: 24px;
+      margin-bottom: 16px;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+      border-left: 5px solid #2563eb;
+    }
+
+    .question h2 {
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+    }
+
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 11px 12px;
+      margin: 7px 0;
+      border: 1px solid #e2e8f0;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .option:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    .option input {
+      margin-top: 4px;
+      cursor: pointer;
+    }
+
+    .option.correct {
+      background: #dcfce7;
+      border-color: #22c55e;
+    }
+
+    .option.incorrect {
+      background: #fee2e2;
+      border-color: #ef4444;
+    }
+
+    .feedback {
+      margin-top: 12px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .feedback.show {
+      display: block;
+    }
+
+    .actions {
+      text-align: center;
+      margin: 25px 0;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 14px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 5px;
+      transition: transform 0.15s, opacity 0.15s;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-correct {
+      background: #16a34a;
+      color: white;
+    }
+
+    .btn-reset {
+      background: #64748b;
+      color: white;
+    }
+
+    .result {
+      display: none;
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.09);
+    }
+
+    .result.show {
+      display: block;
+    }
+
+    .score {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #2563eb;
+      margin: 10px 0;
+    }
+
+    .message {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .progress {
+      background: #e2e8f0;
+      height: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 16px;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: #2563eb;
+      transition: width 0.4s ease;
+    }
+
+    .footer {
+      text-align: center;
+      color: #64748b;
+      font-size: 0.9rem;
+      margin: 25px 0;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 18px, 900px);
+        margin: 15px auto;
+      }
+
+      .header {
+        padding: 25px 20px;
+      }
+
+      .question {
+        padding: 18px;
+      }
+
+      button {
+        width: 100%;
+        margin: 5px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header class="header">
+      <h1>🧠 Simulado — Software e Sistemas Operacionais</h1>
+      <p>Teste seus conhecimentos sobre Software, Sistema Operacional, Windows, Linux e outros sistemas.</p>
+    </header>
+
+    <section class="student-info">
+      <label for="nome">Nome do aluno:</label>
+      <input type="text" id="nome" placeholder="Digite seu nome">
+    </section>
+
+    <section id="quiz">
+
+      <div class="question" data-answer="b">
+        <h2>1. O que é Software?</h2>
+
+        <label class="option">
+          <input type="radio" name="q1" value="a">
+          <span>A) A parte física do computador.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q1" value="b">
+          <span>B) A parte lógica do computador.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q1" value="c">
+          <span>C) Somente os componentes internos.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q1" value="d">
+          <span>D) A energia elétrica do computador.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-answer="c">
+        <h2>2. Qual alternativa apresenta corretamente a diferença entre Hardware e Software?</h2>
+
+        <label class="option">
+          <input type="radio" name="q2" value="a">
+          <span>A) Hardware é lógico e Software é físico.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q2" value="b">
+          <span>B) Hardware e Software são a mesma coisa.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q2" value="c">
+          <span>C) Hardware é físico e Software é lógico.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q2" value="d">
+          <span>D) Hardware é um programa e Software é uma peça.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-answer="a">
+        <h2>3. Qual dos exemplos abaixo é um Software?</h2>
+
+        <label class="option">
+          <input type="radio" name="q3" value="a">
+          <span>A) Windows.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q3" value="b">
+          <span>B) Teclado.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q3" value="c">
+          <span>C) Monitor.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q3" value="d">
+          <span>D) Memória RAM.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-answer="d">
+        <h2>4. Qual destes é um tipo de Software?</h2>
+
+        <label class="option">
+          <input type="radio" name="q4" value="a">
+          <span>A) Monitor.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q4" value="b">
+          <span>B) Placa-mãe.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q4" value="c">
+          <span>C) Teclado.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q4" value="d">
+          <span>D) Firmware.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-answer="b">
+        <h2>5. O que é Firmware?</h2>
+
+        <label class="option">
+          <input type="radio" name="q5" value="a">
+          <span>A) Um programa usado somente para desenhar.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q5" value="b">
+          <span>B) Um software embutido em componentes de hardware que controla funções básicas.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q5" value="c">
+          <span>C) Um tipo de teclado.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q5" value="d">
+          <span>D) Um aplicativo para navegar na internet.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-answer="c">
+        <h2>6. Qual é a principal função de um Sistema Operacional?</h2>
+
+        <label class="option">
+          <input type="radio" name="q6" value="a">
+          <span>A) Apenas reproduzir músicas.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q6" value="b">
+          <span>B) Fornecer energia para o computador.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q6" value="c">
+          <span>C) Gerenciar o computador e fazer a ligação entre usuário, programas e hardware.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q6" value="d">
+          <span>D) Aumentar fisicamente a memória RAM.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-answer="a">
+        <h2>7. Na comparação do computador com uma escola, o Sistema Operacional seria:</h2>
+
+        <label class="option">
+          <input type="radio" name="q7" value="a">
+          <span>A) Quem organiza e coordena o funcionamento.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q7" value="b">
+          <span>B) O prédio.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q7" value="c">
+          <span>C) O aluno.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q7" value="d">
+          <span>D) As mesas e cadeiras.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-answer="d">
+        <h2>8. Qual alternativa apresenta somente Sistemas Operacionais?</h2>
+
+        <label class="option">
+          <input type="radio" name="q8" value="a">
+          <span>A) Word, Excel e PowerPoint.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q8" value="b">
+          <span>B) Teclado, mouse e monitor.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q8" value="c">
+          <span>C) Chrome, Photoshop e Canva.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q8" value="d">
+          <span>D) Windows, Linux e Android.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-answer="b">
+        <h2>9. O Windows é desenvolvido pela:</h2>
+
+        <label class="option">
+          <input type="radio" name="q9" value="a">
+          <span>A) Apple.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q9" value="b">
+          <span>B) Microsoft.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q9" value="c">
+          <span>C) Google.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q9" value="d">
+          <span>D) Linux.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-answer="c">
+        <h2>10. Qual afirmação sobre o Linux está de acordo com o conteúdo estudado?</h2>
+
+        <label class="option">
+          <input type="radio" name="q10" value="a">
+          <span>A) É um tipo de Hardware.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q10" value="b">
+          <span>B) É fabricado pela Microsoft.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q10" value="c">
+          <span>C) É de código aberto e gratuito.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q10" value="d">
+          <span>D) Funciona somente em celulares.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-answer="a">
+        <h2>11. Qual opção apresenta distribuições Linux citadas na aula?</h2>
+
+        <label class="option">
+          <input type="radio" name="q11" value="a">
+          <span>A) Ubuntu, Fedora e CentOS.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q11" value="b">
+          <span>B) Windows 10, Windows 11 e Android.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q11" value="c">
+          <span>C) Word, Excel e PowerPoint.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q11" value="d">
+          <span>D) Chrome, Edge e Firefox.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-answer="d">
+        <h2>12. Qual alternativa apresenta corretamente os sistemas e seus fabricantes?</h2>
+
+        <label class="option">
+          <input type="radio" name="q12" value="a">
+          <span>A) Windows → Apple / Android → Microsoft / iOS → Google.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q12" value="b">
+          <span>B) Windows → Google / Android → Apple / iOS → Microsoft.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q12" value="c">
+          <span>C) Windows → Linux / Android → Apple / iOS → Google.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q12" value="d">
+          <span>D) Windows → Microsoft / Android → Google / iOS → Apple.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-answer="b">
+        <h2>13. Qual sistema operacional é utilizado em computadores Mac?</h2>
+
+        <label class="option">
+          <input type="radio" name="q13" value="a">
+          <span>A) Android.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q13" value="b">
+          <span>B) macOS.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q13" value="c">
+          <span>C) Windows Phone.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q13" value="d">
+          <span>D) Ubuntu.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-answer="a">
+        <h2>14. Qual sistema operacional é usado em celulares e tablets de várias marcas?</h2>
+
+        <label class="option">
+          <input type="radio" name="q14" value="a">
+          <span>A) Android.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q14" value="b">
+          <span>B) macOS.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q14" value="c">
+          <span>C) Windows 7.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q14" value="d">
+          <span>D) CentOS.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-answer="c">
+        <h2>15. Complete corretamente: Hardware é ______ e Software é ______.</h2>
+
+        <label class="option">
+          <input type="radio" name="q15" value="a">
+          <span>A) programa / peça física.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q15" value="b">
+          <span>B) parte lógica / parte física.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q15" value="c">
+          <span>C) parte física / parte lógica.</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q15" value="d">
+          <span>D) sistema operacional / aplicativo.</span>
+        </label>
+
+        <div class="feedback"></div>
+      </div>
+
+    </section>
+
+    <div class="actions">
+      <button class="btn-correct" id="btnCorrigir" onclick="corrigirQuiz()">
+        ✅ Corrigir Simulado
+      </button>
+
+      <button class="btn-reset" onclick="reiniciarQuiz()">
+        🔄 Refazer
+      </button>
+    </div>
+
+    <section class="result" id="resultado">
+      <h2>🎉 Resultado</h2>
+      <div class="score" id="pontuacao">0/15</div>
+      <p id="porcentagem"></p>
+      <p class="message" id="mensagem"></p>
+
+      <div class="progress">
+        <div class="progress-bar" id="barra"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Simulado de Informática — Software e Sistemas Operacionais</p>
+    </footer>
+
+  </main>
+
+  <script>
+    function corrigirQuiz() {
+      const nome = document.getElementById("nome").value.trim();
+      const questions = document.querySelectorAll(".question");
+
+      if (!nome) {
+        alert("Digite o nome do aluno antes de corrigir o simulado.");
+        document.getElementById("nome").focus();
+        return;
+      }
+
+      let acertos = 0;
+      let respondidas = 0;
+
+      questions.forEach((question) => {
+        const respostaCorreta = question.dataset.answer;
+        const selecionada = question.querySelector("input:checked");
+        const opcoes = question.querySelectorAll(".option");
+        const feedback = question.querySelector(".feedback");
+
+        opcoes.forEach((opcao) => {
+          opcao.classList.remove("correct", "incorrect");
+        });
+
+        if (selecionada) {
+          respondidas++;
+
+          const opcaoSelecionada = selecionada.closest(".option");
+
+          if (selecionada.value === respostaCorreta) {
+            acertos++;
+            opcaoSelecionada.classList.add("correct");
+            feedback.textContent = "✓ Resposta correta!";
+            feedback.style.color = "#15803d";
+          } else {
+            opcaoSelecionada.classList.add("incorrect");
+
+            const correta = question.querySelector(
+              `input[value="${respostaCorreta}"]`
+            );
+
+            if (correta) {
+              correta.closest(".option").classList.add("correct");
+            }
+
+            feedback.textContent = "✗ Resposta incorreta. A alternativa correta foi destacada.";
+            feedback.style.color = "#b91c1c";
+          }
+
+          feedback.classList.add("show");
+        } else {
+          feedback.textContent = "⚠ Questão não respondida.";
+          feedback.style.color = "#b45309";
+          feedback.classList.add("show");
+
+          const correta = question.querySelector(
+            `input[value="${respostaCorreta}"]`
+          );
+
+          if (correta) {
+            correta.closest(".option").classList.add("correct");
+          }
+        }
+      });
+
+      const total = questions.length;
+      const percentual = Math.round((acertos / total) * 100);
+
+      document.getElementById("pontuacao").textContent =
+        `${acertos}/${total}`;
+
+      document.getElementById("porcentagem").textContent =
+        `${percentual}% de aproveitamento`;
+
+      let mensagem;
+
+      if (percentual >= 90) {
+        mensagem = `🏆 Excelente, ${nome}! Você dominou o conteúdo.`;
+      } else if (percentual >= 70) {
+        mensagem = `👏 Muito bem, ${nome}! Você teve um ótimo resultado.`;
+      } else if (percentual >= 50) {
+        mensagem = `📚 Bom trabalho, ${nome}! Vale revisar alguns conceitos.`;
+      } else {
+        mensagem = `💪 Continue estudando, ${nome}! Vamos revisar o conteúdo.`;
+      }
+
+      document.getElementById("mensagem").textContent = mensagem;
+      document.getElementById("barra").style.width = percentual + "%";
+
+      const resultado = document.getElementById("resultado");
+      resultado.classList.add("show");
+
+      resultado.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+      document.getElementById("btnCorrigir").disabled = true;
+      document.getElementById("btnCorrigir").style.opacity = "0.6";
+
+      // Impede alterações depois da correção.
+      questions.forEach((question) => {
+        question.querySelectorAll("input").forEach((input) => {
+          input.disabled = true;
+        });
+      });
+    }
+
+    function reiniciarQuiz() {
+      const confirmou = confirm(
+        "Deseja realmente apagar as respostas e refazer o simulado?"
+      );
+
+      if (!confirmou) {
+        return;
+      }
+
+      document.getElementById("nome").value = "";
+
+      document.querySelectorAll(".question").forEach((question) => {
+        question.querySelectorAll("input").forEach((input) => {
+          input.checked = false;
+          input.disabled = false;
+        });
+
+        question.querySelectorAll(".option").forEach((opcao) => {
+          opcao.classList.remove("correct", "incorrect");
+        });
+
+        const feedback = question.querySelector(".feedback");
+        feedback.textContent = "";
+        feedback.classList.remove("show");
+      });
+
+      document.getElementById("resultado").classList.remove("show");
+      document.getElementById("pontuacao").textContent = "0/15";
+      document.getElementById("porcentagem").textContent = "";
+      document.getElementById("mensagem").textContent = "";
+      document.getElementById("barra").style.width = "0%";
+
+      const btn = document.getElementById("btnCorrigir");
+      btn.disabled = false;
+      btn.style.opacity = "1";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  </script>
+
+</body>
+</html>
