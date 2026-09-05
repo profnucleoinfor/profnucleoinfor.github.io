@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulado — Aula 02: História dos Computadores, Windows e Linux</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f6fa;color:#1f2937}
+.container{max-width:920px;margin:28px auto;padding:0 16px}
+.header{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border-radius:18px;padding:28px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.header h1{margin:0 0 8px;font-size:clamp(1.45rem,4vw,2.15rem)}
+.header p{margin:0;line-height:1.5}
+.info,.question,.result{background:#fff;border-radius:14px;padding:22px;margin-top:18px;box-shadow:0 3px 12px rgba(0,0,0,.07)}
+.info label{font-weight:bold;display:block;margin-bottom:8px}
+.info input{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font-size:1rem}
+.question{border-left:5px solid #2563eb}
+.question h2{font-size:1.05rem;line-height:1.45;margin:0 0 15px}
+.option{display:flex;gap:10px;align-items:flex-start;padding:11px;margin:7px 0;border:1px solid #e2e8f0;border-radius:9px;cursor:pointer;line-height:1.4}
+.option:hover{background:#f8fafc}
+.option.correct{background:#dcfce7;border-color:#22c55e}
+.option.incorrect{background:#fee2e2;border-color:#ef4444}
+.feedback{display:none;margin-top:12px;font-weight:bold;line-height:1.4}
+.feedback.show{display:block}
+.actions{text-align:center;margin:25px 0}
+button{border:0;border-radius:10px;padding:14px 24px;font-weight:bold;font-size:1rem;cursor:pointer;margin:5px}
+.btn-primary{background:#16a34a;color:#fff}.btn-secondary{background:#64748b;color:#fff}
+.result{text-align:center;display:none}.result.show{display:block}
+.score{font-size:3rem;font-weight:bold;color:#2563eb}
+.progress{height:10px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin-top:15px}
+.progress-bar{height:100%;width:0;background:#2563eb;transition:.4s}
+.footer{text-align:center;color:#64748b;margin:25px 0;font-size:.9rem}
+@media(max-width:600px){.container{margin:15px auto}.header{padding:22px}.question,.info,.result{padding:18px}button{width:100%;margin:5px 0}}
+</style>
+</head>
+<body>
+<main class="container">
+<header class="header">
+<h1>🖥️ Simulado — Aula 02</h1>
+<p>História dos Computadores, Windows e Linux</p>
+</header>
+
+<section class="info">
+<label for="nome">Nome do aluno:</label>
+<input id="nome" type="text" placeholder="Digite seu nome">
+</section>
+
+<section id="quiz">
+
+<div class="question" data-answer="b"><h2>1. Antes dos computadores, por que o ser humano criou instrumentos como o ábaco e a régua de cálculo?</h2>
+<label class="option"><input type="radio" name="q1" value="a"> A) Para acessar a internet</label>
+<label class="option"><input type="radio" name="q1" value="b"> B) Para ajudar na realização de cálculos</label>
+<label class="option"><input type="radio" name="q1" value="c"> C) Para criar sistemas operacionais</label>
+<label class="option"><input type="radio" name="q1" value="d"> D) Para substituir os celulares</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="c"><h2>2. Quem criou a Pascalina?</h2>
+<label class="option"><input type="radio" name="q2" value="a"> A) Linus Torvalds</label>
+<label class="option"><input type="radio" name="q2" value="b"> B) Bill Gates</label>
+<label class="option"><input type="radio" name="q2" value="c"> C) Blaise Pascal</label>
+<label class="option"><input type="radio" name="q2" value="d"> D) Steve Jobs</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="a"><h2>3. O que era a Pascalina?</h2>
+<label class="option"><input type="radio" name="q3" value="a"> A) Uma máquina de calcular com engrenagens</label>
+<label class="option"><input type="radio" name="q3" value="b"> B) Um sistema operacional</label>
+<label class="option"><input type="radio" name="q3" value="c"> C) Um computador portátil</label>
+<label class="option"><input type="radio" name="q3" value="d"> D) Uma distribuição Linux</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="d"><h2>4. O ENIAC surgiu durante qual período?</h2>
+<label class="option"><input type="radio" name="q4" value="a"> A) Revolução Industrial</label>
+<label class="option"><input type="radio" name="q4" value="b"> B) Década de 1980</label>
+<label class="option"><input type="radio" name="q4" value="c"> C) Início da internet comercial</label>
+<label class="option"><input type="radio" name="q4" value="d"> D) Segunda Guerra Mundial</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="b"><h2>5. Qual tecnologia caracterizava os computadores da primeira geração?</h2>
+<label class="option"><input type="radio" name="q5" value="a"> A) Transistores</label>
+<label class="option"><input type="radio" name="q5" value="b"> B) Válvulas eletrônicas</label>
+<label class="option"><input type="radio" name="q5" value="c"> C) Circuitos integrados</label>
+<label class="option"><input type="radio" name="q5" value="d"> D) Microprocessadores</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="c"><h2>6. Uma característica dos computadores da primeira geração era:</h2>
+<label class="option"><input type="radio" name="q6" value="a"> A) Pequeno tamanho e baixo consumo</label>
+<label class="option"><input type="radio" name="q6" value="b"> B) Uso principalmente em smartphones</label>
+<label class="option"><input type="radio" name="q6" value="c"> C) Grande tamanho e alto consumo de energia</label>
+<label class="option"><input type="radio" name="q6" value="d"> D) Uso de inteligência artificial</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="a"><h2>7. O que substituiu as válvulas na segunda geração?</h2>
+<label class="option"><input type="radio" name="q7" value="a"> A) Transistores</label>
+<label class="option"><input type="radio" name="q7" value="b"> B) Microprocessadores</label>
+<label class="option"><input type="radio" name="q7" value="c"> C) Smartphones</label>
+<label class="option"><input type="radio" name="q7" value="d"> D) Sistemas operacionais</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="d"><h2>8. Em qual geração os computadores passaram a utilizar circuitos integrados?</h2>
+<label class="option"><input type="radio" name="q8" value="a"> A) Primeira geração</label>
+<label class="option"><input type="radio" name="q8" value="b"> B) Segunda geração</label>
+<label class="option"><input type="radio" name="q8" value="c"> C) Quinta geração</label>
+<label class="option"><input type="radio" name="q8" value="d"> D) Terceira geração</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="b"><h2>9. Segundo o conteúdo, em qual geração os chips foram criados e começou a utilização de computadores pessoais?</h2>
+<label class="option"><input type="radio" name="q9" value="a"> A) Primeira</label>
+<label class="option"><input type="radio" name="q9" value="b"> B) Terceira</label>
+<label class="option"><input type="radio" name="q9" value="c"> C) Quarta</label>
+<label class="option"><input type="radio" name="q9" value="d"> D) Quinta</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="c"><h2>10. Qual característica marca a quarta geração dos computadores?</h2>
+<label class="option"><input type="radio" name="q10" value="a"> A) Aumento do tamanho e do consumo</label>
+<label class="option"><input type="radio" name="q10" value="b"> B) Uso exclusivo de válvulas</label>
+<label class="option"><input type="radio" name="q10" value="c"> C) Computadores menores, mais rápidos e com microprocessadores</label>
+<label class="option"><input type="radio" name="q10" value="d"> D) Fim dos computadores pessoais</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="a"><h2>11. Segundo a classificação apresentada no material, a quinta geração está relacionada principalmente a:</h2>
+<label class="option"><input type="radio" name="q11" value="a"> A) Multimídia, robótica, internet e inteligência artificial</label>
+<label class="option"><input type="radio" name="q11" value="b"> B) Válvulas e enormes máquinas</label>
+<label class="option"><input type="radio" name="q11" value="c"> C) Apenas transistores</label>
+<label class="option"><input type="radio" name="q11" value="d"> D) Apenas máquinas de calcular mecânicas</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="d"><h2>12. Qual sequência apresenta corretamente a evolução das tecnologias citadas nas primeiras quatro gerações?</h2>
+<label class="option"><input type="radio" name="q12" value="a"> A) Transistores → válvulas → circuitos integrados → ábaco</label>
+<label class="option"><input type="radio" name="q12" value="b"> B) Microprocessadores → válvulas → transistores → circuitos integrados</label>
+<label class="option"><input type="radio" name="q12" value="c"> C) Circuitos integrados → transistores → válvulas → microprocessadores</label>
+<label class="option"><input type="radio" name="q12" value="d"> D) Válvulas → transistores → circuitos integrados → microprocessadores</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="b"><h2>13. Em que ano a Microsoft lançou o Windows 1.0?</h2>
+<label class="option"><input type="radio" name="q13" value="a"> A) 1975</label>
+<label class="option"><input type="radio" name="q13" value="b"> B) 1985</label>
+<label class="option"><input type="radio" name="q13" value="c"> C) 1991</label>
+<label class="option"><input type="radio" name="q13" value="d"> D) 2001</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="c"><h2>14. Qual versão do Windows trouxe recursos conhecidos como o Menu Iniciar e a barra de tarefas?</h2>
+<label class="option"><input type="radio" name="q14" value="a"> A) Windows 3.0</label>
+<label class="option"><input type="radio" name="q14" value="b"> B) Windows XP</label>
+<label class="option"><input type="radio" name="q14" value="c"> C) Windows 95</label>
+<label class="option"><input type="radio" name="q14" value="d"> D) Windows 11</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="a"><h2>15. Qual versão do Windows foi lançada em 2001?</h2>
+<label class="option"><input type="radio" name="q15" value="a"> A) Windows XP</label>
+<label class="option"><input type="radio" name="q15" value="b"> B) Windows 7</label>
+<label class="option"><input type="radio" name="q15" value="c"> C) Windows 8</label>
+<label class="option"><input type="radio" name="q15" value="d"> D) Windows 10</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="d"><h2>16. Quem começou a desenvolver o kernel Linux em 1991?</h2>
+<label class="option"><input type="radio" name="q16" value="a"> A) Bill Gates</label>
+<label class="option"><input type="radio" name="q16" value="b"> B) Steve Jobs</label>
+<label class="option"><input type="radio" name="q16" value="c"> C) Blaise Pascal</label>
+<label class="option"><input type="radio" name="q16" value="d"> D) Linus Torvalds</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="b"><h2>17. Qual característica está associada ao Linux no conteúdo?</h2>
+<label class="option"><input type="radio" name="q17" value="a"> A) Código fechado e pouca personalização</label>
+<label class="option"><input type="radio" name="q17" value="b"> B) Código aberto, flexibilidade e personalização</label>
+<label class="option"><input type="radio" name="q17" value="c"> C) Uso somente em computadores pessoais</label>
+<label class="option"><input type="radio" name="q17" value="d"> D) Desenvolvimento exclusivo pela Microsoft</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="c"><h2>18. Qual alternativa apresenta apenas distribuições Linux citadas no material?</h2>
+<label class="option"><input type="radio" name="q18" value="a"> A) Windows 7, Windows 10 e Windows 11</label>
+<label class="option"><input type="radio" name="q18" value="b"> B) Word, Excel e PowerPoint</label>
+<label class="option"><input type="radio" name="q18" value="c"> C) Ubuntu, Fedora e Debian</label>
+<label class="option"><input type="radio" name="q18" value="d"> D) Windows XP, Ubuntu e macOS</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="a"><h2>19. Qual comparação está correta?</h2>
+<label class="option"><input type="radio" name="q19" value="a"> A) Windows é proprietário; Linux é de código aberto.</label>
+<label class="option"><input type="radio" name="q19" value="b"> B) Windows é uma distribuição Linux.</label>
+<label class="option"><input type="radio" name="q19" value="c"> C) Linux foi desenvolvido pela Microsoft.</label>
+<label class="option"><input type="radio" name="q19" value="d"> D) Windows e Linux possuem exatamente o mesmo modelo de desenvolvimento.</label><div class="feedback"></div></div>
+
+<div class="question" data-answer="d"><h2>20. Qual sequência histórica está correta?</h2>
+<label class="option"><input type="radio" name="q20" value="a"> A) Linux (1991) → Windows 1.0 (1985) → Windows 95 (1995)</label>
+<label class="option"><input type="radio" name="q20" value="b"> B) Windows 95 (1995) → Windows 1.0 (1985) → Linux (1991)</label>
+<label class="option"><input type="radio" name="q20" value="c"> C) Windows 1.0 (1991) → Linux (1985) → Windows 95 (2001)</label>
+<label class="option"><input type="radio" name="q20" value="d"> D) Windows 1.0 (1985) → Linux (1991) → Windows 95 (1995)</label><div class="feedback"></div></div>
+
+</section>
+
+<div class="actions">
+<button class="btn-primary" id="corrigir" onclick="corrigir()">✅ Corrigir Simulado</button>
+<button class="btn-secondary" onclick="reiniciar()">🔄 Refazer</button>
+</div>
+
+<section class="result" id="resultado">
+<h2>🎉 Resultado</h2>
+<div class="score" id="score">0/20</div>
+<p id="percentual"></p>
+<p id="mensagem"></p>
+<div class="progress"><div class="progress-bar" id="barra"></div></div>
+</section>
+
+<footer class="footer">Aula 02 — História dos Computadores, Windows e Linux</footer>
+</main>
+
+<script>
+function corrigir(){
+ const nome=document.getElementById("nome").value.trim();
+ if(!nome){alert("Digite o nome do aluno antes de corrigir.");document.getElementById("nome").focus();return}
+ const qs=document.querySelectorAll(".question");let acertos=0;
+ qs.forEach(q=>{
+  const correta=q.dataset.answer,marcada=q.querySelector("input:checked"),fb=q.querySelector(".feedback");
+  q.querySelectorAll(".option").forEach(o=>o.classList.remove("correct","incorrect"));
+  if(marcada){
+   if(marcada.value===correta){acertos++;marcada.closest(".option").classList.add("correct");fb.textContent="✓ Resposta correta!";fb.style.color="#15803d";}
+   else{marcada.closest(".option").classList.add("incorrect");const c=q.querySelector(`input[value="${correta}"]`);if(c)c.closest(".option").classList.add("correct");fb.textContent="✗ Resposta incorreta. A alternativa correta foi destacada.";fb.style.color="#b91c1c";}
+  }else{const c=q.querySelector(`input[value="${correta}"]`);if(c)c.closest(".option").classList.add("correct");fb.textContent="⚠ Questão não respondida.";fb.style.color="#b45309";}
+  fb.classList.add("show");q.querySelectorAll("input").forEach(i=>i.disabled=true);
+ });
+ const pct=Math.round(acertos/qs.length*100);
+ document.getElementById("score").textContent=`${acertos}/${qs.length}`;
+ document.getElementById("percentual").textContent=`${pct}% de aproveitamento`;
+ document.getElementById("mensagem").textContent=pct>=90?`🏆 Excelente, ${nome}!`:pct>=70?`👏 Muito bem, ${nome}!`:pct>=50?`📚 Bom trabalho, ${nome}! Revise alguns conceitos.`:`💪 Continue estudando, ${nome}!`;
+ document.getElementById("barra").style.width=pct+"%";
+ document.getElementById("resultado").classList.add("show");
+ document.getElementById("corrigir").disabled=true;document.getElementById("corrigir").style.opacity=".6";
+ document.getElementById("resultado").scrollIntoView({behavior:"smooth",block:"center"});
+}
+function reiniciar(){
+ if(!confirm("Deseja apagar as respostas e refazer o simulado?"))return;
+ document.getElementById("nome").value="";
+ document.querySelectorAll(".question").forEach(q=>{
+  q.querySelectorAll("input").forEach(i=>{i.checked=false;i.disabled=false});
+  q.querySelectorAll(".option").forEach(o=>o.classList.remove("correct","incorrect"));
+  q.querySelector(".feedback").textContent="";q.querySelector(".feedback").classList.remove("show");
+ });
+ document.getElementById("resultado").classList.remove("show");
+ document.getElementById("score").textContent="0/20";document.getElementById("percentual").textContent="";document.getElementById("mensagem").textContent="";document.getElementById("barra").style.width="0%";
+ const b=document.getElementById("corrigir");b.disabled=false;b.style.opacity="1";window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
