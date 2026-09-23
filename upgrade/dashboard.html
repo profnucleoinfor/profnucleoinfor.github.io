@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Área do Aluno | NIC Formação Profissional</title>
+<link rel="manifest" href="../manifest.json?v=11">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<style>
+:root{--blue:#043B7B;--dark:#04244C;--green:#7CAC3C;--bg:#eef3f9;--text:#18324f}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+header{background:var(--dark);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px;position:sticky;top:0;z-index:2} header h1{font-size:1.15rem;margin:0}
+button,a{font:inherit} a{color:inherit}.btn-sair{background:transparent;border:1px solid #ffffff66;border-radius:20px;color:#fff;padding:8px 16px;text-decoration:none}.btn-sair:hover,.btn-sair:focus-visible{background:#b42318}
+.container{width:min(1100px,100%);margin:32px auto;padding:0 20px}.dashboard-top{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-bottom:24px}.box,.card{background:#fff;border:1px solid #dbe3ee;border-radius:16px;padding:22px;box-shadow:0 8px 20px #04244c14}.avatar{display:flex;align-items:center;gap:16px}.avatar img{width:60px;height:60px;border-radius:50%;border:2px solid var(--green)}.fala{background:#edf7df;border-left:4px solid var(--green);padding:12px;border-radius:8px}.btn-pontos{display:block;background:linear-gradient(135deg,var(--blue),var(--green));color:#fff;padding:15px;border-radius:12px;font-weight:700;text-align:center;text-decoration:none;margin-bottom:24px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.badge{display:inline-block;background:#edf7df;color:var(--green);border-radius:20px;padding:5px 10px;font-size:.85rem;font-weight:700}.desc{color:#334155;line-height:1.5;margin:10px 0}.btn-acessar{width:100%;padding:12px;border:0;border-radius:10px;background:var(--blue);color:#fff;font-weight:700;cursor:pointer}.btn-acessar:hover,.btn-acessar:focus-visible{background:var(--green)}:focus-visible{outline:3px solid #f0a500;outline-offset:3px}@media(max-width:700px){.dashboard-top{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><h1>🎓 Área do Aluno — NIC</h1><a href="../index.html" class="btn-sair" id="sair">Sair</a></header>
+<main class="container">
+<section class="dashboard-top" aria-label="Informações do aluno">
+<div class="box">👤 <strong id="nomeAluno">Estudante</strong><br><br><span id="diaAula">Dia: A definir</span><br><span id="horarioAula">Horário: A definir</span></div>
+<div class="box avatar"><img src="../assets/icon-192.png" alt="Logo NIC Formação Profissional"><div class="fala" id="frase">Preparado para evoluir com a gente!</div></div>
+</section>
+<a href="../sistema-pontos.html" class="btn-pontos">🏅 Sistema de Pontos</a>
+<section class="grid" id="gridModulos" aria-label="Módulos do curso"></section>
+</main>
+<script>
+const get = key => localStorage.getItem(key) || '';
+document.getElementById('nomeAluno').textContent = get('nomeAluno') || 'Estudante';
+document.getElementById('diaAula').textContent = 'Dia: ' + (get('diaAula') || 'A definir');
+document.getElementById('horarioAula').textContent = 'Horário: ' + (get('horarioAula') || 'A definir');
+document.getElementById('sair').addEventListener('click', () => { localStorage.removeItem('nomeAluno'); localStorage.removeItem('diaAula'); localStorage.removeItem('horarioAula'); });
+const modulos=[['Windows + Linux','windows.html','1000 XP','Aprenda sistemas operacionais do zero até o nível profissional.'],['Word + Digitação','word.html','1120 XP','Criação de documentos profissionais e digitação eficiente.'],['Excel','excel.html','1200 XP','Planilhas, fórmulas e automações essenciais para o mercado.'],['PowerPoint','powerpoint.html','600 XP','Apresentações profissionais e impactantes.'],['Internet e Redes Sociais','internet.html','320 XP','Uso profissional da internet e mídias sociais.'],['Canva e Design','canva.html','360 XP','Criação de artes e identidade visual profissional.'],['Inteligência Artificial','ia.html','800 XP','Uso da IA para produtividade e aprendizado moderno.']];
+const grid=document.getElementById('gridModulos');
+modulos.forEach(([titulo,pagina,xp,descricao])=>{const card=document.createElement('article');card.className='card';const badge=document.createElement('span');badge.className='badge';badge.textContent='💎 '+xp;const h3=document.createElement('h2');h3.textContent=titulo;const p=document.createElement('p');p.className='desc';p.textContent=descricao;const button=document.createElement('button');button.className='btn-acessar';button.type='button';button.textContent='Entrar na Aula';button.addEventListener('click',()=>{const senha=window.prompt('Senha da aula:');if(senha&&senha.toLowerCase()===pagina.replace('.html','')) window.location.href='../'+pagina;else if(senha!==null) window.alert('Senha incorreta!');});card.append(badge,h3,p,button);grid.appendChild(card);});
+</script>
+</body>
+</html>
