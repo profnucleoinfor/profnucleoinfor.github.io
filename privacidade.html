@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Política de Privacidade | NIC Formação Profissional</title>
@@ -30,11 +31,12 @@
       }
     }
   </script>
-  <link rel="manifest" href="./manifest.json?v=11" />
+  <link rel="manifest" href="./manifest.json?v=21.1" />
   <meta property="og:image" content="./assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" /></head>
+  <meta name="twitter:card" content="summary_large_image" />  <script src="./assets/js/pwa.js" defer></script>
+</head>
 <body class="bg-nicGray text-nicBlue font-sans">
   <main class="max-w-4xl mx-auto px-6 py-12">
     <a href="./index.html" class="inline-flex items-center gap-3 mb-10">
@@ -81,11 +83,7 @@
   </main>
 
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service-worker.js');
-      });
-    }
+
   </script>
 </body>
 </html>

@@ -1,622 +1,139 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
 <title>Visualizador de Aula | NIC Formação Profissional</title>
-
 <meta name="theme-color" content="#043B7B">
-
-<link rel="manifest" href="./manifest.json?v=11">
+<link rel="manifest" href="./manifest.json?v=21.1">
 <link rel="icon" href="./assets/favicon.png">
 <link rel="apple-touch-icon" href="./assets/icon-192.png">
-
-<!-- Otimização de conexão -->
 <link rel="preconnect" href="https://docs.google.com">
 <link rel="preconnect" href="https://drive.google.com">
-<link rel="dns-prefetch" href="//docs.google.com">
-<link rel="dns-prefetch" href="//drive.google.com">
-
 <style>
-:root{
-  --azul:#043B7B;
-  --verde:#7CAC3C;
-  --fundo:#0f172a;
-  --card:#1e293b;
-  --borda:#334155;
-  --texto:#f8fafc;
-  --texto-sec:#94a3b8;
-  --erro:#ef4444;
-  --header-h:72px;
-  --vh:100vh;
-}
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html,
-body{
-  height:100%;
-  font-family:Inter,Segoe UI,Arial,sans-serif;
-  background:var(--fundo);
-  color:var(--texto);
-  /* overflow:hidden removido — impedia rolagem quando o conteúdo
-     não cabia após rotação ou em telas pequenas */
-}
-
-body{
-  display:flex;
-  flex-direction:column;
-  /* usa var(--vh) controlada via JS para contornar o bug de 100vh
-     em navegadores mobile (barra de endereço some/aparece) */
-  height:var(--vh);
-  min-height:var(--vh);
-  overscroll-behavior:none;
-}
-
-header{
-  background:rgba(30,41,59,.96);
-  border-bottom:1px solid var(--borda);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 18px;
-  padding-top:calc(14px + env(safe-area-inset-top));
-  padding-left:calc(18px + env(safe-area-inset-left));
-  padding-right:calc(18px + env(safe-area-inset-right));
-  gap:16px;
-  flex-shrink:0;
-  backdrop-filter:blur(10px);
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  min-width:0;
-}
-
-.brand img{
-  width:42px;
-  height:42px;
-  border-radius:10px;
-  flex-shrink:0;
-}
-
-.brand h1{
-  font-size:1.15rem;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-.actions{
-  display:flex;
-  gap:10px;
-  flex-shrink:0;
-}
-
-button,
-a{
-  text-decoration:none;
-  color:var(--texto);
-  background:#253247;
-  border:1px solid var(--borda);
-  border-radius:10px;
-  padding:10px 14px;
-  cursor:pointer;
-  font-weight:600;
-  font:inherit;
-  transition:.2s;
-  white-space:nowrap;
-}
-
-button:hover,
-a:hover{
-  border-color:var(--verde);
-  color:#d9f99d;
-}
-
-main{
-  flex:1;
-  padding:16px;
-  padding-bottom:calc(16px + env(safe-area-inset-bottom));
-  padding-left:calc(16px + env(safe-area-inset-left));
-  padding-right:calc(16px + env(safe-area-inset-right));
-  overflow:hidden;
-  min-height:0; /* essencial em flex para o filho respeitar 100% sem vazar */
-  display:flex;
-}
-
-.viewer{
-  width:100%;
-  height:100%;
-  border-radius:16px;
-  border:1px solid var(--borda);
-  overflow:hidden;
-  background:#020617;
-  position:relative;
-  flex:1;
-}
-
-.viewer.fullscreen-active{
-  border-radius:0;
-  border:none;
-}
-
-iframe{
-  width:100%;
-  height:100%;
-  border:none;
-  background:white;
-  display:block;
-}
-
-.loading{
-  position:absolute;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:14px;
-  background:#020617;
-  z-index:10;
-  text-align:center;
-  padding:20px;
-}
-
-.spinner{
-  width:42px;
-  height:42px;
-  border:4px solid rgba(255,255,255,.15);
-  border-top-color:var(--verde);
-  border-radius:50%;
-  animation:girar 1s linear infinite;
-}
-
-@keyframes girar{
-  to{
-    transform:rotate(360deg);
-  }
-}
-
-.error{
-  height:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:30px;
-  color:var(--erro);
-  overflow-y:auto;
-}
-
-.error strong{
-  display:block;
-  margin-bottom:10px;
-  font-size:1.2rem;
-  color:white;
-}
-
-.rotate-hint{
-  position:absolute;
-  bottom:14px;
-  left:50%;
-  transform:translateX(-50%);
-  background:rgba(15,23,42,.92);
-  border:1px solid var(--borda);
-  border-radius:999px;
-  padding:8px 16px;
-  font-size:.82rem;
-  color:var(--texto-sec);
-  display:flex;
-  align-items:center;
-  gap:8px;
-  z-index:5;
-  animation:fadeOut .4s ease 4s forwards;
-  pointer-events:none;
-}
-
-@keyframes fadeOut{
-  to{
-    opacity:0;
-    visibility:hidden;
-  }
-}
-
-/* ===== Ajustes de orientação ===== */
-
-/* Paisagem em telas baixas (celular rotacionado): header mais compacto
-   para sobrar altura de fato para o conteúdo */
-@media(max-width:900px) and (orientation:landscape){
-
-  header{
-    padding:8px 14px;
-    padding-top:calc(8px + env(safe-area-inset-top));
-  }
-
-  .brand img{
-    width:32px;
-    height:32px;
-  }
-
-  .brand h1{
-    font-size:.95rem;
-  }
-
-  button,
-  a{
-    padding:7px 11px;
-    font-size:.85rem;
-  }
-
-  main{
-    padding:8px;
-    padding-bottom:calc(8px + env(safe-area-inset-bottom));
-  }
-
-}
-
-/* Retrato em tela estreita: header pode quebrar em duas linhas
-   sem espremer o viewer */
-@media(max-width:700px) and (orientation:portrait){
-
-  header{
-    flex-wrap:wrap;
-  }
-
-  .brand{
-    flex:1 1 100%;
-  }
-
-  .actions{
-    flex:1 1 100%;
-  }
-
-  .actions button,
-  .actions a{
-    flex:1;
-    text-align:center;
-    justify-content:center;
-    display:inline-flex;
-    align-items:center;
-  }
-
-}
-
-@media(max-width:700px){
-
-  .brand h1{
-    font-size:1rem;
-  }
-
-}
+:root{--azul:#043B7B;--verde:#7CAC3C;--fundo:#0f172a;--card:#1e293b;--borda:#334155;--texto:#f8fafc;--texto-sec:#94a3b8;--erro:#ef4444}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:var(--fundo);color:var(--texto);font-family:Inter,Segoe UI,Arial,sans-serif}
+body{display:flex;flex-direction:column;min-height:100dvh;overflow:hidden}
+header{height:auto;min-height:68px;background:rgba(30,41,59,.97);border-bottom:1px solid var(--borda);display:flex;justify-content:space-between;align-items:center;padding:12px 18px;gap:14px;flex-shrink:0;padding-top:calc(12px + env(safe-area-inset-top));padding-left:calc(18px + env(safe-area-inset-left));padding-right:calc(18px + env(safe-area-inset-right))}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}.brand img{width:38px;height:38px;border-radius:9px;flex-shrink:0}.brand h1{font-size:1.05rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.actions{display:flex;gap:8px;flex-shrink:0}button,a{font:inherit;text-decoration:none;color:var(--texto);background:#253247;border:1px solid var(--borda);border-radius:9px;padding:9px 12px;cursor:pointer;font-weight:600;white-space:nowrap}button:hover,a:hover{border-color:var(--verde);color:#d9f99d}
+main{flex:1;min-height:0;display:flex;padding:12px;padding-left:calc(12px + env(safe-area-inset-left));padding-right:calc(12px + env(safe-area-inset-right));padding-bottom:calc(12px + env(safe-area-inset-bottom))}
+.viewer{position:relative;flex:1;min-width:0;min-height:0;width:100%;height:100%;overflow:hidden;background:#020617;border:1px solid var(--borda);border-radius:14px}.viewer.fullscreen-active{border:0;border-radius:0}
+iframe{display:block;width:100%;height:100%;border:0;background:#fff}
+.loading,.portrait-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:24px;z-index:20}.loading{gap:13px;background:#020617}.spinner{width:40px;height:40px;border:4px solid rgba(255,255,255,.15);border-top-color:var(--verde);border-radius:50%;animation:girar 1s linear infinite}@keyframes girar{to{transform:rotate(360deg)}}
+.portrait-overlay{background:rgba(2,6,23,.96);gap:14px}.portrait-overlay[hidden]{display:none}.phone-icon{font-size:3.4rem;line-height:1}.portrait-overlay strong{font-size:1.2rem}.portrait-overlay p{max-width:420px;color:var(--texto-sec);line-height:1.5}.portrait-overlay button{background:var(--verde);border-color:var(--verde);color:#102000}.portrait-overlay small{color:var(--texto-sec);max-width:430px}
+.error{height:100%;display:flex;justify-content:center;align-items:center;text-align:center;padding:30px;overflow:auto}.error strong{display:block;margin-bottom:10px;font-size:1.2rem;color:#fff}.error p{color:#cbd5e1;line-height:1.5}
+@media(max-width:900px) and (orientation:landscape){header{min-height:50px;padding:6px 12px;padding-top:calc(6px + env(safe-area-inset-top))}.brand img{width:30px;height:30px}.brand h1{font-size:.9rem}button,a{padding:6px 9px;font-size:.8rem}main{padding:6px;padding-bottom:calc(6px + env(safe-area-inset-bottom))}}
+@media(max-width:700px) and (orientation:portrait){header{flex-wrap:wrap}.brand{width:100%}.actions{width:100%}.actions button,.actions a{flex:1;text-align:center}.brand h1{font-size:.98rem}}
 </style>
+  <script src="./assets/js/pwa.js" defer></script>
 </head>
-
 <body>
-
 <header>
-
-  <div class="brand">
-    <img src="./assets/icon-192.png" alt="NIC">
-    <h1 id="pageTitle">Visualizador de Aula</h1>
-  </div>
-
+  <div class="brand"><img src="./assets/icon-192.png" alt="NIC"><h1 id="pageTitle">Visualizador de Aula</h1></div>
   <div class="actions">
-    <button id="fullscreenBtn" type="button" title="Tela cheia">⤢ Tela cheia</button>
+    <button id="fullscreenBtn" type="button">⤢ Tela cheia</button>
     <button id="backBtn" type="button">⬅ Voltar</button>
-
-    <a
-      id="externalLink"
-      href="#"
-      target="_blank"
-      rel="noopener noreferrer">
-      ↗ Abrir Fora
-    </a>
+    <a id="externalLink" href="#" target="_blank" rel="noopener noreferrer">↗ Abrir fora</a>
   </div>
-
 </header>
-
 <main>
-
   <section class="viewer" id="viewer">
-
-    <div class="loading" id="loading">
-      <div class="spinner"></div>
-      <span>Carregando material...</span>
+    <div class="loading" id="loading"><div class="spinner"></div><span>Carregando material...</span></div>
+    <div class="portrait-overlay" id="portraitOverlay" hidden>
+      <div class="phone-icon" aria-hidden="true">📱↔️</div>
+      <strong>Para ver os slides melhor, gire o celular</strong>
+      <p>O material foi preparado em formato horizontal. Entre em tela cheia para aproveitar melhor a largura dos slides.</p>
+      <button id="rotateBtn" type="button">⤢ Tela cheia + horizontal</button>
+      <small>Se o aparelho não permitir rotação automática, gire o celular manualmente.</small>
     </div>
-
   </section>
-
 </main>
-
 <script>
+const params=new URLSearchParams(location.search);
+const rawUrl=params.get('url')||'';
+const title=params.get('titulo')||'Visualizador de Aula';
+const viewer=document.getElementById('viewer');
+const pageTitle=document.getElementById('pageTitle');
+const externalLink=document.getElementById('externalLink');
+const loading=document.getElementById('loading');
+const fullscreenBtn=document.getElementById('fullscreenBtn');
+const portraitOverlay=document.getElementById('portraitOverlay');
+const rotateBtn=document.getElementById('rotateBtn');
+let iframe=null;
 
-/* ---------- Correção da altura real da viewport (mobile) ---------- */
-/* 100vh em navegadores mobile não reflete a altura visível real,
-   especialmente após rotacionar a tela ou a barra de endereço
-   esconder/mostrar. Recalcula via JS usando innerHeight. */
-function ajustarAltura(){
-  document.documentElement.style.setProperty('--vh', window.innerHeight + 'px');
-}
+pageTitle.textContent=title;
+document.title=title+' | NIC Formação Profissional';
 
-ajustarAltura();
-
-window.addEventListener('resize', ajustarAltura);
-window.addEventListener('orientationchange', () => {
-  // pequeno delay: alguns navegadores reportam innerHeight
-  // ainda com o valor antigo no exato momento do evento
-  setTimeout(ajustarAltura, 150);
-  mostrarDicaRotacao();
-});
-
-/* ---------- Dica visual breve ao rotacionar ---------- */
-function mostrarDicaRotacao(){
-
-  const existente = document.querySelector('.rotate-hint');
-  if(existente) existente.remove();
-
-  const hint = document.createElement('div');
-  hint.className = 'rotate-hint';
-  hint.textContent = '↻ Tela ajustada';
-
-  viewer.appendChild(hint);
-
-  setTimeout(() => hint.remove(), 4500);
-
-}
-
-const params = new URLSearchParams(window.location.search);
-
-const rawUrl = params.get('url') || '';
-const title = params.get('titulo') || 'Visualizador de Aula';
-
-const viewer = document.getElementById('viewer');
-const pageTitle = document.getElementById('pageTitle');
-const externalLink = document.getElementById('externalLink');
-const loading = document.getElementById('loading');
-const fullscreenBtn = document.getElementById('fullscreenBtn');
-
-pageTitle.textContent = title;
-document.title = `${title} | NIC Formação Profissional`;
-
-const dominiosPermitidos = [
-  'docs.google.com',
-  'drive.google.com'
-];
-
-function validarUrl(url){
-
-  try{
-
-    const u = new URL(url);
-
-    return dominiosPermitidos.some(
-      dominio =>
-      u.hostname === dominio ||
-      u.hostname.endsWith('.' + dominio)
-    );
-
-  }catch{
-    return false;
-  }
-
-}
-
+const dominiosPermitidos=['docs.google.com','drive.google.com'];
+function validarUrl(url){try{const u=new URL(url);return u.protocol==='https:'&&dominiosPermitidos.some(d=>u.hostname===d||u.hostname.endsWith('.'+d));}catch{return false}}
 function converterUrl(url){
-
-  const slides = url.match(
-    /docs\.google\.com\/presentation\/d\/([^/]+)/
-  );
-
-  if(slides){
-    return `https://docs.google.com/presentation/d/${slides[1]}/preview`;
-  }
-
-  const documento = url.match(
-    /docs\.google\.com\/document\/d\/([^/]+)/
-  );
-
-  if(documento){
-    return `https://docs.google.com/document/d/${documento[1]}/preview`;
-  }
-
-  const planilha = url.match(
-    /docs\.google\.com\/spreadsheets\/d\/([^/]+)/
-  );
-
-  if(planilha){
-    return `https://docs.google.com/spreadsheets/d/${planilha[1]}/htmlembed`;
-  }
-
-  const drive = url.match(
-    /drive\.google\.com\/file\/d\/([^/]+)/
-  );
-
-  if(drive){
-    return `https://drive.google.com/file/d/${drive[1]}/preview`;
-  }
-
+  let m=url.match(/docs\.google\.com\/presentation\/d\/([^/]+)/);if(m)return 'https://docs.google.com/presentation/d/'+m[1]+'/preview';
+  m=url.match(/docs\.google\.com\/document\/d\/([^/]+)/);if(m)return 'https://docs.google.com/document/d/'+m[1]+'/preview';
+  m=url.match(/docs\.google\.com\/spreadsheets\/d\/([^/]+)/);if(m)return 'https://docs.google.com/spreadsheets/d/'+m[1]+'/htmlembed';
+  m=url.match(/drive\.google\.com\/file\/d\/([^/]+)/);if(m)return 'https://drive.google.com/file/d/'+m[1]+'/preview';
   return url;
 }
-
-function esconderLoading(){
-  if(loading){
-    loading.style.display = 'none';
-  }
-}
-
+function esconderLoading(){loading.hidden=true}
 function mostrarErro(titulo,mensagem){
-
   esconderLoading();
-
-  viewer.innerHTML = `
-    <div class="error">
-      <div>
-        <strong>${titulo}</strong>
-        <p>${mensagem}</p>
-      </div>
-    </div>
-  `;
-
-  fullscreenBtn.style.display = 'none';
-
+  portraitOverlay.hidden=true;
+  viewer.replaceChildren();
+  const box=document.createElement('div');box.className='error';
+  const content=document.createElement('div');
+  const strong=document.createElement('strong');strong.textContent=titulo;
+  const p=document.createElement('p');p.textContent=mensagem;
+  content.append(strong,p);box.appendChild(content);viewer.appendChild(box);
+  fullscreenBtn.hidden=true;
+}
+function ehMobile(){return window.matchMedia('(max-width: 900px)').matches}
+function estaRetrato(){return window.matchMedia('(orientation: portrait)').matches}
+function atualizarOrientacao(){
+  if(!ehMobile()){portraitOverlay.hidden=true;return}
+  portraitOverlay.hidden=!estaRetrato();
+}
+async function bloquearPaisagem(){
+  try{if(screen.orientation?.lock)await screen.orientation.lock('landscape')}catch{}
+}
+async function liberarOrientacao(){
+  try{if(screen.orientation?.unlock)screen.orientation.unlock()}catch{}
+}
+async function entrarTelaCheia(){
+  const request=viewer.requestFullscreen||viewer.webkitRequestFullscreen;
+  if(!request)return false;
+  try{await request.call(viewer);await bloquearPaisagem();return true}catch{return false}
+}
+async function alternarFullscreen(){
+  const ativo=document.fullscreenElement||document.webkitFullscreenElement;
+  if(ativo){const exit=document.exitFullscreen||document.webkitExitFullscreen;if(exit)await exit.call(document).catch(()=>{});return}
+  await entrarTelaCheia();
 }
 
-if(!rawUrl){
+fullscreenBtn.addEventListener('click',alternarFullscreen);
+rotateBtn.addEventListener('click',async()=>{const entrou=await entrarTelaCheia();if(!entrou){portraitOverlay.hidden=false;alert('Seu navegador não permitiu a rotação automática. Gire o celular manualmente para a posição horizontal.')}});
 
-  externalLink.style.display = 'none';
-  fullscreenBtn.style.display = 'none';
+document.addEventListener('fullscreenchange',async()=>{const ativo=!!document.fullscreenElement;viewer.classList.toggle('fullscreen-active',ativo);fullscreenBtn.textContent=ativo?'⤡ Sair da tela cheia':'⤢ Tela cheia';if(ativo)await bloquearPaisagem();else await liberarOrientacao();atualizarOrientacao()});
+document.addEventListener('webkitfullscreenchange',()=>{const ativo=!!document.webkitFullscreenElement;viewer.classList.toggle('fullscreen-active',ativo);fullscreenBtn.textContent=ativo?'⤡ Sair da tela cheia':'⤢ Tela cheia';atualizarOrientacao()});
+window.addEventListener('resize',atualizarOrientacao);
+window.addEventListener('orientationchange',()=>setTimeout(atualizarOrientacao,200));
 
-  mostrarErro(
-    'Conteúdo não encontrado',
-    'Nenhuma aula foi informada.'
-  );
+document.getElementById('backBtn').addEventListener('click',()=>{if(history.length>1)history.back();else location.href='./dashboard.html'});
 
-}else if(!validarUrl(rawUrl)){
-
-  externalLink.style.display = 'none';
-  fullscreenBtn.style.display = 'none';
-
-  mostrarErro(
-    'Conteúdo não permitido',
-    'Somente arquivos do Google Drive e Google Docs são aceitos.'
-  );
-
-}else{
-
-  externalLink.href = rawUrl;
-
-  const iframe = document.createElement('iframe');
-  let carregou = false;
-
-  iframe.src = converterUrl(rawUrl);
-  iframe.title = title;
-
-  iframe.allow =
-    'fullscreen';
-
-  iframe.allowFullscreen = true;
-
-  iframe.onload = () => {
-    carregou = true;
-    esconderLoading();
-  };
-
-  iframe.onerror = () => {
-
-    mostrarErro(
-      'Falha ao carregar',
-      'Não foi possível abrir este conteúdo.'
-    );
-
-  };
-
+if(!rawUrl){externalLink.hidden=true;mostrarErro('Conteúdo não encontrado','Nenhuma aula foi informada.')}else if(!validarUrl(rawUrl)){externalLink.hidden=true;mostrarErro('Conteúdo não permitido','Somente arquivos HTTPS do Google Drive e Google Docs são aceitos.')}else{
+  externalLink.href=rawUrl;
+  iframe=document.createElement('iframe');iframe.src=converterUrl(rawUrl);iframe.title=title;iframe.allow='fullscreen';iframe.allowFullscreen=true;
+  iframe.addEventListener('load',esconderLoading,{once:true});
+  iframe.addEventListener('error',()=>mostrarErro('Falha ao carregar','Não foi possível abrir este conteúdo.'));
   viewer.appendChild(iframe);
-
-  /* Segurança contra spinner infinito — só força esconder se
-     o onload realmente não disparou (ex.: bloqueio silencioso) */
-  setTimeout(() => {
-    if(!carregou){
-      esconderLoading();
-    }
-  }, 6000);
-
+  setTimeout(esconderLoading,6000);
+  atualizarOrientacao();
 }
 
-/* ---------- Tela cheia ---------- */
-
-function alternarFullscreen(){
-
-  const elFs =
-    document.fullscreenElement ||
-    document.webkitFullscreenElement;
-
-  if(!elFs){
-
-    const req =
-      viewer.requestFullscreen ||
-      viewer.webkitRequestFullscreen;
-
-    if(req){
-      req.call(viewer).catch(() => {});
-    }
-
-  }else{
-
-    const exit =
-      document.exitFullscreen ||
-      document.webkitExitFullscreen;
-
-    if(exit){
-      exit.call(document).catch(() => {});
-    }
-
-  }
-
-}
-
-fullscreenBtn.addEventListener('click', alternarFullscreen);
-
-function onFullscreenChange(){
-
-  const ativo = !!(
-    document.fullscreenElement ||
-    document.webkitFullscreenElement
-  );
-
-  viewer.classList.toggle('fullscreen-active', ativo);
-  fullscreenBtn.textContent = ativo ? '⤡ Sair da tela cheia' : '⤢ Tela cheia';
-
-  // navegadores que não disparam resize automaticamente ao entrar/saír
-  ajustarAltura();
-
-}
-
-document.addEventListener('fullscreenchange', onFullscreenChange);
-document.addEventListener('webkitfullscreenchange', onFullscreenChange);
-
-if(!(viewer.requestFullscreen || viewer.webkitRequestFullscreen)){
-  fullscreenBtn.style.display = 'none';
-}
-
-document
-.getElementById('backBtn')
-.addEventListener('click',()=>{
-
-  if(history.length > 1){
-    history.back();
-  }else{
-    window.location.href = './dashboard.html';
-  }
-
-});
-
-if('serviceWorker' in navigator){
-
-  window.addEventListener('load',()=>{
-
-    navigator.serviceWorker
-      .getRegistration()
-      .then(reg=>{
-
-        if(!reg){
-          navigator.serviceWorker.register('./service-worker.js');
-        }
-
-      });
-
-  });
-
-}
+if(!(viewer.requestFullscreen||viewer.webkitRequestFullscreen))fullscreenBtn.hidden=true;
 
 </script>
-
 </body>
 </html>

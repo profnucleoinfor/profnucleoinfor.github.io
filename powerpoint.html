@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Módulo PowerPoint | NIC Formação</title>
@@ -155,20 +156,41 @@
     }
   </style>
 
-  <link rel="manifest" href="./manifest.json?v=11" />
+  <link rel="manifest" href="./manifest.json?v=21.1" />
   <link rel="icon" type="image/png" href="./assets/favicon.png" />
   <link rel="apple-touch-icon" href="./assets/icon-192.png" />
   <meta property="og:image" content="./assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
+
+<style>
+  .nic-skip-link {
+    position: absolute;
+    top: -48px;
+    left: 12px;
+    z-index: 2000;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: #fff;
+    color: #043b7b;
+    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(0,0,0,.18);
+    transition: top .15s ease;
+  }
+  .nic-skip-link:focus { top: 12px; }
+  #conteudo-principal:focus { outline: none; }
+</style>
+
+  <script src="./assets/js/pwa.js" defer></script>
 </head>
 
-<body>
+<body data-curso="powerpoint">
+<a class="nic-skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
 
-<nav class="navbar navbar-expand-lg sticky-top">
+<nav aria-label="Navegação do módulo" class="navbar navbar-expand-lg sticky-top">
   <div class="container">
-    <a class="navbar-brand fw-bold" style="color: var(--nicBlueDark);" href="./dashboard.html">
+    <a class="navbar-brand fw-bold" style="color: var(--nicBlueDark);" href="./dashboard.html" aria-label="Voltar ao painel do aluno">
       ⬅️ Painel
     </a>
     <span class="badge" style="background: var(--nicBlueDark); padding: 8px 16px; border-radius: 8px;">
@@ -177,6 +199,7 @@
   </div>
 </nav>
 
+<main id="conteudo-principal">
 <section class="hero">
   <div class="container">
     <h1 class="display-5 fw-bold">
@@ -209,11 +232,9 @@
           <h5>Slides</h5>
           <p class="text-muted small">Acesse a apresentação da aula.</p>
         </div>
-        <button 
-          class="btn-modulo" 
-          onclick="abrirMaterial('https://docs.google.com/presentation/d/1sML9keDawByawJSHErq8jGz2CDRinWufyOtvTwtMvhA/edit?usp=drive_link', 'Slides PowerPoint')">
+        <a href="#" data-material-course="powerpoint" data-material-key="slides" class="btn-modulo">
           Abrir Slides
-        </button>
+        </a>
       </div>
     </div>
 
@@ -224,11 +245,9 @@
           <h5>Apostila</h5>
           <p class="text-muted small">Guia completo sobre design.</p>
         </div>
-        <button 
-          class="btn-modulo" 
-          onclick="abrirMaterial('https://drive.google.com/file/d/10LysaWBrohy8xBN5BmJMFVhyEYeoNxGI/view?usp=drive_link', 'Apostila PowerPoint')">
+        <a href="#" data-material-course="powerpoint" data-material-key="apostila" class="btn-modulo">
           Ler Agora
-        </button>
+        </a>
       </div>
     </div>
 
@@ -239,7 +258,7 @@
           <h5>Exercícios</h5>
           <p class="text-muted small">Já finalizou e salvou?</p>
         </div>
-        <a href="https://forms.gle/BV6gxxEkJJXq1z3A9" target="_blank" rel="noopener noreferrer" class="btn-modulo">Enviar PPT</a>
+        <a href="#" data-material-course="powerpoint" data-material-key="exercicios" class="btn-modulo">Enviar PPT</a>
       </div>
     </div>
 
@@ -250,7 +269,7 @@
           <h5>Prova Final</h5>
           <p class="text-muted small">Desafio prático de Design.</p>
         </div>
-        <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 fw-boldpy-2">
+        <button data-acesso="prova" class="btn btn-danger w-100 rounded-3 fw-boldpy-2">
           Iniciar Prova
         </button>
       </div>
@@ -319,7 +338,7 @@
       <div class="p-4 rounded-4" style="background: #ffffff; border: 1px dashed var(--nicBlueDark); box-shadow: 0 10px 30px rgba(4,59,123,0.04);">
         <h5>🔒 Revisão do Módulo</h5>
         <p class="text-muted small">Animações, transições e apresentação profissional.</p>
-        <button onclick="acessarRevisao()" class="btn btn-warning px-5 rounded-pill fw-bold py-2">Liberar Conteúdo</button>
+        <button data-acesso="revisao" class="btn btn-warning px-5 rounded-pill fw-bold py-2">Liberar Conteúdo</button>
       </div>
     </div>
   </div>
@@ -330,48 +349,14 @@
   <small>NIC Formação Profissional — Educação com Propósito</small>
 </footer>
 
-<script>
-  // ✅ REGISTRO DO SERVICE WORKER PARA O APP (PWA)
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./service-worker.js');
-    });
-  }
+</main>
 
-  // Aluno
-  document.addEventListener("DOMContentLoaded", () => {
-    const nomeSalvo = localStorage.getItem("nomeAluno");
-    if (nomeSalvo) {
-      document.getElementById("nomeAlunoDisplay").innerText = nomeSalvo;
-    }
-  });
+<script src="./assets/js/materiais-config.js"></script>
+<script src="./assets/js/materiais.js"></script>
+<script src="./assets/js/senhas.js"></script>
+<script src="./assets/js/navegacao.js"></script>
+<script src="./assets/js/curso.js"></script>
 
-  // Funções operacionais e validações originais
-  function acessarProva() {
-    const senha = prompt("🔒 Digite a senha da PROVA:");
-    if (senha && senha.trim().toLowerCase() === "provappt") {
-      alert("✅ Acesso liberado! Você será redirecionado para a prova.");
-      window.location.href = "https://forms.gle/PPqTCoeAoFCmnS6v8";
-    } else if (senha !== null) {
-      alert("❌ Senha incorreta! Fale com o instrutor.");
-    }
-  }
-
-  function acessarRevisao() {
-    const senha = prompt("🔑 Digite a senha de REVISÃO:");
-    if (senha && senha.trim() === "revisaoPPT") {
-      alert("✅ Conteúdo liberado! Você será redirecionado para a revisão.");
-      window.location.href = "https://gemini.google.com/share/3f4a288fe62f";
-    } else if (senha !== null) {
-      alert("❌ Acesso negado. Senha incorreta.");
-    }
-  }
-
-  function abrirMaterial(url, titulo) {
-    window.location.href =
-      `./visualizador.html?titulo=${encodeURIComponent(titulo)}&url=${encodeURIComponent(url)}`;
-  }
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 

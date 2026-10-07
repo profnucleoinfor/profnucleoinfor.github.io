@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Template de Curso | NIC Formação</title>
@@ -155,7 +158,7 @@
 
 </head>
 
-<body>
+<body data-curso="template">
 
 <!-- NAV -->
 <nav class="navbar navbar-expand-lg sticky-top">
@@ -228,7 +231,7 @@
         <div class="icon-box">📝</div>
         <h5>Avaliação</h5>
         <p class="text-muted small">Teste final do módulo</p>
-        <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 fw-bold">
+        <button data-acesso="prova" class="btn btn-danger w-100 rounded-3 fw-bold">
           Iniciar
         </button>
       </div>
@@ -278,26 +281,8 @@
   <small>NIC Formação Profissional • Template Educacional</small>
 </footer>
 
-<script>
-  // aluno
-  const nomeSalvo = localStorage.getItem("nomeAluno");
-  if (nomeSalvo) {
-    document.getElementById("nomeAlunoDisplay").innerText = nomeSalvo;
-  }
-
-  // missão padrão
-  document.getElementById("missaoCurso").innerText =
-    "Dominar os conceitos essenciais deste módulo com prática aplicada.";
-
-  function acessarProva() {
-    const senha = prompt("Digite a senha da avaliação:");
-    if (senha === "1234") {
-      alert("Acesso liberado!");
-    } else if (senha !== null) {
-      alert("Senha incorreta.");
-    }
-  }
-</script>
+<script src="./assets/js/senhas.js"></script>
+<script src="./assets/js/curso.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 

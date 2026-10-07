@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Módulo Canva Design | NIC Formação</title>
@@ -149,14 +150,34 @@
       font-size: 13px;
     }
   </style>
+
+<style>
+  .nic-skip-link {
+    position: absolute;
+    top: -48px;
+    left: 12px;
+    z-index: 2000;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: #fff;
+    color: #043b7b;
+    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(0,0,0,.18);
+    transition: top .15s ease;
+  }
+  .nic-skip-link:focus { top: 12px; }
+  #conteudo-principal:focus { outline: none; }
+</style>
+
 </head>
 
-<body>
+<body data-curso="canva">
+<a class="nic-skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
 
 <!-- NAV -->
-<nav class="navbar navbar-expand-lg sticky-top">
+<nav aria-label="Navegação do módulo" class="navbar navbar-expand-lg sticky-top">
   <div class="container">
-    <a class="navbar-brand fw-bold text-nicBlueDark" href="./dashboard.html">
+    <a class="navbar-brand fw-bold text-nicBlueDark" href="./dashboard.html" aria-label="Voltar ao painel do aluno">
       ⬅️ Painel
     </a>
     <span class="badge" style="background: var(--nicGreenMid);">
@@ -166,6 +187,7 @@
 </nav>
 
 <!-- HERO -->
+<main id="conteudo-principal">
 <section class="hero">
   <div class="container">
     <h1 class="display-5 fw-bold">
@@ -197,7 +219,7 @@
         <span class="icon-box">📐</span>
         <h5>Slides da Aula</h5>
         <p class="text-muted small">Princípios de design e cores.</p>
-        <a href="./visualizador.html?titulo=Slides Canva&url=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1Tf2KiBXjDloOIJvsTxo7orzocKstLhsh%2Fembed" class="btn-modulo">
+        <a href="#" data-material-course="canva" data-material-key="slides" class="btn-modulo">
           Abrir Conteúdo
         </a>
       </div>
@@ -208,7 +230,7 @@
         <span class="icon-box">📘</span>
         <h5>Apostila</h5>
         <p class="text-muted small">Guia completo de ferramentas do Canva.</p>
-        <a href="./visualizador.html?titulo=Apostila Canva&url=https://drive.google.com/file/d/16UmEJleEKtdwhSRrtQToFoq8sZyILYlp/preview" class="btn-modulo">
+        <a href="#" data-material-course="canva" data-material-key="apostila" class="btn-modulo">
           Ler Agora
         </a>
       </div>
@@ -219,7 +241,7 @@
         <span class="icon-box">✍️</span>
         <h5>Exercícios</h5>
         <p class="text-muted small">Criação de artes e identidade visual.</p>
-        <a href="https://forms.gle/BV6gxxEkJJXq1z3A9" target="_blank" class="btn-modulo">
+        <a href="#" data-material-course="canva" data-material-key="exercicios" class="btn-modulo">
           Enviar Atividade
         </a>
       </div>
@@ -230,7 +252,7 @@
         <span class="icon-box">📝</span>
         <h5>Prova Final</h5>
         <p class="text-muted small">Desafio de criação de material completo.</p>
-        <button onclick="acessarProva()" class="btn btn-danger w-100 rounded-3 fw-bold">
+        <button data-acesso="prova" class="btn btn-danger w-100 rounded-3 fw-bold">
           Iniciar Prova
         </button>
       </div>
@@ -293,19 +315,14 @@
   <small>NIC Formação Profissional • Canva Design</small>
 </footer>
 
-<script>
-  const nome = localStorage.getItem("nomeAluno");
-  if (nome) document.getElementById("nomeAlunoDisplay").innerText = nome;
+</main>
 
-  function acessarProva() {
-    const senha = prompt("Digite a senha da prova:");
-    if (senha === "nostentamos") {
-      window.location.href = "./canva-quest.html";
-    } else if (senha !== null) {
-      alert("Senha incorreta.");
-    }
-  }
-</script>
+<script src="./assets/js/materiais-config.js"></script>
+<script src="./assets/js/materiais.js"></script>
+<script src="./assets/js/senhas.js"></script>
+<script src="./assets/js/navegacao.js"></script>
+<script src="./assets/js/curso.js"></script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 

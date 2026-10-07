@@ -3,7 +3,7 @@
   "name": "NIC Formação Profissional",
   "short_name": "NIC Formação",
   "description": "Cursos profissionalizantes em informática, inglês e gestão empresarial em Santa Rita - PB. Ensino prático, certificado e preparação para o mercado de trabalho.",
-  "start_url": "./?utm_source=pwa",
+  "start_url": "./?utm_source=pwa&v=21.1",
   "scope": "./",
   "display": "standalone",
   "display_override": ["standalone", "fullscreen"],

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Módulo Windows + Linux | NIC Formação</title>
@@ -28,7 +29,7 @@
     rel="stylesheet"
   >
   <!-- PWA -->
-  <link rel="manifest" href="./manifest.json?v=11">
+  <link rel="manifest" href="./manifest.json?v=21.1">
   <!-- Ícones -->
   <link rel="icon" type="image/png" href="./assets/favicon.png">
   <link rel="apple-touch-icon" href="./assets/icon-192.png">
@@ -290,12 +291,33 @@
       }
     }
   </style>
+
+<style>
+  .nic-skip-link {
+    position: absolute;
+    top: -48px;
+    left: 12px;
+    z-index: 2000;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: #fff;
+    color: #043b7b;
+    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(0,0,0,.18);
+    transition: top .15s ease;
+  }
+  .nic-skip-link:focus { top: 12px; }
+  #conteudo-principal:focus { outline: none; }
+</style>
+
+  <script src="./assets/js/pwa.js" defer></script>
 </head>
-<body>
+<body data-curso="windows">
+<a class="nic-skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
 <!-- =========================================================
      NAVBAR
 ========================================================= -->
-<nav class="navbar navbar-expand-lg sticky-top">
+<nav aria-label="Navegação do módulo" class="navbar navbar-expand-lg sticky-top">
   <div class="container">
     <a
       class="navbar-brand fw-bold"
@@ -314,6 +336,7 @@
 <!-- =========================================================
      HERO
 ========================================================= -->
+<main id="conteudo-principal">
 <section class="hero">
   <div class="container">
     <h1 class="display-5 fw-bold">
@@ -355,10 +378,7 @@
         <span class="icon-box">📂</span>
         <h5>Slides da Aula</h5>
         <p class="small">Conceitos e práticas de sistema.</p>
-        <a
-          href="./visualizador.html?titulo=Slides%20Windows%20%2B%20Linux&url=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1HFMF2ffLUZk1jy3Lzh6UtnyvjuRgRpk6%2Fedit%3Fusp%3Dsharing%26ouid%3D117693596403024623615%26rtpof%3Dtrue%26sd%3Dtrue"
-          class="btn-modulo"
-        >
+        <a href="#" data-material-course="windows" data-material-key="slides" class="btn-modulo">
           Abrir Conteúdo
         </a>
       </div>
@@ -369,12 +389,7 @@
         <span class="icon-box">📘</span>
         <h5>Apostila Completa</h5>
         <p class="small">Guia de instalação e configuração.</p>
-        <a
-          href="https://drive.google.com/file/d/1gqNYTYBZHHvUvnsSwSWOiixcQin5suX_/view?usp=drive_link"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-modulo"
-        >
+        <a href="#" data-material-course="windows" data-material-key="apostila" class="btn-modulo">
           Ler Agora
         </a>
       </div>
@@ -385,12 +400,7 @@
         <span class="icon-box">✍️</span>
         <h5>Exercícios</h5>
         <p class="small">Prática de comandos e atalhos.</p>
-        <a
-          href="https://forms.gle/BV6gxxEkJJXq1z3A9"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-modulo"
-        >
+        <a href="#" data-material-course="windows" data-material-key="exercicios" class="btn-modulo">
           Enviar Atividade
         </a>
       </div>
@@ -402,7 +412,7 @@
         <h5>Avaliação Final</h5>
         <p class="small">Desafio de gerenciamento de SO.</p>
         <button
-          onclick="acessarProva()"
+          data-acesso="prova"
           class="btn btn-danger w-100 rounded-3 py-2 fw-bold"
         >
           Iniciar Prova
@@ -528,7 +538,7 @@
           Dicas avançadas de instalação e manutenção.
         </p>
         <button
-          onclick="acessarRevisao()"
+          data-acesso="revisao"
           class="btn btn-warning px-5 rounded-pill fw-bold py-2"
         >
           Liberar Conteúdo
@@ -544,54 +554,16 @@
   <small>© NIC Formação Profissional — Educação com Propósito</small>
 </footer>
 <!-- Bootstrap -->
+</main>
+
 <script
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 ></script>
-<script>
-  /* =========================================================
-     SERVICE WORKER
-  ========================================================= */
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./service-worker.js')
-        .catch(error => {
-          console.error('Erro ao registrar Service Worker:', error);
-        });
-    });
-  }
-  /* =========================================================
-     NOME DO ALUNO
-  ========================================================= */
-  document.addEventListener("DOMContentLoaded", () => {
-    const nomeSalvo = localStorage.getItem("nomeAluno");
-    if (nomeSalvo) {
-      document.getElementById("nomeAlunoDisplay").innerText = nomeSalvo;
-    }
-  });
-  /* =========================================================
-     ACESSAR PROVA
-  ========================================================= */
-  function acessarProva() {
-    const senha = prompt("🔒 Digite a senha da PROVA:");
-    if (senha && senha.trim().toLowerCase() === "provawin") {
-      alert("✅ Acesso liberado!");
-      // window.open("LINK_DA_PROVA", "_blank");
-    } else if (senha !== null) {
-      alert("❌ Senha incorreta! Fale com o instrutor.");
-    }
-  }
-  /* =========================================================
-     ACESSAR REVISÃO
-  ========================================================= */
-  function acessarRevisao() {
-    const senha = prompt("🔑 Digite a senha de REVISÃO:");
-    if (senha === "revisaoSO") {
-      alert("✅ Conteúdo liberado!");
-      // window.location.href = "LINK_DA_REVISAO";
-    } else if (senha !== null) {
-      alert("❌ Acesso negado. Senha incorreta.");
-    }
-  }
-</script>
+<script src="./assets/js/materiais-config.js"></script>
+<script src="./assets/js/materiais.js"></script>
+<script src="./assets/js/senhas.js"></script>
+<script src="./assets/js/navegacao.js"></script>
+<script src="./assets/js/curso.js"></script>
+
 </body>
 </html>

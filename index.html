@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <!-- Meta Básico -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,8 +40,8 @@
   <meta name="twitter:description" content="Transforme seu futuro com cursos profissionalizantes modernos." />
   <meta name="twitter:image" content="https://profnucleoinfor.github.io/assets/og-image.png" />
 
-  <!-- PWA - Versão Sincronizada v11 -->
-  <link rel="manifest" href="./manifest.json?v=11" />
+  <!-- PWA - Versão Sincronizada v12 -->
+  <link rel="manifest" href="./manifest.json?v=21.1" />
   <link rel="icon" type="image/png" href="./assets/favicon.png" />
   <link rel="apple-touch-icon" href="./assets/icon-192.png" />
 
@@ -113,6 +114,7 @@
       }
     }
   </style>
+  <script src="./assets/js/pwa.js" defer></script>
 </head>
 
 <body class="bg-white text-nicBlue font-sans overflow-x-hidden">
@@ -412,25 +414,6 @@
     });
   }
 
-  // REGISTRO DO SERVICE WORKER
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', async () => {
-      try {
-        const registration = await navigator.serviceWorker.register(
-          './service-worker.js'
-        );
-        console.log('PWA NIC Formação carregado com sucesso');
-        
-        // Força verificação imediata de atualizações
-        registration.update();
-
-      } catch (error) {
-        console.error('Erro no Service Worker:', error);
-      }
-    });
-  }
-
-  // LÓGICA DE INSTALAÇÃO DO PWA
   let deferredInstallPrompt = null;
   const installAppBtn = document.getElementById('installAppBtn');
 

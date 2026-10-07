@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Área do Aluno | NIC Formação Profissional</title>
@@ -213,16 +216,36 @@ header h1{
   }
 }
 </style>
+
+<style>
+  .nic-skip-link {
+    position: absolute;
+    top: -48px;
+    left: 12px;
+    z-index: 2000;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: #fff;
+    color: #043b7b;
+    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(0,0,0,.18);
+    transition: top .15s ease;
+  }
+  .nic-skip-link:focus { top: 12px; }
+  #conteudo-principal:focus { outline: none; }
+</style>
+
 </head>
 
 <body>
+<a class="nic-skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
 
-<header>
+<header aria-label="Cabeçalho do portal">
   <h1>🎓 Área do Aluno - NIC</h1>
   <a href="./index.html" class="btn-sair">SAIR</a>
 </header>
 
-<div class="container">
+<main id="conteudo-principal" class="container">
 
   <div class="dashboard-top">
 
@@ -249,73 +272,11 @@ header h1{
 
 </div>
 
-<script>
-document.getElementById("nomeAluno").innerText =
-localStorage.getItem("nomeAluno") || "Estudante";
+</main>
 
-document.getElementById("diaAula").innerText =
-"Dia: " + (localStorage.getItem("diaAula") || "A definir");
-
-document.getElementById("horarioAula").innerText =
-"Horário: " + (localStorage.getItem("horarioAula") || "A definir");
-
-const frases=[
-"Você está no caminho certo!",
-"A educação transforma destinos.",
-"Aprenda tecnologia e evolua!",
-"Seu futuro começa aqui.",
-"Continue avançando!"
-];
-
-let i=0;
-setInterval(()=>{
-  const el=document.getElementById("frase");
-  el.style.opacity=0;
-  setTimeout(()=>{
-    el.innerText=frases[i];
-    el.style.opacity=1;
-    i=(i+1)%frases.length;
-  },300);
-},5000);
-
-/* MÓDULOS COM DESCRIÇÃO */
-const MODULOS=[
-{t:"Windows + Linux",s:"windows",p:"windows.html",xp:"1000 XP",d:"Aprenda sistemas operacionais do zero até o nível profissional."},
-{t:"Word + Digitação",s:"word",p:"word.html",xp:"1120 XP",d:"Criação de documentos profissionais e digitação eficiente."},
-{t:"Excel",s:"excel",p:"excel.html",xp:"1200 XP",d:"Planilhas, fórmulas e automações essenciais para o mercado."},
-{t:"PowerPoint",s:"powerpoint",p:"powerpoint.html",xp:"600 XP",d:"Apresentações profissionais e impactantes."},
-{t:"Internet e Redes Sociais",s:"internet",p:"internet.html",xp:"320 XP",d:"Uso profissional da internet e mídias sociais."},
-{t:"Canva e Design",s:"canva",p:"canva.html",xp:"360 XP",d:"Criação de artes e identidade visual profissional."},
-{t:"Inteligência Artificial",s:"ia",p:"ia.html",xp:"800 XP",d:"Uso da IA para produtividade e aprendizado moderno."}
-];
-
-const grid=document.getElementById("gridModulos");
-
-MODULOS.forEach(m=>{
-  grid.innerHTML+=`
-  <div class="modulo-card">
-    <span class="xp-badge">💎 ${m.xp}</span>
-    <h3>${m.t}</h3>
-
-    <div class="modulo-desc">
-      ${m.d}
-    </div>
-
-    <button class="btn-acessar" onclick="acessar('${m.s}','${m.p}')">
-      Entrar na Aula
-    </button>
-  </div>`;
-});
-
-function acessar(s,p){
-  const v=prompt("Senha da aula:");
-  if(v && v.toLowerCase()==s){
-    location.href=p;
-  }else{
-    alert("Senha incorreta!");
-  }
-}
-</script>
+<script src="./assets/js/senhas.js" defer></script>
+<script src="./assets/js/dashboard.js" defer></script>
+<script src="./assets/js/navegacao.js" defer></script>
 
 </body>
 </html>
