@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Visualizador de Aula | NIC Formação Profissional</title>
   <meta name="theme-color" content="#043B7B">
-  <link rel="manifest" href="./manifest.json?v=21.1.7">
+  <link rel="manifest" href="./manifest.json?v=21.1.8">
   <link rel="icon" href="./assets/favicon.png">
   <link rel="apple-touch-icon" href="./assets/icon-192.png">
   <link rel="preconnect" href="https://docs.google.com">
@@ -196,7 +196,6 @@ function converterSlides(url) {
     original.searchParams.forEach((valor, chave) => {
       novaUrl.searchParams.set(chave, valor);
     });
-    // ✅ Preserva o hash (ex: #slide=id.p1)
     if (original.hash) {
       novaUrl.hash = original.hash;
     }
@@ -205,7 +204,9 @@ function converterSlides(url) {
     }
     return novaUrl.toString();
   }
-  return url;
+
+  // ✅ CORREÇÃO: Retorna null para permitir que os próximos conversores tentem
+  return null;
 }
 
 function converterDocumentos(url) {
@@ -221,7 +222,6 @@ function converterPlanilhas(url) {
 function converterDrive(url) {
   const original = new URL(url);
   
-  // ✅ Formato /file/d/ID/...
   const m = original.pathname.match(/^\/file\/d\/([^/]+)/);
   if (m) {
     const destino = new URL(`https://drive.google.com/file/d/${m[1]}/preview`);
@@ -236,7 +236,6 @@ function converterDrive(url) {
     return destino.toString();
   }
 
-  // ✅ Formato ?id=...
   const id = original.searchParams.get('id');
   if (id && original.hostname === 'drive.google.com') {
     const destino = new URL(`https://drive.google.com/file/d/${encodeURIComponent(id)}/preview`);
@@ -256,8 +255,11 @@ function converterDrive(url) {
 
 function converterUrl(url) {
   ehApresentacao = false;
-  return converterSlides(url) || converterDocumentos(url) || 
-         converterPlanilhas(url) || converterDrive(url) || url;
+  return converterSlides(url) ||
+         converterDocumentos(url) ||
+         converterPlanilhas(url) ||
+         converterDrive(url) ||
+         url;
 }
 
 function esconderLoading() {
@@ -375,7 +377,6 @@ document.addEventListener('webkitfullscreenchange', () => {
 window.addEventListener('resize', atualizarOrientacao);
 window.addEventListener('orientationchange', () => setTimeout(atualizarOrientacao, 200));
 
-// ✅ Botão Voltar com lógica de origem
 backBtn.addEventListener('click', () => {
   try {
     const referrer = document.referrer;
