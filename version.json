@@ -1,5 +1,5 @@
 {
-  "version": "21.1.0",
+  "version": "21.1.2",
   "releaseDate": "2026-10-06",
-  "notes": "Centralização dos links de materiais, provas, revisões e atividades com aviso para conteúdos ainda não disponíveis"
+  "notes": "Correção do visualizador de aulas: apresentações Google Slides passam a usar o endpoint de incorporação /embed."
 }

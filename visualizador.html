@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Visualizador de Aula | NIC Formação Profissional</title>
 <meta name="theme-color" content="#043B7B">
-<link rel="manifest" href="./manifest.json?v=21.1">
+<link rel="manifest" href="./manifest.json?v=21.1.2">
 <link rel="icon" href="./assets/favicon.png">
 <link rel="apple-touch-icon" href="./assets/icon-192.png">
 <link rel="preconnect" href="https://docs.google.com">
@@ -71,10 +71,22 @@ document.title=title+' | NIC Formação Profissional';
 const dominiosPermitidos=['docs.google.com','drive.google.com'];
 function validarUrl(url){try{const u=new URL(url);return u.protocol==='https:'&&dominiosPermitidos.some(d=>u.hostname===d||u.hostname.endsWith('.'+d));}catch{return false}}
 function converterUrl(url){
-  let m=url.match(/docs\.google\.com\/presentation\/d\/([^/]+)/);if(m)return 'https://docs.google.com/presentation/d/'+m[1]+'/preview';
-  m=url.match(/docs\.google\.com\/document\/d\/([^/]+)/);if(m)return 'https://docs.google.com/document/d/'+m[1]+'/preview';
-  m=url.match(/docs\.google\.com\/spreadsheets\/d\/([^/]+)/);if(m)return 'https://docs.google.com/spreadsheets/d/'+m[1]+'/htmlembed';
-  m=url.match(/drive\.google\.com\/file\/d\/([^/]+)/);if(m)return 'https://drive.google.com/file/d/'+m[1]+'/preview';
+  // Apresentações do Google devem usar /embed quando abertas dentro de iframe.
+  // O /preview pode funcionar como página, mas tem comportamento inconsistente
+  // quando incorporado em sites externos.
+  // Links publicados usam /d/e/.../embed e já são próprios para incorporação.
+  let m=url.match(/docs\.google\.com\/presentation\/d\/e\/([^/]+)\/embed/);
+  if(m)return url;
+
+  m=url.match(/docs\.google\.com\/presentation\/d\/([^/]+)/);
+  if(m)return 'https://docs.google.com/presentation/d/'+m[1]+'/embed?start=false&loop=false&delayms=3000';
+
+  m=url.match(/docs\.google\.com\/document\/d\/([^/]+)/);
+  if(m)return 'https://docs.google.com/document/d/'+m[1]+'/preview';
+  m=url.match(/docs\.google\.com\/spreadsheets\/d\/([^/]+)/);
+  if(m)return 'https://docs.google.com/spreadsheets/d/'+m[1]+'/htmlembed';
+  m=url.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+  if(m)return 'https://drive.google.com/file/d/'+m[1]+'/preview';
   return url;
 }
 function esconderLoading(){loading.hidden=true}
