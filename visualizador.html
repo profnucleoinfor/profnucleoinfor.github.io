@@ -75,7 +75,12 @@ function converterUrl(url){
   // O /preview pode funcionar como página, mas tem comportamento inconsistente
   // quando incorporado em sites externos.
   // Links publicados usam /d/e/.../embed e já são próprios para incorporação.
-  let m=url.match(/docs\.google\.com\/presentation\/d\/e\/([^/]+)\/embed/);
+  // URLs que já apontam para /embed devem ser preservadas integralmente,
+  // inclusive parâmetros como ?slide=id.p1.
+  let m=url.match(/docs\.google\.com\/presentation\/d\/e\/([^/]+)\/embed(?:[?#].*)?$/);
+  if(m)return url;
+
+  m=url.match(/docs\.google\.com\/presentation\/d\/([^/]+)\/embed(?:[?#].*)?$/);
   if(m)return url;
 
   m=url.match(/docs\.google\.com\/presentation\/d\/([^/]+)/);
