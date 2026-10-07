@@ -8,7 +8,7 @@
 
   window.NIC_MATERIAIS = Object.freeze({
     windows: {
-      slides: { titulo: 'Slides Windows + Linux', url: 'https://docs.google.com/presentation/d/1HFMF2ffLUZk1jy3Lzh6UtnyvjuRgRpk6/embed?slide=id.p1', modo: 'visualizador' },
+      slides: { titulo: 'Slides Windows + Linux', url: 'https://docs.google.com/presentation/d/e/2PACX-1vSqiaTQdAB0OpKiLmJckcLT9fqZEHfr1baDuEcah5UKf3crMo29adWwHC4TC8RI6g/pubembed?start=false&loop=false&delayms=60000', modo: 'visualizador' },
       apostila: { titulo: 'Apostila Completa — Windows + Linux', url: 'https://drive.google.com/file/d/1gqNYTYBZHHvUvnsSwSWOiixcQin5suX_/view?usp=drive_link', modo: 'externo' },
       exercicios: { titulo: 'Exercícios Windows + Linux', url: 'https://forms.gle/BV6gxxEkJJXq1z3A9', modo: 'externo' },
       prova: { titulo: 'Prova Final de Windows', url: '', modo: 'externo' },
