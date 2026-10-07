@@ -1,10 +1,10 @@
-// NÚCLEO INFORMÁTICA — Service Worker V21.1.3
-const CACHE_NAME = 'nic-formacao-v21-1-3';
+// NÚCLEO INFORMÁTICA — Service Worker V21.1.4
+const CACHE_NAME = 'nic-formacao-v21-1-4';
 const CACHE_PREFIX = 'nic-formacao-';
 const OFFLINE_URL = './offline.html';
 const STATIC_ASSETS = [
   OFFLINE_URL, './404.html', './index.html', './login.html', './dashboard.html', './visualizador.html',
-  './manifest.json?v=21.1.3', './robots.txt', './sitemap.xml',
+  './manifest.json?v=21.1.4', './robots.txt', './sitemap.xml',
   './assets/favicon.png', './assets/icon-192.png', './assets/icon-512.png',
   './assets/og-image.png', './assets/js/login.js', './assets/js/senhas.js', './assets/js/dashboard.js', './assets/js/materiais-config.js', './assets/js/materiais.js', './assets/js/curso.js', './assets/js/navegacao.js', './assets/js/pwa.js'
 ];

@@ -1,5 +1,5 @@
 {
-  "version": "21.1.3",
-  "releaseDate": "2026-10-06",
-  "notes": "Teste de incorporação direta do slide de Windows com preservação do parâmetro ?slide=id.p1."
+  "version": "21.1.4",
+  "releaseDate": "2026-10-07",
+  "notes": "Windows atualizado para o endereço oficial PubWeb fornecido pelo Google Slides (pubembed)."
 }
