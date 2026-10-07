@@ -2,16 +2,56 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="robots" content="noindex, nofollow, noarchive">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <meta
+    name="robots"
+    content="noindex, nofollow, noarchive">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
   <title>Visualizador de Aula | NIC Formação Profissional</title>
-  <meta name="theme-color" content="#043B7B">
-  <link rel="manifest" href="./manifest.json?v=21.1.8">
-  <link rel="icon" href="./assets/favicon.png">
-  <link rel="apple-touch-icon" href="./assets/icon-192.png">
-  <link rel="preconnect" href="https://docs.google.com">
-  <link rel="preconnect" href="https://drive.google.com">
+
+  <meta
+    name="theme-color"
+    content="#043B7B">
+
+  <link
+    rel="manifest"
+    href="./manifest.json?v=21.1.9">
+
+  <link
+    rel="icon"
+    href="./assets/favicon.png">
+
+  <link
+    rel="apple-touch-icon"
+    href="./assets/icon-192.png">
+
+  <!-- Otimização de conexão com Google -->
+  <link
+    rel="preconnect"
+    href="https://docs.google.com">
+
+  <link
+    rel="preconnect"
+    href="https://drive.google.com">
+
+  <link
+    rel="dns-prefetch"
+    href="//docs.google.com">
+
+  <link
+    rel="dns-prefetch"
+    href="//drive.google.com">
+
   <style>
+
+    /* =========================================================
+       VARIÁVEIS
+       ========================================================= */
+
     :root {
       --azul: #043B7B;
       --verde: #7CAC3C;
@@ -21,418 +61,2486 @@
       --texto: #f8fafc;
       --texto-sec: #94a3b8;
       --erro: #ef4444;
+
+      /*
+       * Altura dinâmica da viewport.
+       * É atualizada pelo JavaScript em dispositivos móveis.
+       */
+      --vh: 100vh;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; height: 100%; background: var(--fundo); color: var(--texto); font-family: Inter, Segoe UI, Arial, sans-serif; }
-    body { display: flex; flex-direction: column; min-height: 100dvh; overflow: hidden; }
+
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    /* =========================================================
+       DOCUMENTO
+       ========================================================= */
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+
+      background: var(--fundo);
+      color: var(--texto);
+
+      font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+    }
+
+
+    /* =========================================================
+       BODY
+       ========================================================= */
+
+    body {
+      display: flex;
+      flex-direction: column;
+
+      height: var(--vh);
+      min-height: var(--vh);
+
+      overscroll-behavior: none;
+    }
+
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
     header {
       min-height: 68px;
+
       background: rgba(30, 41, 59, .97);
-      border-bottom: 1px solid var(--borda);
-      display: flex; justify-content: space-between; align-items: center;
-      padding: calc(12px + env(safe-area-inset-top)) calc(18px + env(safe-area-inset-right)) 12px calc(18px + env(safe-area-inset-left));
-      gap: 14px; flex-shrink: 0;
+
+      border-bottom:
+        1px solid var(--borda);
+
+      display: flex;
+
+      justify-content: space-between;
+      align-items: center;
+
+      padding:
+        calc(12px + env(safe-area-inset-top))
+        calc(18px + env(safe-area-inset-right))
+        12px
+        calc(18px + env(safe-area-inset-left));
+
+      gap: 14px;
+
+      flex-shrink: 0;
+
+      backdrop-filter: blur(10px);
     }
-    .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
-    .brand img { width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0; }
-    .brand h1 { font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .actions { display: flex; gap: 8px; flex-shrink: 0; }
-    button, a {
-      font: inherit; text-decoration: none; color: var(--texto);
-      background: #253247; border: 1px solid var(--borda); border-radius: 9px;
-      padding: 9px 12px; cursor: pointer; font-weight: 600; white-space: nowrap;
+
+
+    /* =========================================================
+       MARCA
+       ========================================================= */
+
+    .brand {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      min-width: 0;
     }
-    button:hover, a:hover { border-color: var(--verde); color: #d9f99d; }
-    button:focus-visible, a:focus-visible { outline: 2px solid var(--verde); outline-offset: 2px; }
+
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+
+      border-radius: 9px;
+
+      flex-shrink: 0;
+    }
+
+
+    .brand h1 {
+      font-size: 1.05rem;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+    }
+
+
+    /* =========================================================
+       AÇÕES
+       ========================================================= */
+
+    .actions {
+      display: flex;
+
+      gap: 8px;
+
+      flex-shrink: 0;
+    }
+
+
+    button,
+    a {
+      font: inherit;
+
+      text-decoration: none;
+
+      color: var(--texto);
+
+      background: #253247;
+
+      border:
+        1px solid var(--borda);
+
+      border-radius: 9px;
+
+      padding: 9px 12px;
+
+      cursor: pointer;
+
+      font-weight: 600;
+
+      white-space: nowrap;
+
+      transition: .2s;
+    }
+
+
+    button:hover,
+    a:hover {
+      border-color: var(--verde);
+
+      color: #d9f99d;
+    }
+
+
+    button:focus-visible,
+    a:focus-visible {
+      outline:
+        2px solid var(--verde);
+
+      outline-offset: 2px;
+    }
+
+
+    /* =========================================================
+       ÁREA PRINCIPAL
+       ========================================================= */
+
     main {
-      flex: 1; min-height: 0; display: flex;
-      padding: 12px calc(12px + env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom)) calc(12px + env(safe-area-inset-left));
+      flex: 1;
+
+      min-height: 0;
+
+      display: flex;
+
+      padding:
+        12px
+        calc(12px + env(safe-area-inset-right))
+        calc(12px + env(safe-area-inset-bottom))
+        calc(12px + env(safe-area-inset-left));
+
+      overflow: hidden;
     }
+
+
+    /* =========================================================
+       VISUALIZADOR
+       ========================================================= */
+
     .viewer {
-      position: relative; flex: 1; min-width: 0; min-height: 0;
-      width: 100%; height: 100%; overflow: hidden;
-      background: #020617; border: 1px solid var(--borda); border-radius: 14px;
+      position: relative;
+
+      flex: 1;
+
+      min-width: 0;
+      min-height: 0;
+
+      width: 100%;
+      height: 100%;
+
+      overflow: hidden;
+
+      background: #020617;
+
+      border:
+        1px solid var(--borda);
+
+      border-radius: 14px;
     }
-    .viewer.fullscreen-active { border: 0; border-radius: 0; }
-    iframe { display: block; width: 100%; height: 100%; border: 0; background: #fff; }
+
+
+    .viewer.fullscreen-active {
+      border: 0;
+
+      border-radius: 0;
+    }
+
+
+    /* =========================================================
+       IFRAME
+       ========================================================= */
+
+    iframe {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      border: 0;
+
+      background: #fff;
+    }
+
+
+    /* =========================================================
+       LOADING
+       ========================================================= */
+
     .loading {
-      position: absolute; inset: 0; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; gap: 13px; padding: 24px;
-      background: #020617; text-align: center; z-index: 20;
+      position: absolute;
+
+      inset: 0;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 13px;
+
+      padding: 24px;
+
+      background: #020617;
+
+      text-align: center;
+
+      z-index: 20;
+
+      transition:
+        opacity .25s ease;
     }
+
+
+    .loading[hidden] {
+      display: none;
+    }
+
+
+    /*
+     * Estado de carregamento lento.
+     *
+     * O iframe permanece ativo atrás dessa camada.
+     */
+
+    .loading.slow {
+      background:
+        rgba(2, 6, 23, .86);
+    }
+
+
+    /* =========================================================
+       SPINNER
+       ========================================================= */
+
     .spinner {
-      width: 40px; height: 40px; border: 4px solid rgba(255,255,255,.15);
-      border-top-color: var(--verde); border-radius: 50%; animation: girar 1s linear infinite;
+      width: 40px;
+      height: 40px;
+
+      border:
+        4px solid rgba(255, 255, 255, .15);
+
+      border-top-color:
+        var(--verde);
+
+      border-radius: 50%;
+
+      animation:
+        girar 1s linear infinite;
     }
-    @keyframes girar { to { transform: rotate(360deg); } }
-    .loading small { color: var(--texto-sec); max-width: 420px; line-height: 1.5; }
+
+
+    .loading.slow .spinner {
+      animation-duration: 1.4s;
+    }
+
+
+    @keyframes girar {
+
+      to {
+        transform: rotate(360deg);
+      }
+
+    }
+
+
+    /* =========================================================
+       TEXTOS DO LOADING
+       ========================================================= */
+
+    .loading strong {
+      font-size: 1.05rem;
+    }
+
+
+    .loading small {
+      color: var(--texto-sec);
+
+      max-width: 480px;
+
+      line-height: 1.5;
+    }
+
+
+    /* =========================================================
+       AÇÕES DO LOADING
+       ========================================================= */
+
+    .loading-actions {
+      display: flex;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+
+      margin-top: 4px;
+    }
+
+
+    .loading-actions a {
+      background:
+        var(--verde);
+
+      color:
+        #102000;
+
+      border-color:
+        var(--verde);
+    }
+
+
+    /* =========================================================
+       ORIENTAÇÃO
+       ========================================================= */
+
     .portrait-overlay {
-      position: absolute; inset: 0; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; gap: 14px; padding: 24px;
-      background: rgba(2, 6, 23, .96); text-align: center; z-index: 30;
+      position: absolute;
+
+      inset: 0;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 14px;
+
+      padding: 24px;
+
+      background:
+        rgba(2, 6, 23, .96);
+
+      text-align: center;
+
+      z-index: 30;
     }
-    .portrait-overlay[hidden] { display: none; }
-    .phone-icon { font-size: 3.4rem; line-height: 1; }
-    .portrait-overlay strong { font-size: 1.2rem; }
-    .portrait-overlay p { max-width: 420px; color: var(--texto-sec); line-height: 1.5; }
-    .portrait-overlay button { background: var(--verde); border-color: var(--verde); color: #102000; }
-    .portrait-overlay small { color: var(--texto-sec); max-width: 430px; }
+
+
+    .portrait-overlay[hidden] {
+      display: none;
+    }
+
+
+    .phone-icon {
+      font-size: 3.4rem;
+
+      line-height: 1;
+    }
+
+
+    .portrait-overlay strong {
+      font-size: 1.2rem;
+    }
+
+
+    .portrait-overlay p {
+      max-width: 420px;
+
+      color:
+        var(--texto-sec);
+
+      line-height: 1.5;
+    }
+
+
+    .portrait-overlay button {
+      background:
+        var(--verde);
+
+      border-color:
+        var(--verde);
+
+      color:
+        #102000;
+    }
+
+
+    .portrait-overlay small {
+      color:
+        var(--texto-sec);
+
+      max-width: 430px;
+
+      line-height: 1.5;
+    }
+
+
+    /* =========================================================
+       ERRO
+       ========================================================= */
+
     .error {
-      width: 100%; height: 100%; display: flex;
-      justify-content: center; align-items: center;
-      text-align: center; padding: 30px; overflow: auto;
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+
+      padding: 30px;
+
+      overflow: auto;
     }
-    .error-content { max-width: 560px; }
-    .error strong { display: block; margin-bottom: 10px; font-size: 1.2rem; color: #fff; }
-    .error p { color: #cbd5e1; line-height: 1.5; margin-bottom: 18px; }
-    .error-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-    .error-actions a { background: var(--verde); color: #102000; border-color: var(--verde); }
-    @media (max-width: 900px) and (orientation: landscape) {
-      header { min-height: 50px; padding: calc(6px + env(safe-area-inset-top)) 12px 6px 12px; }
-      .brand img { width: 30px; height: 30px; }
-      .brand h1 { font-size: .9rem; }
-      button, a { padding: 6px 9px; font-size: .8rem; }
-      main { padding: 6px; padding-bottom: calc(6px + env(safe-area-inset-bottom)); }
+
+
+    .error-content {
+      max-width: 560px;
     }
-    @media (max-width: 700px) and (orientation: portrait) {
-      header { flex-wrap: wrap; }
-      .brand { width: 100%; }
-      .actions { width: 100%; }
-      .actions button, .actions a { flex: 1; text-align: center; }
-      .brand h1 { font-size: .98rem; }
+
+
+    .error strong {
+      display: block;
+
+      margin-bottom: 10px;
+
+      font-size: 1.2rem;
+
+      color: #fff;
     }
+
+
+    .error p {
+      color:
+        #cbd5e1;
+
+      line-height: 1.5;
+
+      margin-bottom: 18px;
+    }
+
+
+    .error-actions {
+      display: flex;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+    }
+
+
+    .error-actions a {
+      background:
+        var(--verde);
+
+      color:
+        #102000;
+
+      border-color:
+        var(--verde);
+    }
+
+
+    /* =========================================================
+       DICA DE ROTAÇÃO
+       ========================================================= */
+
+    .rotate-hint {
+      position: absolute;
+
+      bottom: 14px;
+      left: 50%;
+
+      transform:
+        translateX(-50%);
+
+      background:
+        rgba(15, 23, 42, .92);
+
+      border:
+        1px solid var(--borda);
+
+      border-radius: 999px;
+
+      padding:
+        8px 16px;
+
+      font-size: .82rem;
+
+      color:
+        var(--texto-sec);
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      z-index: 5;
+
+      animation:
+        fadeOut .4s ease 4s forwards;
+
+      pointer-events: none;
+    }
+
+
+    @keyframes fadeOut {
+
+      to {
+        opacity: 0;
+
+        visibility: hidden;
+      }
+
+    }
+
+
+    /* =========================================================
+       CELULAR — PAISAGEM
+       ========================================================= */
+
+    @media (max-width: 900px)
+      and (orientation: landscape) {
+
+      header {
+        min-height: 50px;
+
+        padding:
+          calc(6px + env(safe-area-inset-top))
+          12px
+          6px
+          12px;
+      }
+
+
+      .brand img {
+        width: 30px;
+        height: 30px;
+      }
+
+
+      .brand h1 {
+        font-size: .9rem;
+      }
+
+
+      button,
+      a {
+        padding:
+          6px 9px;
+
+        font-size: .8rem;
+      }
+
+
+      main {
+        padding: 6px;
+
+        padding-bottom:
+          calc(
+            6px +
+            env(safe-area-inset-bottom)
+          );
+      }
+
+    }
+
+
+    /* =========================================================
+       CELULAR — RETRATO
+       ========================================================= */
+
+    @media (max-width: 700px)
+      and (orientation: portrait) {
+
+      header {
+        flex-wrap: wrap;
+      }
+
+
+      .brand {
+        width: 100%;
+      }
+
+
+      .actions {
+        width: 100%;
+      }
+
+
+      .actions button,
+      .actions a {
+        flex: 1;
+
+        text-align: center;
+      }
+
+
+      .brand h1 {
+        font-size: .98rem;
+      }
+
+    }
+
   </style>
-  <script src="./assets/js/pwa.js" defer></script>
+
+  <!-- Sistema PWA do projeto -->
+  <script
+    src="./assets/js/pwa.js"
+    defer>
+  </script>
+
 </head>
+
+
 <body>
-<header>
-  <div class="brand"><img src="./assets/icon-192.png" alt="NIC"><h1 id="pageTitle">Visualizador de Aula</h1></div>
-  <div class="actions">
-    <button id="fullscreenBtn" type="button">⤢ Tela cheia</button>
-    <button id="backBtn" type="button">⬅ Voltar</button>
-    <a id="externalLink" href="#" target="_blank" rel="noopener noreferrer">↗ Abrir fora</a>
-  </div>
-</header>
-<main>
-  <section class="viewer" id="viewer">
-    <div class="loading" id="loading">
-      <div class="spinner"></div>
-      <span id="loadingText">Carregando material...</span>
-      <small id="loadingHint">Aguarde enquanto o material é carregado.</small>
+
+
+  <!-- =======================================================
+       CABEÇALHO
+       ======================================================== -->
+
+  <header>
+
+    <div class="brand">
+
+      <img
+        src="./assets/icon-192.png"
+        alt="NIC">
+
+      <h1 id="pageTitle">
+        Visualizador de Aula
+      </h1>
+
     </div>
-    <div class="portrait-overlay" id="portraitOverlay" hidden>
-      <div class="phone-icon" aria-hidden="true">📱↔️</div>
-      <strong>Para ver os slides melhor, gire o celular</strong>
-      <p>O material foi preparado em formato horizontal. Entre em tela cheia para aproveitar melhor a largura dos slides.</p>
-      <button id="rotateBtn" type="button">⤢ Tela cheia + horizontal</button>
-      <small>Se o aparelho não permitir rotação automática, gire o celular manualmente.</small>
+
+
+    <div class="actions">
+
+      <button
+        id="fullscreenBtn"
+        type="button">
+
+        ⤢ Tela cheia
+
+      </button>
+
+
+      <button
+        id="backBtn"
+        type="button">
+
+        ⬅ Voltar
+
+      </button>
+
+
+      <a
+        id="externalLink"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        ↗ Abrir fora
+
+      </a>
+
     </div>
-  </section>
-</main>
-<script>
-const CONFIG = {
-  dominiosPermitidos: ['docs.google.com', 'drive.google.com'],
-  tempoMaximoCarregamento: 15000,
-  parametrosSlides: { start: 'false', loop: 'false', delayms: '3000' }
-};
 
-const params = new URLSearchParams(location.search);
-const rawUrl = (params.get('url') || '').trim();
-const title = (params.get('titulo') || 'Visualizador de Aula').trim();
-const viewer = document.getElementById('viewer');
-const pageTitle = document.getElementById('pageTitle');
-const externalLink = document.getElementById('externalLink');
-const loading = document.getElementById('loading');
-const fullscreenBtn = document.getElementById('fullscreenBtn');
-const portraitOverlay = document.getElementById('portraitOverlay');
-const rotateBtn = document.getElementById('rotateBtn');
-const backBtn = document.getElementById('backBtn');
+  </header>
 
-let iframe = null;
-let carregou = false;
-let timerCarregamento = null;
-let ehApresentacao = false;
 
-pageTitle.textContent = title;
-document.title = `${title} | NIC Formação Profissional`;
+  <!-- =======================================================
+       CONTEÚDO
+       ======================================================== -->
 
-function validarUrl(url) {
-  try {
-    const u = new URL(url);
-    if (u.protocol !== 'https:') return false;
-    return CONFIG.dominiosPermitidos.some(
-      dominio => u.hostname === dominio || u.hostname.endsWith('.' + dominio)
-    );
-  } catch { return false; }
-}
+  <main>
 
-function adicionarParametros(url, parametros) {
-  const u = new URL(url);
-  for (const [chave, valor] of Object.entries(parametros)) {
-    if (!u.searchParams.has(chave)) u.searchParams.set(chave, valor);
-  }
-  return u.toString();
-}
+    <section
+      class="viewer"
+      id="viewer">
 
-function converterSlides(url) {
-  let m;
-  m = url.match(/docs\.google\.com\/presentation\/d\/e\/([^/?#]+)\/(?:embed|pubembed)/);
-  if (m) {
-    ehApresentacao = true;
-    return adicionarParametros(url, CONFIG.parametrosSlides);
-  }
 
-  m = url.match(/docs\.google\.com\/presentation\/d\/([^/?#]+)\/embed/);
-  if (m) {
-    ehApresentacao = true;
-    return adicionarParametros(url, CONFIG.parametrosSlides);
-  }
+      <!-- =====================================================
+           CARREGAMENTO
+           ====================================================== -->
 
-  m = url.match(/docs\.google\.com\/presentation\/d\/([^/?#]+)/);
-  if (m) {
-    ehApresentacao = true;
-    const novaUrl = new URL(`https://docs.google.com/presentation/d/${m[1]}/embed`);
-    const original = new URL(url);
-    original.searchParams.forEach((valor, chave) => {
-      novaUrl.searchParams.set(chave, valor);
-    });
-    if (original.hash) {
-      novaUrl.hash = original.hash;
-    }
-    for (const [chave, valor] of Object.entries(CONFIG.parametrosSlides)) {
-      if (!novaUrl.searchParams.has(chave)) novaUrl.searchParams.set(chave, valor);
-    }
-    return novaUrl.toString();
-  }
+      <div
+        class="loading"
+        id="loading">
 
-  // ✅ CORREÇÃO: Retorna null para permitir que os próximos conversores tentem
-  return null;
-}
+        <div
+          class="spinner"
+          id="loadingSpinner">
+        </div>
 
-function converterDocumentos(url) {
-  const m = url.match(/docs\.google\.com\/document\/d\/([^/?#]+)/);
-  return m ? `https://docs.google.com/document/d/${m[1]}/preview` : null;
-}
 
-function converterPlanilhas(url) {
-  const m = url.match(/docs\.google\.com\/spreadsheets\/d\/([^/?#]+)/);
-  return m ? `https://docs.google.com/spreadsheets/d/${m[1]}/htmlembed` : null;
-}
+        <strong
+          id="loadingText">
 
-function converterDrive(url) {
-  const original = new URL(url);
-  
-  const m = original.pathname.match(/^\/file\/d\/([^/]+)/);
-  if (m) {
-    const destino = new URL(`https://drive.google.com/file/d/${m[1]}/preview`);
-    original.searchParams.forEach((valor, chave) => {
-      if (!destino.searchParams.has(chave)) {
-        destino.searchParams.set(chave, valor);
+          Carregando material...
+
+        </strong>
+
+
+        <small
+          id="loadingHint">
+
+          Aguarde enquanto o material é carregado.
+
+        </small>
+
+
+        <div
+          class="loading-actions"
+          id="loadingActions"
+          hidden>
+
+          <a
+            id="loadingExternalLink"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            ↗ Abrir material diretamente
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           AVISO DE RETRATO
+           ====================================================== -->
+
+      <div
+        class="portrait-overlay"
+        id="portraitOverlay"
+        hidden>
+
+
+        <div
+          class="phone-icon"
+          aria-hidden="true">
+
+          📱↔️
+
+        </div>
+
+
+        <strong>
+
+          Para ver os slides melhor,
+          gire o celular
+
+        </strong>
+
+
+        <p>
+
+          O material foi preparado
+          em formato horizontal.
+          Entre em tela cheia para
+          aproveitar melhor a largura
+          dos slides.
+
+        </p>
+
+
+        <button
+          id="rotateBtn"
+          type="button">
+
+          ⤢ Tela cheia + horizontal
+
+        </button>
+
+
+        <small>
+
+          Se o aparelho não permitir
+          rotação automática,
+          gire o celular manualmente.
+
+        </small>
+
+      </div>
+
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    /* =========================================================
+       CONFIGURAÇÃO
+       ========================================================= */
+
+    const CONFIG = {
+
+      /*
+       * Somente estes domínios podem ser carregados.
+       */
+
+      dominiosPermitidos: [
+        'docs.google.com',
+        'drive.google.com'
+      ],
+
+
+      /*
+       * Tempo máximo antes de apresentar
+       * um aviso de carregamento lento.
+       *
+       * IMPORTANTE:
+       * O iframe NÃO é destruído.
+       */
+
+      tempoMaximoCarregamento: 30000,
+
+
+      /*
+       * Parâmetros padrão das apresentações.
+       *
+       * Só serão adicionados caso
+       * ainda não existam na URL.
+       */
+
+      parametrosSlides: {
+
+        start: 'false',
+
+        loop: 'false',
+
+        delayms: '3000'
+
       }
-    });
-    if (original.hash) {
-      destino.hash = original.hash;
-    }
-    return destino.toString();
-  }
 
-  const id = original.searchParams.get('id');
-  if (id && original.hostname === 'drive.google.com') {
-    const destino = new URL(`https://drive.google.com/file/d/${encodeURIComponent(id)}/preview`);
-    original.searchParams.forEach((valor, chave) => {
-      if (chave !== 'id' && !destino.searchParams.has(chave)) {
-        destino.searchParams.set(chave, valor);
-      }
-    });
-    if (original.hash) {
-      destino.hash = original.hash;
-    }
-    return destino.toString();
-  }
+    };
 
-  return null;
-}
 
-function converterUrl(url) {
-  ehApresentacao = false;
-  return converterSlides(url) ||
-         converterDocumentos(url) ||
-         converterPlanilhas(url) ||
-         converterDrive(url) ||
-         url;
-}
+    /* =========================================================
+       AJUSTE DA VIEWPORT MOBILE
+       ========================================================= */
 
-function esconderLoading() {
-  if (carregou) return;
-  carregou = true;
-  if (timerCarregamento) {
-    clearTimeout(timerCarregamento);
-    timerCarregamento = null;
-  }
-  loading.hidden = true;
-}
+    function ajustarAlturaViewport() {
 
-function mostrarErro(tituloErro, mensagem) {
-  if (timerCarregamento) {
-    clearTimeout(timerCarregamento);
-    timerCarregamento = null;
-  }
-  loading.hidden = true;
-  portraitOverlay.hidden = true;
-  viewer.replaceChildren();
-  
-  const box = document.createElement('div');
-  box.className = 'error';
-  const content = document.createElement('div');
-  content.className = 'error-content';
-  const strong = document.createElement('strong');
-  strong.textContent = tituloErro;
-  const p = document.createElement('p');
-  p.textContent = mensagem;
-  const actions = document.createElement('div');
-  actions.className = 'error-actions';
-  
-  if (rawUrl) {
-    const abrir = document.createElement('a');
-    abrir.href = rawUrl;
-    abrir.target = '_blank';
-    abrir.rel = 'noopener noreferrer';
-    abrir.textContent = '↗ Abrir material diretamente';
-    actions.appendChild(abrir);
-  }
-  
-  content.append(strong, p, actions);
-  box.appendChild(content);
-  viewer.appendChild(box);
-  fullscreenBtn.hidden = true;
-}
-
-function ehMobile() {
-  return window.matchMedia('(max-width: 900px)').matches;
-}
-
-function estaRetrato() {
-  return window.matchMedia('(orientation: portrait)').matches;
-}
-
-function atualizarOrientacao() {
-  portraitOverlay.hidden = !ehMobile() || !estaRetrato() || !ehApresentacao;
-}
-
-async function bloquearPaisagem() {
-  try {
-    if (screen.orientation?.lock) await screen.orientation.lock('landscape');
-  } catch {}
-}
-
-async function liberarOrientacao() {
-  try {
-    if (screen.orientation?.unlock) screen.orientation.unlock();
-  } catch {}
-}
-
-async function entrarTelaCheia() {
-  const request = viewer.requestFullscreen || viewer.webkitRequestFullscreen;
-  if (!request) return false;
-  try {
-    await request.call(viewer);
-    await bloquearPaisagem();
-    return true;
-  } catch { return false; }
-}
-
-async function alternarFullscreen() {
-  const ativo = document.fullscreenElement || document.webkitFullscreenElement;
-  if (ativo) {
-    const exit = document.exitFullscreen || document.webkitExitFullscreen;
-    if (exit) try { await exit.call(document); } catch {};
-    return;
-  }
-  await entrarTelaCheia();
-}
-
-fullscreenBtn.addEventListener('click', alternarFullscreen);
-rotateBtn.addEventListener('click', async () => {
-  if (!await entrarTelaCheia()) {
-    portraitOverlay.hidden = false;
-    alert('Seu navegador não permitiu a rotação automática. Gire o celular manualmente.');
-  }
-});
-
-document.addEventListener('fullscreenchange', async () => {
-  const ativo = !!document.fullscreenElement;
-  viewer.classList.toggle('fullscreen-active', ativo);
-  fullscreenBtn.textContent = ativo ? '⤡ Sair da tela cheia' : '⤢ Tela cheia';
-  ativo ? await bloquearPaisagem() : await liberarOrientacao();
-  atualizarOrientacao();
-});
-
-document.addEventListener('webkitfullscreenchange', () => {
-  const ativo = !!document.webkitFullscreenElement;
-  viewer.classList.toggle('fullscreen-active', ativo);
-  fullscreenBtn.textContent = ativo ? '⤡ Sair da tela cheia' : '⤢ Tela cheia';
-  atualizarOrientacao();
-});
-
-window.addEventListener('resize', atualizarOrientacao);
-window.addEventListener('orientationchange', () => setTimeout(atualizarOrientacao, 200));
-
-backBtn.addEventListener('click', () => {
-  try {
-    const referrer = document.referrer;
-    if (referrer) {
-      const origem = new URL(referrer, location.href);
-      if (origem.origin === location.origin) {
-        history.back();
-        return;
-      }
-    }
-  } catch {}
-  location.href = './dashboard.html';
-});
-
-if (!(viewer.requestFullscreen || viewer.webkitRequestFullscreen)) {
-  fullscreenBtn.hidden = true;
-}
-
-// INICIALIZAÇÃO
-if (!rawUrl) {
-  externalLink.hidden = true;
-  mostrarErro('Conteúdo não encontrado', 'Nenhuma aula foi informada.');
-} else if (!validarUrl(rawUrl)) {
-  externalLink.hidden = true;
-  mostrarErro('Conteúdo não permitido', 'Somente arquivos HTTPS do Google Drive e Google Docs são aceitos.');
-} else {
-  externalLink.href = rawUrl;
-  const urlConvertida = converterUrl(rawUrl);
-  
-  iframe = document.createElement('iframe');
-  iframe.src = urlConvertida;
-  iframe.title = title;
-  iframe.allow = 'fullscreen';
-  iframe.allowFullscreen = true;
-  iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-  
-  iframe.addEventListener('load', esconderLoading, { once: true });
-  iframe.addEventListener('error', () => mostrarErro(
-    'Não foi possível carregar o material',
-    'Verifique sua conexão e tente abrir diretamente. Se o arquivo for restrito, altere para "Qualquer pessoa com o link".'
-  ));
-  
-  viewer.appendChild(iframe);
-  
-  timerCarregamento = setTimeout(() => {
-    if (!carregou) {
-      mostrarErro(
-        'O material está demorando para carregar',
-        'Isso pode ocorrer por conexão lenta, permissão de acesso restrita no arquivo ou indisponibilidade do serviço. ' +
-        'Confira se o compartilhamento está como "Qualquer pessoa com o link" e tente abrir diretamente.'
+      document.documentElement.style.setProperty(
+        '--vh',
+        `${window.innerHeight}px`
       );
+
     }
-  }, CONFIG.tempoMaximoCarregamento);
-  
-  atualizarOrientacao();
-}
-</script>
+
+
+    ajustarAlturaViewport();
+
+
+    window.addEventListener(
+      'resize',
+      ajustarAlturaViewport
+    );
+
+
+    window.addEventListener(
+      'orientationchange',
+      () => {
+
+        setTimeout(
+          ajustarAlturaViewport,
+          150
+        );
+
+        mostrarDicaRotacao();
+
+      }
+    );
+
+
+    /* =========================================================
+       PARÂMETROS DA PÁGINA
+       ========================================================= */
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const rawUrl =
+      (params.get('url') || '').trim();
+
+
+    const title =
+      (
+        params.get('titulo') ||
+        'Visualizador de Aula'
+      ).trim();
+
+
+    /* =========================================================
+       ELEMENTOS
+       ========================================================= */
+
+    const viewer =
+      document.getElementById(
+        'viewer'
+      );
+
+
+    const pageTitle =
+      document.getElementById(
+        'pageTitle'
+      );
+
+
+    const externalLink =
+      document.getElementById(
+        'externalLink'
+      );
+
+
+    const loading =
+      document.getElementById(
+        'loading'
+      );
+
+
+    const loadingSpinner =
+      document.getElementById(
+        'loadingSpinner'
+      );
+
+
+    const loadingText =
+      document.getElementById(
+        'loadingText'
+      );
+
+
+    const loadingHint =
+      document.getElementById(
+        'loadingHint'
+      );
+
+
+    const loadingActions =
+      document.getElementById(
+        'loadingActions'
+      );
+
+
+    const loadingExternalLink =
+      document.getElementById(
+        'loadingExternalLink'
+      );
+
+
+    const fullscreenBtn =
+      document.getElementById(
+        'fullscreenBtn'
+      );
+
+
+    const portraitOverlay =
+      document.getElementById(
+        'portraitOverlay'
+      );
+
+
+    const rotateBtn =
+      document.getElementById(
+        'rotateBtn'
+      );
+
+
+    const backBtn =
+      document.getElementById(
+        'backBtn'
+      );
+
+
+    /* =========================================================
+       ESTADO
+       ========================================================= */
+
+    let iframe = null;
+
+    let carregou = false;
+
+    let timerCarregamento = null;
+
+    let ehApresentacao = false;
+
+
+    /* =========================================================
+       TÍTULO
+       ========================================================= */
+
+    pageTitle.textContent =
+      title;
+
+
+    document.title =
+      `${title} | NIC Formação Profissional`;
+
+
+    /* =========================================================
+       VALIDAR URL
+       ========================================================= */
+
+    function validarUrl(url) {
+
+      try {
+
+        const u =
+          new URL(url);
+
+
+        /*
+         * Somente HTTPS.
+         */
+
+        if (
+          u.protocol !== 'https:'
+        ) {
+
+          return false;
+
+        }
+
+
+        /*
+         * Permite somente:
+         *
+         * docs.google.com
+         * subdomínios de docs.google.com
+         * drive.google.com
+         * subdomínios de drive.google.com
+         */
+
+        return CONFIG
+          .dominiosPermitidos
+          .some(
+            dominio =>
+              u.hostname === dominio ||
+              u.hostname.endsWith(
+                '.' + dominio
+              )
+          );
+
+      } catch {
+
+        return false;
+
+      }
+
+    }
+
+
+    /* =========================================================
+       ADICIONAR PARÂMETROS
+       ========================================================= */
+
+    function adicionarParametros(
+      url,
+      parametros
+    ) {
+
+      const u =
+        new URL(url);
+
+
+      for (
+        const [
+          chave,
+          valor
+        ]
+        of Object.entries(parametros)
+      ) {
+
+        /*
+         * Não sobrescreve parâmetros
+         * fornecidos pelo material.
+         */
+
+        if (
+          !u.searchParams.has(
+            chave
+          )
+        ) {
+
+          u.searchParams.set(
+            chave,
+            valor
+          );
+
+        }
+
+      }
+
+
+      return u.toString();
+
+    }
+
+
+    /* =========================================================
+       CONVERTER GOOGLE SLIDES
+       ========================================================= */
+
+    function converterSlides(url) {
+
+      let m;
+
+
+      /*
+       * -------------------------------------------------------
+       * SLIDES PUBLICADO
+       *
+       * /presentation/d/e/ID/pubembed
+       * /presentation/d/e/ID/embed
+       * -------------------------------------------------------
+       */
+
+      m =
+        url.match(
+          /docs\.google\.com\/presentation\/d\/e\/([^/?#]+)\/(?:embed|pubembed)/
+        );
+
+
+      if (m) {
+
+        ehApresentacao =
+          true;
+
+
+        /*
+         * Mantém a URL original.
+         *
+         * Isso é importante para apresentações
+         * publicadas pelo Google.
+         */
+
+        return adicionarParametros(
+          url,
+          CONFIG.parametrosSlides
+        );
+
+      }
+
+
+      /*
+       * -------------------------------------------------------
+       * SLIDES NORMAL JÁ EM /embed
+       * -------------------------------------------------------
+       */
+
+      m =
+        url.match(
+          /docs\.google\.com\/presentation\/d\/([^/?#]+)\/embed/
+        );
+
+
+      if (m) {
+
+        ehApresentacao =
+          true;
+
+
+        return adicionarParametros(
+          url,
+          CONFIG.parametrosSlides
+        );
+
+      }
+
+
+      /*
+       * -------------------------------------------------------
+       * SLIDES NORMAL
+       *
+       * /presentation/d/ID
+       * -------------------------------------------------------
+       */
+
+      m =
+        url.match(
+          /docs\.google\.com\/presentation\/d\/([^/?#]+)/
+        );
+
+
+      if (m) {
+
+        ehApresentacao =
+          true;
+
+
+        const original =
+          new URL(url);
+
+
+        const novaUrl =
+          new URL(
+            `https://docs.google.com/presentation/d/${m[1]}/embed`
+          );
+
+
+        /*
+         * Preserva os parâmetros
+         * existentes.
+         */
+
+        original.searchParams.forEach(
+          (
+            valor,
+            chave
+          ) => {
+
+            novaUrl.searchParams.set(
+              chave,
+              valor
+            );
+
+          }
+        );
+
+
+        /*
+         * Preserva hash.
+         */
+
+        if (
+          original.hash
+        ) {
+
+          novaUrl.hash =
+            original.hash;
+
+        }
+
+
+        /*
+         * Adiciona os parâmetros
+         * padrão que estiverem faltando.
+         */
+
+        for (
+          const [
+            chave,
+            valor
+          ]
+          of Object.entries(
+            CONFIG.parametrosSlides
+          )
+        ) {
+
+          if (
+            !novaUrl.searchParams.has(
+              chave
+            )
+          ) {
+
+            novaUrl.searchParams.set(
+              chave,
+              valor
+            );
+
+          }
+
+        }
+
+
+        return novaUrl.toString();
+
+      }
+
+
+      /*
+       * NÃO é Slides.
+       *
+       * Retorna null para permitir
+       * que os outros conversores
+       * sejam executados.
+       */
+
+      return null;
+
+    }
+
+
+    /* =========================================================
+       CONVERTER GOOGLE DOCUMENTOS
+       ========================================================= */
+
+    function converterDocumentos(url) {
+
+      const m =
+        url.match(
+          /docs\.google\.com\/document\/d\/([^/?#]+)/
+        );
+
+
+      if (!m) {
+
+        return null;
+
+      }
+
+
+      return (
+        `https://docs.google.com/document/d/${m[1]}/preview`
+      );
+
+    }
+
+
+    /* =========================================================
+       CONVERTER GOOGLE PLANILHAS
+       ========================================================= */
+
+    function converterPlanilhas(url) {
+
+      const m =
+        url.match(
+          /docs\.google\.com\/spreadsheets\/d\/([^/?#]+)/
+        );
+
+
+      if (!m) {
+
+        return null;
+
+      }
+
+
+      return (
+        `https://docs.google.com/spreadsheets/d/${m[1]}/htmlembed`
+      );
+
+    }
+
+
+    /* =========================================================
+       CONVERTER GOOGLE DRIVE
+       ========================================================= */
+
+    function converterDrive(url) {
+
+      const original =
+        new URL(url);
+
+
+      /*
+       * -------------------------------------------------------
+       * DRIVE:
+       *
+       * /file/d/ID
+       * -------------------------------------------------------
+       */
+
+      const m =
+        original.pathname.match(
+          /^\/file\/d\/([^/]+)/
+        );
+
+
+      if (m) {
+
+        const destino =
+          new URL(
+            `https://drive.google.com/file/d/${m[1]}/preview`
+          );
+
+
+        /*
+         * Preserva parâmetros.
+         */
+
+        original.searchParams.forEach(
+          (
+            valor,
+            chave
+          ) => {
+
+            if (
+              !destino.searchParams.has(
+                chave
+              )
+            ) {
+
+              destino.searchParams.set(
+                chave,
+                valor
+              );
+
+            }
+
+          }
+        );
+
+
+        /*
+         * Preserva hash.
+         */
+
+        if (
+          original.hash
+        ) {
+
+          destino.hash =
+            original.hash;
+
+        }
+
+
+        return destino.toString();
+
+      }
+
+
+      /*
+       * -------------------------------------------------------
+       * DRIVE:
+       *
+       * /open?id=ID
+       * -------------------------------------------------------
+       */
+
+      const id =
+        original.searchParams.get(
+          'id'
+        );
+
+
+      if (
+        id &&
+        original.hostname ===
+          'drive.google.com'
+      ) {
+
+        const destino =
+          new URL(
+            `https://drive.google.com/file/d/${encodeURIComponent(id)}/preview`
+          );
+
+
+        original.searchParams.forEach(
+          (
+            valor,
+            chave
+          ) => {
+
+            if (
+              chave !== 'id' &&
+              !destino.searchParams.has(
+                chave
+              )
+            ) {
+
+              destino.searchParams.set(
+                chave,
+                valor
+              );
+
+            }
+
+          }
+        );
+
+
+        if (
+          original.hash
+        ) {
+
+          destino.hash =
+            original.hash;
+
+        }
+
+
+        return destino.toString();
+
+      }
+
+
+      return null;
+
+    }
+
+
+    /* =========================================================
+       CONVERSOR PRINCIPAL
+       ========================================================= */
+
+    function converterUrl(url) {
+
+      /*
+       * Reseta o estado.
+       */
+
+      ehApresentacao =
+        false;
+
+
+      /*
+       * A ordem é importante.
+       */
+
+      return (
+        converterSlides(url) ||
+        converterDocumentos(url) ||
+        converterPlanilhas(url) ||
+        converterDrive(url) ||
+        url
+      );
+
+    }
+
+
+    /* =========================================================
+       DICA DE ROTAÇÃO
+       ========================================================= */
+
+    function mostrarDicaRotacao() {
+
+      const existente =
+        document.querySelector(
+          '.rotate-hint'
+        );
+
+
+      if (
+        existente
+      ) {
+
+        existente.remove();
+
+      }
+
+
+      const hint =
+        document.createElement(
+          'div'
+        );
+
+
+      hint.className =
+        'rotate-hint';
+
+
+      hint.textContent =
+        '↻ Tela ajustada';
+
+
+      viewer.appendChild(
+        hint
+      );
+
+
+      setTimeout(
+        () => {
+
+          if (
+            hint.isConnected
+          ) {
+
+            hint.remove();
+
+          }
+
+        },
+        4500
+      );
+
+    }
+
+
+    /* =========================================================
+       DETECÇÃO MOBILE
+       ========================================================= */
+
+    function ehMobile() {
+
+      return window.matchMedia(
+        '(max-width: 900px)'
+      ).matches;
+
+    }
+
+
+    /* =========================================================
+       DETECÇÃO RETRATO
+       ========================================================= */
+
+    function estaRetrato() {
+
+      return window.matchMedia(
+        '(orientation: portrait)'
+      ).matches;
+
+    }
+
+
+    /* =========================================================
+       ATUALIZAR ORIENTAÇÃO
+       ========================================================= */
+
+    function atualizarOrientacao() {
+
+      /*
+       * O aviso só aparece para apresentações.
+       *
+       * Docs, Sheets e Drive não são bloqueados
+       * em modo retrato.
+       */
+
+      portraitOverlay.hidden =
+        !ehMobile() ||
+        !estaRetrato() ||
+        !ehApresentacao;
+
+    }
+
+
+    /* =========================================================
+       BLOQUEAR PAISAGEM
+       ========================================================= */
+
+    async function bloquearPaisagem() {
+
+      try {
+
+        if (
+          screen.orientation &&
+          screen.orientation.lock
+        ) {
+
+          await screen.orientation.lock(
+            'landscape'
+          );
+
+        }
+
+      } catch {
+
+        /*
+         * Alguns navegadores só permitem
+         * orientation.lock em fullscreen.
+         *
+         * Não fazemos nada caso não seja
+         * suportado.
+         */
+
+      }
+
+    }
+
+
+    /* =========================================================
+       LIBERAR ORIENTAÇÃO
+       ========================================================= */
+
+    async function liberarOrientacao() {
+
+      try {
+
+        if (
+          screen.orientation &&
+          screen.orientation.unlock
+        ) {
+
+          screen.orientation.unlock();
+
+        }
+
+      } catch {}
+
+    }
+
+
+    /* =========================================================
+       ENTRAR EM TELA CHEIA
+       ========================================================= */
+
+    async function entrarTelaCheia() {
+
+      const request =
+        viewer.requestFullscreen ||
+        viewer.webkitRequestFullscreen;
+
+
+      if (!request) {
+
+        return false;
+
+      }
+
+
+      try {
+
+        await request.call(
+          viewer
+        );
+
+
+        await bloquearPaisagem();
+
+
+        return true;
+
+      } catch {
+
+        return false;
+
+      }
+
+    }
+
+
+    /* =========================================================
+       ALTERNAR FULLSCREEN
+       ========================================================= */
+
+    async function alternarFullscreen() {
+
+      const ativo =
+        document.fullscreenElement ||
+        document.webkitFullscreenElement;
+
+
+      if (ativo) {
+
+        const exit =
+          document.exitFullscreen ||
+          document.webkitExitFullscreen;
+
+
+        if (exit) {
+
+          try {
+
+            await exit.call(
+              document
+            );
+
+          } catch {}
+
+        }
+
+
+        return;
+
+      }
+
+
+      await entrarTelaCheia();
+
+    }
+
+
+    fullscreenBtn.addEventListener(
+      'click',
+      alternarFullscreen
+    );
+
+
+    /* =========================================================
+       BOTÃO DE ROTAÇÃO
+       ========================================================= */
+
+    rotateBtn.addEventListener(
+      'click',
+      async () => {
+
+        const sucesso =
+          await entrarTelaCheia();
+
+
+        if (!sucesso) {
+
+          portraitOverlay.hidden =
+            false;
+
+
+          alert(
+            'Seu navegador não permitiu a rotação automática. Gire o celular manualmente.'
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       ATUALIZAÇÃO DO FULLSCREEN
+       ========================================================= */
+
+    function atualizarFullscreen() {
+
+      const ativo =
+        !!(
+          document.fullscreenElement ||
+          document.webkitFullscreenElement
+        );
+
+
+      viewer.classList.toggle(
+        'fullscreen-active',
+        ativo
+      );
+
+
+      fullscreenBtn.textContent =
+        ativo
+          ? '⤡ Sair da tela cheia'
+          : '⤢ Tela cheia';
+
+
+      ajustarAlturaViewport();
+
+
+      atualizarOrientacao();
+
+    }
+
+
+    /* =========================================================
+       FULLSCREEN CHANGE
+       ========================================================= */
+
+    document.addEventListener(
+      'fullscreenchange',
+      async () => {
+
+        const ativo =
+          !!document.fullscreenElement;
+
+
+        atualizarFullscreen();
+
+
+        if (ativo) {
+
+          await bloquearPaisagem();
+
+        } else {
+
+          await liberarOrientacao();
+
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      'webkitfullscreenchange',
+      atualizarFullscreen
+    );
+
+
+    /* =========================================================
+       RESIZE / ORIENTATION
+       ========================================================= */
+
+    window.addEventListener(
+      'resize',
+      atualizarOrientacao
+    );
+
+
+    window.addEventListener(
+      'orientationchange',
+      () => {
+
+        setTimeout(
+          atualizarOrientacao,
+          200
+        );
+
+      }
+    );
+
+
+    /* =========================================================
+       BOTÃO VOLTAR
+       ========================================================= */
+
+    backBtn.addEventListener(
+      'click',
+      () => {
+
+        try {
+
+          const referrer =
+            document.referrer;
+
+
+          if (
+            referrer
+          ) {
+
+            const origem =
+              new URL(
+                referrer,
+                location.href
+              );
+
+
+            /*
+             * Só usamos history.back()
+             * quando a página anterior
+             * pertence ao nosso próprio site.
+             */
+
+            if (
+              origem.origin ===
+              location.origin
+            ) {
+
+              history.back();
+
+              return;
+
+            }
+
+          }
+
+        } catch {}
+
+
+        /*
+         * Fallback seguro.
+         */
+
+        location.href =
+          './dashboard.html';
+
+      }
+    );
+
+
+    /* =========================================================
+       VERIFICAR FULLSCREEN
+       ========================================================= */
+
+    if (
+      !(
+        viewer.requestFullscreen ||
+        viewer.webkitRequestFullscreen
+      )
+    ) {
+
+      fullscreenBtn.hidden =
+        true;
+
+    }
+
+
+    /* =========================================================
+       ESCONDER LOADING
+       ========================================================= */
+
+    function esconderLoading() {
+
+      /*
+       * Se já carregou, não precisamos
+       * executar novamente.
+       */
+
+      if (
+        carregou
+      ) {
+
+        return;
+
+      }
+
+
+      carregou =
+        true;
+
+
+      /*
+       * Cancela o timeout.
+       */
+
+      if (
+        timerCarregamento
+      ) {
+
+        clearTimeout(
+          timerCarregamento
+        );
+
+
+        timerCarregamento =
+          null;
+
+      }
+
+
+      /*
+       * Esconde completamente
+       * o overlay.
+       */
+
+      loading.hidden =
+        true;
+
+    }
+
+
+    /* =========================================================
+       AVISO DE CARREGAMENTO LENTO
+       ========================================================= */
+
+    function mostrarAvisoCarregamento() {
+
+      /*
+       * ATENÇÃO:
+       *
+       * Não colocamos:
+       *
+       * carregou = true
+       *
+       * porque o iframe ainda pode
+       * terminar de carregar.
+       */
+
+
+      loading.classList.add(
+        'slow'
+      );
+
+
+      /*
+       * O spinner deixa de ser necessário.
+       */
+
+      loadingSpinner.style.display =
+        'none';
+
+
+      loadingText.textContent =
+        'O material ainda está carregando...';
+
+
+      loadingHint.textContent =
+        'O Google Slides pode levar alguns segundos para concluir o carregamento. ' +
+        'O conteúdo continuará sendo carregado normalmente.';
+
+
+      /*
+       * Mostra opção de abrir diretamente.
+       */
+
+      loadingActions.hidden =
+        false;
+
+
+      loadingExternalLink.href =
+        rawUrl;
+
+    }
+
+
+    /* =========================================================
+       ERRO REAL
+       ========================================================= */
+
+    function mostrarErro(
+      tituloErro,
+      mensagem
+    ) {
+
+      /*
+       * Cancela o timer.
+       */
+
+      if (
+        timerCarregamento
+      ) {
+
+        clearTimeout(
+          timerCarregamento
+        );
+
+
+        timerCarregamento =
+          null;
+
+      }
+
+
+      loading.hidden =
+        true;
+
+
+      portraitOverlay.hidden =
+        true;
+
+
+      /*
+       * Somente aqui destruímos
+       * o conteúdo do visualizador.
+       */
+
+      viewer.replaceChildren();
+
+
+      const box =
+        document.createElement(
+          'div'
+        );
+
+
+      box.className =
+        'error';
+
+
+      const content =
+        document.createElement(
+          'div'
+        );
+
+
+      content.className =
+        'error-content';
+
+
+      const strong =
+        document.createElement(
+          'strong'
+        );
+
+
+      strong.textContent =
+        tituloErro;
+
+
+      const p =
+        document.createElement(
+          'p'
+        );
+
+
+      p.textContent =
+        mensagem;
+
+
+      const actions =
+        document.createElement(
+          'div'
+        );
+
+
+      actions.className =
+        'error-actions';
+
+
+      if (
+        rawUrl
+      ) {
+
+        const abrir =
+          document.createElement(
+            'a'
+          );
+
+
+        abrir.href =
+          rawUrl;
+
+
+        abrir.target =
+          '_blank';
+
+
+        abrir.rel =
+          'noopener noreferrer';
+
+
+        abrir.textContent =
+          '↗ Abrir material diretamente';
+
+
+        actions.appendChild(
+          abrir
+        );
+
+      }
+
+
+      content.append(
+        strong,
+        p,
+        actions
+      );
+
+
+      box.appendChild(
+        content
+      );
+
+
+      viewer.appendChild(
+        box
+      );
+
+
+      fullscreenBtn.hidden =
+        true;
+
+    }
+
+
+    /* =========================================================
+       INICIALIZAÇÃO
+       ========================================================= */
+
+    if (
+      !rawUrl
+    ) {
+
+      /*
+       * Não existe material.
+       */
+
+      externalLink.hidden =
+        true;
+
+
+      fullscreenBtn.hidden =
+        true;
+
+
+      mostrarErro(
+        'Conteúdo não encontrado',
+        'Nenhuma aula foi informada.'
+      );
+
+    }
+
+
+    else if (
+      !validarUrl(rawUrl)
+    ) {
+
+      /*
+       * URL não permitida.
+       */
+
+      externalLink.hidden =
+        true;
+
+
+      fullscreenBtn.hidden =
+        true;
+
+
+      mostrarErro(
+        'Conteúdo não permitido',
+        'Somente arquivos HTTPS do Google Drive e Google Docs são aceitos.'
+      );
+
+    }
+
+
+    else {
+
+      /* =====================================================
+         LINK EXTERNO
+         ====================================================== */
+
+      externalLink.href =
+        rawUrl;
+
+
+      /* =====================================================
+         CONVERSÃO
+         ====================================================== */
+
+      const urlConvertida =
+        converterUrl(
+          rawUrl
+        );
+
+
+      /* =====================================================
+         CRIAÇÃO DO IFRAME
+         ====================================================== */
+
+      iframe =
+        document.createElement(
+          'iframe'
+        );
+
+
+      iframe.src =
+        urlConvertida;
+
+
+      iframe.title =
+        title;
+
+
+      /*
+       * Permissão de fullscreen.
+       *
+       * Não usamos allowFullscreen,
+       * evitando o warning do Chrome.
+       */
+
+      iframe.allow =
+        'fullscreen';
+
+
+      iframe.referrerPolicy =
+        'strict-origin-when-cross-origin';
+
+
+      /* =====================================================
+         EVENTO LOAD
+         ====================================================== */
+
+      iframe.addEventListener(
+        'load',
+        () => {
+
+          /*
+           * O navegador informou que
+           * o documento do iframe carregou.
+           */
+
+          esconderLoading();
+
+        },
+        {
+          once: true
+        }
+      );
+
+
+      /* =====================================================
+         EVENTO ERROR
+         ====================================================== */
+
+      iframe.addEventListener(
+        'error',
+        () => {
+
+          mostrarErro(
+            'Não foi possível carregar o material',
+            'Verifique sua conexão e tente abrir diretamente. Se o arquivo for restrito, altere o compartilhamento para "Qualquer pessoa com o link".'
+          );
+
+        }
+      );
+
+
+      /* =====================================================
+         INSERIR IFRAME
+         ====================================================== */
+
+      viewer.appendChild(
+        iframe
+      );
+
+
+      /* =====================================================
+         TIMEOUT NÃO DESTRUTIVO
+         ====================================================== */
+
+      timerCarregamento =
+        setTimeout(
+          () => {
+
+            /*
+             * Se o iframe ainda não
+             * informou load:
+             *
+             * NÃO removemos o iframe.
+             */
+
+            if (
+              !carregou
+            ) {
+
+              mostrarAvisoCarregamento();
+
+            }
+
+          },
+          CONFIG.tempoMaximoCarregamento
+        );
+
+
+      /* =====================================================
+         ORIENTAÇÃO
+         ====================================================== */
+
+      atualizarOrientacao();
+
+    }
+
+  </script>
+
 </body>
 </html>
