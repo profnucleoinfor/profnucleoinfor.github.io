@@ -12,7 +12,7 @@
       apostila: { titulo: 'Apostila Completa — Windows + Linux', url: 'https://drive.google.com/file/d/1gqNYTYBZHHvUvnsSwSWOiixcQin5suX_/view?usp=drive_link', modo: 'externo' },
       exercicios: { titulo: 'Exercícios Windows + Linux', url: 'https://forms.gle/BV6gxxEkJJXq1z3A9', modo: 'externo' },
       prova: { titulo: 'Prova Final de Windows', url: '', modo: 'externo' },
-      revisao: { titulo: 'Revisão Windows + Linux', url: '', modo: 'externo' }
+      revisao: { titulo: 'Revisão Windows + Linux', url: 'https://share.gemini.google/wZf8UbVDqipB', modo: 'externo' }
     },
 
     word: {
