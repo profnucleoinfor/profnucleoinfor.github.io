@@ -1,0 +1,72 @@
+{
+  "id": "/",
+  "name": "NIC Formação Profissional",
+  "short_name": "NIC Formação",
+  "description": "Cursos profissionalizantes em informática, inglês e gestão empresarial em Santa Rita - PB. Ensino prático, certificado e preparação para o mercado de trabalho.",
+  "start_url": "./?utm_source=pwa&v=21.1",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "fullscreen"],
+  "orientation": "portrait-primary",
+  "background_color": "#043B7B",
+  "theme_color": "#043B7B",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "./assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Área do Aluno",
+      "short_name": "Aluno",
+      "url": "./login.html",
+      "description": "Acessar portal do aluno e conteúdos",
+      "icons": [
+        {
+          "src": "./assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Cursos",
+      "short_name": "Cursos",
+      "url": "./#cursos",
+      "description": "Conheça nossos cursos profissionalizantes",
+      "icons": [
+        {
+          "src": "./assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Contato",
+      "short_name": "Fale Conosco",
+      "url": "./#contato",
+      "description": "Endereço e telefone da escola",
+      "icons": [
+        {
+          "src": "./assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "categories": ["education", "productivity", "business"],
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
+}
