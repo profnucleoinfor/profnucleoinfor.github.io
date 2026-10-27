@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#043B7B">
+<title>Desafio NIC | Missão Computador v2.4</title>
+<style>
+:root {
+  --blue: #043B7B;
+  --blue-light: #0c579c;
+  --green: #7CAC3C;
+  --ink: #142238;
+  --muted: #63728a;
+  --bg: #f2f6fb;
+  --line: #dce5f0;
+  --white: #ffffff;
+  --good: #247547;
+  --bad: #b83232;
+  --shadow: 0 18px 50px rgba(24, 55, 91, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 8% 0%, #dbeafe 0, transparent 28rem), var(--bg);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+}
+
+.topbar {
+  background: var(--blue);
+  color: #fff;
+  padding: 15px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 850;
+  letter-spacing: .02em;
+}
+
+.brandmark {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: var(--green);
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+  color: #fff;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+.brand small {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  opacity: .8;
+  letter-spacing: .12em;
+}
+
+.top-pill {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.wrap {
+  width: min(1080px, calc(100% - 28px));
+  margin: 28px auto 46px;
+}
+
+.hero {
+  background: linear-gradient(125deg, var(--blue), var(--blue-light));
+  border-radius: 24px;
+  padding: clamp(24px, 5vw, 48px);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.hero::after {
+  content: "</>";
+  position: absolute;
+  right: 3%;
+  bottom: -35px;
+  font-size: clamp(100px, 18vw, 220px);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.04);
+  letter-spacing: -.1em;
+  pointer-events: none;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #d5e8ff;
+}
+
+.hero h1 {
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 1.05;
+  margin: 14px 0;
+}
+
+.hero p {
+  max-width: 650px;
+  color: #e2efff;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-top: 23px;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 270px minmax(0, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+  align-items: start;
+}
+
+.panel, .maincard {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.panel {
+  padding: 20px;
+  position: sticky;
+  top: 18px;
+}
+
+.panel h3 {
+  font-size: 14px;
+  margin: 0 0 14px;
+  color: var(--ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mission-list {
+  display: grid;
+  gap: 9px;
+}
+
+.mission {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 11px 12px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+  transition: all 0.2s ease;
+}
+
+.mission .num {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #edf2f8;
+  color: #53647c;
+  font-size: 11px;
+}
+
+.mission.active {
+  border-color: #8eb0d7;
+  background: #edf5ff;
+  color: var(--blue);
+}
+
+.mission.active .num {
+  background: var(--blue);
+  color: white;
+}
+
+.mission.done {
+  border-color: #b3dfc1;
+  background: #f2fbf5;
+  color: var(--good);
+}
+
+.mission.done .num {
+  background: var(--green);
+  color: white;
+}
+
+.side-note {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 18px 0 0;
+}
+
+.maincard {
+  padding: clamp(20px, 4vw, 36px);
+  min-height: 430px;
+}
+
+.screen { display: none; }
+.screen.active { display: block; }
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #edf5ff;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 8px 11px;
+}
+
+.maincard h2 {
+  font-size: clamp(23px, 3vw, 32px);
+  line-height: 1.18;
+  margin: 16px 0 10px;
+}
+
+.lead {
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0 0 22px;
+}
+
+.field { margin: 18px 0; }
+.field label {
+  display: block;
+  font-weight: 750;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.field input, .field select {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cbd7e5;
+  border-radius: 12px;
+  font: inherit;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field input:focus, .field select:focus {
+  border-color: #5485bd;
+  box-shadow: 0 0 0 3px rgba(4, 59, 123, 0.12);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 22px 0;
+}
+
+.info {
+  background: #f5f8fc;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 13px;
+}
+
+.info strong {
+  display: block;
+  font-size: 20px;
+  color: var(--blue);
+}
+
+.info span {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 13px 18px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .15s, filter .15s, background-color .15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn:hover {
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+
+.btn:focus-visible {
+  outline: 3px solid #9bc5f2;
+  outline-offset: 3px;
+}
+
+.btn-primary { background: var(--green); color: #fff; }
+.btn-blue { background: var(--blue); color: #fff; }
+.btn-ghost { background: #eef3f8; color: var(--ink); }
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.qmeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.progress {
+  height: 8px;
+  background: #e7edf5;
+  border-radius: 99px;
+  overflow: hidden;
+  margin: 12px 0 26px;
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--green), #a4d05f);
+  border-radius: 99px;
+  transition: width .25s ease-out;
+}
+
+.answers-fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.answers-legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.question {
+  font-size: clamp(19px, 2.5vw, 23px) !important;
+  margin: 0 0 10px !important;
+  line-height: 1.35 !important;
+}
+
+.qhint {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0 0 20px;
+}
+
+.answers {
+  display: grid;
+  gap: 10px;
+}
+
+.answer {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 15px;
+  cursor: pointer;
+  transition: border .15s, background .15s;
+  position: relative;
+}
+
+.answer:hover {
+  border-color: #91add0;
+  background: #f8fbff;
+}
+
+.answer.selected {
+  border-color: var(--blue);
+  background: #edf5ff;
+  box-shadow: 0 0 0 2px rgba(4, 59, 123, 0.08);
+}
+
+.answer input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.answer:focus-within {
+  outline: 3px solid #9bc5f2;
+  outline-offset: 2px;
+}
+
+.letter {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 27px;
+  height: 27px;
+  border-radius: 8px;
+  background: #edf2f8;
+  color: #4e6079;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.answer.selected .letter {
+  background: var(--blue);
+  color: white;
+}
+
+.answer-text {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 650;
+  padding-top: 2px;
+}
+
+.feedback {
+  display: none;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 16px;
+}
+
+.feedback.show { display: block; }
+.feedback.good { background: #eaf7ef; color: #1d653c; }
+.feedback.bad { background: #fff0f0; color: #9d2c2c; }
+
+.result-head {
+  text-align: center;
+  padding: 12px 0 22px;
+}
+
+.medal {
+  width: 84px;
+  height: 84px;
+  margin: auto;
+  border-radius: 26px;
+  background: #edf5ff;
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+  box-shadow: inset 0 0 0 1px #d0e2f7;
+}
+
+.badge-level {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.score {
+  font-size: clamp(42px, 8vw, 68px);
+  font-weight: 900;
+  color: var(--blue);
+  letter-spacing: -.05em;
+  margin: 10px 0 0;
+}
+
+.score small {
+  font-size: 20px;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+.result-sub {
+  color: var(--muted);
+  margin: 7px 0 0;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.result-box {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  text-align: center;
+}
+
+.result-box strong {
+  font-size: 22px;
+  display: block;
+  color: var(--blue);
+}
+
+.result-box span {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.mission-breakdown {
+  margin: 24px 0;
+  padding: 18px;
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.mission-breakdown h4 {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.m-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.m-row:last-child { margin-bottom: 0; }
+.m-row .m-title { flex: 1; font-weight: 700; }
+.m-row .m-bar { flex: 2; height: 8px; background: #e2e8f0; border-radius: 99px; overflow: hidden; }
+.m-row .m-bar-fill { height: 100%; background: var(--green); border-radius: 99px; }
+.m-row .m-score { width: 50px; text-align: right; font-weight: 800; color: var(--muted); }
+
+.review {
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+  padding-top: 20px;
+}
+
+.review h3 { font-size: 16px; }
+
+.review-item {
+  padding: 14px 0;
+  border-bottom: 1px solid #edf1f6;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.review-item strong { display: block; margin-bottom: 5px; }
+
+.correct { color: var(--good); font-weight: 750; }
+.incorrect { color: var(--bad); font-weight: 750; }
+
+.fineprint {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-top: 20px;
+}
+
+.footer {
+  text-align: center;
+  color: #718198;
+  font-size: 11px;
+  padding: 22px 0 0;
+}
+
+.hide { display: none !important; }
+
+@media(max-width: 760px) {
+  .layout { grid-template-columns: 1fr; }
+  .panel { position: static; order: 2; }
+  .maincard { order: 1; }
+  .mission-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .side-note { margin-top: 12px; }
+  .top-pill { display: none; }
+}
+
+@media(max-width: 460px) {
+  .wrap { width: calc(100% - 18px); margin-top: 12px; }
+  .topbar { padding: 12px; }
+  .hero { border-radius: 18px; padding: 24px 20px; }
+  .maincard { padding: 20px 16px; }
+  .mission-list { grid-template-columns: 1fr 1fr; }
+  .mission { padding: 9px; font-size: 11px; }
+  .info-grid, .result-grid { grid-template-columns: 1fr; }
+  .info { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .info strong { font-size: 18px; }
+  .btn-row .btn { flex: 1; }
+  .btn-row { gap: 8px; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .topbar, .hero, .panel, .btn-row, .footer, .fineprint { display: none !important; }
+  .wrap { width: 100%; margin: 0; }
+  .layout { display: block; margin: 0; }
+  .maincard { border: 0; box-shadow: none; padding: 0; }
+  .screen { display: none !important; }
+  #resultScreen { display: block !important; }
+  .review { display: block; }
+  .review-item { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brandmark">N</div>
+    <div>NIC FORMAÇÃO PROFISSIONAL<small>TECNOLOGIA • CONHECIMENTO • PRÁTICA</small></div>
+  </div>
+  <div class="top-pill">AVALIAÇÃO GAMIFICADA · ED. GAMER XP</div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Sua próxima missão começa agora</div>
+    <h1>DESAFIO NIC<br>Missão Computador</h1>
+    <p>Um computador precisa da sua ajuda! Demonstre seu domínio sobre energia, hardware, boot, sistemas operacionais, binários, periféricos e ferramentas do Windows para acumular até 1000 XP.</p>
+    <div class="hero-tags">
+      <span class="tag">🎯 7 missões</span>
+      <span class="tag">🧠 60 questões</span>
+      <span class="tag">⚡ Até 1000 XP</span>
+      <span class="tag">📱 Adaptado para celular</span>
+    </div>
+  </section>
+
+  <div class="layout">
+    <aside class="panel">
+      <h3>MAPA DA MISSÃO <span id="missionProgressText" style="font-size: 11px; font-weight: normal; color: var(--muted);">0/7</span></h3>
+      <div id="missionList" class="mission-list"></div>
+      <p class="side-note">Avance no seu ritmo e leia cada pergunta com atenção. O gabarito oficial com as explicações será liberado ao final do desafio.</p>
+    </aside>
+
+    <section class="maincard">
+      <!-- TELA INICIAL -->
+      <div id="introScreen" class="screen active">
+        <span class="section-label">▣ Briefing da missão</span>
+        <h2>Agente, precisamos de você.</h2>
+        <p class="lead">Examine a sequência que vai da tomada aos aplicativos, analise o comportamento do sistema e acumule o máximo de experiência (XP).</p>
+        
+        <div class="info-grid">
+          <div class="info"><strong>60</strong><span>questões objetivas</span></div>
+          <div class="info"><strong>7</strong><span>missões temáticas</span></div>
+          <div class="info"><strong>1000 XP</strong><span>experiência máxima</span></div>
+        </div>
+
+        <div class="field">
+          <label for="studentName">Nome completo do aluno *</label>
+          <input id="studentName" type="text" maxlength="100" autocomplete="name" placeholder="Digite seu nome completo" required>
+        </div>
+
+        <div class="field">
+          <label for="studentClass">Turma (opcional)</label>
+          <input id="studentClass" type="text" maxlength="60" placeholder="Ex.: Informática — Manhã">
+        </div>
+
+        <p class="fineprint">A avaliação é corrigida localmente neste navegador. Ao finalizar, use “Imprimir / salvar em PDF” para registrar o resultado oficial com o professor.</p>
+
+        <div class="btn-row">
+          <span></span>
+          <button id="startBtn" class="btn btn-primary">INICIAR MISSÃO →</button>
+        </div>
+      </div>
+
+      <!-- TELA DE PERGUNTAS -->
+      <div id="quizScreen" class="screen">
+        <div class="qmeta">
+          <span id="phaseLabel">MISSÃO 01</span>
+          <span id="questionCount">PERGUNTA 1 DE 60</span>
+        </div>
+        
+        <div class="progress">
+          <span id="progressFill"></span>
+        </div>
+
+        <h2 id="questionTitle" class="question"></h2>
+        <p id="questionHint" class="qhint"></p>
+
+        <fieldset class="answers-fieldset">
+          <legend class="answers-legend">Selecione uma alternativa:</legend>
+          <div id="answers" class="answers"></div>
+        </fieldset>
+
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+
+        <div class="btn-row">
+          <button id="backBtn" class="btn btn-ghost">← VOLTAR</button>
+          <button id="nextBtn" class="btn btn-blue">PRÓXIMA PERGUNTA →</button>
+        </div>
+      </div>
+
+      <!-- TELA DE RESULTADO -->
+      <div id="resultScreen" class="screen">
+        <div class="result-head">
+          <div class="medal" id="resultMedal">🏆</div>
+          <div><span id="agentLevel" class="badge-level">AGENTE ESPECIALISTA</span></div>
+          <span class="section-label" style="margin-top: 10px;">Missão encerrada</span>
+          <h2 id="resultTitle">Missão concluída!</h2>
+          <div class="score"><span id="scoreValue">0</span><small> / 1000 XP</small></div>
+          <p class="result-sub" id="resultSubtitle"></p>
+        </div>
+
+        <div class="result-grid">
+          <div class="result-box"><strong id="correctValue">0/60</strong><span>respostas corretas</span></div>
+          <div class="result-box"><strong id="percentValue">0%</strong><span>aproveitamento</span></div>
+          <div class="result-box"><strong id="timeValue">—</strong><span>tempo decorrido</span></div>
+        </div>
+
+        <div class="mission-breakdown">
+          <h4>Desempenho por Missão</h4>
+          <div id="missionBreakdownList"></div>
+        </div>
+
+        <div class="review">
+          <h3>Relatório detalhado do agente</h3>
+          <p class="lead" id="studentSummary"></p>
+          <div id="reviewList"></div>
+        </div>
+
+        <p class="fineprint">Este resultado foi calculado localmente neste navegador. Para validação pedagógica e registro de chamada, imprima a tela ou salve em arquivo PDF.</p>
+
+        <div class="btn-row">
+          <button id="printBtn" class="btn btn-primary">IMPRIMIR / SALVAR PDF</button>
+          <button id="restartBtn" class="btn btn-ghost">RECOMEÇAR</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="footer">NIC FORMAÇÃO PROFISSIONAL · DESAFIO NIC · APRENDER FAZENDO</div>
+</main>
+
+<script>
+const phases = [
+  {
+    title: 'Energia & Alimentação',
+    icon: '⚡',
+    questions: [
+      { q: 'Qual é o tipo de energia elétrica fornecida pela tomada residencial e por que ela é utilizada em grande escala?', opts: ['Corrente Contínua (CC), pois flui em sentido único sem perder força.', 'Corrente Alternada (CA), que facilita a transformação de tensão, permitindo transmissão em alta tensão e diminuição da corrente para reduzir perdas resistivas nos cabos.', 'Energia Estática, armazenada em capacitores da rede elétrica.', 'Corrente Digital, enviando pulsos binários diretos de energia.'], a: 1, exp: 'A Corrente Alternada (CA) permite a elevação de tensão por transformadores. Transmitir em alta tensão reduz a corrente elétrica necessária para entregar a mesma potência, minimizando a perda de energia por efeito Joule nos cabos.' },
+      { q: 'Os componentes eletrônicos internos do computador necessitam de qual tipo de energia para funcionar?', opts: ['Corrente Alternada (CA) em alta voltagem.', 'Corrente Contínua (CC), que flui sempre no mesmo sentido elétrico.', 'Corrente Oscilante Trifásica.', 'Sinal analógico de radiofrequência.'], a: 1, exp: 'Os circuitos integrados e chips eletrônicos exigem Corrente Contínua (CC / DC), na qual os elétrons fluem de maneira constante no mesmo sentido.' },
+      { q: 'Qual componente é responsável por converter a Corrente Alternada (CA) da tomada em Corrente Contínua (CC) para as peças internas?', opts: ['Processador (CPU).', 'Placa-mãe.', 'Fonte de Alimentação.', 'Estabilizador de Tensão.'], a: 2, exp: 'A Fonte de Alimentação rebaixa e retifica a CA da rede em tensões contínuas adequadas (+12V, +5V, +3.3V) exigidas pelos componentes.' },
+      { q: 'Se uma fonte de alimentação possui chave seletora manual em 220V e for ligada diretamente em uma tomada de 127V, o que ocorre?', opts: ['A fonte queimará instantaneamente por excesso de carga.', 'O computador não ligará ou funcionará de forma instável por falta de tensão suficiente, mas sem queimar o equipamento.', 'A fonte converterá automaticamente a tensão para 127V.', 'O processador dobrará sua frequência de operação.'], a: 1, exp: 'Ligar uma fonte configurada manualmente para 220V em uma tomada de 127V faz com que ela receba menos tensão do que o necessário, impedindo o funcionamento correto do sistema sem causar queima física por sobretensão.' },
+      { q: 'Qual é a função do Fusível em um circuito ou filtro de linha?', opts: ['Estabilizar a oscilação de voltagem da rede elétrica.', 'Fornecer energia temporária por bateria durante um blecaute.', 'Proteger contra sobrecorrente rompendo seu filamento interno para interromper a passagem de energia.', 'Converter Corrente Contínua em Alternada.'], a: 2, exp: 'O fusível é um dispositivo de proteção contra sobrecorrente/curto-circuito. Quando a corrente ultrapassa o limite seguro, seu filamento se funde e interrompe o circuito.' },
+      { q: 'Qual equipamento tem como função principal manter o computador ligado por algum tempo durante uma queda total de energia?', opts: ['Filtro de Linha.', 'Estabilizador de Tensão.', 'Nobreak (UPS).', 'Transformador de Isolação.'], a: 2, exp: 'O Nobreak (UPS) possui baterias internas que fornecem autonomia temporária para salvar arquivos e desligar o sistema com segurança.' },
+      { q: 'Um filtro de linha de boa qualidade atua principalmente para:', opts: ['Fornecer energia de bateria quando a luz acaba.', 'Atenuar ruídos elétricos e conter picos/surtos de tensão com o uso de varistores (MOV).', 'Substituir a fonte de alimentação do computador.', 'Aumentar a velocidade de processamento do computador.'], a: 1, exp: 'Filtros de linha eficazes utilizam componentes como varistores (MOV) e indutores para filtrar interferências (RF) e conter picos de tensão transitórios.' },
+      { q: 'O que pode acontecer ao sistema operacional se o computador for desligado abruptamente puxando a tomada?', opts: ['O hardware queimará instantaneamente em 100% dos casos.', 'Risco de corromper arquivos do sistema operacional, perder dados não salvos e gerar falhas de inicialização.', 'A memória RAM salvará automaticamente os dados no processador.', 'O sistema converterá a memória RAM em disco rígido.'], a: 1, exp: 'O desligamento abrupto impede que o SO conclua a gravação de arquivos abertos e encerre os processos adequadamente, resultando em dados salvos incompletos ou corrupção do sistema de arquivos.' }
+    ]
+  },
+  {
+    title: 'Hardware & Sequência de Boot',
+    icon: '🚀',
+    questions: [
+      { q: 'Como é definido o termo Hardware no contexto da informática?', opts: ['São os programas e aplicativos instalados no computador.', 'É a parte física do computador — os componentes tangíveis e circuitos.', 'É o núcleo do sistema operacional encarregado da segurança.', 'É o conjunto de comandos em linguagem de programação.'], a: 1, exp: 'Hardware engloba todos os componentes físicos, circuitos eletrônicos, placas e periféricos que compõem a estrutura tangível da máquina.' },
+      { q: 'Qual componente é considerado o "cérebro" do computador por processar instruções e realizar cálculos aritméticos e lógicos?', opts: ['Placa-Mãe.', 'Memória RAM.', 'Processador (CPU).', 'Unidade de Disco Rígido (HD).'], a: 2, exp: 'A CPU (Unidade Central de Processamento) interpreta instruções, executa cálculos e gerencia o fluxo de controle de dados no computador.' },
+      { q: 'Por que é incorreto chamar o gabinete de CPU?', opts: ['Porque gabinete é a estrutura protetora externa; a CPU é o microprocessador instalado no soquete da placa-mãe.', 'Porque CPU é o nome técnico do monitor de vídeo.', 'Porque a CPU é o estabilizador de energia interno.', 'Não é incorreto; gabinete e CPU são exatamente o mesmo componente.'], a: 0, exp: 'O gabinete é apenas a caixa física (chassi) que abriga os componentes. A CPU é um chip (microprocessador) instalado no soquete interno da placa-mãe.' },
+      { q: 'A Placa-Mãe pode ser definida como:', opts: ['O programa principal do Windows responsável pelos gráficos.', 'A placa principal onde todos os componentes internos e periféricos se interconectam e se comunicam.', 'A bateria que mantém a hora do computador atualizada.', 'O disco de armazenamento permanente dos arquivos.'], a: 1, exp: 'A placa-mãe (Motherboard) serve como espinha dorsal do sistema, fornecendo barramentos e conexões elétricas para CPU, memória, armazenamento e expansões.' },
+      { q: 'Qual é a característica essencial da Memória RAM?', opts: ['Armazena dados de forma definitiva mesmo sem eletricidade.', 'É uma memória volátil e de acesso rápido que armazena dados de programas em execução no momento.', 'Serve exclusivamente para gerar imagens enviadas ao monitor.', 'Substitui a necessidade de ter um HD ou SSD.'], a: 1, exp: 'A RAM (Random Access Memory) é volátil: necessita de energia elétrica contínua para reter informações. Ao desligar a máquina, seu conteúdo é limpo.' },
+      { q: 'Qual é a função da Placa de Vídeo (GPU)?', opts: ['Converter corrente alternada em contínua.', 'Processar e renderizar os dados gráficos e imagens exibidos na tela.', 'Gerenciar a conexão com a rede local de internet.', 'Armazenar o sistema operacional.'], a: 1, exp: 'A GPU (Unidade de Processamento Gráfico) é um circuito especializado projetado para acelerar o processamento de imagens, vídeos e computação gráfica.' },
+      { q: 'O que é a rotina POST (Power-On Self-Test) executada pelo firmware da placa-mãe ao ligar o computador?', opts: ['O carregamento da imagem de fundo do Windows.', 'Um teste inicial de diagnóstico de componentes essenciais de hardware antes de carregar o sistema operacional.', 'A verificação de vírus nos arquivos de texto.', 'O download de atualizações da placa-mãe via internet.'], a: 1, exp: 'O POST é executado pelo BIOS/UEFI para verificar o funcionamento inicial do hardware básico (memória, processador, inicialização de vídeo) antes da entrega do controle ao sistema operacional.' },
+      { q: 'Qual é a sequência correta da inicialização de um computador até a tela de login?', opts: ['Botão Power → Sistema Operacional carrega → BIOS/UEFI → Kernel.', 'Botão Power → Energia chega à Placa-Mãe → BIOS/UEFI (POST) → Leitura do setor de boot/Bootloader → Carregamento do SO na RAM → Tela de Login.', 'Tela de Login → Firmware → RAM → CPU → Botão Power.', 'Energia na Placa-Mãe → Kernel → Botão Power → POST → Login.'], a: 1, exp: 'A ordem padrão compreende: energização, execução do firmware (BIOS/UEFI + POST), identificação do dispositivo de boot, execução do carregador (Bootloader) e carga do kernel do SO na memória RAM.' },
+      { q: 'O que é recomendado fazer antes de desconectar um pendrive do computador?', opts: ['Puxar o pendrive imediatamente, sem verificar nada.', 'Usar a opção “Remover hardware com segurança” e aguardar a confirmação.', 'Desligar a internet do computador.', 'Apagar todos os arquivos do pendrive.'], a: 1, exp: 'A remoção segura avisa o Windows para concluir qualquer gravação em andamento. Isso ajuda a evitar a perda ou corrupção de arquivos no pendrive.' }
+    ]
+  },
+  {
+    title: 'Sistemas Operacionais & Periféricos',
+    icon: '🧩',
+    questions: [
+      { q: 'O que é Software e qual é seu papel fundamental no computador?', opts: ['É a fiação física do gabinete que transmite sinal elétrico.', 'É a parte lógica — os programas, códigos e instruções que orientam o hardware a executar tarefas.', 'É o nome técnico das placas de expansão.', 'É o cooler responsável pelo resfriamento.'], a: 1, exp: 'Software consiste no conjunto intangível de instruções e dados interpretados pelo hardware para a realização de tarefas.' },
+      { q: 'O que são Drivers no ecossistema de um sistema operacional?', opts: ['Leitores ópticos de CDs e DVDs.', 'Softwares especialistas que atuam como tradutores entre o sistema operacional e os dispositivos de hardware.', 'Ferramentas físicas de manutenção do computador.', 'Cabos de dados SATA e NVMe.'], a: 1, exp: 'Drivers de dispositivo fornecem a interface de software necessária para que o sistema operacional se comunique corretamente com um hardware específico.' },
+      { q: 'O que é o Kernel de um sistema operacional?', opts: ['A interface gráfica onde ficam os ícones da área de trabalho.', 'O núcleo principal do sistema operacional responsável pelo gerenciamento de memória, processos e acesso ao hardware.', 'Um aplicativo para edição de planilhas eletrônicas.', 'O antivírus nativo do sistema.'], a: 1, exp: 'O Kernel é a camada central do sistema operacional que faz a ponte direta e segura entre as aplicações e o hardware.' },
+      { q: 'Qual alternativa representa uma diferença correta entre o ecossistema Windows e o Linux?', opts: ['Windows é um sistema aberto; Linux é um software proprietário fechado.', 'O Windows é um sistema operacional proprietário da Microsoft; o Linux é um núcleo de código aberto (Open Source) utilizado como base para diversas distribuições.', 'O Linux não possui nenhuma interface gráfica; o Windows funciona apenas por linha de comando.', 'O Windows só funciona em smartphones; o Linux é exclusivo de desktops.'], a: 1, exp: 'O Windows tem código-fonte fechado e comercial. O Linux possui seu kernel sob licença livre (Open Source), permitindo a criação de várias distribuições (Ubuntu, Fedora, Debian).' },
+      { q: 'De acordo com o fluxo de processamento, qual conjunto representa exclusivamente PERIFÉRICOS DE ENTRADA?', opts: ['Monitor, Impressora e Caixas de Som.', 'Teclado, Mouse, Microfone e Scanner.', 'Processador, Memória RAM e Placa-Mãe.', 'Pendrive, Monitor Touchscreen e Placa de Rede.'], a: 1, exp: 'Periféricos de entrada enviam dados do ambiente externo para processamento no computador (digitação, movimento, áudio e digitalização).' },
+      { q: 'Qual dos itens a seguir é considerado um PERIFÉRICO DE SAÍDA de dados?', opts: ['Teclado.', 'Scanner.', 'Impressora.', 'Microfone.'], a: 2, exp: 'A impressora recebe os dados já processados pelo computador e os apresenta fisicamente no papel (saída de informação).' },
+      { q: 'Um Monitor Touchscreen (tela sensível ao toque) se enquadra em qual categoria de periférico?', opts: ['Periférico exclusivo de entrada.', 'Periférico exclusivo de saída.', 'Periférico Misto (Entrada e Saída).', 'Componente de processamento interno.'], a: 2, exp: 'Monitores touchscreen são periféricos mistos: recebem o toque do usuário (Entrada) e exibem a resposta gráfica na tela (Saída).' },
+      { q: 'Qual é a função básica do firmware (BIOS/UEFI) no contexto dos sistemas operacionais?', opts: ['Permitir a navegação na internet antes de comprar o Windows.', 'Fornecer as instruções de baixo nível para inicializar o hardware e localizar o sistema operacional nos discos.', 'Substituir a necessidade de instalar um sistema operacional definitivo.', 'Gerenciar as contas de usuário do Windows.'], a: 1, exp: 'O BIOS/UEFI executa o reconhecimento básico dos componentes e orienta a busca do carregador do SO (Bootloader) nas unidades de armazenamento.' }
+    ]
+  },
+  {
+    title: 'História & Evolução da Computação',
+    icon: '🕰️',
+    questions: [
+      { q: 'Qual instrumento antigo, formado por hastes e bolinhas que se movem para representar números, foi muito utilizado para fazer cálculos antes das calculadoras eletrônicas?', opts: ['Pascalina.', 'Ábaco.', 'ENIAC.', 'Computador de transistores.'], a: 1, exp: 'O ábaco é um dos instrumentos de cálculo mais antigos. Suas bolinhas deslizantes ajudam a representar quantidades e realizar operações como soma e subtração.' },
+      { q: 'No século XVII, Blaise Pascal inventou a "Pascalina". Essa máquina caracterizava-se por ser:', opts: ['O primeiro computador a usar eletricidade e válvulas.', 'Uma calculadora mecânica baseada em rodas dentadas e engrenagens.', 'Um sistema de cartões perfurados para tecelagem.', 'A primeira impressora térmica.'], a: 1, exp: 'A Pascalina foi um marco mecânico que realizava somas e subtrações por meio de engrenagens interligadas.' },
+      { q: 'O ENIAC, concluído na década de 1940, é reconhecido na história da computação principalmente por qual característica?', opts: ['Era um computador pessoal pequeno, usado em casas.', 'Era um dos primeiros computadores eletrônicos de grande porte e podia ser reprogramado para diferentes cálculos.', 'Era um notebook leve, movido a bateria.', 'Possuía tela sensível ao toque e interface gráfica com janelas.'], a: 1, exp: 'O ENIAC foi um dos primeiros computadores eletrônicos de grande escala. Era enorme, utilizava milhares de válvulas eletrônicas e podia ser programado para executar diferentes tipos de cálculos.' },
+      { q: 'A Primeira Geração dos computadores (1951-1959) tinha como tecnologia eletrônica principal:', opts: ['Transistores.', 'Circuitos Integrados.', 'Válvulas Eletrônicas.', 'Microprocessadores.'], a: 2, exp: 'A 1ª Geração de computadores utilizava válvulas a vácuo, que geravam muito calor, consumiam grande energia e queimavam com frequência.' },
+      { q: 'Na Segunda Geração de computadores (1959-1965), as válvulas foram substituídas por qual componente menor e mais eficiente?', opts: ['Válvulas de Mercúrio.', 'Transistores.', 'Microprocessadores de 64 bits.', 'Relés mecânicos de madeira.'], a: 1, exp: 'O transistor substituiu as válvulas na 2ª Geração, permitindo equipamentos consideravelmente menores, mais rápidos e eficientes.' },
+      { q: 'A Terceira Geração de computadores (1965-1975) foi marcada pela introdução de:', opts: ['Circuitos Integrados (Chips de silício).', 'Válvulas termiônicas duplas.', 'Redes Wi-Fi.', 'Inteligência Artificial generativa.'], a: 0, exp: 'Os Circuitos Integrados (CIs) permitiram colocar múltiplos transistores em uma única pastilha de silício, miniaturizando os circuitos.' },
+      { q: 'O que caracterizou a Quarta Geração da computação (a partir de 1975)?', opts: ['O retorno às máquinas puramente mecânicas.', 'O surgimento do Microprocessador, reunindo a CPU em um único chip e viabilizando o computador pessoal (PC).', 'O fim definitivo do uso do silício na eletrônica.', 'A proibição do uso comercial de computadores.'], a: 1, exp: 'A 4ª Geração consolidou a arquitetura do microprocessador (como o Intel 4004/8080), permitindo a fabricação do computador pessoal (PC).' },
+      { q: 'Em 1985 foi lançada a primeira versão do ambiente gráfico da Microsoft. Qual era o seu nome?', opts: ['Windows 95.', 'Windows 1.0, rodando como uma interface gráfica sobre o MS-DOS.', 'Windows XP.', 'MS-DOS 2.0.'], a: 1, exp: 'O Windows 1.0 foi lançado em 1985 como uma extensão operacional gráfica para o sistema MS-DOS.' }
+    ]
+  },
+  {
+    title: 'Unidades Binárias & Armazenamento',
+    icon: '💾',
+    questions: [
+      { q: 'Qual é a menor unidade de informação tratada por um computador digital (Bit)?', opts: ['Um número decimal de 0 a 9.', 'Um dígito binário que pode assumir o valor de 0 ou 1.', 'Um conjunto de 8 caracteres.', 'Um arquivo de texto formatado.'], a: 1, exp: 'Bit vem de "Binary Digit". É a unidade fundamental de dados na computação, representando dois estados possíveis: 0 ou 1.' },
+      { q: 'Quantos Bits são necessários para formar exatamente 1 Byte?', opts: ['2 bits.', '4 bits.', '8 bits.', '10 bits.'], a: 2, exp: 'Um Byte é um conjunto padronizado de 8 bits, quantidade suficiente para codificar um caractere (como uma letra ou símbolo).' },
+      { q: 'Qual das opções apresenta a ordem crescente correta das unidades de medida de dados no padrão decimal?', opts: ['Byte → MB → KB → GB → TB.', 'Byte → KB → MB → GB → TB.', 'TB → GB → MB → KB → Byte.', 'KB → Byte → GB → MB → TB.'], a: 1, exp: 'A ordem crescente correta é: Byte, Kilobyte (KB), Megabyte (MB), Gigabyte (GB) e Terabyte (TB).' },
+      { q: 'Na convenção decimal didática adotada neste curso (onde 1 KB ≈ 1.000 Bytes), 1 Megabyte (MB) equivale a:', opts: ['100 Bytes.', '1.000 Kilobytes (KB).', '1.000 Gigabytes (GB).', '8 Bits.'], a: 1, exp: 'No padrão decimal simplificado para ensino: 1 KB = 1.000 Bytes, 1 MB = 1.000 KB e 1 GB = 1.000 MB.' },
+      { q: 'Qual é a vantagem principal de um SSD (Solid State Drive) sobre um HD (Disco Rígido) mecânico tradicional?', opts: ['O SSD possui agulhas magnéticas mais rápidas.', 'O SSD utiliza memórias flash sem partes móveis, oferecendo taxas de leitura e escrita muito superiores e maior resistência a impactos.', 'O SSD apaga todos os dados ao desligar o computador.', 'O SSD funciona apenas sem conexão com a internet.'], a: 1, exp: 'Os SSDs usam chips de memória flash não volátil. Sem partes mecânicas em movimento, entregam altas velocidades de acesso e resistência a quedas.' },
+      { q: 'Qual é a vantagem de um sistema com arquitetura de 64 bits em relação a um de 32 bits?', opts: ['O sistema de 64 bits é exatamente duas vezes mais rápido em qualquer programa.', 'A arquitetura de 64 bits consegue desempenhar tarefas mais complexas e desempenhar suporte a mais de 4 GB de memória RAM.', 'O sistema de 32 bits não consegue editar textos.', 'Sistemas de 64 bits não necessitam de eletricidade.'], a: 1, exp: 'Processadores e sistemas de 32 bits possuem limite de endereçamento direto de aproximadamente 4 GB de RAM. A arquitetura de 64 bits expande esse limite para Exabytes.' },
+      { q: 'Um arquivo de imagem possui 3.500 KB. Seu tamanho aproximado em Megabytes (MB) é:', opts: ['3,5 Bytes.', '3,5 Megabytes (MB).', '3,5 Gigabytes (GB).', '35 Terabytes (TB).'], a: 1, exp: 'Considerando que 1.000 KB equivalem a 1 MB, 3.500 KB correspondem a 3,5 MB.' },
+      { q: 'Qual dos meios de armazenamento abaixo PERDE suas informações quando o computador é desligado?', opts: ['Disco Rígido (HD).', 'Unidade SSD.', 'Memória RAM.', 'Pendrive USB.'], a: 2, exp: 'A memória RAM é volátil (depende de alimentação elétrica contínua). HD, SSD e Pendrive são mídias de armazenamento não volátil.' }
+    ]
+  },
+  {
+    title: 'Navegação no Windows & Periféricos',
+    icon: '🖥️',
+    questions: [
+      { q: 'Qual é a função do clique com o BOTÃO DIREITO do mouse sobre um item no Windows?', opts: ['Abrir o arquivo imediatamente.', 'Excluir o arquivo para a Lixeira sem confirmação.', 'Abrir o Menu de Contexto com opções como copiar, renomear e propriedades.', 'Minimizar a janela ativa.'], a: 2, exp: 'O clique com o botão direito aciona o Menu de Contexto, exibindo as opções disponíveis especificamente para aquele item.' },
+      { q: 'Nos navegadores de internet e editores do Windows, a combinação Ctrl + Scroll (rodinha do mouse) serve para:', opts: ['Mudar a cor do plano de fundo.', 'Aumentar ou diminuir o zoom da tela/página.', 'Fechar todas as abas de uma só vez.', 'Alternar o usuário conectado.'], a: 1, exp: 'Manter a tecla Ctrl pressionada e girar a rodinha do mouse é o atalho universal para ajuste do nível de Zoom.' },
+      { q: 'Qual tecla de função é o atalho padrão para RENOMEAR um arquivo ou pasta selecionada no Explorador de Arquivos?', opts: ['F1.', 'F2.', 'F5.', 'F11.'], a: 1, exp: 'A tecla F2 coloca o nome do item selecionado em modo de edição rápida no Windows.' },
+      { q: 'Qual combinação de teclas fecha o programa ativo ou abre a janela de desligamento do Windows?', opts: ['Ctrl + C.', 'Alt + F4.', 'Windows + E.', 'Ctrl + Shift + Esc.'], a: 1, exp: 'Alt + F4 solicita o encerramento do aplicativo em primeiro plano. Se pressionado na Área de Trabalho, aciona o menu de desligamento.' },
+      { q: 'Qual tecla coloca aplicativos (como navegadores) em Modo de Tela Cheia (Full Screen)?', opts: ['F5.', 'F11.', 'Esc.', 'Print Screen.'], a: 1, exp: 'F11 alterna a exibição da janela ativa para ocupar 100% da tela, ocultando barras de ferramentas e do sistema.' },
+      { q: 'O atalho de teclado Windows + E é utilizado para:', opts: ['Abrir o Explorador de Arquivos (File Explorer).', 'Encerrar a sessão do usuário.', 'Esvaziar a Lixeira do Windows.', 'Abrir o Gerenciador de Tarefas.'], a: 0, exp: 'A combinação da tecla com o logotipo do Windows + E abre diretamente a janela do Explorador de Arquivos.' },
+      { q: 'Para abrir o Gerenciador de Tarefas diretamente via teclado no Windows, utiliza-se:', opts: ['Ctrl + Alt + Del apenas.', 'Ctrl + Shift + Esc.', 'Windows + R.', 'Alt + Tab.'], a: 1, exp: 'Ctrl + Shift + Esc abre diretamente o Gerenciador de Tarefas sem passar por telas intermediárias.' },
+      { q: 'Qual é a função do atalho Alt + Tab no Windows?', opts: ['Fechar a janela atual.', 'Alternar rapidamente entre as janelas e aplicativos abertos.', 'Bloquear a tela do computador.', 'Atualizar a página da web.'], a: 1, exp: 'Segurar Alt e pressionar Tab exibe a lista de janelas ativas, permitindo alternar a navegação entre elas.' }
+    ]
+  },
+  {
+    title: 'Ferramentas & Diagnóstico do Windows',
+    icon: '🛠️',
+    questions: [
+      { q: 'Qual ferramenta do Windows permite visualizar e encerrar processos ou programas que travaram?', opts: ['Bloco de Notas.', 'Gerenciador de Tarefas (Task Manager).', 'Painel de Controle de Som.', 'Limpeza de Disco.'], a: 1, exp: 'O Gerenciador de Tarefas monitora o uso de CPU, RAM e disco por processo, permitindo finalizar tarefas travadas.' },
+      { q: 'Para qual finalidade serve o comando CHKDSK no Prompt de Comando (CMD)?', opts: ['Verificar a velocidade da conexão de internet.', 'Verificar o sistema de arquivos e corrigir inconsistências lógicas no disco.', 'Formatar a memória RAM do computador.', 'Instalar novos drivers de vídeo.'], a: 1, exp: 'O CHKDSK analisa a integridade do sistema de arquivos e recupera setores lógicos corrompidos (ele não repara danos físicos na estrutura do disco).' },
+      { q: 'O que faz a ferramenta Otimizar e Desfragmentar Unidades no Windows em relação a um HD mecânico?', opts: ['Apaga permanentemente os vírus do computador.', 'Reorganiza os fragmentos de arquivos espalhados no disco magnético para acelerar a leitura.', 'Aumenta a capacidade total do disco em Gigabytes.', 'Converte o HD magnético em SSD.'], a: 1, exp: 'Em HDs mecânicos, a desfragmentação junta partes dispersas do mesmo arquivo em setores contíguos. Em SSDs, o Windows executa a otimização por comando TRIM.' },
+      { q: 'A ferramenta Restauração do Sistema do Windows tem como função:', opts: ['Fazer cópia de segurança de fotos e documentos pessoais.', 'Reverter alterações do sistema e drivers para um ponto de restauração anterior sem afetar arquivos pessoais.', 'Formatar o disco e apagar tudo.', 'Aumentar a memória RAM via software.'], a: 1, exp: 'A Restauração do Sistema desfaz alterações em arquivos de sistema, chaves de registro e programas instalados recentemente, preservando os arquivos pessoais do usuário.' },
+      { q: 'Qual é a principal utilidade do aplicativo Bloco de Notas (Notepad) presente no Windows?', opts: ['Criar planilhas financeiras complexas com fórmulas matemáticas.', 'Criar e editar arquivos de texto simples, sem formatação avançada ou imagens.', 'Editar e imprimir fotografias em alta resolução.', 'Gravar vídeos da tela do computador.'], a: 1, exp: 'O Bloco de Notas é um editor básico do Windows, indicado para criar e editar arquivos de texto simples, como anotações e arquivos .txt, sem recursos avançados de formatação.' },
+      { q: 'Qual combinação de teclas é usada para copiar um texto ou arquivo selecionado?', opts: ['Ctrl + C.', 'Ctrl + V.', 'Ctrl + X.', 'Ctrl + P.'], a: 0, exp: 'Ctrl + C copia o item selecionado para a área de transferência, permitindo colá-lo em outro local com Ctrl + V.' },
+      { q: 'Qual combinação de teclas é usada para colar um texto ou arquivo que foi copiado anteriormente?', opts: ['Ctrl + Z.', 'Ctrl + V.', 'Ctrl + C.', 'Ctrl + S.'], a: 1, exp: 'Ctrl + V cola o conteúdo que está na área de transferência, como um texto, imagem ou arquivo copiado anteriormente.' },
+      { q: 'Qual combinação de teclas serve para desfazer a última ação em muitos programas do Windows?', opts: ['Ctrl + Z.', 'Ctrl + Y.', 'Ctrl + A.', 'Ctrl + F.'], a: 0, exp: 'Ctrl + Z desfaz a última ação realizada, como apagar um texto, mover um arquivo ou excluir um item por engano.' },
+      { q: 'Para que serve a tecla Windows, aquela que possui o logotipo do Windows?', opts: ['Abrir o Menu Iniciar do Windows.', 'Desligar imediatamente o computador.', 'Apagar os arquivos da Lixeira.', 'Aumentar o volume do som.'], a: 0, exp: 'A tecla Windows abre o Menu Iniciar, de onde é possível procurar programas, arquivos e configurações do computador.' },
+      { q: 'O que ocorre ao enviar um arquivo para a Lixeira no Windows?', opts: ['O arquivo é excluído definitivamente e de forma irreversível imediatamente.', 'O arquivo é movido para uma pasta especial e pode ser restaurado caso necessário.', 'O arquivo é enviado para a nuvem da Microsoft.', 'O arquivo é convertido em arquivo criptografado.'], a: 1, exp: 'A Lixeira armazena temporariamente arquivos excluídos das unidades locais, permitindo sua restauração até que ela seja esvaziada.' },
+      { q: 'Qual combinação de teclas exclui um arquivo selecionado no Windows PERMANENTEMENTE, sem enviá-lo para a Lixeira?', opts: ['Ctrl + Delete.', 'Shift + Delete.', 'Alt + Delete.', 'Windows + Delete.'], a: 1, exp: 'A combinação Shift + Delete ignora o envio para a Lixeira e remove a referência do arquivo diretamente do sistema de arquivos.' }
+    ]
+  }
+];
+
+// Mapeamento e consolidação
+let allQuestions = [];
+let phaseIndices = [];
+
+phases.forEach((p, pIndex) => {
+  p.questions.forEach((qObj) => {
+    allQuestions.push({
+      ...qObj,
+      phaseIndex: pIndex,
+      phaseTitle: p.title
+    });
+  });
+});
+
+// Estado da Avaliação
+let current = 0;
+let answers = new Array(allQuestions.length).fill(null);
+let startTime = null;
+let endTime = null;
+
+// Utilitários DOM
+const $ = (id) => document.getElementById(id);
+
+// Validação Automática das Questões
+function validateBank() {
+  let errors = [];
+  allQuestions.forEach((q, idx) => {
+    if (!q.opts || q.opts.length !== 4) {
+      errors.push(`Questão ${idx + 1} não possui exatamente 4 alternativas.`);
+    }
+    if (typeof q.a !== 'number' || q.a < 0 || q.a > 3) {
+      errors.push(`Questão ${idx + 1} possui índice de resposta correta inválido (${q.a}).`);
+    }
+  });
+  if (errors.length > 0) {
+    console.error("Erros no Banco de Dados de Questões:", errors);
+    alert("Atenção, professor: foram encontrados problemas no banco de questões:\n\n" + errors.join("\n"));
+  }
+}
+
+// Inicialização
+function initApp() {
+  validateBank();
+  renderMissionList();
+
+  $('startBtn').onclick = startQuiz;
+  $('backBtn').onclick = prevQuestion;
+  $('nextBtn').onclick = handleNext;
+  $('restartBtn').onclick = resetQuiz;
+  $('printBtn').onclick = () => window.print();
+
+  $('studentName').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') startQuiz();
+  });
+}
+
+// Renderiza a lista de missões no painel lateral
+function renderMissionList() {
+  const container = $('missionList');
+  container.innerHTML = '';
+  
+  let currentMission = allQuestions[current] ? allQuestions[current].phaseIndex : 0;
+  
+  phases.forEach((p, idx) => {
+    const div = document.createElement('div');
+    
+    // Verifica se a missão foi concluída (todas as questões da missão respondidas)
+    const phaseQuestions = allQuestions.filter(q => q.phaseIndex === idx);
+    const isDone = phaseQuestions.every(q => {
+      const globalIdx = allQuestions.indexOf(q);
+      return answers[globalIdx] !== null;
+    });
+
+    let statusClass = 'mission';
+    if (idx === currentMission && $('quizScreen').classList.contains('active')) {
+      statusClass += ' active';
+    } else if (isDone) {
+      statusClass += ' done';
+    }
+
+    div.className = statusClass;
+    div.innerHTML = `<span class="num">${p.icon}</span> <span>${p.title}</span>`;
+    container.appendChild(div);
+  });
+
+  // Atualiza contador de missões concluídas
+  let completedMissions = 0;
+  phases.forEach((p, idx) => {
+    const phaseQuestions = allQuestions.filter(q => q.phaseIndex === idx);
+    if (phaseQuestions.every(q => answers[allQuestions.indexOf(q)] !== null)) {
+      completedMissions++;
+    }
+  });
+  $('missionProgressText').textContent = `${completedMissions}/7`;
+}
+
+// Inicia a Prova
+function startQuiz() {
+  const nameInput = $('studentName').value.trim();
+  if (!nameInput) {
+    alert("Por favor, digite seu nome completo antes de iniciar a missão.");
+    $('studentName').focus();
+    return;
+  }
+
+  current = 0;
+  answers.fill(null);
+  startTime = new Date();
+  
+  showScreen('quizScreen');
+  renderQuestion();
+  renderMissionList();
+}
+
+// Exibe a tela desejada
+function showScreen(screenId) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  $(screenId).classList.add('active');
+}
+
+// Renderiza a pergunta atual
+function renderQuestion() {
+  const q = allQuestions[current];
+  const total = allQuestions.length;
+
+  $('phaseLabel').textContent = `MISSÃO 0${q.phaseIndex + 1} · ${q.phaseTitle.toUpperCase()}`;
+  $('questionCount').textContent = `PERGUNTA ${current + 1} DE ${total}`;
+
+  // Progresso correto baseado na pergunta visível
+  const progressPercent = ((current + 1) / total) * 100;
+  $('progressFill').style.width = `${progressPercent}%`;
+
+  $('questionTitle').textContent = q.q;
+  $('questionHint').textContent = "Selecione a alternativa correta:";
+
+  const answersContainer = $('answers');
+  answersContainer.innerHTML = '';
+
+  const letters = ['A', 'B', 'C', 'D'];
+
+  q.opts.forEach((optText, optIdx) => {
+    const label = document.createElement('label');
+    label.className = 'answer';
+    if (answers[current] === optIdx) {
+      label.classList.add('selected');
+    }
+
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'answer_opt';
+    input.value = optIdx;
+    input.checked = (answers[current] === optIdx);
+
+    input.addEventListener('change', () => {
+      answers[current] = optIdx;
+      document.querySelectorAll('.answer').forEach(el => el.classList.remove('selected'));
+      label.classList.add('selected');
+      renderMissionList();
+    });
+
+    label.appendChild(input);
+    
+    const letterSpan = document.createElement('span');
+    letterSpan.className = 'letter';
+    letterSpan.textContent = letters[optIdx];
+    label.appendChild(letterSpan);
+
+    const textSpan = document.createElement('span');
+    textSpan.className = 'answer-text';
+    textSpan.textContent = optText;
+    label.appendChild(textSpan);
+
+    answersContainer.appendChild(label);
+  });
+
+  // Atualiza texto do botão próximo
+  if (current === total - 1) {
+    $('nextBtn').textContent = "FINALIZAR AVALIAÇÃO 🏆";
+  } else {
+    $('nextBtn').textContent = "PRÓXIMA PERGUNTA →";
+  }
+
+  // Visibilidade do botão voltar
+  if (current === 0) {
+    $('backBtn').style.visibility = 'hidden';
+  } else {
+    $('backBtn').style.visibility = 'visible';
+  }
+
+  renderMissionList();
+}
+
+function prevQuestion() {
+  if (current > 0) {
+    current--;
+    renderQuestion();
+  }
+}
+
+function handleNext() {
+  if (answers[current] === null) {
+    alert("Por favor, selecione uma resposta antes de prosseguir.");
+    return;
+  }
+
+  if (current < allQuestions.length - 1) {
+    current++;
+    renderQuestion();
+  } else {
+    // Confirmação ao encerrar
+    const unanswered = answers.filter(a => a === null).length;
+    let msg = "Deseja realmente finalizar a missão e gerar o relatório?";
+    if (unanswered > 0) {
+      msg = `Você ainda tem ${unanswered} pergunta(s) sem resposta. Deseja finalizar mesmo assim?`;
+    }
+    if (confirm(msg)) {
+      finishQuiz();
+    }
+  }
+}
+
+// Finaliza o Quiz e Calcula Resultados
+function finishQuiz() {
+  endTime = new Date();
+  
+  let correctCount = 0;
+  let missionScores = new Array(phases.length).fill(0);
+  let missionTotals = new Array(phases.length).fill(0);
+
+  allQuestions.forEach((q, idx) => {
+    missionTotals[q.phaseIndex]++;
+    if (answers[idx] === q.a) {
+      correctCount++;
+      missionScores[q.phaseIndex]++;
+    }
+  });
+
+  const totalQuestions = allQuestions.length;
+  const percent = Math.round((correctCount / totalQuestions) * 100);
+
+  // Cálculo de XP com bônus por missão perfeita
+  const baseXPPerQuestion = 1000 / totalQuestions;
+  let rawXP = correctCount * baseXPPerQuestion;
+
+  // Bônus de +25 XP por missão com 100% de acerto (limitado a 1000 XP no total)
+  let bonusXP = 0;
+  phases.forEach((p, idx) => {
+    if (missionScores[idx] === missionTotals[idx] && missionTotals[idx] > 0) {
+      bonusXP += 25; // Pequeno bônus por missão perfeita
+    }
+  });
+
+  const finalXP = Math.min(1000, Math.round(rawXP + bonusXP));
+
+  // Nível do Agente
+  let levelTitle = '';
+  let medalIcon = '🏆';
+  if (percent >= 90) {
+    levelTitle = '🥇 Agente Especialista em Hardware e SO';
+    medalIcon = '🥇';
+  } else if (percent >= 70) {
+    levelTitle = '🥈 Técnico em Treinamento Avançado';
+    medalIcon = '🥈';
+  } else if (percent >= 50) {
+    levelTitle = '🥉 Suporte Técnico Nível 1';
+    medalIcon = '🥉';
+  } else {
+    levelTitle = '💡 Aspirante a TI / Em Formação';
+    medalIcon = '💡';
+  }
+
+  // Tempo decorrido
+  const durationMs = endTime - startTime;
+  const minutes = Math.floor(durationMs / 60000);
+  const seconds = Math.floor((durationMs % 60000) / 1000);
+  const timeFormatted = `${minutes}m ${seconds}s`;
+
+  // Preenche dados na interface
+  $('resultMedal').textContent = medalIcon;
+  $('agentLevel').textContent = levelTitle;
+  $('scoreValue').textContent = finalXP;
+  $('correctValue').textContent = `${correctCount}/${totalQuestions}`;
+  $('percentValue').textContent = `${percent}%`;
+  $('timeValue').textContent = timeFormatted;
+
+  const studentName = $('studentName').value.trim();
+  const studentClass = $('studentClass').value.trim();
+  
+  $('studentSummary').textContent = `Agente: ${studentName}` + (studentClass ? ` (${studentClass})` : '') + ` · Concluído em ${new Date().toLocaleDateString('pt-BR')} às ${new Date().toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'})}.`;
+
+  // Detalhamento por missão
+  const breakdownContainer = $('missionBreakdownList');
+  breakdownContainer.innerHTML = '';
+
+  phases.forEach((p, idx) => {
+    const score = missionScores[idx];
+    const total = missionTotals[idx];
+    const pPercent = Math.round((score / total) * 100);
+
+    const row = document.createElement('div');
+    row.className = 'm-row';
+    row.innerHTML = `
+      <span class="m-title">${p.icon} ${p.title}</span>
+      <div class="m-bar"><div class="m-bar-fill" style="width: ${pPercent}%"></div></div>
+      <span class="m-score">${score}/${total}</span>
+    `;
+    breakdownContainer.appendChild(row);
+  });
+
+  // Renderiza a revisão de todas as perguntas
+  renderReviewList();
+
+  showScreen('resultScreen');
+  
+  // Marca todas como concluídas na barra lateral
+  document.querySelectorAll('.mission').forEach(m => {
+    m.classList.remove('active');
+    m.classList.add('done');
+  });
+}
+
+// Renderiza a lista de revisão final com as explicações
+function renderReviewList() {
+  const container = $('reviewList');
+  container.innerHTML = '';
+
+  const letters = ['A', 'B', 'C', 'D'];
+
+  allQuestions.forEach((q, idx) => {
+    const userAnswer = answers[idx];
+    const isCorrect = (userAnswer === q.a);
+
+    const div = document.createElement('div');
+    div.className = 'review-item';
+
+    const titleEl = document.createElement('strong');
+    titleEl.textContent = `${idx + 1}. ${q.q}`;
+    div.appendChild(titleEl);
+
+    const userAnsEl = document.createElement('div');
+    if (userAnswer !== null) {
+      userAnsEl.className = isCorrect ? 'correct' : 'incorrect';
+      userAnsEl.textContent = `Sua resposta: (${letters[userAnswer]}) ${q.opts[userAnswer]} ${isCorrect ? '✓' : '✗'}`;
+    } else {
+      userAnsEl.className = 'incorrect';
+      userAnsEl.textContent = 'Sua resposta: Não respondida ✗';
+    }
+    div.appendChild(userAnsEl);
+
+    if (!isCorrect) {
+      const correctAnsEl = document.createElement('div');
+      correctAnsEl.className = 'correct';
+      correctAnsEl.style.fontSize = '12px';
+      correctAnsEl.style.marginTop = '3px';
+      correctAnsEl.textContent = `Gabarito correto: (${letters[q.a]}) ${q.opts[q.a]}`;
+      div.appendChild(correctAnsEl);
+    }
+
+    const expEl = document.createElement('div');
+    expEl.style.color = 'var(--muted)';
+    expEl.style.fontSize = '12px';
+    expEl.style.marginTop = '4px';
+    expEl.textContent = `Explicação: ${q.exp}`;
+    div.appendChild(expEl);
+
+    container.appendChild(div);
+  });
+}
+
+// Reinicia completamente a prova
+function resetQuiz() {
+  if (confirm("Tem certeza que deseja recomeçar a missão? Todas as respostas atuais serão apagadas.")) {
+    current = 0;
+    answers.fill(null);
+    startTime = null;
+    endTime = null;
+
+    $('studentName').value = '';
+    $('studentClass').value = '';
+
+    showScreen('introScreen');
+    renderMissionList();
+  }
+}
+
+// Inicializa no carregamento
+window.addEventListener('DOMContentLoaded', initApp);
+</script>
+</body>
+</html>
