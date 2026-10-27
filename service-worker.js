@@ -1,6 +1,6 @@
 // NÚCLEO INFORMÁTICA — Service Worker (gerado por build/build.mjs — não edite à mão)
 // Regras: só arquivos LOCAIS, nunca bloqueia o site, sempre há fallback para a rede.
-const BUILD = '9bdc2de992d5';
+const BUILD = '0b0a2d762d42';
 const CACHE_PREFIX = 'nic-formacao-';
 const CACHE_NAME = CACHE_PREFIX + BUILD;
 const OFFLINE_URL = './offline.html';
