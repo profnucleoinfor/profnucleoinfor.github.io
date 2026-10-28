@@ -32,63 +32,116 @@
 <link rel="icon" type="image/png" href="./assets/favicon.png">
 <link rel="apple-touch-icon" href="./assets/icon-192.png">
 <link rel="stylesheet" href="./assets/css/nic.2e7d6caa.css">
+<link rel="stylesheet" href="./assets/css/word-unificado.css">
 </head>
 <body class="p-curso">
 <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
 <nav class="c-nav" aria-label="Navegação do módulo">
-  <div class="wrap c-nav__in">
-    <a href="./dashboard.html" aria-label="Voltar ao painel do aluno"><span aria-hidden="true">⬅️</span> Painel</a>
-    <span class="selo">Módulo Word + Digitação</span>
-  </div>
+<div class="wrap c-nav__in">
+<a href="./dashboard.html" aria-label="Voltar ao painel do aluno"><span aria-hidden="true">⬅️</span> Painel</a>
+<span class="selo">Módulo Word + Digitação</span>
+</div>
 </nav>
 <main id="conteudo-principal">
-  <header class="c-hero">
-    <h1>Bem-vindo, <span id="nomeAlunoDisplay">Estudante</span> <span aria-hidden="true">📝</span></h1>
-    <p>“Escreva a sua história com excelência.”<br><small>Provérbios 16:3</small></p>
-  </header>
-  <div class="wrap">
-    <p class="c-mission">🎯 <strong>Missão:</strong> Criar documentos profissionais, dominar formatação, tabelas, mala direta e digitar com velocidade e precisão!</p>
-    <div class="c-cards">
-      <div class="card-aula">
-        <span class="card-aula__ico" aria-hidden="true">📄</span>
-        <h3>Slides da Aula</h3>
-        <p>Conceitos e práticas de formatação.</p>
-        <a href="./visualizador.html?url=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1tFp0vR61l2u96PF3DQWwDd2IvVg13m-DaDIVhFf0VYA%2Fedit%3Fusp%3Ddrive_link&amp;titulo=Slides+Word+%2B+Digita%C3%A7%C3%A3o" class="btn-modulo" data-material-key="slides">Abrir Material</a>
-      </div>
-      <div class="card-aula">
-        <span class="card-aula__ico" aria-hidden="true">📘</span>
-        <h3>Apostila Completa</h3>
-        <p>Guia completo do Word e Digitação.</p>
-        <a href="https://drive.google.com/file/d/1gqNYTYBZHHvUvnsSwSWOiixcQin5suX_/view?usp=drive_link" class="btn-modulo" data-material-key="apostila" target="_blank" rel="noopener noreferrer">Ler Agora</a>
-      </div>
-      <div class="card-aula">
-        <span class="card-aula__ico" aria-hidden="true">✍️</span>
-        <h3>Exercícios</h3>
-        <p>Prática de digitação e formatação.</p>
-        <a href="https://forms.gle/BV6gxxEkJJXq1z3A9" class="btn-modulo" data-material-key="exercicios" target="_blank" rel="noopener noreferrer">Enviar Atividade</a>
-      </div>
-      <div class="card-aula">
-        <span class="card-aula__ico" aria-hidden="true">📝</span>
-        <h3>Avaliação Final</h3>
-        <p>Desafio de documento complexo.</p>
-        <button type="button" class="btn-prova" data-acesso="prova">Iniciar Prova</button>
-      </div>
-    </div>
-    <section class="c-bloco" aria-labelledby="secao-titulo">
-      <h2 id="secao-titulo"><span aria-hidden="true">⌨️</span> Atalhos do Word</h2>
-      <details class="acc" name="acc-word"><summary>✏️ Edição e Formatação</summary><div class="acc__corpo"><table class="tabela"><tbody><tr><td><kbd>Ctrl</kbd> + <kbd>B</kbd></td><td>Negrito</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>I</kbd></td><td>Itálico</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>U</kbd></td><td>Sublinhado</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>Enter</kbd></td><td>Inserir quebra de página</td></tr></tbody></table></div></details>
-      <details class="acc" name="acc-word"><summary>⌨️ Digitação e Navegação</summary><div class="acc__corpo"><table class="tabela"><tbody><tr><td><kbd>Ctrl</kbd> + <kbd>A</kbd></td><td>Selecionar tudo</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>C</kbd></td><td>Copiar</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>X</kbd></td><td>Recortar</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>V</kbd></td><td>Colar</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>Z</kbd></td><td>Desfazer</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>Y</kbd></td><td>Refazer</td></tr></tbody></table></div></details>
-    </section>
-    <div class="revisao">
-      <h3>🔒 Revisão do Módulo</h3>
-      <p>Dicas para digitação rápida e sem erros.</p>
-      <button type="button" class="btn-rev" data-acesso="revisao">Liberar Conteúdo</button>
-    </div>
-  </div>
-  <footer class="c-rodape"><p>© NIC Formação Profissional — Educação com Propósito</p></footer>
+<header class="c-hero">
+<h1>Bem-vindo, <span id="nomeAlunoDisplay">Estudante</span> <span aria-hidden="true">📝</span></h1>
+<p>“Escreva a sua história com excelência.”<br><small>Provérbios 16:3</small></p>
+</header>
+<div class="wrap">
+<p class="c-mission">🎯 <strong>Missão:</strong> Criar documentos profissionais, dominar formatação, tabelas, mala direta e digitar com velocidade e precisão!</p>
+<nav class="nic-tabs" role="tablist" aria-label="Seções do módulo Word e Digitação">
+<button type="button" class="nic-tab is-active" role="tab" id="tab-materiais" aria-controls="painel-materiais" aria-selected="true" data-tab="materiais">📚 Materiais</button>
+<button type="button" class="nic-tab" role="tab" id="tab-treino" aria-controls="painel-treino" aria-selected="false" data-tab="treino">⌨️ Treino de Digitação</button>
+<button type="button" class="nic-tab" role="tab" id="tab-atalhos" aria-controls="painel-atalhos" aria-selected="false" data-tab="atalhos">⚡ Atalhos do Word</button>
+<button type="button" class="nic-tab" role="tab" id="tab-desempenho" aria-controls="painel-desempenho" aria-selected="false" data-tab="desempenho">🏆 Meu Desempenho</button>
+</nav>
+<section class="nic-panel is-active" id="painel-materiais" role="tabpanel" aria-labelledby="tab-materiais">
+<div class="c-cards">
+<div class="card-aula">
+<span class="card-aula__ico" aria-hidden="true">📄</span>
+<h3>Slides da Aula</h3>
+<p>Conceitos e práticas de formatação.</p>
+<a href="./visualizador.html?url=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1tFp0vR61l2u96PF3DQWwDd2IvVg13m-DaDIVhFf0VYA%2Fedit%3Fusp%3Ddrive_link&amp;titulo=Slides+Word+%2B+Digita%C3%A7%C3%A3o" class="btn-modulo" data-material-key="slides">Abrir Material</a>
+</div>
+<div class="card-aula">
+<span class="card-aula__ico" aria-hidden="true">📘</span>
+<h3>Apostila Completa</h3>
+<p>Guia completo do Word e Digitação.</p>
+<a href="https://drive.google.com/file/d/1gqNYTYBZHHvUvnsSwSWOiixcQin5suX_/view?usp=drive_link" class="btn-modulo" data-material-key="apostila" target="_blank" rel="noopener noreferrer">Ler Agora</a>
+</div>
+<div class="card-aula">
+<span class="card-aula__ico" aria-hidden="true">✍️</span>
+<h3>Exercícios</h3>
+<p>Prática de digitação e formatação.</p>
+<a href="https://forms.gle/BV6gxxEkJJXq1z3A9" class="btn-modulo" data-material-key="exercicios" target="_blank" rel="noopener noreferrer">Enviar Atividade</a>
+</div>
+<div class="card-aula">
+<span class="card-aula__ico" aria-hidden="true">📝</span>
+<h3>Avaliação Final</h3>
+<p>Desafio de documento complexo.</p>
+<button type="button" class="btn-prova" data-acesso="prova">Iniciar Prova</button>
+</div>
+</div>
+<div class="revisao">
+<h3>🔒 Revisão do Módulo</h3>
+<p>Dicas para digitação rápida e sem erros.</p>
+<button type="button" class="btn-rev" data-acesso="revisao">Liberar Conteúdo</button>
+</div>
+</section>
+<section class="nic-panel" id="painel-treino" role="tabpanel" aria-labelledby="tab-treino" hidden>
+<header class="training-intro"><h2>Digitação com Propósito</h2><p>Treine velocidade, precisão e postura por meio de nove missões interativas.</p></header>
+<section class="card">
+<h3>🪑 Postura correta</h3>
+<div class="grid" class="grid grid--tight">
+<div class="lesson" class="lesson lesson--static"><h3>Como sentar</h3><p>• Costas apoiadas na cadeira.<br>• Pés no chão.<br>• Tela na altura dos olhos.<br>• Ombros relaxados.<br>• Cotovelos próximos ao corpo, aproximadamente em 90°.</p></div>
+<div class="lesson" class="lesson lesson--static"><h3>Como posicionar as mãos</h3><p>• Punhos retos, sem apoiar o peso no pulso.<br>• Dedos levemente curvados.<br>• Olhe para a tela, não para o teclado.<br>• Use os dois polegares na barra de espaço.</p></div>
+</div>
+<div class="kb">
+<div class="key">Q</div><div class="key">W</div><div class="key">E</div><div class="key">R</div><div class="key">T</div><div class="key">Y</div><div class="key">U</div><div class="key">I</div><div class="key">O</div><div class="key">P</div>
+<div class="key l">A</div><div class="key l">S</div><div class="key l home">D</div><div class="key l home">F</div><div class="key">G</div><div class="key">H</div><div class="key r home">J</div><div class="key r home">K</div><div class="key r">L</div><div class="key r">;</div>
+</div>
+<p class="row" class="row row--top"><span>🔵 Mão esquerda: A · S · D · F</span><span>🟢 Mão direita: J · K · L · ;</span></p>
+<div class="verse"><strong>💡 Para refletir:</strong> “Tudo o que fizerem, façam de todo o coração.” — Colossenses 3:23</div>
+</section>
+<section class="card">
+<h3>👤 Identificação do agente</h3>
+<div class="student-fields">
+<input id="studentName" placeholder="Seu nome completo">
+<input id="studentClass" placeholder="Turma (opcional)">
+</div>
+</section>
+<div id="lessonGrid" class="grid"></div>
+<section id="trainScreen" class="card" hidden>
+<div class="row"><span id="lessonTitle"></span><span id="timer">0s</span></div>
+<div class="bar"><span id="progress"></span></div>
+<div class="live"><div><strong id="liveWpm">0</strong><span>PPM</span></div><div><strong id="liveAcc">100%</strong><span>precisão</span></div><div><strong id="liveErrors">0</strong><span>correções</span></div><div><strong id="liveStreak">0</strong><span>acertos seguidos</span></div></div>
+<div id="target" class="text"></div>
+<input id="typing" autocomplete="off" spellcheck="false" placeholder="Digite aqui com calma. Você consegue!">
+<div id="feedback" class="feedback"></div>
+<div class="verse" id="postureTip"><strong>🖐️ Lembrete:</strong> mão esquerda em <b>A-S-D-F</b>, mão direita em <b>J-K-L-;</b>, costas apoiadas e punhos relaxados.</div>
+<div class="verse" id="verse"></div>
+<div class="actions"><button class="btn ghost" id="backBtn">← VOLTAR</button><button class="btn blue" id="resetBtn">↻ REINICIAR TEXTO</button><button class="btn blue" id="nextTextBtn">PRÓXIMO TEXTO →</button><button class="btn primary" id="finishBtn" hidden>VER RESULTADO</button></div>
+<div id="result" class="result"><h2>Missão concluída! 🎉</h2><div class="big" id="finalXp">0 XP</div><div class="cards"><div><strong id="wpm">0</strong><span>PPM</span></div><div><strong id="acc">0%</strong><span>precisão</span></div><div><strong id="errors">0</strong><span>correções</span></div><div><strong id="elapsed">0s</strong><span>tempo</span></div></div><div class="tip" id="coach"></div><div class="verse" id="resultVerse"></div><button class="btn primary" id="homeBtn">VOLTAR ÀS MISSÕES</button></div>
+</section>
+
+</section>
+<section class="nic-panel" id="painel-atalhos" role="tabpanel" aria-labelledby="tab-atalhos" hidden>
+<section class="c-bloco" aria-labelledby="secao-titulo">
+<h2 id="secao-titulo"><span aria-hidden="true">⌨️</span> Atalhos do Word</h2>
+<details class="acc" name="acc-word"><summary>✏️ Edição e Formatação</summary><div class="acc__corpo"><table class="tabela"><tbody><tr><td><kbd>Ctrl</kbd> + <kbd>B</kbd></td><td>Negrito</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>I</kbd></td><td>Itálico</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>U</kbd></td><td>Sublinhado</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>Enter</kbd></td><td>Inserir quebra de página</td></tr></tbody></table></div></details>
+<details class="acc" name="acc-word"><summary>⌨️ Digitação e Navegação</summary><div class="acc__corpo"><table class="tabela"><tbody><tr><td><kbd>Ctrl</kbd> + <kbd>A</kbd></td><td>Selecionar tudo</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>C</kbd></td><td>Copiar</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>X</kbd></td><td>Recortar</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>V</kbd></td><td>Colar</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>Z</kbd></td><td>Desfazer</td></tr><tr><td><kbd>Ctrl</kbd> + <kbd>Y</kbd></td><td>Refazer</td></tr></tbody></table></div></details>
+</section>
+</section>
+<section class="nic-panel" id="painel-desempenho" role="tabpanel" aria-labelledby="tab-desempenho" hidden>
+<div class="c-bloco"><h2>🏆 Meu Desempenho</h2><p>Confira seu progresso nas missões e os resultados registrados neste navegador.</p><div class="performance-summary" id="performanceSummary"><p>Informe seu nome na aba Treino de Digitação para consultar seu desempenho.</p></div><h3>Ranking salvo neste computador</h3><p class="performance-note">O ranking é local: ele não é compartilhado automaticamente entre computadores. O professor pode exportar e importar os dados.</p><div class="table-scroll"><table class="tabela"><thead><tr><th>#</th><th>Aluno</th><th>Turma</th><th>XP</th><th>Melhor PPM</th><th>Missões</th></tr></thead><tbody id="rankingBody"></tbody></table></div><div class="actions"><button class="btn-modulo" id="exportBtn" type="button">⬇️ Exportar ranking</button><label class="btn-modulo import-label" for="importFile">⬆️ Importar ranking</label><input type="file" id="importFile" accept=".json,application/json" hidden></div></div>
+</section>
+</div>
+<footer class="c-rodape"><p>© NIC Formação Profissional — Educação com Propósito</p></footer>
 </main>
 <script type="application/json" id="nic-curso">{"slug":"word","acessos":{"word":{"prova":{"h":"2a6b01a9fcf690984488c30f05d5b08f801c30439250a3542d60f409a1a8590c","mensagem":"Acesso liberado!"},"revisao":{"h":"7115dfe12c07c42319c67654caf94e3e277a88cffbbc95be028be4bde5a5db98","exato":true,"mensagem":"Conteúdo liberado!"}}},"materiais":{"slides":{"titulo":"Slides Word + Digitação","url":"https://docs.google.com/presentation/d/1tFp0vR61l2u96PF3DQWwDd2IvVg13m-DaDIVhFf0VYA/edit?usp=drive_link","modo":"visualizador","visualizador":"./visualizador.html?url=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1tFp0vR61l2u96PF3DQWwDd2IvVg13m-DaDIVhFf0VYA%2Fedit%3Fusp%3Ddrive_link&titulo=Slides+Word+%2B+Digita%C3%A7%C3%A3o"},"apostila":{"titulo":"Apostila Completa — Word + Digitação","url":"https://drive.google.com/file/d/1gqNYTYBZHHvUvnsSwSWOiixcQin5suX_/view?usp=drive_link","modo":"externo"},"exercicios":{"titulo":"Exercícios Word + Digitação","url":"https://forms.gle/BV6gxxEkJJXq1z3A9","modo":"externo"},"prova":{"titulo":"Prova Final de Word","url":"","modo":"externo"},"revisao":{"titulo":"Revisão Word + Digitação","url":"","modo":"externo"}}}</script>
 <script src="./assets/js/core.d4f8acd7.js" defer></script>
 <script src="./assets/js/curso.92803554.js" defer></script>
+<script src="./assets/js/treino-digitacao.js" defer></script>
+<script src="./assets/js/word-abas.js" defer></script>
 </body>
 </html>
